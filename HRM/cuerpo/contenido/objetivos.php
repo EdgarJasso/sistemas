@@ -154,6 +154,12 @@ return out;
                  </a>
                 </li>
                 <li>   
+                  <a class="nav-link" id="pills-documentos-tab" data-toggle="pill" href="#pills-documentos" 
+                  role="tab" aria-controls="pills-documentos" aria-selected="false">Documentos
+                    <span class="icon-file-text"></span>
+                 </a>
+                </li>
+                <li>   
                     <a class="nav-link" id="pills-calendario-tab" data-toggle="pill" href="#pills-calendario" 
                      role="tab" aria-controls="pills-calendario" aria-selected="false">Calendario
                     <span class="icon-calendar"></span>
@@ -194,6 +200,13 @@ return out;
 <div class="tab-pane fade" id="pills-objetivos" role="tabpanel" aria-labelledby="pills-objetivos-tab">
    <div class="container-fluid">
       <div id="contenedor_objetivos"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-documentos" role="tabpanel" aria-labelledby="pills-documentos-tab">
+   <div class="container-fluid">
+      <div id="contenedor_documentos"></div>
    </div>
   </div>
 <!-- fin -->
@@ -250,6 +263,8 @@ $(document).ready(function(){
 	});
 
      $('#contenedor_objetivos').load('objetivos/tabla.php'); 
+     $('#contenedor_documentos').load('docuemntos/tabla_o.php'); 
+     
 	});
 </script>
 </body>

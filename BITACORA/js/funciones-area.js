@@ -94,6 +94,7 @@ function agregardatosArea(nombre){
 			showCancelButton: false,
 			showConfirmButton: false
 		});
+
 		$('#marcadores').load('../../php/marcadores.php');
     $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
     $('#contenedor_empleados').load('../../cuerpo/contenido/empleados/tabla.php'); 
@@ -102,9 +103,9 @@ function agregardatosArea(nombre){
     $('#contenedor_peticiones').load('../../cuerpo/contenido/peticiones/tabla.php'); 
     $('#contenedor_bitacora').load('../../cuerpo/contenido/bitacora/tabla.php'); 
 	      }else{
-			console.log(data);
+			console.log(r);
 			Swal.fire({
-				title: 'Error en el proceso!\n\n\n'+data,
+				title: 'Error en el proceso!\n\n\n'+r,
 				icon: 'error',
 				confirmButtonText: 'Continuar'
 			});

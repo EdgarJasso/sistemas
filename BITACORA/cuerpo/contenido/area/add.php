@@ -5,7 +5,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true){
 		$database = new Connection();
 		$db = $database->open();
 		try{
-			$stmt = $db->prepare("INSERT INTO tkd_area ( nombre) VALUES (:nombre)");
+			$stmt = $db->prepare("INSERT INTO tkd_area (nombre) VALUES (:nombre)");
 			$result= ( $stmt->execute(array(
                 ':nombre' => $_POST['nombre']
             )) ) ? '1' : '0';	
