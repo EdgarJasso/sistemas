@@ -1,0 +1,53 @@
+body{
+    background-color: #ccc;
+}
+.login-box{
+    width: 350px;
+    height: auto;
+    min-height: 400px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    
+    padding: 50px 30px;
+    
+    box-shadow: 0px 0px 10px gray;
+    border-radius: 10px;
+}
+
+a{
+    display: block;
+
+    padding: 15px;
+    text-decoration: none;
+
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+a:hover{
+    text-decoration: none;
+    font-weight: bold;
+    transform: scale(1.1);
+    color: #fff;
+}
+#hrm{
+    background-color: #0099FF;
+}
+#bitacora{
+    background-color: #00FF0E;
+}
+#encuestas{
+    background-color: #0445FB;
+}
+#nomina{
+    background-color: #C0FB04;
+}

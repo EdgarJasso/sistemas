@@ -1,0 +1,203 @@
+*{  
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #e9e9e9;
+}
+.menu-movil{
+    display: none;
+}
+
+.lista{
+    width: 50%;
+    min-width: 530px;
+    height: auto;
+}
+.lista .menu{ 
+     width: auto;
+    height: auto;
+    background-color: #FF5904;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.lista .menu .pildora{
+    display: block;
+    margin-left: 25px;
+    border-radius: 5px;
+    transition: all 400ms;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px #494949;
+}
+.lista .menu .pildora:last-child{
+    margin-right: 17px;
+}
+.lista .menu .pildora a{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+.lista .menu .pildora:hover > a{
+    transition: all 400ms;
+    background: #ccc;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FF5904;
+    transform: scale(1.2,1.2);
+    animation-delay: all 400ms;
+}
+.nav-tabs>li.active>a{
+    background-color: darkgray;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+}
+#contenedor{
+    width: 100%;
+    height: auto;
+}
+#contenedor #Usuarios{
+    background-color: #ccc;
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+.titulo{
+    margin: 0 auto;
+    margin-bottom: 25px;
+    text-align: center;
+    background-color: #20B2AA;
+    color: white;
+    font-family: sans-serif;
+    font-size: 24px;
+    padding: 10px;
+    font-weight: bold;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 5px;
+}
+#boton_add{
+    float: left;
+}
+
+/*Estilos datatables*/
+.dt-buttons{
+	float: right;
+}
+.buttons-copy, .buttons-excel , .buttons-pdf {
+    color: white;
+    background-color: #337ab7;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+#usuarios_length, #empleados_legth{
+    float: left;
+    margin-right: 50px;
+    margin-top: 5px;
+    color: white;
+    background-color: #337ab7;
+
+    padding: 5px 5px;
+    border-radius: 5px;
+    
+} 
+#usuarios_length select, #empleados_length select{
+    color: #337ab7;
+}
+#objetivos_filter, #asignacion_filter, #vacaciones_filter, #horas_filter, #documentos_filter, #imagen_filter{
+    float: left;
+    margin-left: 30%;
+    color: white;
+    background-color: #337ab7;
+
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+#objetivos_filter input[type="search"],
+#asignacion_filter input[type="search"],
+#vacaciones_filter input[type="search"],
+#horas_filter input[type="search"],
+#documentos_filter input[type="search"],
+#imagen_filter input[type="search"]{
+    background-color: transparent;
+    border: unset;
+    border-bottom: 2px solid white;
+}
+#objetivos_filter input[type="search"]:focus,
+#asignacion_filter input[type="search"]:focus,
+#vacaciones_filter input[type="search"]:focus,
+#horas_filter input[type="search"]:focus,
+#documentos_filter input[type="search"]:focus,
+#imagen_filter input[type="search"]:focus
+{
+    border: 2px solid white;
+}
+
+#objetivos_paginate, 
+#asignacion_paginate, 
+#vacaciones_paginate,
+#horas_paginate, 
+#documentos_paginate, 
+#imagen_paginate{
+    padding: 10px 15px;
+    text-align: center;
+    display: block;
+}
+#objetivos_first,  #objetivos_previous,  #objetivos_next,  #objetivos_last, 
+#asignacion_first,  #asignacion_previous,  #asignacion_next,  #asignacion_last, 
+#vacaciones_first, #vacaciones_previous, #vacaciones_next, #vacaciones_last,
+#horas_first, #horas_previous, #horas_next, #horas_last,
+#documentos_first, #documentos_previous,  #documentos_next,  #documentos_last, 
+#imagen_first, #imagen_previous, #imagen_next, #imagen_last{
+    padding: 10px 15px;
+    margin-right: 10px;
+    color: #000;
+    font-weight: bold;
+}
+#objetivos_first:hover,  #objetivos_previous:hover,  #objetivos_next:hover,  #objetivos_last:hover, 
+#asignacion_first:hover,  #asignacion_previous:hover,  #asignacion_next:hover,  #asignacion_last:hover, 
+#vacaciones_first:hover, #vacaciones_previous:hover, #vacaciones_next:hover, #vacaciones_last:hover,
+#horas_first:hover, #horas_previous:hover, #horas_next:hover, #horas_last:hover,
+#documentos_first:hover, #documentos_previous:hover,  #documentos_next:hover,  #documentos_last:hover, 
+#imagen_first:hover, #imagen_previous:hover, #imagen_next:hover, #imagen_last:hover{
+    border: 2px solid white;
+    text-decoration: none;
+}
+/*Estilos datatables fin*/
+/*Tabla inicio*/
+#table_dias_disponibles, #table_dias_disponibles thead, #table_dias_disponibles tfoot {
+text-align: center;
+}
+.table>thead:first-child>tr:first-child>th {
+    text-align: center;
+}
+.table>tfoot>tr>th{
+    text-align: center;
+}
+.item{
+    display: block;
+    color: #494949;
+    margin-left: 15px;
+    width: auto;
+}
+.box{
+    min-width: 80px;
+    width: 81px;
+    max-width: 82px;
+
+    padding-left: 5px;
+    
+}
+.item:hover{
+    color: #337ab7;
+    text-decoration: none;
+}
+/*Tabla fin*/
+
+#home-f{
+    background-color: rgba(0 ,0, 0, 0.0);
+}

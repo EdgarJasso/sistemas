@@ -1,0 +1,35 @@
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files files.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files filesIMG.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files index.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files jefe-area.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files objetivos.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files usuario.php>
+#Order allow,deny
+#Deny from all
+#</Files>

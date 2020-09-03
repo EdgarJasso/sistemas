@@ -1,0 +1,331 @@
+*{   
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #e9e9e9;
+    min-width: 300px;
+}
+.menu-movil{
+    display: none;
+}
+
+#boton_add{
+    float: left;
+}
+#marcadores{
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: start;
+
+    width: 95%;
+    height: 100px;
+
+    overflow: hidden;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: -5px;
+
+    border-radius:2px;
+
+    
+}
+.marcador{
+    height: 100%;
+    border-radius: 10px;
+}
+.marcador .contenido-marca{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    font-family: sans-serif;
+    height: 100%;
+}
+.marcador .contenido-marca .icono-marca{
+    font-size: 50px;
+    background-color: #fff;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    line-height: 100px;
+}
+.marcador .contenido-marca .marca-marca{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.Registrados{
+    background-color: #5bc0de;
+}
+.Registrados .icono-marca{
+    color: #5bc0de;
+}
+
+.Realizados{
+    background-color: #5cb85c;
+}
+.Realizados .icono-marca{
+    color: #5cb85c;
+}
+
+.Pendientes{
+    background-color: #f0ad4e;
+}
+.Pendientes .icono-marca{
+    color: #f0ad4e;
+}
+
+.Incidencia{
+    background-color: #d9534f;
+}
+.Incidencia .icono-marca{
+    color: #d9534f;
+}
+/*Estilos datatables*/
+.dt-buttons{
+	float: right;
+}
+.buttons-copy, .buttons-excel , .buttons-pdf {
+    color: white;
+    background-color: #00408a;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+.color-p{
+    background-color: #00408a;
+}
+#area, 
+#servicio, 
+#empleados, 
+#usuarios, 
+#peticion,
+#bitacora{
+    width: 90% !important;
+    margin: 0 auto;
+}
+#area_filter, 
+#servicio_filter, 
+#empleados_filter, 
+#usuarios_filter, 
+#peticion_filter,
+#bitacora_filter{
+    float: left;
+    margin-left: 30%;
+    color: white;
+    background-color: #00408a;
+
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+#area_filter input[type="search"],
+#servicio_filter input[type="search"],
+#empleados_filter input[type="search"],
+#usuarios_filter input[type="search"],
+#peticion_filter input[type="search"],
+#bitacora_filter input[type="search"]{
+    background-color: transparent;
+    border: unset;
+    border-bottom: 2px solid white;
+}
+#area_filter input[type="search"]:focus,
+#servicio_filter input[type="search"]:focus,
+#empleados_filter input[type="search"]:focus,
+#usuarios_filter input[type="search"]:focus,
+#peticion_filter input[type="search"]:focus,
+#bitacora_filter input[type="search"]:focus
+{
+    border: 2px solid white;
+}
+
+#area_paginate, 
+#servicio_paginate, 
+#empleados_paginate, 
+#usuarios_paginate, 
+#peticion_paginate,
+#bitacora_paginate{
+    padding: 10px 15px;
+    text-align: center;
+    display: block;
+}
+#area_first,  #area_previous,  #area_next,  #area_last, 
+#servicio_first,  #servicio_previous,  #servicio_next,  #servicio_last, 
+#empleados_first,  #empleados_previous,  #empleados_next,  #empleados_last, 
+#usuarios_first,  #usuarios_previous,  #usuarios_next,  #usuarios_last, 
+#peticion_first, #peticion_previous, #peticion_next, #peticion_last,
+#bitacora_first, #bitacora_previous, #bitacora_next, #bitacora_last{
+    padding: 10px 15px;
+    margin-right: 10px;
+    color: #000;
+    font-weight: bold;
+}
+#area_first:hover,  #area_previous:hover,  #area_next:hover,  #area_last:hover, 
+#servicio_first:hover,  #servicio_previous:hover,  #servicio_next:hover,  #servicio_last:hover, 
+#empleados_first:hover,  #empleados_previous:hover,  #empleados_next:hover,  #empleados_last:hover, 
+#usuarios_first:hover,  #usuarios_previous:hover,  #usuarios_next:hover,  #usuarios_last:hover, 
+#peticion_first:hover, #peticion_previous:hover, #peticion_next:hover, #peticion_last:hover,
+#bitacora_first:hover, #bitacora_previous:hover, #bitacora_next:hover, #bitacora_last:hover{
+    border: 2px solid white;
+    text-decoration: none;
+}
+/*Estilos datatables fin*/
+/*Tabla inicio*/
+thead, tfoot{
+    background-color: #00408a;
+    color: #fff;
+}
+.table>thead:first-child>tr:first-child>th {
+    text-align: center;
+}
+.table>tfoot>tr>th{
+    text-align: center;
+}
+.item{
+    display: block;
+    color: #494949;
+    margin-left: 15px;
+    width: auto;
+}
+.box{
+    min-width: 80px;
+    width: 81px;
+    max-width: 82px;
+
+    padding-left: 5px;
+    
+}
+.item:hover{
+    color: #337ab7;
+    text-decoration: none;
+}
+/*Tabla fin*/
+
+#home-f{
+    background-color: rgba(0 ,0, 0, 0.0);
+}
+@media(max-width:1100px){
+    .marcador .contenido-marca{
+        display: grid;
+        grid-template-columns: 35% 1fr;
+        justify-content: center;
+        align-items: start;
+        text-align: center;
+        font-family: sans-serif;
+        height: 100%;
+    }
+}
+@media(max-width:768px){
+    #marcadores{
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        grid-gap: 5px;
+        justify-content: center;
+        align-items: start;
+    
+        width: 97%;
+        height: 100px;
+    
+        overflow: hidden;
+    
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    
+        border-radius:5px;
+        
+    }
+    #area_filter, #servicio_filter, #empleados_filter, #usuarios_filter, #peticion_filter,#bitacora_filter{
+        margin-left: 20%;
+    }
+}
+@media(max-width:770px){
+    #layout{
+        margin-bottom: 60px;
+    }
+}
+@media(max-width:680px){
+    .marcador .contenido-marca{/*asignacion*/
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 35% 1fr;
+        height: 100%;
+    }
+    .marcador .contenido-marca .icono-marca{/*icono*/
+        font-size: 30px;
+        background-color: #fff;
+        height: 100%;
+        line-height: 10px;
+    }
+    .marcador .contenido-marca .marca-marca{/*texto*/
+        font-weight: bold;
+        font-style: italic;
+    }
+    .marcador .contenido-marca .marca-marca .contador{
+        margin-top: 0px; 
+        margin-bottom: 0px;
+    }
+    #marcadores .marcador .contenido-marca .marca-marca .titulo{
+        font-size: 18px;
+    }
+
+}
+@media(max-width:500px){
+    #marcadores{
+        display: grid;
+        grid-template-columns: repeat(4, 20%);
+        grid-gap: 5px;
+        justify-content: center;
+        align-items: start;
+    
+        width: 100%;
+        height: 100px;
+    
+        overflow: hidden;
+    
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    
+        border-radius:5px;
+    }
+    #marcadores .marcador .contenido-marca .marca-marca .titulo{
+        font-size: 14px;
+    }
+}
+
+@media(max-width:440px){
+    #marcadores .marcador .contenido-marca .marca-marca .titulo{
+        font-size: 12px;
+    }
+}
+@media(max-width:380px){
+    #marcadores{
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        grid-gap: 5px;
+        justify-content: center;
+        align-items: start;
+    
+        width: 100%;
+        height: 100px;
+    
+    
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 1px;
+    
+        border-radius:5px;
+    }
+    #marcadores .marcador .contenido-marca .marca-marca .titulo{
+        font-size: 11px;
+    }
+    #area_filter, #servicio_filter, #empleados_filter, #usuarios_filter, #peticion_filter,#bitacora_filter{
+    width: 200px;
+    }
+}

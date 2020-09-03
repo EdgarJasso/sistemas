@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>HRM ( Human Recourses Manage )</title>
+    <link rel="shortcut icon" href="img/icono.png" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/style-index.css">
+    <link rel="stylesheet" href="css/fonts/style.css">
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="package/dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="package/dist/sweetalert2.min.css">
+   
+</head>
+<body style="background-color: #f4f4f4;">
+<div class="conteiner-fluid" id="all">
+  <div class="logo">
+    <center><img src="img/new logo.png" alt="logo"></center>
+  </div>
+  <div class="desc">
+    <h3>
+      Bienvenido al sistema de Administracion de Recursos Humanos
+    </h3>
+  </div>
+
+  <form class="form" action="" id="login">
+    <div class="form-group">
+                    <div class='input-group date form-group'>
+                        <input class=" form-control txt" required type="text" placeholder="Nombre" name="name" id="name">
+                        <span class="input-group-addon">
+                            <span class="icon-user"></span>
+                        </span>
+                    </div>
+      </div>
+      <br>
+      <div class="form-group">
+                    <div class='input-group date form-group'>
+                        <input class="form-control txt" pattern="[A-Za-z0-9.]{1,20}" required type="password" placeholder="Contraseña" name="pass" id="pass" autocomplete="off" >
+                        <span class="input-group-addon">
+                            <span class="icon-lock"></span>
+                        </span>
+                    </div>
+      </div>
+       <br>
+      <center>
+
+      <a href="../index.html" class="btn btn-warning">Regresar</a>
+      <button type="reset" class="btn btn-default">Cancelar</button>  
+      <button type="submit" name="entrar" id="entrar" class="btn btn-success"><span class="icon-enter"></span> Entrar</button>
+    </center>
+      </form>
+
+
+</div>
+</body>
+
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/functiones-index.js"></script>
+</html>

@@ -1,0 +1,7 @@
+#Bloqueo de lectura de archivo especifico connection.php
+<Files connection.php>
+Order allow,deny
+Deny from all
+</Files>
+
+

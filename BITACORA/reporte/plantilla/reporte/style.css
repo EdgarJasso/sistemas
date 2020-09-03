@@ -1,0 +1,103 @@
+.clearfix:after { 
+  content: "";
+  clear: both;
+}
+  
+body {
+  position: relative;
+  width: 21cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  color: #001028;
+  background: #eee; 
+  font-family: Arial, sans-serif; 
+  font-size: 12px; 
+  font-family: Arial;
+  border: 2px solid #000;
+}
+.contenedor{
+    width: 80%;
+    margin: 0 auto;
+}
+.contenedor .logo{
+    width: 95%;
+    margin: 0 auto;
+}
+.contenedor .logo img{
+    width: 100%;
+}
+
+.contenedor .titulo{
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+.contenedor .datos_previos{
+    width: 95%;
+    margin: 0 auto;
+}
+.contenedor .datos_previos h3{
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: -3px;
+}
+.contenedor .datos_previos table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid blue;
+}
+
+.contenedor .datos_previos table th, table td { 
+    text-align: center;
+    border: 1px solid #ffffff;
+}
+.destacado{
+    background-color: blue;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.contenedor .datos_post{
+    width: 95%;
+    margin: 0 auto;
+}
+.contenedor .datos_post h3{
+    text-align: left;
+    padding-left: 10px;
+    padding-left: 10px;
+    margin-bottom: -3px;
+}
+.contenedor .datos_post table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid orangered;
+}
+
+.contenedor .datos_post table th, table td { 
+    text-align: center;
+    border: 1px solid #ffffff;
+}
+.referencia{
+    background-color: orangered;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.contenedor .visto{
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 50px ;
+}
+.contenedor .visto .encargado{
+    width: 45%;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+}
+.contenedor .visto .empleado{
+    width: 45%;
+    float: right;
+    text-align: center;
+    font-weight: bold;
+}

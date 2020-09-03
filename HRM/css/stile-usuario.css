@@ -1,0 +1,397 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	background:#FFFFFA;
+}
+a{
+	text-decoration: none;
+}
+header {
+	width:100%;
+} 
+
+header nav {
+	width:90%;
+	max-width:1000px;
+	margin:20px auto;
+    background:#024959;
+    z-index: 10;
+}
+
+.menu_bar {
+	display:none;
+}
+
+header nav ul {
+	overflow:hidden;
+	list-style:none;
+}
+
+header nav ul li {
+	float:left;
+	border-right:2px solid #bebebe;;
+}
+header nav ul li ul{
+	position: absolute;
+	z-index: 999;
+}
+header nav ul li ul li{
+	float: none;
+	display: none;
+}
+header nav ul li ul li a{
+	background-color: #494949;
+	color: #e9e9e9;
+	display: block;
+	float: none;
+	border-bottom: 2px solid #e9e9e9;
+}
+header nav ul li ul li a span{
+	margin-left: 10px;
+}
+header nav ul li a {
+	color:#fff;
+	padding:20px;
+	display:block;
+	text-decoration:none;
+}
+
+header nav ul li a span {
+	margin-left:10px;
+}
+
+header nav ul li a:hover {
+    background:#fff;
+    text-decoration: none;
+    transition: all 300ms;
+}
+
+/*fin menu estilos*/
+
+#contenido_general{ 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #eee;
+    transition: all 0.3s;
+    min-height: 100vh;
+    background-image: url(../img/logo-nuevo.jpeg);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    background-attachment: fixed;
+    
+    z-index: 0;
+}
+#contenido_general::before{
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(90deg, #ccc, #ccc);
+
+    opacity: 0.8;
+    
+    z-index: -1;
+}
+.modal-backdrop{
+    z-index: -1;
+  }
+  #home-f{
+    background-color: rgba(0 ,0, 0, 0.0);
+}
+section {
+	padding:20px;
+}
+.box{
+    left: -60px;
+    min-width: 110px;
+}
+#clock{
+    color:#fff;
+	padding:15px;
+	display:block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+/*estilos de perfil*/
+.bt-perfil, .bt-direccion{
+	width: 100%;
+	display: block;
+	max-width: 600px;
+}
+.bt-perfil span, .bt-direccion span{
+	float: right;
+}
+.perfil, .puesto{
+ width: 100%;
+ max-width: 600px;
+ background-color:#eee;
+ margin: 0 auto;
+ border: 1px solid #494949;
+ border-radius: 3px;
+}
+.perfil .titulo_perfil{
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: -20px;
+
+}
+.perfil .foto_perfil{
+	width: 40%;
+	float: left;
+	/*border: 1px solid red;*/
+}
+.perfil .foto_perfil img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-top: 50px;
+
+}
+.perfil .informacion_perfil{
+	width: 60%;
+	float: right;
+	/*border: 1px solid blue;*/
+}
+.perfil .direccion_perfil{
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	border-bottom: 5px solid #fc6602;
+	/*border: 1px solid blue;*/
+}
+.perfil .informacion_perfil .fecha_perfil,
+.perfil .informacion_perfil .datos_perfil, 
+.perfil .informacion_perfil .numeros_perfil{
+	border-bottom: 2px solid #494949;
+	margin-bottom: 5px;
+	width: 70%;
+}
+.perfil .informacion_perfil .fecha_perfil h5,
+.perfil .informacion_perfil .datos_perfil h5, 
+.perfil .informacion_perfil .numeros_perfil h5{
+ background-color: #024959;
+ color: #fff;
+ padding-top: 3px;
+ padding-bottom: 3px;
+ font-weight: bold;
+
+
+}
+.perfil .direccion_perfil .fecha_perfil,
+.perfil .direccion_perfil .datos_perfil, 
+.perfil .direccion_perfil .numeros_perfil{
+	border-bottom: 2px solid #494949;
+	margin-bottom: 5px;
+	width: 70%;
+}
+.perfil .direccion_perfil .fecha_perfil h5,
+.perfil .direccion_perfil .datos_perfil h5, 
+.perfil .direccion_perfil .numeros_perfil h5{
+ background-color: #024959;
+ color: #fff;
+ padding-top: 3px;
+ padding-bottom: 3px;
+ font-weight: bold;
+
+}
+/*estilos de perfil*/
+/*estilos de puesto*/
+.puesto .tiulo_puesto{
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bold;
+	background-color: #024959;
+}
+.puesto .tiulo_puesto h5{
+	font-weight: bold;
+	font-size: 18px;
+	color: #fff;
+}
+.puesto .datos_1_puesto{
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	background-color: #024959;
+	margin-bottom: 98px;
+} 
+.puesto .datos_1_puesto .bloque{
+	display: block;
+	width: 50%;
+	float: left;
+}
+.puesto .datos_1_puesto .bloque h5{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #024959;
+}
+.desc_puesto{
+	width: 90%;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+.desc_puesto h5{
+	height: 20px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #024959;
+}
+/*estilos de puesto*/
+/*estilos de general*/
+#objetivos_usuario, #vacaciones_usuario, #documenos_doctos{
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+/*estilos de general*/
+
+
+html, body {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+  } 
+  .dt-buttons{
+	float: right;
+}
+.buttons-copy, .buttons-excel , .buttons-pdf {
+    color: white;
+    background-color: #337ab7;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+  #objetivos_u_filter , 
+#doctos_u_filter, 
+#vacaciones_filter{
+    float: left;
+    margin-left: 30%;
+    color: white;
+    background-color: #337ab7;
+ 
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+#objetivos_u_filter input[type="search"], 
+#doctos_u_filter input[type="search"],
+#vacaciones_filter input[type="search"]{
+    background-color: transparent;
+    border: unset;
+    border-bottom: 2px solid white;
+}
+#objetivos_u_filter input[type="search"]:focus,
+ #doctos_u_filter input[type="search"]:focus,
+ #vacaciones_filter input[type="search"]:focus {
+    border: 2px solid white;
+}
+
+#objetivos_u_paginate,
+#doctos_u_paginate,
+#vacaiones_paginate{
+    padding: 10px 15px;
+    text-align: center;
+    display: block;
+}
+#objetivos_u_first,  #objetivos_u_previous,  #objetivos_u_next,  #objetivos_u_last, 
+#doctos_u_first,  #doctos_u_previous,  #doctos_u_next,  #doctos_u_last,
+#vacaciones_first,  #vacaciones_previous,  #vacaciones_next,  #vacaciones_last {
+    padding: 10px 15px;
+	margin-right: 10px;
+	color: #000;
+    font-weight: bold;
+}
+#objetivos_u_first:hover,  #objetivos_u_previous:hover,  #objetivos_u_next:hover,  #objetivos_u_last:hover, 
+#doctos_u_first:hover,  #doctos_u_previous:hover,  #doctos_u_next:hover,  #doctos_u_last:hover,
+#vacaciones_first:hover,  #vacaciones_previous:hover,  #vacaciones_next:hover,  #vacaciones_last:hover{
+    border: 2px solid white;
+	text-decoration: none;
+}
+  
+
+
+  .fc-day-number{
+	  color: #000000;
+  }
+
+  .fc-header-toolbar {
+    /*
+    the calendar will be butting up against the edges,
+    but let's scoot in the header's buttons
+    */
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .fc-head, .fc-body{
+    background-color: rgba(0,0,0,0.2);
+}
+.fc-day-number, .fc-day-header{
+    color: #fff;
+}
+
+@media screen and (max-width:800px ) {
+	header nav {
+		width:60%;
+		height:auto;
+		left:-100%;
+		margin:0;
+		position: absolute;
+	}
+	header nav ul li ul{
+		position: relative;
+	}
+
+	header nav ul li {
+		display:block;
+		float:none;
+		border-bottom:1px solid rgba(255,255,255, .3);
+    }
+    header nav ul li a span{
+        float: right;
+    }
+
+	.menu_bar {
+		display:block;
+		width:100%;
+		background:#ccc;
+	}
+
+	.menu_bar .bt-menu {
+		display:block;
+		padding:20px;
+		background:#024959;
+		color:#fff;
+		text-decoration:none;
+		font-weight: bold;
+		font-size:20px;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+    }
+    
+
+	.menu_bar span {
+		float:right;
+		font-size:30px;
+	}
+
+    .perfil .foto_perfil{
+		width: 100%;
+	}
+	.perfil .informacion_perfil{
+		width: 100%;
+	}
+}

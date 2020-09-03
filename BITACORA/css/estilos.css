@@ -1,0 +1,46 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+#all{
+    overflow: hidden;
+    background-color: #494949;
+    height: 100vh;
+}
+#bodi{
+    background-color: #eee;
+    width: 70%;
+    margin-top: 20px;
+}
+
+#top{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+#top #logo{
+    flex-grow: 1;
+    flex-basis: 70%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+#top #logo img{
+    width: 50%;
+}
+#formulario{
+    width: 90%;
+    margin-left: -50px;
+    padding-bottom: 30px;
+}
+#formulario select{
+    max-width: 300px;
+    margin: 0 auto;
+}
+#formulario textarea{
+    max-width: 300px;
+    margin: 0 auto;
+    resize: none;
+}

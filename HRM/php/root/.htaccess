@@ -1,0 +1,17 @@
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files checklogin.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files logout.php>
+#Order allow,deny
+#Deny from all
+#</Files>
+
+#Bloqueo de lectura de archivo especifico connection.php
+#<Files redireccion.php>
+#Order allow,deny
+#Deny from all
+#</Files>
