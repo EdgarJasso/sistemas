@@ -1,0 +1,93 @@
+header{
+    display: block;
+    position: fixed;
+    width: 100%;
+    background-color: #00408a;
+}
+a{
+    text-decoration: none;
+    color:#fff
+}
+a:hover{
+    text-decoration: none;
+    color:#fff
+}
+.clearfix{
+    clear: both;
+    overflow: auto;
+}
+.menu{
+    display: inline-block;
+    padding: 5px;
+}
+.opciones{
+    display: block;
+    padding: 8px;
+    float: right;
+}
+
+.menu button[type="button"], .opciones button[type="button"]{
+    background-color: transparent;
+    border: 2px solid darkgray;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    padding-top: 3px;
+    transition: all 0.4s;
+}
+.menu button[type="button"] .icon{
+    font-size: 25px;
+}
+.menu button[type="button"] #titulo{
+    font-weight: bold;
+    margin-top: -7px;
+    text-transform: uppercase;
+}
+.opciones #reloj{
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid darkgray;
+    border-radius: 3px;
+    color:#fff;
+    font-size: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.opciones  button[type="button"] #notificaciones{
+   display: inline-block; 
+}
+#btn-off:hover{
+    transition: all 0.4s;
+    transform: scale(1.1);
+    color:#fff;
+    background-color: #ff0000;
+}
+#contenido-todo{
+    display: block;
+    position: absolute;
+}
+#contenido-menu{
+    display: block;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    top: 50px;
+    transition: all 0.5s;
+    background-color: #00408a;
+}
+#contenido-general{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50px;
+    overflow: hidden;
+    transition: all 0.5s;
+    border: 4px solid red;
+    background-color: #e9e9e9;
+}
+
+.abrir{
+    transform: translateX(250px);
+    width: calc(100% - 250px) !important;
+}

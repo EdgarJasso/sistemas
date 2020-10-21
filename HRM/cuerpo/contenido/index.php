@@ -1,4 +1,5 @@
 <?php       
+include '../../../dominio.php';
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['permiso']=='admin') {
 ob_start();
@@ -19,7 +20,7 @@ if($now > $_SESSION['expire']) {
   });
   setTimeout(
       function(){
-          location.href='https://remittent-crowd.000webhostapp.com/HRM/php/root/logout.php';
+          location.href='<?php echo URL;?>/HRM/php/root/logout.php';
   }, 2000);
 </script>";
 echo $msj;
@@ -403,7 +404,7 @@ return out;
 <script src="../../js/buttons.html5.min.js"></script>
 <script src="../../js/reloj.js"></script>
 <script>
-    reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', 'http://remittent-crowd.000webhostapp.com/HRM/php/root/logout.php');
+    reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', '<?php echo URL;?>/HRM/php/root/logout.php');
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -441,7 +442,7 @@ $(document).ready(function(){
 <?php
 } else {
   echo "Inicia Sesion para acceder a este contenido.<br>";
-  echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/HRM";</script>';
+  echo '<script type="text/javascript">window.location = "'.URL.'/HRM";</script>';
 exit;
 }
 ?>

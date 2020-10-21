@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(isset($_SESSION['log']) && $_SESSION['log'] == true){
+if (isset($_SESSION['log']) && $_SESSION['log'] == true){
 ob_start();
 $id= $_GET['id'];
 require_once('vendor/autoload.php');
@@ -30,6 +30,7 @@ $mpdf -> Output("bitacora.pdf","D");
 
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
-    header('Location: http://localhost/bitacora/');
+    include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
 }
 ?>

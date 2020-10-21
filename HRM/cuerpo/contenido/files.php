@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start(); 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 include_once("../../php/connection.php");  
@@ -171,7 +171,8 @@ if(!file_exists($carpeta)){
 }
 }else {
     echo "Inicia Sesion para acceder a este contenido.<br>";
-    echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/HRM";</script>';
+    include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/HRM";</script>';
     exit;
   }
 ?>

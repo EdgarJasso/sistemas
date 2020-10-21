@@ -10,7 +10,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <center><h4 class="modal-title">Subir Documento New:</h4></center>
+        <center><h4 class="modal-title">Subir Documento:</h4></center>
       </div>
 
       <div class="modal-body">
@@ -56,18 +56,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     Seleccione Archivo:
     </label>
 		<div class="input-group input-file" >
-    		<input class="form-control" type="file"  placeholder='Seleccione Archivo...'  name="archivo" >			
+    		<input class="form-control" type="file"  placeholder='Seleccione Archivo...'  name="archivo" id="archivo_doctos">			
 		</div>
   </div>
    
-  <div id="out_data"></div>
-  
-  
-    </form>
+  <div class="progress mt-3 bg-secondary">
+      <div id="barra" class="progress-bar bg-success"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+         0%
+      </div>
+  </div>
+    
       </div>
 
       <div class="modal-footer"> 
-      <button type="button" onclick="subir()" class="btn btn-primary form-control" data-dismiss="modal">Cargar</button>
+      <button type="button" onclick="subir()" class="btn btn-primary">Cargar</button>
+      </form>
       </div>
       
     </div>
@@ -76,7 +79,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <?php 
 }else {
   echo "Inicia Sesion para acceder a este contenido.<br>";
-  echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/HRM";</script>';
-  exit;
+  include '../../../../dominio.php';
+    	echo '<script type="text/javascript">window.location = "'.URL.'/HRM";</script>';
 }
 ?>

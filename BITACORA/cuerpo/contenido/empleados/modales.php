@@ -46,6 +46,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
   </div>
 </div>
+
  <!-- Modal de  Add-->
  <div class="modal fade" id="Agregar_Empleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
@@ -168,5 +169,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <?php
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
-    echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/BITACORA";</script>';
-?>
+    include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
+}?>

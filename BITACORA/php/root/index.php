@@ -1,4 +1,5 @@
 <?php        
+include '../../../dominio.php';
 session_start();
 if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['permiso']=='root') {
    include('../../php/connection.php');
@@ -16,7 +17,7 @@ if($now > $_SESSION['expire']) {
             });
             setTimeout(
                 function(){
-                    location.href= https://remittent-crowd.000webhostapp.com/BITACORA/php/root/logout.php';
+                    location.href= ".URL."/BITACORA/php/root/logout.php;
             }, 2000);
           </script>";
   echo $msj;
@@ -229,7 +230,7 @@ if($now > $_SESSION['expire']) {
 <script src="../../js/buttons.html5.min.js"></script>
 <script src="../../js/reloj.js"></script>
 <script type="text/javascript">
- reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', ' https://remittent-crowd.000webhostapp.com/BITACORA/php/root/logout.php');
+ reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', '<?php echo URL;?>/BITACORA/php/root/logout.php');
 $(document).ready(function(){
 
     $('.mennu li ul').slideUp();
@@ -259,6 +260,6 @@ $(document).ready(function(){
 <?php
 } else {
    echo "Inicia Sesion para acceder a este contenido.<br>";
-   echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/BITACORA";</script>';
+   echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
 exit;
 }?>

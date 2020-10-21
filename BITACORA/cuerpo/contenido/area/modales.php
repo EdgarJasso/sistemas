@@ -1,6 +1,7 @@
 <?php
 if (isset($_SESSION['log']) && $_SESSION['log'] == true){
-?><!-- View -->  
+?>
+<!-- View -->  
 <div class="modal fade" id="Ver_Area" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -87,7 +88,8 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == true){
 </div>
 <?php
 }else{
-    echo "Inicia Sesion para acceder a este contenido.<br>";
-    echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/BITACORA";</script>';
+  echo "Inicia Sesion para acceder a este contenido.<br>";
+  include '../../../dominio.php';
+  echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
 }
 ?>

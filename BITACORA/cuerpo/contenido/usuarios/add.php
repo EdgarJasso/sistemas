@@ -19,7 +19,8 @@ include('../../../php/connection.php');
 		}
 	}else{
 		echo "Inicia Sesion para acceder a este contenido.<br>";
-		echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/BITACORA";</script>';
+		include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
 	}
 ?>
  

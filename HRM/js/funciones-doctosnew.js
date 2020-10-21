@@ -1,13 +1,42 @@
     
 $(document).ready(function(){
-    
+
+    // File type validation
+    $("#archivo_doctos").change(function(){
+        var allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.presentationml.presentation','image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        var file = this.files[0];
+        var fileType = file.type;
+        if(!allowedTypes.includes(fileType)){
+           // alert('Please select a valid file (PDF/DOC/DOCX/EXCEL/POWERPOINT/JPEG/JPG/PNG/GIF).');
+            Swal.fire({
+                title: 'Error en el proceso!',
+                text: 'Seleccione un formato valido (PDF/DOC/XLXS/PPTX/JPEG/JPG/PNG/GIF).',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            });
+            $("#archivo_doctos").val('');
+            return false;
+        }
+    });
+
 });
 function subir()
     {
 
         var Form = new FormData($('#filesForm')[0]);
         $.ajax({
-
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = ((evt.loaded / evt.total) * 100);
+                        var number = Math.round(percentComplete);
+                        $(".progress-bar").width(number + '%');
+                        $(".progress-bar").html(number+'%');
+                    }
+                }, false);
+                return xhr;
+            },
             url: "files.php",
             type: "post",
             data : Form,
@@ -25,7 +54,8 @@ function subir()
 				timerProgressBar: true,
 				showCancelButton: false,
 				showConfirmButton: false
-			});
+            });
+            $('#Agregar_Doctonew').modal('hide');
                  }else{
                      //alert('fallo');
                   //alertify.error("Fallo en el servidor...");
@@ -39,6 +69,9 @@ function subir()
             }
         });
     }
+
+    
+
 
     function subirIMG()
     {
@@ -119,3 +152,5 @@ function preguntarDoctoNew(data){
 
     });
    }
+
+   

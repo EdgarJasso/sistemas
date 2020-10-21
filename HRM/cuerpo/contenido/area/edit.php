@@ -1,7 +1,7 @@
-<?php 
-session_start(); 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-include('../../../php/connection.php');include('../../../php/connection.php');
+<?php   
+	session_start();  
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	include('../../../php/connection.php');
 		$database = new Connection();
 		$db = $database->open();
 		try{
@@ -16,11 +16,15 @@ include('../../../php/connection.php');include('../../../php/connection.php');
             
 		}catch(PDOException $e){
             $result = $e->getMessage();
-			echo $result;
+            echo $result;
 		}
-}else {
-echo "Inicia Sesion para acceder a este contenido.<br>";
-echo '<script type="text/javascript">window.location = "http://remittent-crowd.000webhostapp.com/HRM";</script>';
-exit;
-}
-		  ?>
+		//cerrar conexión
+		$database->close();
+
+	}else{
+		echo "Inicia Sesion para acceder a este contenido.<br>";
+		include '../../../../dominio.php';
+    	echo '<script type="text/javascript">window.location = "'.URL.'/HRM";</script>';
+		exit;
+	  }
+	  ?>
