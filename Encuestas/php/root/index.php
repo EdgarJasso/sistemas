@@ -72,6 +72,26 @@ if($now > $_SESSION['expire']) {
             <span class="icon icon-circle-down"></span>
          </button>
 
+                <div class="btn-group">
+                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="icon-cog"></span>
+                  <span class="icon-circle-down"></span>
+                 </button>
+                
+                 <div class="dropdown-menu box">
+                 
+                 <button type="button" class="btn btn-info btn-sm" 
+             data-toggle="modal" data-target="#Ver_Categoria" 
+             onclick="AgregarViewCat('<?php echo $datosCV?>')"><span class="icon-eye"></span></button>
+             
+             <button type="button" class="btn btn-warning btn-sm" 
+             data-toggle="modal" data-target="#Editar_Categoria" 
+             onclick="agregarformCat('<?php echo $datosCE?>')"><span class="icon-pencil"></span></button>
+              
+         <button type="button" class="btn btn-danger btn-sm" onclick="preguntarCat(<?php echo $row['id_puesto'] ?>)"><span class="icon-cross"></span></button>
+        </div>
+                </div> 
+
          <button type="button" id="btn-off">
             <a href="logout.php">
             <span class="icon icon-switch" id="off"></span>
@@ -87,6 +107,7 @@ if($now > $_SESSION['expire']) {
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis ut adipisci reprehenderit ex qui voluptas quas, aliquid assumenda harum hic animi quibusdam, ipsum asperiores, sunt atque quia a. Cupiditate?
    </div>
    <div id="contenido-general">
+    
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias rerum deserunt, nemo amet in facilis omnis aspernatur enim necessitatibus, ullam perspiciatis qui laborum ducimus quasi nesciunt maxime quia delectus?
    </div>
    </div>

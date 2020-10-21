@@ -21,22 +21,22 @@
     animation: girar 0.9s linear infinite;
 }
 #carga_int{
-    border: 10px solid #ccc;
+    border:9px solid #ccc;
     border-right-color: #00408a;
     border-left-color: #00408a;
-    height: 100px;
-    width: 100px;
+    height: 175px;
+    width: 175px;
     border-radius: 100%;
 
     margin: 0px auto;
 
-    animation: girar_int 1.5s linear infinite;
+    animation: interno 0.4s linear infinite ;
 }
 @keyframes girar{
     0%{ transform: rotate(0deg);}
     100%{ transform: rotate(360deg); } 
 }
-@keyframes girar_int{
-    0%{ transform: rotate(3600deg);}
+@keyframes interno{
+    0%{ transform: rotate(360deg);}
     100%{ transform: rotate(0deg); } 
 }
