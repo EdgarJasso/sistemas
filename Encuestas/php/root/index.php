@@ -64,33 +64,13 @@ if($now > $_SESSION['expire']) {
          <div id="reloj">
          </div>
 
-         <button type="button">
+         <button type="button" id="btn-notificacines">
             <span class="icon icon-bell"></span>
-               <div id="notificaciones">
+               <div id="carga-notificaciones">
                <span class="badge badge-success">3</span>
                </div>
             <span class="icon icon-circle-down"></span>
          </button>
-
-                <div class="btn-group">
-                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="icon-cog"></span>
-                  <span class="icon-circle-down"></span>
-                 </button>
-                
-                 <div class="dropdown-menu box">
-                 
-                 <button type="button" class="btn btn-info btn-sm" 
-             data-toggle="modal" data-target="#Ver_Categoria" 
-             onclick="AgregarViewCat('<?php echo $datosCV?>')"><span class="icon-eye"></span></button>
-             
-             <button type="button" class="btn btn-warning btn-sm" 
-             data-toggle="modal" data-target="#Editar_Categoria" 
-             onclick="agregarformCat('<?php echo $datosCE?>')"><span class="icon-pencil"></span></button>
-              
-         <button type="button" class="btn btn-danger btn-sm" onclick="preguntarCat(<?php echo $row['id_puesto'] ?>)"><span class="icon-cross"></span></button>
-        </div>
-                </div> 
 
          <button type="button" id="btn-off">
             <a href="logout.php">
@@ -101,6 +81,9 @@ if($now > $_SESSION['expire']) {
 
    </header>
 <div class="clearfix"></div>
+<div id="notificaciones">
+  <a href="#?id=2">asasasasas</a>
+</div>
 <div class="container-fluid bg-secondary" id="contenido-todo">
    <div class="row">
    <div id="contenido-menu">
@@ -149,9 +132,13 @@ if($now > $_SESSION['expire']) {
  reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>/sistemas/Encuestas/php/root/logout.php');
  
  $(document).ready(function(){
+    //menu
     $('#btn-menu').on('click', function(){
        $('#contenido-general').toggleClass('abrir');
-
+      });
+   //notificacion
+   $('#btn-notificacines').on('click', function(){
+       $('#notificaciones').toggleClass('abrir-notificacion');
     });
 
 });

@@ -53,7 +53,7 @@ a:hover{
     padding-left: 3px;
     padding-right: 3px;
 }
-.opciones  button[type="button"] #notificaciones{
+.opciones  button[type="button"] #carga-notificaciones{
    display: inline-block; 
 }
 #btn-off{
@@ -94,3 +94,27 @@ a:hover{
     transform: translateX(250px);
     width: calc(100% - 250px) !important;
 }
+
+/* estilos notificaciones*/
+#notificaciones{
+display: none;
+position: fixed;
+top: 50px;
+right: 10px;
+width: 0px;
+height: 0px;
+z-index: 1;
+background-color: #fff;
+}
+#notificaciones a{
+    color: #494949;
+}
+.abrir-notificacion{
+    display: block !important;
+    width: 200px !important;
+    height: auto !important;
+    padding: 5px;
+    border: 3px solid #00408a;
+    border-radius: 3px;
+}
+/* estilos notificaciones*/
