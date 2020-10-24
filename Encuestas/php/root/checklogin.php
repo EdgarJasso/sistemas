@@ -4,7 +4,7 @@ include '../connection.php';
 $name = $_POST['name'];
 $pass = $_POST['pass'];
 date_default_timezone_set("America/Mexico_City");
-if ($name = "Admin" && $pass ="Alohomora") {
+if ($name = "Admin" && $pass ="Alohomora") { 
     $rows=1;
     if($rows>0){
         session_start();

