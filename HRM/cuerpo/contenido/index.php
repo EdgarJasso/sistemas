@@ -130,6 +130,23 @@ return out;
 
 
   <!-- fin librerias calendario -->
+
+  
+
+<script src="../../js/jquery-3.4.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/funciones-usuario.js"></script>
+<script src="../../js/funcion-menu.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/datatables.min.js"></script>
+<script src="../../js/alertify.js"></script>
+  
+<script src="../../js/dataTables.buttons.min.js"></script>
+<script src="../../js/jszip.min.js"></script>
+<script src="../../js/pdfmake.min.js"></script>
+<script src="../../js/vfs_fonts.js"></script>
+<script src="../../js/buttons.html5.min.js"></script>
+<script src="../../js/reloj.js"></script>
      
 </head>
 <body>
@@ -388,21 +405,6 @@ return out;
  }
 </script>
 
-<script src="../../js/bootstrap.js"></script>
-<script src="../../js/jquery-3.4.1.min.js"></script>
-<script src="../../js/funciones-usuario.js"></script>
-<script src="../../js/funcion-menu.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/popper.min.js"></script>
-<script src="../../js/datatables.min.js"></script>
-<script src="../../js/alertify.js"></script>
-  
-<script src="../../js/dataTables.buttons.min.js"></script>
-<script src="../../js/jszip.min.js"></script>
-<script src="../../js/pdfmake.min.js"></script>
-<script src="../../js/vfs_fonts.js"></script>
-<script src="../../js/buttons.html5.min.js"></script>
-<script src="../../js/reloj.js"></script>
 <script>
     reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', '<?php echo URL;?>/HRM/php/root/logout.php');
 </script>

@@ -55,11 +55,14 @@ function subir()
 				showCancelButton: false,
 				showConfirmButton: false
             });
-            $('#Agregar_Doctonew').modal('hide');
+           // $('#Agregar_Doctonew').modal('hide');
+            $( '#Agregar_Doctonew').removeClass( "in" );
+            $("body").removeClass("modal-open");
+            $("#Agregar_Doctonew").css("display", "none");
                  }else{
                      //alert('fallo');
                   //alertify.error("Fallo en el servidor...");
-		   console.log(r);
+		   console.log(data);
            Swal.fire({
                title: 'Error en el proceso!\n\n\n'+r,
                icon: 'error',
