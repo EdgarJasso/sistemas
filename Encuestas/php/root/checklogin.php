@@ -41,7 +41,7 @@ try {
 
     if($rows>0){
         session_start();
-        $_SESSION['log'] = true;
+        $_SESSION['log_encuestas'] = true;
         $_SESSION['name'] = $result['nombre'];
         $_SESSION['permiso'] = $result['permiso'];
         $_SESSION['start'] =time();

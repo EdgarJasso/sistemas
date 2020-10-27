@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	listar_area();
 
 	$("#guardar_area").click(validarNuevaArea);
 		$("#Area_nombre").keyup(validarAreaNombre);
@@ -8,74 +7,11 @@ $(document).ready(function(){
 		$("#Area_nombreAct").keyup(validarAreaNombre_e);
 		
 }); 
-function listar_area(){
-	var listar_area = $('#area').DataTable({
-		"ajax":{
-			'method' : 'POST',
-			'url' : '../../cuerpo/contenido/area/listado.php'
-		},dom: 'Bfrtip',
-   "buttons":[                	
-	   {
-		   extend:    'excelHtml5',
-		   text:      '<i class="icon-file-excel"></i>',
-		   titleAttr: 'Excel'
-	   },
-	   {
-		   extend:    'pdfHtml5',
-		   text:      '<i class="icon-file-pdf"></i>',
-		   titleAttr: 'PDF'
-	   }
-   ],"columns":[
-			{"data":"id_area"},
-			{"data":"nombre"},
-			{"defaultContent":'<td><center><div class="btn-group"><button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icon-cog"></span><span class="icon-circle-down"></span></button><div class="dropdown-menu box"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Ver_Area" id="Ver_Area"><span class="icon-eye"></span></button><button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Editar_Area" id="Editar_Area_Btn"><span class="icon-pencil"></span></button><button type="button" class="btn btn-danger btn-sm" id="Eliminar_Area_Btn"><span class="icon-cross"></span></button></div></div></center></td>'}
-		],
-		"info": true,
-		"pagingType": "full",
-		"lengthMenu": [ 25, 50 ],
-		  "language":{
-			  "lengthMenu": "Mostrar _MENU_ registros por pagina",
-				  "info": "Mostrando pagina _PAGE_ de _PAGES_",
-				  "infoEmpty": "No hay registros disponibles",
-				  "infoFiltered": "(filtrada de _MAX_ registros)",
-				  "loadingRecords": "Cargando...",
-				  "processing":     "Procesando...",
-				  "search": "Buscar:",
-				  "zeroRecords":    "No se encontraron registros coincidentes",
-				  "paginate": {
-					  "next":       "Siguiente",
-					  "previous":   "Anterior",
-					   "first": "Inicio",
-					   "last":"Fin"
-				  },					
-		  }
-	});
-	obtener_data_ver_area("#area tbody", listar_area);
-	obtener_data_editar_area("#area tbody", listar_area);
-	obtener_data_eliminar_area("#area tbody", listar_area);
-}
-var obtener_data_ver_area = function(tbody, table){
-	$(tbody).on("click", "button#Ver_Area", function(){
-		var data = table.row( $(this).parents("tr") ).data();
-		AgregarViewArea(data);
-	});
-}
-var obtener_data_editar_area = function(tbody, table){
-	$(tbody).on("click", "button#Editar_Area_Btn", function(){
-		var data = table.row( $(this).parents("tr") ).data();
-		agregarformArea(data);
-	});
-}
-var obtener_data_eliminar_area = function(tbody, table){
-	$(tbody).on("click", "button#Eliminar_Area_Btn", function(){
-		var data = table.row( $(this).parents("tr") ).data();
-		preguntarArea(data.id_area);
-	});
-}
 
 function AgregarViewArea(datos){ 
-	$('#view_area_id').html(datos.id_area);
-	$('#view_area_nombre').html(datos.nombre);
+	d = datos.split('||');
+	$('#view_area_id').html(d[0]);
+	$('#view_area_nombre').html(d[1]);
 }
   
 function agregardatosArea(nombre){
@@ -115,8 +51,9 @@ function agregardatosArea(nombre){
 }  
 
 function agregarformArea(datos){
-	$('#idareaAct').val(datos.id_area);
-	$('#Area_nombreAct').val(datos.nombre);
+	d = datos.split('||');
+	$('#idareaAct').val(d[0]);
+	$('#Area_nombreAct').val(d[1]);
 }
 
 function actualizaDatosArea(){

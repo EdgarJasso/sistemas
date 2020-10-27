@@ -87,12 +87,42 @@ if($now > $_SESSION['expire']) {
 <div class="container-fluid bg-secondary" id="contenido-todo">
    <div class="row">
    <div id="contenido-menu">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis ut adipisci reprehenderit ex qui voluptas quas, aliquid assumenda harum hic animi quibusdam, ipsum asperiores, sunt atque quia a. Cupiditate?
+      <ul class="">
+          <li>   
+                 <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-area" 
+                     role="tab" aria-controls="pills-area" aria-selected="false">Area
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+           <li>   
+                 <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-categoria" 
+                     role="tab" aria-controls="pills-categoria" aria-selected="false">Categoria
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+    </ul>
    </div>
+   
    <div id="contenido-general">
-    
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias rerum deserunt, nemo amet in facilis omnis aspernatur enim necessitatibus, ullam perspiciatis qui laborum ducimus quasi nesciunt maxime quia delectus?
+   <div class="tab-content" id="pills-tabContent">
+
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-area" role="tabpanel" aria-labelledby="pills-area-tab">
+   <div class="container-fluid">
+      <div id="contenedor_area"></div>
    </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-categoria" role="tabpanel" aria-labelledby="pills-categoria-tab">
+   <div class="container-fluid">
+      <div id="contenedor_categoria"></div>
+   </div>
+  </div>
+<!-- fin -->
+</div>
+   </div>
+
    </div>
 </div>
 
@@ -129,7 +159,7 @@ if($now > $_SESSION['expire']) {
    contenedor.style.visibility = 'hidden';
    contenedor.style.opacity = '0';
  }
- reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>/sistemas/Encuestas/php/root/logout.php');
+ reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>Encuestas/php/root/logout.php');
  
  $(document).ready(function(){
     //menu
@@ -141,6 +171,10 @@ if($now > $_SESSION['expire']) {
        $('#notificaciones').toggleClass('abrir-notificacion');
     });
 
+    //contenido
+    $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
+    $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
+
 });
 </script>
 
@@ -149,6 +183,6 @@ if($now > $_SESSION['expire']) {
 <?php
 } else {
    echo "Inicia Sesion para acceder a este contenido.<br>";
-   echo '<script type="text/javascript">window.location = "'.URL.'/sistemas/Encuestas";</script>';
+   echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 exit;
 }?>

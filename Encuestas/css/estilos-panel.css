@@ -118,3 +118,8 @@ background-color: #fff;
     border-radius: 3px;
 }
 /* estilos notificaciones*/
+/*estilo modal error*/
+.modal-backdrop{
+    z-index: -1 !important;
+}
+/*estilo modal error*/
