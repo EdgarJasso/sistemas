@@ -25,7 +25,7 @@ if($now > $_SESSION['expire']) {
   session_destroy();
   }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
