@@ -82,7 +82,7 @@ if($now > $_SESSION['expire']) {
    </header>
 <div class="clearfix"></div>
 <div id="notificaciones">
-  <a href="#?id=2">asasasasas</a>
+  <a href="#?id=2">Prueba de notificacines</a>
 </div>
 <div class="container-fluid bg-secondary" id="contenido-todo">
    <div class="row">
@@ -109,6 +109,12 @@ if($now > $_SESSION['expire']) {
            <li>   
                  <a class="nav-link" id="pills-contesto-tab" data-toggle="pill" href="#pills-contesto" 
                      role="tab" aria-controls="pills-contesto" aria-selected="false">Contesto
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+          <li>   
+                 <a class="nav-link" id="pills-pregunta-tab" data-toggle="pill" href="#pills-pregunta" 
+                     role="tab" aria-controls="pills-pregunta" aria-selected="false">Preguntas
                     <span class="icon-home"></span>
                  </a>
           </li>
@@ -143,6 +149,13 @@ if($now > $_SESSION['expire']) {
 <div class="tab-pane fade " id="pills-contesto" role="tabpanel" aria-labelledby="pills-contesto-tab">
    <div class="container-fluid">
       <div id="contenedor_contesto"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-pregunta" role="tabpanel" aria-labelledby="pills-pregunta-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pregunta"></div>
    </div>
   </div>
 <!-- fin -->
@@ -202,6 +215,7 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
     $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
+    $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php'); 
 });
 </script>
 
