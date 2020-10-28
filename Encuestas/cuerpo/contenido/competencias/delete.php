@@ -5,7 +5,7 @@
      $database = new Connection();
 		$db = $database->open();
 		try{
-			$sql = "DELETE FROM ecsnts_categoria WHERE Id_categoria = '".$_POST['id']."'";
+			$sql = "DELETE FROM ecsnts_competencias WHERE id_competencia = '".$_POST['id']."'";
 			$result = ( $db->exec($sql) ) ? '1' : '0';
 			echo $result;
 		}

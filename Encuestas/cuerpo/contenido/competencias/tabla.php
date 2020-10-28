@@ -5,16 +5,17 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
  <center>
-     <h2>Categoria</h2>
+     <h2>Competencias</h2>
      </center>
-  	<button  type="button" class="btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Agregar_Categoria" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
+  	<button  type="button" class="btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Agregar_Competencias" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
  
-   <table class="table table-hover table-bordered table-condensed table-striped" id="categoria">
+   <table class="table table-hover table-bordered table-condensed table-striped" id="competencia">
     <thead>
 	 <tr> 
-		 <th>Id Categoria</th>
-     <th>Id Area</th>
-		 <th>Descripcion</th>
+		 <th>Id Competencia</th>
+     <th>Codigo</th>
+		 <th>Nombre</th>
+     <th>Descripcion</th>
 		 <th>Accion</th>
 	 </tr>
 	</thead>
@@ -24,16 +25,18 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_categoria";
+          $query="SELECT * FROM ecsnts_competencias order by id_competencia asc";
            foreach ($db->query($query) as $row) {
-             $datos = $row['Id_categoria']."||".
-                      $row['Id_area']."||".
-                      $row['Descripcion'];
+             $datos = $row['id_competencia']."||".
+                      $row['codigo']."||".
+                      $row['nombre']."||".
+                      $row['descripcion'];
              ?> 
              <tr>
-              <td><?php echo $row['Id_categoria']; ?></td>
-              <td><?php echo $row['Id_area']; ?></td>
-              <td><?php echo $row['Descripcion']; ?></td>
+              <td><?php echo $row['id_competencia']; ?></td>
+              <td><?php echo $row['codigo']; ?></td>
+              <td><?php echo $row['nombre']; ?></td>
+              <td><?php echo $row['descripcion']; ?></td>
               <td> 
                <center>
                 <div class="btn-group">
@@ -44,11 +47,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                  <div class="dropdown-menu box">
                  
 				  <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                   data-target="#Ver_cat" onclick="AgregarViewCat('<?php echo $datos?>')"><span class="icon-eye"></span></button>
+                   data-target="#Ver_com" onclick="AgregarViewCom('<?php echo $datos?>')"><span class="icon-eye"></span></button>
                   
-                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Editar_cat" onclick="agregarformCat('<?php echo $datos?>')"><span class="icon-pencil"></span></button>
+                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Editar_com" onclick="agregarformCom('<?php echo $datos?>')"><span class="icon-pencil"></span></button>
                    
-				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarCat(<?php echo $row['Id_categoria'] ?>)"><span class="icon-cross"></span></button>
+				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarCom(<?php echo $row['id_competencia'] ?>)"><span class="icon-cross"></span></button>
 				 </div>
                 </div>  
                </center>
@@ -62,8 +65,10 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 	</tbody>
 	<tfoot>
 	<tr>
-     <th>Id Area</th>
+  <th>Id Competencia</th>
+     <th>Codigo</th>
 		 <th>Nombre</th>
+     <th>Descripcion</th>
 		<th><center>Accion</center></th>
 	</tr>
 	</tfoot>
@@ -73,7 +78,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 <?php include('modales.php');?>
 <script>
     $(document).ready( function () {
-    $('#categoria').DataTable({
+    $('#competencia').DataTable({
 		 dom: 'Bfrtip',
      "buttons":[                	
 	   {
@@ -109,7 +114,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
     });
   });
  </script>
- <script src="../../js/funciones-categoria.js"></script>
+ <script src="../../js/funciones-competencias.js"></script>
  <?php
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";

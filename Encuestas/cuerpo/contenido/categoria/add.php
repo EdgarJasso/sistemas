@@ -8,7 +8,7 @@
 			$stmt = $db->prepare("INSERT INTO ecsnts_categoria (Id_area, Descripcion) VALUES (:Id_area, :Descripcion)");
 			$result= ( $stmt->execute(array(
 				':Id_area' => $_POST['id_area'],
-				'Descripcion' => $_POST['desc']
+				':Descripcion' => $_POST['desc']
             )) ) ? '1' : '0';	
 	    echo $result;
 		}

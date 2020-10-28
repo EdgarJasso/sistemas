@@ -10,8 +10,8 @@
             $desc=$_POST['desc'];
 
 			$sql = "UPDATE ecsnts_categoria SET 
-            Id_area ='$nombre',
-			Descripcion ='$nombre'
+            Id_area ='$id_a',
+			Descripcion ='$desc'
             
             WHERE Id_categoria = '$id'";
 			// declaración if-else en la ejecución de nuestra consulta

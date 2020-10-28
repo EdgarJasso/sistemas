@@ -95,8 +95,20 @@ if($now > $_SESSION['expire']) {
                  </a>
           </li>
            <li>   
-                 <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-categoria" 
+                 <a class="nav-link" id="pills-categoria-tab" data-toggle="pill" href="#pills-categoria" 
                      role="tab" aria-controls="pills-categoria" aria-selected="false">Categoria
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+          <li>   
+                 <a class="nav-link" id="pills-competencias-tab" data-toggle="pill" href="#pills-competencias" 
+                     role="tab" aria-controls="pills-competencias" aria-selected="false">Competencias
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+           <li>   
+                 <a class="nav-link" id="pills-contesto-tab" data-toggle="pill" href="#pills-contesto" 
+                     role="tab" aria-controls="pills-contesto" aria-selected="false">Contesto
                     <span class="icon-home"></span>
                  </a>
           </li>
@@ -117,6 +129,20 @@ if($now > $_SESSION['expire']) {
 <div class="tab-pane fade " id="pills-categoria" role="tabpanel" aria-labelledby="pills-categoria-tab">
    <div class="container-fluid">
       <div id="contenedor_categoria"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-competencias" role="tabpanel" aria-labelledby="pills-competencias-tab">
+   <div class="container-fluid">
+      <div id="contenedor_competencias"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-contesto" role="tabpanel" aria-labelledby="pills-contesto-tab">
+   <div class="container-fluid">
+      <div id="contenedor_contesto"></div>
    </div>
   </div>
 <!-- fin -->
@@ -174,7 +200,8 @@ if($now > $_SESSION['expire']) {
     //contenido
     $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
-
+    $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
+    $('#contenedor_contesto').load('../../cuerpo/contenido/competencias/tabla.php'); 
 });
 </script>
 

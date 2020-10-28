@@ -82,12 +82,13 @@ a:hover{
     display: block;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px)!important;
     top: 50px;
     overflow: hidden;
     transition: all 0.5s;
     border: 4px solid red;
     background-color: #e9e9e9;
+    overflow-y: scroll !important;
 }
 
 .abrir{
