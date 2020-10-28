@@ -62,14 +62,14 @@ function agregarformPre(datos){
 	$('#pre_competencia_e').val(d[1]);
 	$('#pre_area_e').val(d[2]);
 	$('#pre_categoria_e').val(d[3]);
-	$('#con_descripcion_e').val(d[4]);
+	$('#pre_descripcion_e').val(d[4]);
 }
 function actualizaDatosPre(){
     id = $('#idpre_e').val();
 	competencia = $('#pre_competencia_e').val();
 	id_area = $('#pre_area_e').val();
-	categoria = $('#con_descripcion_e').val();
-	descripcion = $('#con_descripcion_e').val();
+	categoria = $('#pre_categoria_e').val();
+	descripcion = $('#pre_descripcion_e').val();
     
 	cadenapre=
     "id="+ id +

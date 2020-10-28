@@ -118,6 +118,12 @@ if($now > $_SESSION['expire']) {
                     <span class="icon-home"></span>
                  </a>
           </li>
+          <li>   
+                 <a class="nav-link" id="pills-respuesta-tab" data-toggle="pill" href="#pills-respuesta" 
+                     role="tab" aria-controls="pills-respuesta" aria-selected="false">Respuestas
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
     </ul>
    </div>
    
@@ -156,6 +162,13 @@ if($now > $_SESSION['expire']) {
 <div class="tab-pane fade " id="pills-pregunta" role="tabpanel" aria-labelledby="pills-pregunta-tab">
    <div class="container-fluid">
       <div id="contenedor_pregunta"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-respuesta" role="tabpanel" aria-labelledby="pills-respuesta-tab">
+   <div class="container-fluid">
+      <div id="contenedor_respuesta"></div>
    </div>
   </div>
 <!-- fin -->
@@ -215,7 +228,8 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
     $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
-    $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php'); 
+    $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php');
+    $('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
 });
 </script>
 
