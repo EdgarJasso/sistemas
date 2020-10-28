@@ -201,7 +201,7 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
     $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
-    $('#contenedor_contesto').load('../../cuerpo/contenido/competencias/tabla.php'); 
+    $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
 });
 </script>
 
