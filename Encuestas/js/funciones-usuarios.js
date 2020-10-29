@@ -1,35 +1,35 @@
 $(document).ready(function(){
 
-	$("#guardar_res").click(validarNuevaRes);
-		$("#res_registro").keyup(validarResReg);
-		$("#res_pregunta").change(validarResPre);
-		$("#res_respuesta").change(validarResRes);
-		$("#res_justificacion").keyup(validarResJus);
+	$("#guardar_usu").click(validarNuevoUsu);
+		$("#usu_area").change(validarUsuArea);
+		$("#usu_nombre").keyup(validarUsuNom);
+		$("#usu_pass").keyup(validarUsuPass);
+		$("#usu_permiso").change(validarUsuPer);
 
-	$("#actualizar_res").click(validarNuevaRes_e);
-		$("#res_registro_e").keyup(validarResReg_e);
-		$("#res_pregunta_e").change(validarResPre_e);
-		$("#res_respuesta_e").change(validarResRes_e);
-		$("#res_justificacion_e").keyup(validarResJus_e);
+	$("#actualizar_usu").click(validarNuevoUsu_e);
+		$("#usu_area_e").change(validarUsuArea_e);
+		$("#usu_nombre_e").keyup(validarUsuNom_e);
+		$("#usu_pass_e").keyup(validarUsuPass_e);
+		$("#usu_permiso_e").change(validarUsuPer_e);
 		
 }); 
-function AgregarViewPre(datos){ 
+function AgregarViewUsu(datos){ 
 	d = datos.split('||');
-	$('#view_res_id').html(d[0]);
-	$('#view_res_registro').html(d[1]);
-	$('#view_res_pregunta').html(d[2]);
-	$('#view_res_respuesta').html(d[3]);
-	$('#view_res_justificacion').html(d[4]);
+	$('#view_usu_id').html(d[0]);
+	$('#view_usu_area').html(d[1]);
+	$('#view_usu_nombre').html(d[2]);
+	$('#view_usu_clave').html(d[3]);
+	$('#view_usu_permiso').html(d[4]);
 }  
-function agregardatosRes(registro, id_pregunta, respuesta, justificacion){
-	cadenaCon="registro=" + registro +
-			  "&id_pregunta="+ id_pregunta+
-			  "&respuesta="+ respuesta+
-			  "&justificacion="+ justificacion;
+function agregardatosUsu(id_area, nombre, clave, permiso){
+	cadenaUsu="id_area=" + id_area +
+			  "&nombre="+ nombre+
+			  "&clave="+ clave+
+			  "&permiso="+ permiso;
 	$.ajax({
 		type:"post",
-		url:"../../cuerpo/contenido/respuestas/add.php",
-		data:cadenaCon,
+		url:"../../cuerpo/contenido/usuarios/add.php",
+		data:cadenaUsu,
 		success:function(r){
 		  if(r==1){  
 			Swal.fire({
@@ -46,7 +46,7 @@ function agregardatosRes(registro, id_pregunta, respuesta, justificacion){
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
     $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php'); 
 	$('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
-
+	$('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 
 	}else{
 			console.log(r);
@@ -59,32 +59,34 @@ function agregardatosRes(registro, id_pregunta, respuesta, justificacion){
 	    }
 	});
 }  
-function agregarformRes(datos){
+function agregarformUsu(datos){
 	d = datos.split('||');
-	$('#idres_e').val(d[0]);
-	$('#res_registro_e').val(d[1]);
-	$('#res_pregunta_e').val(d[2]);
-	$('#res_respuesta_e').val(d[3]);
-	$('#res_justificacion_e').val(d[4]);
+	$('#idusu_e').val(d[0]);
+
+	$('#usu_area_e').val(d[1]);
+	$('#usu_nombre_e').val(d[2]);
+	$('#usu_pass_e').val(d[3]);
+	$('#usu_permiso_e').val(d[4]);
 }
-function actualizaDatosRes(){
-    id = $('#idres_e').val();
-	resgistro = $('#res_registro_e').val();
-	pregunta = $('#res_pregunta_e').val();
-	respuesta = $('#res_respuesta_e').val();
-	justificacion = $('#res_justificacion_e').val();
+function actualizaDatosUsu(){
+	id = $('#idusu_e').val();
+	
+	id_area = $('#usu_area_e').val();
+	nombre = $('#usu_nombre_e').val();
+	clave = $('#usu_pass_e').val();
+	permiso = $('#usu_permiso_e').val();
     
-	cadenares=
+	cadenarusu=
     "id="+ id +
-	"&resgistro=" + resgistro +
-	"&id_pregunta=" + pregunta +
-	"&respuesta=" + respuesta +
-	"&justificacion="+ justificacion;
+	"&id_area=" + id_area +
+	"&nombre=" + nombre +
+	"&clave=" + clave +
+	"&permiso="+ permiso;
     
 		   $.ajax({
 			type:"post",
-			url:"../../cuerpo/contenido/respuestas/edit.php",
-			data:cadenares,
+			url:"../../cuerpo/contenido/usuarios/edit.php",
+			data:cadenarusu,
 			success:function(r){
 				if(r==1){  
 					Swal.fire({
@@ -101,6 +103,7 @@ function actualizaDatosRes(){
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
     $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php'); 
 	$('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+    $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 
 		}else{
 					console.log(r);
@@ -114,16 +117,16 @@ function actualizaDatosRes(){
 		});
 
 }
-function preguntarRes(id){
+function preguntarUsu(id){
  alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
- function(){ eliminarDatosRes(id) },
+ function(){ eliminarDatosUsu(id) },
  function(){ alertify.error('Se cancelo')});
 }
-function eliminarDatosRes(id){
+function eliminarDatosUsu(id){
 	cadena = "id="+id;
 	$.ajax({
 		type:"post",
-		url:"../../cuerpo/contenido/respuestas/delete.php",
+		url:"../../cuerpo/contenido/usuarios/delete.php",
 		data: cadena,
 		success:function(r){
 			if(r==1){  
@@ -141,6 +144,7 @@ function eliminarDatosRes(id){
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
     $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php'); 
 	$('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+    $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 
 }else{
 				console.log(r);
@@ -155,23 +159,23 @@ function eliminarDatosRes(id){
 	});
 }
 
-function validarNuevaRes(){
-	var ResReg = validarResReg();
-	var ResPre = validarResPre();
-	var ResRes = validarResRes();
-	var ResJus = validarResJus();
+function validarNuevoUsu(){
+	var UsuArea = validarUsuArea();
+	var UsuNom = validarUsuNom();
+	var UsuPass = validarUsuPass();
+	var UsuPer = validarUsuPer();
 
-	if (ResReg=="true" && ResPre=="true" && ResRes=="true" && ResJus=="true") {
+	if (UsuArea=="true" && UsuNom=="true" && UsuPass=="true" && UsuPer=="true") {
 		alertify.success("Enviando datos...");
 
-		registro = $('#res_registro').val();
-		id_pregunta = $('#res_pregunta').val();
-		respuesta = $('#res_respuesta').val();
-		justificacion = $('#res_justificacion').val();
+		usu_area = $('#usu_area').val();
+		usu_nombre = $('#usu_nombre').val();
+		usu_pass = $('#usu_pass').val();
+		usu_permiso = $('#usu_permiso').val();
 
-		agregardatosRes(registro, id_pregunta, respuesta, justificacion);
+		agregardatosUsu(usu_area, usu_nombre, usu_pass, usu_permiso);
 	}else{
-		console.log('Error al agregar informacion(Pregunta)');
+		console.log('Error al agregar informacion(Usuario)');
 		  Swal.fire({
             title: 'Error en la validacion \n Favor de revisar',
             icon: 'warning',
@@ -182,118 +186,118 @@ function validarNuevaRes(){
         });
 	}
 }
-function validarResReg(){  
-	var valor = document.getElementById("res_registro").value;
+function validarUsuArea(){  
+	var valor = document.getElementById("usu_area").value;
 	let numeros = /[0-9]{1,5}/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_registro').remove();
-		$('#res_registro').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_registro').parent().append('<span id="icono_res_registro" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_res_registro').text("Ingrese un caracter").show();
+		$('#icono_usu_area').remove();
+		$('#usu_area').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_area').parent().append('<span id="icono_usu_area" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_area').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_res_registro').remove();
-		$('#res_registro').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_registro').parent().children("span").text("").hide();
-		$('#res_registro').parent().append('<span id="icono_res_registro" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_usu_area').remove();
+		$('#usu_area').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_area').parent().children("span").text("").hide();
+		$('#usu_area').parent().append('<span id="icono_usu_area" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
 	console.log("final :"+estado);
 	return estado;
 }
-function validarResPre(){  
-	var valor = document.getElementById("res_pregunta").value;
-	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
-
-	if( valor == "null" || valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_pregunta').remove();
-		$('#res_pregunta').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_pregunta').parent().append('<span id="icono_res_pregunta" class="icon-cross form-control-feedback mt-2" style="top:32px; rigth:10px;"></span>');
-		$('#text_res_pregunta').text("Seleccione otra opcion").show();
-		estado  = "false";
-		console.log(estado);
-	}else{
-		$('#icono_res_pregunta').remove();
-		$('#res_pregunta').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_pregunta').parent().children("span").text("").hide();
-		$('#res_pregunta').parent().append('<span id="icono_res_pregunta" class="icon-checkmark form-control-feedback mt-2" style="top:32px;  rigth:10px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
-function validarResRes(){  
-	var valor = document.getElementById("res_respuesta").value;
-	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
-
-	if( valor == "null" || valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_respuesta').remove();
-		$('#res_respuesta').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_respuesta').parent().append('<span id="icono_res_respuesta" class="icon-cross form-control-feedback mt-2" style="top:32px; rigth:10px;"></span>');
-		$('#text_res_respuesta').text("Seleccione otra opcion").show();
-		estado  = "false";
-		console.log(estado);
-	}else{
-		$('#icono_res_respuesta').remove();
-		$('#res_respuesta').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_respuesta').parent().children("span").text("").hide();
-		$('#res_respuesta').parent().append('<span id="icono_res_respuesta" class="icon-checkmark form-control-feedback mt-2" style="top:32px;  rigth:10px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
-function validarResJus(){  
-	var valor = document.getElementById("res_justificacion").value;
+function validarUsuNom(){  
+	var valor = document.getElementById("usu_nombre").value;
 	let numeros = /[0-9]{1,5}/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_justificacion').remove();
-		$('#res_justificacion').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_justificacion').parent().append('<span id="icono_res_justificacion" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_res_justificacion').text("Ingrese un caracter").show();
+		$('#icono_usu_nombre').remove();
+		$('#usu_nombre').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_nombre').parent().append('<span id="icono_usu_nombre" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_nombre').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_res_justificacion').remove();
-		$('#res_justificacion').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_justificacion').parent().children("span").text("").hide();
-		$('#res_justificacion').parent().append('<span id="icono_res_justificacion" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_usu_nombre').remove();
+		$('#usu_nombre').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_nombre').parent().children("span").text("").hide();
+		$('#usu_nombre').parent().append('<span id="icono_usu_nombre" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
 	console.log("final :"+estado);
 	return estado;
 }
-function validarNuevaRes_e(){
-	var ResReg_e = validarResReg_e();
-	var ResPre_e = validarResPre_e();
-	var ResRes_e = validarResRes_e();
-	var ResJus_e = validarResJus_e();
+function validarUsuPass(){  
+	var valor = document.getElementById("usu_pass").value;
+	let numeros = /[0-9]{1,5}/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
 
-	if (ResReg_e=="true" && ResPre_e=="true" && ResRes_e=="true" && ResJus_e=="true") {
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_usu_pass').remove();
+		$('#usu_pass').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_pass').parent().append('<span id="icono_usu_pass" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_pass').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_usu_pass').remove();
+		$('#usu_pass').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_pass').parent().children("span").text("").hide();
+		$('#usu_pass').parent().append('<span id="icono_usu_pass" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+function validarUsuPer(){  
+	var valor = document.getElementById("usu_permiso").value;
+	let numeros = /[0-9]{1,5}/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
+
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_usu_permiso').remove();
+		$('#usu_permiso').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_permiso').parent().append('<span id="icono_usu_permiso" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_permiso').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_usu_permiso').remove();
+		$('#usu_permiso').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_permiso').parent().children("span").text("").hide();
+		$('#usu_permiso').parent().append('<span id="icono_usu_permiso" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+//editar
+function validarNuevoUsu_e(){
+	var UsuArea_e = validarUsuArea_e();
+	var UsuNom_e = validarUsuNom_e();
+	var UsuPass_e = validarUsuPass_e();
+	var UsuPer_e = validarUsuPer_e();
+
+	if (UsuArea_e=="true" && UsuNom_e=="true" && UsuPass_e=="true" && UsuPer_e=="true") {
 		alertify.success("Enviando datos...");
-
-		actualizaDatosRes();
+		actualizaDatosUsu();
 	}else{
-		console.log('Error al agregar informacion(Pregunta)');
+		console.log('Error al agregar informacion(Usuario)');
 		  Swal.fire({
             title: 'Error en la validacion \n Favor de revisar',
             icon: 'warning',
@@ -304,100 +308,100 @@ function validarNuevaRes_e(){
         });
 	}
 }
-function validarResReg_e(){  
-	var valor = document.getElementById("res_registro_e").value;
+function validarUsuArea_e(){  
+	var valor = document.getElementById("usu_area_e").value;
 	let numeros = /[0-9]{1,5}/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_registro_e').remove();
-		$('#res_registro_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_registro_e').parent().append('<span id="icono_res_registro_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_res_registro_e').text("Ingrese un caracter").show();
+		$('#icono_usu_area_e').remove();
+		$('#usu_area_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_area_e').parent().append('<span id="icono_usu_area_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_area_e').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_res_registro_e').remove();
-		$('#res_registro_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_registro_e').parent().children("span").text("").hide();
-		$('#res_registro_e').parent().append('<span id="icono_res_registro_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_usu_area_e').remove();
+		$('#usu_area_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_area_e').parent().children("span").text("").hide();
+		$('#usu_area_e').parent().append('<span id="icono_usu_area_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
 	console.log("final :"+estado);
 	return estado;
 }
-function validarResPre_e(){  
-	var valor = document.getElementById("res_pregunta_e").value;
-	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
-
-	if( valor == "null" || valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_pregunta_e').remove();
-		$('#res_pregunta_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_pregunta_e').parent().append('<span id="icono_res_pregunta_e" class="icon-cross form-control-feedback mt-2" style="top:32px; rigth:10px;"></span>');
-		$('#text_res_pregunta_e').text("Seleccione otra opcion").show();
-		estado  = "false";
-		console.log(estado);
-	}else{
-		$('#icono_res_pregunta_e').remove();
-		$('#res_pregunta_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_pregunta_e').parent().children("span").text("").hide();
-		$('#res_pregunta_e').parent().append('<span id="icono_res_pregunta_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;  rigth:10px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
-function validarResRes_e(){  
-	var valor = document.getElementById("res_respuesta_e").value;
-	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
-
-	if( valor == "null" || valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_respuesta_e').remove();
-		$('#res_respuesta_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_respuesta_e').parent().append('<span id="icono_res_respuesta_e" class="icon-cross form-control-feedback mt-2" style="top:32px; rigth:10px;"></span>');
-		$('#text_res_respuesta_e').text("Seleccione otra opcion").show();
-		estado  = "false";
-		console.log(estado);
-	}else{
-		$('#icono_res_respuesta_e').remove();
-		$('#res_respuesta_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_respuesta_e').parent().children("span").text("").hide();
-		$('#res_respuesta_e').parent().append('<span id="icono_res_respuesta_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;  rigth:10px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
-function validarResJus_e(){  
-	var valor = document.getElementById("res_justificacion_e").value;
+function validarUsuNom_e(){  
+	var valor = document.getElementById("usu_nombre_e").value;
 	let numeros = /[0-9]{1,5}/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_res_justificacion_e').remove();
-		$('#res_justificacion_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#res_justificacion_e').parent().append('<span id="icono_res_justificacion_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_res_justificacion_e').text("Ingrese un caracter").show();
+		$('#icono_usu_nombre_e').remove();
+		$('#usu_nombre_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_nombre_e').parent().append('<span id="icono_usu_nombre_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_nombre_e').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_res_justificacion_e').remove();
-		$('#res_justificacion_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#res_justificacion_e').parent().children("span").text("").hide();
-		$('#res_justificacion_e').parent().append('<span id="icono_res_justificacion_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_usu_nombre_e').remove();
+		$('#usu_nombre_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_nombre_e').parent().children("span").text("").hide();
+		$('#usu_nombre_e').parent().append('<span id="icono_usu_nombre_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+function validarUsuPass_e(){  
+	var valor = document.getElementById("usu_pass_e").value;
+	let numeros = /[0-9]{1,5}/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
+
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_usu_pass_e').remove();
+		$('#usu_pass_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_pass_e').parent().append('<span id="icono_usu_pass_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_pass_e').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_usu_pass_e').remove();
+		$('#usu_pass_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_pass_e').parent().children("span").text("").hide();
+		$('#usu_pass_e').parent().append('<span id="icono_usu_pass_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+function validarUsuPer_e(){  
+	var valor = document.getElementById("usu_permiso_e").value;
+	let numeros = /[0-9]{1,5}/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{1,5}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
+
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_usu_permiso_e').remove();
+		$('#usu_permiso_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#usu_permiso_e').parent().append('<span id="icono_usu_permiso_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_usu_permiso_e').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_usu_permiso_e').remove();
+		$('#usu_permiso_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#usu_permiso_e').parent().children("span").text("").hide();
+		$('#usu_permiso_e').parent().append('<span id="icono_usu_permiso_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}

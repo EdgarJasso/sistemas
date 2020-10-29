@@ -5,7 +5,7 @@
      $database = new Connection();
 		$db = $database->open();
 		try{
-			$sql = "DELETE FROM ecsnts_respuestas WHERE id_respuesta = '".$_POST['id']."'";
+			$sql = "DELETE FROM ecsnts_usuario WHERE id_usuario = '".$_POST['id']."'";
 			$result = ( $db->exec($sql) ) ? '1' : '0';
 			echo $result;
 		}

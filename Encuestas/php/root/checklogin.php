@@ -4,10 +4,8 @@ include '../connection.php';
 $name = $_POST['name'];
 $pass = $_POST['pass'];
 date_default_timezone_set("America/Mexico_City");
-if ($name = "Admin" && $pass ="Alohomora") { 
-    $rows=1;
-    if($rows>0){
-        session_start();
+if ($name == "Admin" && $pass == "Alohomora") { 
+     session_start();
         $_SESSION['log_encuestas'] = true;
         $_SESSION['name'] = "root";
         $_SESSION['permiso'] = "root";
@@ -15,17 +13,7 @@ if ($name = "Admin" && $pass ="Alohomora") {
         $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
         $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
-
-        if($_SESSION['permiso']='root'){
-            echo $rows;
-        }else{
-            echo $rows;
-        }
-    }else{
-        $rows=0;
-        echo $rows;
-    }
-
+         echo '1';
 }else{
 try {
     $SQL ="SELECT * FROM tkd_usuarios WHERE nombre = ? AND pass = ? ";

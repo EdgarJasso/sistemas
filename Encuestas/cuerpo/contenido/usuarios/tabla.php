@@ -5,18 +5,18 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
  <center>
-     <h2>Respuestas</h2>
+     <h2>Usuario</h2>
      </center>
-  	<button  type="button" class="btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Agregar_Res" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
+  	<button  type="button" class="btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Agregar_Usu" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
  
-   <table class="table table-hover table-bordered table-condensed table-striped" id="respuesta">
+   <table class="table table-hover table-bordered table-condensed table-striped" id="usuario">
     <thead>
 	 <tr> 
-        <th>Id Respuestas</th>
-				<th>No Registro</th>
-				<th>Id Pregunta</th>
-				<th>Respuesta</th>
-				<th>Justificacion</th>
+        <th>Id Usuario</th>
+				<th>Area</th>
+				<th>Nombre</th>
+				<th>Contraseña</th>
+				<th>Permiso</th>
 		    <th>Accion</th>
 	 </tr>
 	</thead>
@@ -26,20 +26,20 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_respuestas";
+          $query="SELECT * FROM ecsnts_usuario";
            foreach ($db->query($query) as $row) {
-             $datos = $row['id_respuesta']."||".
-                      $row['id_registro']."||".
-                      $row['id_pregunta']."||".
-                      $row['respuesta']."||".
-                      $row['justificacion'];
+             $datos = $row['id_usuario']."||".
+                      $row['id_area']."||".
+                      $row['nombre']."||".
+                      $row['clave']."||".
+                      $row['permiso'];
              ?> 
              <tr>
-             <td><?php echo $row['id_respuesta']; ?></td>
-				    <td><?php echo $row['id_registro']; ?></td>
-				    <td><?php echo $row['id_pregunta']; ?></td>
-				    <td><?php echo $row['respuesta']; ?></td>
-				    <td><?php echo $row['justificacion']; ?></td>
+             <td><?php echo $row['id_usuario']; ?></td>
+				    <td><?php echo $row['id_area']; ?></td>
+				    <td><?php echo $row['nombre']; ?></td>
+				    <td><?php echo $row['clave']; ?></td>
+				    <td><?php echo $row['permiso']; ?></td>
               <td> 
                <center>
                 <div class="btn-group">
@@ -50,11 +50,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                  <div class="dropdown-menu box">
                  
 				  <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                   data-target="#Ver_Res" onclick="AgregarViewRes('<?php echo $datos?>')"><span class="icon-eye"></span></button>
+                   data-target="#Ver_Usu" onclick="AgregarViewUsu('<?php echo $datos?>')"><span class="icon-eye"></span></button>
                   
-                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Editar_Res" onclick="agregarformRes('<?php echo $datos?>')"><span class="icon-pencil"></span></button>
+                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Editar_Usu" onclick="agregarformUsu('<?php echo $datos?>')"><span class="icon-pencil"></span></button>
                    
-				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarRes(<?php echo $row['id_respuesta'] ?>)"><span class="icon-cross"></span></button>
+				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarUsu(<?php echo $row['id_usuario'] ?>)"><span class="icon-cross"></span></button>
 				 </div>
                 </div>  
                </center>
@@ -68,11 +68,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 	</tbody>
 	<tfoot>
 	<tr>
-        <th>Id Respuestas</th>
-				<th>No Registro</th>
-				<th>Id Pregunta</th>
-				<th>Respuesta</th>
-				<th>Justificacion</th>
+        <th>Id Usuario</th>
+				<th>Area</th>
+				<th>Nombre</th>
+				<th>Contraseña</th>
+				<th>Permiso</th>
 		    <th>Accion</th>
 	</tr>
 	</tfoot>
@@ -82,7 +82,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 <?php include('modales.php');?>
 <script>
     $(document).ready( function () {
-    $('#respuesta').DataTable({
+    $('#usuario').DataTable({
 		 dom: 'Bfrtip',
      "buttons":[                	
 	   {
@@ -118,7 +118,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
     });
   });
  </script>
- <script src="../../js/funciones-respuesta.js"></script>
+ <script src="../../js/funciones-usuarios.js"></script>
  <?php
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";

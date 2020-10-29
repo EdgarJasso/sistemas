@@ -74,7 +74,7 @@ a:hover{
     position: fixed;
     width: 250px;
     height: 100%;
-    top: 50px;
+    top: 49px;
     transition: all 0.5s;
     background-color: #00408a;
 }
@@ -83,10 +83,10 @@ a:hover{
     position: fixed;
     width: 100%;
     height: calc(100% - 50px)!important;
-    top: 50px;
+    top: 49px;
     overflow: hidden;
     transition: all 0.5s;
-    border: 4px solid red;
+    border: 3px solid #00408a;
     background-color: #e9e9e9;
     overflow-y: scroll !important;
 }

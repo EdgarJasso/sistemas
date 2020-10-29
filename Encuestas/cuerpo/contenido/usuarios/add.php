@@ -5,12 +5,12 @@
 	$database = new Connection();
 		$db = $database->open();
 		try{
-			$stmt = $db->prepare("INSERT INTO ecsnts_respuestas (id_registro, id_pregunta, respuesta, justificacion) VALUES (:id_registro, :id_pregunta, :respuesta, :justificacion)");
+			$stmt = $db->prepare("INSERT INTO ecsnts_usuario(id_area, nombre, clave, permiso) VALUES (:id_area, :nombre, :clave, :permiso)");
 			$result= ( $stmt->execute(array(
-				':id_registro' => $_POST['registro'],
-				':id_pregunta' => $_POST['id_pregunta'],
-				':respuesta' => $_POST['respuesta'],
-				':justificacion' => $_POST['justificacion']
+				':id_area' => $_POST['id_area'],
+				':nombre' => $_POST['nombre'],
+				':clave' => $_POST['clave'],
+				':permiso' => $_POST['permiso']
             )) ) ? '1' : '0';	
 	    echo $result;
 		}

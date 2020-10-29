@@ -13,7 +13,7 @@ $(document).ready(function(){
 		$("#res_justificacion_e").keyup(validarResJus_e);
 		
 }); 
-function AgregarViewPre(datos){ 
+function AgregarViewRes(datos){ 
 	d = datos.split('||');
 	$('#view_res_id').html(d[0]);
 	$('#view_res_registro').html(d[1]);

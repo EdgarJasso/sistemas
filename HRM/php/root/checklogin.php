@@ -4,29 +4,17 @@ if(isset($_POST['name']) && isset($_POST['pass'])){
     $name = $_POST['name'];
     $pass = $_POST['pass'];
     date_default_timezone_set("America/Mexico_City");
-    if ($name = "Admin" && $pass ="Alohomora") { 
-        $rows=1;
-        if($rows>0){
-            session_start();
-            $_SESSION['loggedin'] = true;
-            $_SESSION['name'] = 'admin';
-            $_SESSION['permiso'] = 'admin';
-            date_default_timezone_set('America/Mexico_City');
-            $_SESSION['start'] =time();
-            $_SESSION['estacion'] = "localhost";//localhost  
-            $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);// minutos de sesion 30
-            $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
-            $_SESSION['fecha'] = date('Y-m-d', $_SESSION['expire'] );
-            if($_SESSION['permiso']='admin'){
-                echo $rows;
-            }else{
-                echo $rows;
-            }
-        }else{
-            $rows=0;
-            echo $rows;
-        }
-    
+            if ($name == "Admin" && $pass == "Alohomora") { 
+                session_start();
+                   $_SESSION['loggedin'] = true;
+                   $_SESSION['name'] = "admin";
+                   $_SESSION['permiso'] = "admin";
+                   $_SESSION['start'] =time();
+                   $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
+                   $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
+                   $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
+                   $_SESSION['fecha'] = date('Y-m-d', $_SESSION['expire'] );
+                    echo '1';
     }else{
 try {
     $SQL ="SELECT 

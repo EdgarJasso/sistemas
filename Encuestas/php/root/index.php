@@ -124,6 +124,12 @@ if($now > $_SESSION['expire']) {
                     <span class="icon-home"></span>
                  </a>
           </li>
+          <li>   
+                 <a class="nav-link" id="pills-usuario-tab" data-toggle="pill" href="#pills-usuario" 
+                     role="tab" aria-controls="pills-usuario" aria-selected="false">Usuarios
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
     </ul>
    </div>
    
@@ -172,6 +178,13 @@ if($now > $_SESSION['expire']) {
    </div>
   </div>
 <!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade " id="pills-usuario" role="tabpanel" aria-labelledby="pills-usuario-tab">
+   <div class="container-fluid">
+      <div id="contenedor_usuario"></div>
+   </div>
+  </div>
+<!-- fin -->
 </div>
    </div>
 
@@ -183,7 +196,7 @@ if($now > $_SESSION['expire']) {
  <div id="carga">
  <center>
  <div id="carga_int"></div>
- </center>
+ </center> 
  </div>
 </div>
 <script src="../../js/bootstrap.js"></script>
@@ -230,6 +243,7 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
     $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php');
     $('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+    $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 });
 </script>
 

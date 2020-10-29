@@ -6,17 +6,17 @@
 		$db = $database->open();
 		try{
 			$id = $_POST['id'];
-			$registro = $_POST['resgistro'];
-			$id_pregunta = $_POST['id_pregunta'];
-			$respuesta = $_POST['respuesta'];
-			$justificacion = $_POST['justificacion'];
+			$id_area = $_POST['id_area'];
+			$nombre = $_POST['nombre'];
+			$clave = $_POST['clave'];
+			$permiso = $_POST['permiso'];
 
-			$sql = "UPDATE ecsnts_respuestas SET 
-             id_registro ='$registro',
-			 id_pregunta ='$id_pregunta',
-			 respuesta ='$respuesta',
-			 justificacion ='$justificacion'
-            WHERE id_respuesta = '$id'";
+			$sql = "UPDATE ecsnts_usuario SET 
+             id_area ='$id_area',
+			 nombre ='$nombre',
+			 clave ='$clave',
+			 permiso ='$permiso'
+            WHERE id_usuario = '$id'";
 			// declaración if-else en la ejecución de nuestra consulta
 			$result = ( $db->exec($sql) ) ? '1' : '0';
 			
