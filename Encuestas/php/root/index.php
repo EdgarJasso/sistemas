@@ -139,7 +139,7 @@ if($now > $_SESSION['expire']) {
     </ul>
    </div>
    
-   <div id="contenido-general">
+   <div id="contenido-general" class="abrir">
    <div class="tab-content" id="pills-tabContent">
 
 <!-- inicio -->
@@ -231,7 +231,7 @@ if($now > $_SESSION['expire']) {
 <script src="../../js/buttons.html5.min.js"></script>
 <script src="../../js/reloj.js"></script>
 
-<script>
+<script> 
  window.onload = function(){
    var contenedor = document.getElementById('contenedor_carga');
    contenedor.style.visibility = 'hidden';
@@ -244,6 +244,12 @@ if($now > $_SESSION['expire']) {
     $('#btn-menu').on('click', function(){
        $('#contenido-general').toggleClass('abrir');
       });
+      $(function(){
+         $('li').on('click', function(){
+          $(".is-active").removeClass("is-active");
+          $(this).addClass("is-active");
+    });
+});
    //notificacion
    $('#btn-notificacines').on('click', function(){
        $('#notificaciones').toggleClass('abrir-notificacion');
