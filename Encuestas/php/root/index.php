@@ -39,6 +39,7 @@ if($now > $_SESSION['expire']) {
   <link rel="stylesheet" href="../../css/carga.css">
 
   <link rel="stylesheet" href="../../css/estilos-panel.css">
+  <link rel="stylesheet" href="../../css/estilos_encuestas.css">
   
   <link rel="stylesheet" href="../../css/alertify.css">
   <link rel="stylesheet" href="../../css/themes/default.css">
@@ -87,7 +88,13 @@ if($now > $_SESSION['expire']) {
 <div class="container-fluid bg-secondary" id="contenido-todo">
    <div class="row">
    <div id="contenido-menu">
-      <ul class="">
+      <ul class="">  
+          <li>   
+                 <a class="nav-link" id="pills-encuestas_faltantes-tab" data-toggle="pill" href="#pills-encuestas_faltantes" 
+                     role="tab" aria-controls="pills-area" aria-selected="false">Encuestas Faltantes
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
           <li>   
                  <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-area" 
                      role="tab" aria-controls="pills-area" aria-selected="false">Area
@@ -139,11 +146,11 @@ if($now > $_SESSION['expire']) {
     </ul>
    </div>
    
-   <div id="contenido-general" class="abrir">
+   <div id="contenido-general" class="">
    <div class="tab-content" id="pills-tabContent">
 
 <!-- inicio -->
-<div class="tab-pane fade " id="pills-area" role="tabpanel" aria-labelledby="pills-area-tab">
+<div class="tab-pane  " id="pills-area" role="tabpanel" aria-labelledby="pills-area-tab">
    <div class="container-fluid">
       <div id="contenedor_area"></div>
    </div>
@@ -198,6 +205,13 @@ if($now > $_SESSION['expire']) {
    </div>
   </div>
 <!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade active in" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
+   <div class="container-fluid">
+      <div id="contenedor_encuestas_faltantes"></div>
+   </div>
+  </div>
+<!-- fin -->
 </div>
    </div>
 
@@ -214,11 +228,13 @@ if($now > $_SESSION['expire']) {
 </div>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/jquery-3.4.1.min.js"></script>
+
 <script src="../../js/funcion-menu.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/popper.min.js"></script>
 <script src="../../js/datatables.min.js"></script>
 <script src="../../js/alertify.min.js"></script>
+<script src="../../js/smooth-scroll.min.js"></script>
 
 <script src="../../package/dist/sweetalert2.min.js"></script>
 <script src="../../js/moment.min.js"></script>
@@ -264,6 +280,7 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
     $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
+    $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');  
 });
 </script>
 

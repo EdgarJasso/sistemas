@@ -16,7 +16,7 @@ if ($name == "Admin" && $pass == "Alohomora") {
          echo '1';
 }else{
 try {
-    $SQL ="SELECT * FROM tkd_usuarios WHERE nombre = ? AND pass = ? ";
+    $SQL ="SELECT * FROM ecsnts_usuario WHERE nombre = ? AND clave = ? ";
     $database = new Connection();
     $db = $database->open();
     $stmt = $db->prepare($SQL);    
@@ -32,12 +32,11 @@ try {
         $_SESSION['log_encuestas'] = true;
         $_SESSION['name'] = $result['nombre'];
         $_SESSION['permiso'] = $result['permiso'];
+        $_SESSION['id'] = $result['id_usuario'];
         $_SESSION['start'] =time();
         $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
         $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
-
-
         if($_SESSION['permiso']='root'){
             echo $rows;
         }else{
