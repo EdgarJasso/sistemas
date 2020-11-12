@@ -23,3 +23,52 @@
  .der{
     float: right;
  }
+ .pregunta_contenedor{
+     border: 2px solid #494949;
+     margin-top: 5px;
+     padding: 5px;
+     width: 100%;
+     height: auto;
+ }
+ .pregunta_contenedor .preguntas_titulo{
+     text-align: center;
+     font-size: 18px;
+     font-weight: bold;
+     font-family: Arial, Helvetica, sans-serif;
+     text-transform: uppercase;
+ }
+ .pregunta_contenedor .pregunta_radios{
+    display: flex;
+    justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px;
+ }
+ .pregunta_contenedor .pregunta_radios .pregunta_opcion{
+
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+ }
+ .pregunta_contenedor .pregunta_radios .pregunta_opcion span{
+     font-size: 30px;
+ }
+ .bg_angry{
+    color: red;
+ }
+ .bg_sad{
+     color: orange;
+ }
+ .bg_neutral{
+     color: yellow;
+ }
+ .bg_smile{
+     color: greenyellow;
+ }
+ .bg_happy{
+     color: green;
+ }
+ .pregunta_contenedor .pregunta_radios .pregunta_opcion > input[type="radio"]:checked{
+    border: 2px solid #494949;
+ }
+ 

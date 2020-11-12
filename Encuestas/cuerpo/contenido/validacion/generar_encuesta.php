@@ -63,12 +63,61 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         </h4>
         </div>';
 
-        $cuerpo ='
-        <div id="cuerpo_evaluacion">
+        //contador
+        $int=1;
+        //plantilla
+        $cuerpo = '<div id="cuerpo_evaluacion">';
+        //inicio preguntas tronco comun 
+        foreach ($general as $tronco) {
+          $cuerpo .='
+            <div class="pregunta_contenedor">
+              <div class="preguntas_titulo">
+                <span>'.$int.'.- ¿'.$tronco['descripcion'].'?</span>
+              </div>
+              <div class="pregunta_radios">
 
-        preguntas aqui
-        
-        </div>';
+                <div class="form-check">
+                  <label class="form-check-label pregunta_opcion">
+                    <span class="icon-angry bg_angry"></span> <br>
+                    <center><input type="radio" class="form-check-input" name="pregunta_'.$int.'" id="pregunta_'.$int.'"><center>
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label pregunta_opcion">
+                    <span class="icon-sad bg_sad"></span> <br>
+                    <center><input type="radio" class="form-check-input" name="pregunta_'.$int.'" id="pregunta_'.$int.'"><center>
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label pregunta_opcion">
+                    <span class="icon-neutral bg_neutral"></span> <br>
+                    <center><input type="radio" class="form-check-input" name="pregunta_'.$int.'" id="pregunta_'.$int.'"><center>
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label pregunta_opcion">
+                    <span class="icon-smile bg_smile"></span> <br>
+                    <center><input type="radio" class="form-check-input" name="pregunta_'.$int.'" id="pregunta_'.$int.'"><center>
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label pregunta_opcion">
+                    <span class="icon-happy bg_happy"></span> <br>
+                    <center><input type="radio" class="form-check-input" name="pregunta_'.$int.'" id="pregunta_'.$int.'"><center>
+                  </label>
+                </div>
+            </div>
+            <div class="form-group">
+              <center><textarea id="justificacion_" name="justificacion_" class="form-control" type="text" cols="20" rows="3" placeholder=" Justifica tu respuesta" maxlength="200" minlength="30" required style="resize:none;width:80%;"> </textarea></center>
+            </div>
+          </div>';
+          $int++;
+        }
+        $cuerpo.='</div>';
         echo $cabezal.$cuerpo;
     }else{
         echo 'debe de seleccionarse una encuesta a contestar';

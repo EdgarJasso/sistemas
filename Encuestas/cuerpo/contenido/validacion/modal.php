@@ -13,7 +13,9 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       </div>
       <div class="modal-body">
         <div id="evaluacion_cuerpo" class="">
-         
+
+        
+
         </div>
       </div>
       <div class="modal-footer izq">

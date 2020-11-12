@@ -46,15 +46,11 @@ if($now > $_SESSION['expire']) {
   <link rel="stylesheet" href="../../package/dist/sweetalert2.min.css">
 
   <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.min.css">
-
-   <link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
-   <link rel="stylesheet" type="text/css" href="../../css/component.css" />
-	
   
 </head>
 <body>
-   <header>
 
+   <header>
       <div class="menu">
         <button type="button" id="btn-menu">
         <span class="icon icon-menu"></span>
@@ -236,10 +232,6 @@ if($now > $_SESSION['expire']) {
 <script src="../../js/popper.min.js"></script>
 <script src="../../js/datatables.min.js"></script>
 <script src="../../js/alertify.min.js"></script>
-
- 
-<script src="../../js/classie.js"></script>
-<script src="../../js/modernizr.custom.js"></script>
 
 <script src="../../package/dist/sweetalert2.min.js"></script>
 <script src="../../js/moment.min.js"></script>
