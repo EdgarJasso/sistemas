@@ -6,14 +6,14 @@ $(document).ready(function(){
 	}); 
 });
 function GenerarEvaluacion(validacion){
-	
+	let cuerpo = document.getElementById('evaluacion_cuerpo');
+	cuerpo.innerHTML = "";
 	$.ajax({
 		type: "post",
 		url: "../../cuerpo/contenido/validacion/generar_encuesta.php",
 		data: "validacion="+validacion,
 		success: function (response) {
-			console.log(response);
-			let cuerpo = document.getElementById('evaluacion_cuerpo');
+			//console.log(response);
 			cuerpo.innerHTML = response;
 		},
 		error: function(response) {
@@ -21,4 +21,3 @@ function GenerarEvaluacion(validacion){
 		}
 	});
 }
-
