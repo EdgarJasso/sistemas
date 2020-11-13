@@ -103,11 +103,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
        	<label for="">Respuesta:</label>
          <select name="res_respuesta" id="res_respuesta" class="form-control">
           <option value="null" > -Seleccione una respuesta- </option>
-              <option value="Completamente en desacuerdo">Completamente en desacuerdo</option>
-                <option value="No estoy de acuerdo">No estoy de acuerdo</option>
-                <option value="Ni acuerdo- ni en desacuerdo" selected>Ni acuerdo- ni en desacuerdo</option>
-                <option value="De acuerdo">De acuerdo</option>
-                <option value="Completamente de acuerdo">Completamente de acuerdo</option>
+              <option value="Completamente_en_desacuerdo">Completamente en desacuerdo</option>
+                <option value="No_estoy_de_acuerdo">No estoy de acuerdo</option>
+                <option value="Ni_acuerdo_ni_en_desacuerdo" selected>Ni acuerdo- ni en desacuerdo</option>
+                <option value="De_acuerdo">De acuerdo</option>
+                <option value="Completamente_de_acuerdo">Completamente de acuerdo</option>
          </select>
          <span class="help-block" id="text_res_respuesta"></span>
        </div>
@@ -188,11 +188,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
        	<label for="">Respuesta:</label>
          <select name="res_respuesta_e" id="res_respuesta_e" class="form-control">
           <option value="null" > -Seleccione una respuesta- </option>
-              <option value="Completamente en desacuerdo">Completamente en desacuerdo</option>
-                <option value="No estoy de acuerdo">No estoy de acuerdo</option>
-                <option value="Ni acuerdo- ni en desacuerdo" selected>Ni acuerdo- ni en desacuerdo</option>
-                <option value="De acuerdo">De acuerdo</option>
-                <option value="Completamente de acuerdo">Completamente de acuerdo</option>
+              <option value="Completamente_en_desacuerdo">Completamente en desacuerdo</option>
+                <option value="No_estoy_de_acuerdo">No estoy de acuerdo</option>
+                <option value="Ni_acuerdo_ni_en_desacuerdo" selected>Ni acuerdo- ni en desacuerdo</option>
+                <option value="De_acuerdo">De acuerdo</option>
+                <option value="Completamente_de_acuerdo">Completamente de acuerdo</option>
          </select>
          <span class="help-block" id="text_res_respuesta_e"></span>
        </div>

@@ -89,7 +89,7 @@ if($now > $_SESSION['expire']) {
       <ul class="">  
           <li>   
                  <a class="nav-link" id="pills-encuestas_faltantes-tab" data-toggle="pill" href="#pills-encuestas_faltantes" 
-                     role="tab" aria-controls="pills-area" aria-selected="false">Encuestas Faltantes
+                     role="tab" aria-controls="pills-area" aria-selected="false">Evaluaciones
                     <span class="icon-home"></span>
                  </a>
           </li>
@@ -224,9 +224,8 @@ if($now > $_SESSION['expire']) {
  </center> 
  </div>
 </div>
-<script src="../../js/bootstrap.js"></script>
-<script src="../../js/jquery-3.4.1.min.js"></script>
 
+<script src="../../js/jquery-3.4.1.min.js"></script>
 <script src="../../js/funcion-menu.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/popper.min.js"></script>

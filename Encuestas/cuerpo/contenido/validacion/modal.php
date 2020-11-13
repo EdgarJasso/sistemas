@@ -12,15 +12,17 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <center><h4 class="modal-title">Evaluacion:</h4></center>
       </div>
       <div class="modal-body">
+      <form id="evaluacion_datos">
         <div id="evaluacion_cuerpo" class="">
-
-        
+          
 
         </div>
+        <br>
+        <center><button type="submit" class="btn btn-primary" id="enviar_datos"><span class="icon-mail2"></span> Enviar</button></center>
+      </form>
       </div>
-      <div class="modal-footer izq">
-        <span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span>
-        <button type="button" class=" der btn btn-primary" data-dismiss="modal" id="guardar_val">Guardar</button>
+      <div class="modal-footer">
+        <center><span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span></center>
       </div>
     </div>
   </div>

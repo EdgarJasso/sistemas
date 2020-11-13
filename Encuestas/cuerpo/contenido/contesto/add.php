@@ -2,7 +2,7 @@
 	session_start(); 
 	if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 	include('../../../php/connection.php');
-	$database = new Connection();
+		$database = new Connection();
 		$db = $database->open();
 		try{
 			$stmt = $db->prepare("INSERT INTO ecsnts_contesto (id_usuario, id_validacion, id_registro, fecha) VALUES (:id_usuario, :id_validacion, :id_registro, :fecha)");

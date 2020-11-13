@@ -35,9 +35,15 @@ function agregardatosCat(area, desc){
 			showConfirmButton: false
 		});
 
-		$('#marcadores').load('../../php/marcadores.php');
-    $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
+		$('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
+    $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
+    $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
+    $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php');
+    $('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+    $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
+    $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
+    $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
 	      }else{
 			console.log(r);
 			Swal.fire({
@@ -81,9 +87,15 @@ function actualizaDatosCat(){
 					showCancelButton: false,
 					showConfirmButton: false
 				});
-				$('#marcadores').load('../../php/marcadores.php');
-    $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
+				$('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
     $('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
+    $('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
+    $('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
+    $('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php');
+    $('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+    $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
+    $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
+    $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
 				  }else{
 					console.log(r);
 					Swal.fire({
@@ -117,10 +129,16 @@ function eliminarDatosCat(id){
 				timerProgressBar: true,
 				showCancelButton: false,
 				showConfirmButton: false
-			});
-			$('#marcadores').load('../../php/marcadores.php');
-    $('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
-	$('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
+				});
+				$('#contenedor_area').load('../../cuerpo/contenido/area/tabla.php'); 
+				$('#contenedor_categoria').load('../../cuerpo/contenido/categoria/tabla.php'); 
+				$('#contenedor_competencias').load('../../cuerpo/contenido/competencias/tabla.php'); 
+				$('#contenedor_contesto').load('../../cuerpo/contenido/contesto/tabla.php'); 
+				$('#contenedor_pregunta').load('../../cuerpo/contenido/pregunta/tabla.php');
+				$('#contenedor_respuesta').load('../../cuerpo/contenido/respuestas/tabla.php');  
+				$('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
+				$('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
+				$('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php'); 
 			}else{
 				console.log(r);
 				Swal.fire({
