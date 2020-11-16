@@ -54,9 +54,13 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                     <td>'.$imprimir['Nombre'].'</td>
                     <td class=" col-12 label label-danger">'.$imprimir['Validacion'].'</td>
                     <td>
-                        <center>
-                        <button  type="button" id="" class="validacion btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>
-                        </center>
+                        <center>';
+                        if ($imprimir['Categoria'] == 32) {
+                            $html.='<button  type="button" id="" class="seguridad btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar_s" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 
+                        }else{
+                            $html.='<button  type="button" id="" class="validacion btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 
+                        }
+                $html.='</center>
                     </td>
                 </tr>';
             }else{

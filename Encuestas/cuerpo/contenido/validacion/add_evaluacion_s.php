@@ -40,7 +40,7 @@
                         try {
                             $database = new Connection();
                             $db = $database->open();
-                            $sql="SELECT * FROM ecsnts_pregunta WHERE id_area = 1 AND categoria ='Tronco Común'";
+                            $sql="SELECT * FROM ecsnts_pregunta WHERE id_area = 1 AND categoria ='Tronco Común Seguridad'";
                             $stmt_general = $db->prepare($sql);
                             $stmt_general->setFetchMode(PDO::FETCH_ASSOC);
                             $stmt_general->execute();
