@@ -41,7 +41,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         try {
           $database = new Connection();
           $db = $database->open();
-          $SQL="SELECT * FROM ecsnts_pregunta, ecsnts_categoria, ecsnts_area WHERE ecsnts_area.id_area = ecsnts_pregunta.id_area AND ecsnts_pregunta.categoria = ecsnts_categoria.Descripcion AND ecsnts_categoria.Id_categoria ='".$datos['Categoria']."'";
+          $SQL="SELECT * FROM ecsnts_pregunta, ecsnts_categoria, ecsnts_area WHERE ecsnts_area.id_area = ecsnts_pregunta.id_area AND ecsnts_pregunta.categoria = ecsnts_categoria.Descripcion AND ecsnts_categoria.Id_categoria =".$datos['Categoria'];
           $stmt_categoria = $db->prepare($SQL);
           $stmt_categoria->setFetchMode(PDO::FETCH_ASSOC);
           $stmt_categoria->execute();

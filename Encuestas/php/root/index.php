@@ -63,14 +63,6 @@ if($now > $_SESSION['expire']) {
          <div id="reloj">
          </div>
 
-         <button type="button" id="btn-notificacines">
-            <span class="icon icon-bell"></span>
-               <div id="carga-notificaciones">
-               <span class="badge badge-success">3</span>
-               </div>
-            <span class="icon icon-circle-down"></span>
-         </button>
-
          <button type="button" id="btn-off">
             <a href="logout.php">
             <span class="icon icon-switch" id="off"></span>
@@ -80,9 +72,6 @@ if($now > $_SESSION['expire']) {
 
    </header>
 <div class="clearfix"></div>
-<div id="notificaciones">
-  <a href="#?id=2">Prueba de notificacines</a>
-</div>
 <div class="container-fluid bg-secondary" id="contenido-todo">
    <div class="row">
    <div id="contenido-menu">

@@ -139,7 +139,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
          <select name="val_estado" id="val_estado" class="form-control">
           <option value="null" > -Seleccione un usuario- </option>
           <option value="pendiente">Pendiente</option>
-          <option value="realizada">Realizada</option>
+          <option value="hecho">Hecho</option>
          </select>
          <span class="help-block" id="text_val_estado"></span>
        </div>
@@ -298,7 +298,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
          <select name="val_estado_e" id="val_estado_e" class="form-control">
           <option value="null" > -Seleccione un usuario- </option>
           <option value="pendiente">Pendiente</option>
-          <option value="realizada">Realizada</option>
+          <option value="hecho">Hecho</option>
          </select>
          <span class="help-block" id="text_val_estado_e"></span>
        </div>

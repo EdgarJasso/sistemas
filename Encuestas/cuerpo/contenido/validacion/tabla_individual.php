@@ -10,7 +10,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
     try {
         $database = new Connection();
         $db = $database->open();
-        $query = 'SELECT * from ecsnts_validacion, ecsnts_usuario WHERE ecsnts_validacion.Calificador ='.$_SESSION["id"].' AND ecsnts_usuario.id_usuario = ecsnts_Validacion.Calificador';
+        $query = 'SELECT * from ecsnts_validacion, ecsnts_usuario WHERE ecsnts_validacion.Calificador ='.$_SESSION["id"].' AND ecsnts_usuario.id_usuario = ecsnts_validacion.Calificador';
         $stmt = $db->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();

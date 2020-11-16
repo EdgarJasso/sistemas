@@ -6,7 +6,7 @@ Class Connection{
 	private $username = "3571327_sistemas";
 	private $password = "alohomora_5246";
 */
-private $server = "mysql:host=localhost;dbname=sistemas";
+	private $server = "mysql:host=localhost;dbname=sistemas";
 	private $username = "root";
 	private $password = "";
 	private $options  = array(
