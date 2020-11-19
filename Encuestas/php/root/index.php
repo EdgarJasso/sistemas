@@ -130,6 +130,12 @@ if($now > $_SESSION['expire']) {
                     <span class="icon-home"></span>
                  </a>
           </li>
+          <li>   
+                 <a class="nav-link" id="pills-reporte-tab" data-toggle="pill" href="#pills-reporte" 
+                     role="tab" aria-controls="pills-reporte" aria-selected="false">Reportes
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
     </ul>
    </div>
    
@@ -193,9 +199,16 @@ if($now > $_SESSION['expire']) {
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade active in" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
+<div class="tab-pane fade" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
    <div class="container-fluid">
       <div id="contenedor_encuestas_faltantes"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade active in" id="pills-reporte" role="tabpanel" aria-labelledby="pills-reporte-tab">
+   <div class="container-fluid">
+      <div id="contenedor_reporte"></div>
    </div>
   </div>
 <!-- fin -->
@@ -238,7 +251,7 @@ if($now > $_SESSION['expire']) {
    contenedor.style.visibility = 'hidden';
    contenedor.style.opacity = '0';
  }
- reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>Encuestas/php/root/logout.php');
+ reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>/Encuestas/php/root/logout.php');
  
  $(document).ready(function(){
     //menu
@@ -266,6 +279,8 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
     $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');  
+    $('#contenedor_reporte').load('../../cuerpo/contenido/reportes/reportes.php');  
+    
 });
 </script>
 

@@ -19,8 +19,10 @@ $(document).ready(function(){
 		$("#val_categoria_e").change(validarValCat_e);
 		$("#val_tipo_e").change(validarValTipo_e);
 		$("#val_periodo_e").change(validarValPer_e);
+	
 		
 }); 
+
 function AgregarViewVal(datos){ 
 	d = datos.split('||');
 	$('#view_val_id').html(d[0]);

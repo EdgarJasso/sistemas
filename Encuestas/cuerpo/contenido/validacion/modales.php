@@ -62,6 +62,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
     </div>
   </div>
 </div>
+
  <!-- Modal de  Add-->
  <div class="modal fade" id="Agregar_Val" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">

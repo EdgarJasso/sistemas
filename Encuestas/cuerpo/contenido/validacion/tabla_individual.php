@@ -81,7 +81,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             $html.='
             <tr>
                 <td colspan="7">
-                <center><b><span> Haz concluido tus encuestas, por favor genera tu comprobante!</span></b>&nbsp;&nbsp;<a href="../../reporte/comprobante-final.php?id='.$_SESSION["id"].'"><button type="button" class="btn btn-info"><span class="icon-download3"><span> Descargar</button></a> </center>
+                <center><b><span> Haz concluido tus encuestas, por favor genera tu comprobante!</span></b>  <button  type="button" id="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#GeneraComprobanteIndividual">Ir&nbsp;<span class="icon-flag"></span></button></center>
             </td>
             <tr>';
             }else{
@@ -107,6 +107,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
  </div>
 </div>
 <?php include('modal.php');?>
+
 <script>
     $(document).ready( function () {
     $('#faltantes').DataTable({

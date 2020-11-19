@@ -110,9 +110,9 @@ function enviar_evaluacion_s(){
             $("#Contestar_s").css("display", "none");
 			Swal.fire({
 				title: 'Evaluacion Enviada!',
-				text: 'numero de registro: '+response,
+				text: 'numero de registro: '+response+'/n Toma evidencia de tu registro' ,
 				icon: 'success',
-				timer: 4000,
+				timer: 6000,
 				timerProgressBar: true,
 				showCancelButton: false,
 				showConfirmButton: false
