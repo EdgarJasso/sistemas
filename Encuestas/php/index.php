@@ -16,9 +16,9 @@
 <body style="background: #ccc;">
 
 <div class="login-box">
-    <center><a href="../index.php"><img  class="cryo" src="../img/new logo.png" alt="No disponible"></a></center>
+    <center><a href="../../index.html"><img  class="cryo" src="../img/new logo.png" alt="No disponible"></a></center>
 <br>
-<h2>Sistema Ticket:</h2>
+<h2>Sistema Encuestas:</h2>
 <form class="form-group" id="login">
 <div class="form-group">
                 <div class='input-group date form-group'>
