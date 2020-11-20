@@ -3,6 +3,14 @@ session_start();
 if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 $r= $_POST['id'];
+$p = $_POST['periodo'];
+echo '-----------------------------';
+echo '<br>';
+echo 'id usuario:'.$r;
+echo '<br>';
+echo 'periodo:'.$p;
+echo '<br>';
+echo '-----------------------------';
 require_once('vendor/autoload.php');
 //consultas
 require_once('../php/skills_div.php');
@@ -15,47 +23,47 @@ $css = file_get_contents('plantilla/reporte/estilos.css');
 $_usuario = array();
 $_usuario = getUsuario($r);
 $_conteo = array();
-$_conteo = getConteo($r);
+$_conteo = getConteo($r,$p);
 
 //conteo de jefe
 $_conteo_jefe = array();
-$_conteo_jefe = getConteoJefe($r);
+$_conteo_jefe = getConteoJefe($r,$p);
 //conteo de Cliente
 $_conteo_Cliente = array();
-$_conteo_Cliente = getConteoCliente($r);
+$_conteo_Cliente = getConteoCliente($r,$p);
 //conteo de Compañero
 $_conteo_Companero = array();
-$_conteo_Companero = getConteoCompañero($r);
+$_conteo_Companero = getConteoCompañero($r,$p);
 //conteo de Subordinado
 $_conteo_Subordinado = array();
-$_conteo_Subordinado = getConteoSubordinado($r);
+$_conteo_Subordinado = getConteoSubordinado($r,$p);
 //conteo de Autoevaluacion
 $_conteo_Autoevaluacion = array();
-$_conteo_Autoevaluacion = getConteoAutoevaluacion($r);
+$_conteo_Autoevaluacion = getConteoAutoevaluacion($r,$p);
 
 //traemos preguntas de la categoria correspondiente
 $_preguntas = array();
-$_preguntas = getPreguntas($r);
+$_preguntas = getPreguntas($r,$p);
 
 //traemos justificaciones de jefe
 $_justificacionesJefe = array();
-$_justificacionesJefe = getJusficacionesJefe($r);
+$_justificacionesJefe = getJusficacionesJefe($r,$p);
 //traemos justificaciones de Cliente
 $_justificacionesCliente = array();
-$_justificacionesCliente = getJusficacionesCliente($r);
+$_justificacionesCliente = getJusficacionesCliente($r,$p);
 //traemos justificaciones de Compañero
 $_justificacionesCompanero = array();
-$_justificacionesCompanero = getJusficacionesCompañero($r);
+$_justificacionesCompanero = getJusficacionesCompañero($r,$p);
 //traemos justificaciones de Subordinado
 $_justificacionesSubordinado = array();
-$_justificacionesSubordinado = getJusficacionesSubordinado($r);
+$_justificacionesSubordinado = getJusficacionesSubordinado($r,$p);
 //traemos justificaciones de Autoevaluacion
 $_justificacionesAutoevaluacion = array();
-$_justificacionesAutoevaluacion = getJusficacionesAutoevaluacion($r);
+$_justificacionesAutoevaluacion = getJusficacionesAutoevaluacion($r,$p);
 
 
 $_idPreguntas = array();
-$_idPreguntas = getIdPreguntas($r);
+$_idPreguntas = getIdPreguntas($r,$p);
 
  
 $_preguntasTC = array();
