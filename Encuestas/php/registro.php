@@ -98,12 +98,11 @@ function getfecha($valor){
     
 }
 
-function getregistros($valor){
+function getregistros($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     $_registros = array();
-    
-    $SQL="SELECT ecsnts_contesto.id_registro as idr from ecsnts_contesto, ecsnts_validacion WHERE ecsnts_contesto.id_usuario = ".$valor." and ecsnts_validacion.Validacion = 'hecho' and ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion";
-         $execute=mysqli_query($con,$SQL);
+     $SQL = "SELECT ecsnts_contesto.id_registro as idr, ecsnts_validacion.periodo as periodo, ecsnts_area.nombre as area, ecsnts_categoria.Descripcion as categoria from ecsnts_contesto, ecsnts_validacion, ecsnts_area, ecsnts_categoria WHERE ecsnts_contesto.id_usuario = ".$valor." and ecsnts_validacion.Validacion = 'hecho' and ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion and ecsnts_validacion.Area = ecsnts_area.id_area and ecsnts_validacion.Categoria = ecsnts_categoria.Id_categoria and ecsnts_validacion.periodo ='".$periodo."'";
+     $execute=mysqli_query($con,$SQL);
       while($row = $mostrar=mysqli_fetch_assoc($execute)){
          $_registros[] = $row;
           }
@@ -112,6 +111,7 @@ function getregistros($valor){
 }
 } else {
   echo "Inicia Sesion para acceder a este contenido.<br>";
-  echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
+    include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 exit;
 }

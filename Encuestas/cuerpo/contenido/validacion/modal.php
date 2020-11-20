@@ -42,7 +42,6 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       <form id="evaluacion_datos_s">
         <div id="evaluacion_cuerpo_s" class="">
           
-
         </div>
         <br>
         <center><button type="submit" class="btn btn-primary" id="evaluacion_datos_s"><span class="icon-mail2"></span> Enviar</button></center>
@@ -65,7 +64,23 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <center><h4 class="modal-title">Generador Comprobante:</h4></center>
       </div>
       <div class="modal-body">
-       
+       <!-- imprimir registro inicio-->
+       <div class="form-group">
+            <form action="../../reporte/comprobante.php" method="post">
+                 <div class="form-group">
+                     <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
+                     <select name="periodo" id="" class="form-control" style="max-width:100px;">
+                            <?php for ($i=20; $i <=30 ; $i++) { 
+                            echo ' <option value="20'.$i.'-1">20'.$i.'-1</option>';
+                            echo ' <option value="20'.$i.'-2">20'.$i.'-2</option>';
+                            }?>
+                     </select>
+                 </div>
+                     
+                <button class="btn btn-info" type="submit"><span class="icon-download2"></span>Generar</button>
+            </form>
+            </div>
+            <!-- imprimir registro fin-->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="">Cerrar</button>

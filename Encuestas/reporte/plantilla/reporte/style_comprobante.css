@@ -1,0 +1,42 @@
+.clearfix:after { 
+  content: "";
+  clear: both;
+}
+ 
+body {
+  position: relative;
+  width: 21cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  color: #001028;
+  background: #ffffff; 
+  font-family: Arial, sans-serif; 
+  font-size: 12px; 
+  font-family: Arial;
+}
+.logo{
+  width: 100%;
+}
+.logo .int_logo{
+  width: 50%;
+  margin: 0 auto;
+}
+.cabeza{
+ border-radius: 10px;
+}
+.cabeza .izq{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border-right: 5px solid #000;
+   border-left: 5px solid #000;
+   background-color: #fdfbfb;
+}
+#comprobante{
+  text-align: center;
+}
+.texto{
+  width: 80%;
+  margin: 0 auto;
+  text-align: justify;
+}
