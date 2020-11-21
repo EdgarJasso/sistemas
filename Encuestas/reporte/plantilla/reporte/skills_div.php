@@ -1,33 +1,40 @@
 <?php  
-function getPlantilla($_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC){
+function getPlantilla($periodo,$categoria,$_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC){
     
-    
+     
 date_default_timezone_set('America/Mexico_City');
 $hoy = getdate();
 $fechaActual=time();
-     $plantilla='
-       <h1><div class="logo">
-     
-      <div class="logo-1"><img src="img/cryoo.jpg" style=" width:80%;"></div>
-      <div class="logo-2"><img src="img/360.png" ></div> 
+     $plantilla='<link rel="stylesheet" href="plantilla/reporte/estilos.css">
+     <div class="logo">
+     <center>
+       <div class="int_logo">
+         <img src="img/logo.png" style=" width:80%;">
+       </div>
+     </center>
+   </div>
       
-      </div></h1>
-      
-      <div id="company">
-        <div>Grupo Cryo</div>
-        <div>Circuito Economistas 31A,<br/> Edo. México 54085, MX</div>
-      </div>
-      <br>
-      <div id="project">
-        <div><span>Datos de impresion:</span> </div>';
-        $plantilla.='
-        <div><span>Fecha: </span>"'; 
-        $plantilla.= date("d-m-Y"); 
-        $plantilla.='"</div>
-        <div><span>Hora: </span>"'; 
-        $plantilla.= $hoy['hours'].":".$hoy['minutes'].":".$hoy['seconds'];
-        $plantilla.='"</div>
-     </div><br><br><br><br>';
+   <div class="cabeza">
+    <div class="izq">
+        <div id="project">
+        <br>
+            <div><span><b>Datos de Impresion:</b> </span> </div>
+            <span>Grupo Cryo</span>
+            <div>
+            Circuito Economistas 31A,<br /> Edo. México 54085, MX</span>
+            <br>';
+            $plantilla.='
+            <div><br><span>Fecha: </span>"'; 
+            $plantilla.=date("d-m-Y"); 
+            $plantilla.='"</div>
+            <div><span>Hora: </span>"'; 
+            $plantilla.= $hoy['hours'].":".$hoy['minutes'].":".$hoy['seconds'];
+            $plantilla.='"</div>
+            <div><span>Periodo: </span>'.$periodo.'
+            </div>
+        </div>
+        </div>
+    </div>';
     $contador_competencias = 5;
     foreach($_usuario as $usuario){
         $iduser = $usuario['idu'];
@@ -66,15 +73,18 @@ $fechaActual=time();
     }
    // $_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion
     
-    $plantilla.='<div class="cabezera">
-     <div class="user"> 
-       <b>Id Usuario:</b> '.$iduser.' <br>
-       <b>Nombre:</b> '.$nombre.' <br>
-       <b>Area:</b> '.$area.' <br>
-     </div>
-     <div class="conteo"> 
-       <b>No. veces Evaluado:</b> '.$con.'
-     </div>
+    $plantilla.='
+        <div class="der">
+            <div class="user"> 
+            <b>Id Usuario:</b> '.$iduser.' <br>
+            <b>Nombre:</b> '.$nombre.' <br>
+            <b>Area:</b> '.$area.' <br>
+            <b>Puesto:</b> '.$categoria['categoria'].' <br>
+            </div><br>
+            <div class="conteo"> 
+            <b>No. veces Evaluado:</b> '.$con.'
+            </div>
+        </div>
     </div><br>';
 //seccion de tronco comun aqui empieza
     $plantilla.='<div class="Tronco-Comun">';
@@ -264,10 +274,10 @@ $fechaActual=time();
           <tr>
             <td> D = Deficiente</td>
             <td> 0-59</td>
-             <td style="background-color:rgba(255,0,0,0.5);"></td>>
+             <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
-        </table></div><br><br><br><br><br><br><br><br><br><br><br>';
+        </table></div><br>';
  //acotacion
     
     //estadisticas
@@ -318,7 +328,7 @@ $fechaActual=time();
                       $CompetenciasTC[$i]["nivel"] = "D";
                   }
         
-        $plantilla.='<tr style="height:20px;">
+        $plantilla.='<tr style="height:20px; ">
             <td>'.$_preguntasTC[$i]["nom_comp"].' ('.$_preguntasTC[$i]["codigo"].')</td>
             <td>'.$PromediosTCAutoEvaluacion[$i]["promedio"].'%</td>
             <td>'.$PromediosTCCliente[$i]["promedio"].'%</td>
@@ -326,7 +336,7 @@ $fechaActual=time();
             <td>'.$PromediosTCSubordinado[$i]["promedio"].'%</td>
             <td>'.$PromediosTCJefe[$i]["promedio"].'%</td>
             <td>'.$CompetenciasTC[$i]["promedio"].'%</td>
-            <td class="columna-'.$CompetenciasTC[$i]["nivel"].'">'.$CompetenciasTC[$i]["nivel"].'</td>
+            <td class="columna_'.$CompetenciasTC[$i]["nivel"].'">'.$CompetenciasTC[$i]["nivel"].'</td>
           </tr>';
         
         $Autoevaluacion_sumaTC [$i] = $PromediosTCAutoEvaluacion[$i]["promedio"];
@@ -442,15 +452,15 @@ $fechaActual=time();
     </tr>
     <tr>
      <th>Nivel</th>
-      <td class="columna-'.$AutoevaluacionTC[0]["nivel"].'">'.$AutoevaluacionTC[0]["nivel"].'</td>
-      <td class="columna-'.$ClienteTC[0]["nivel"].'">'.$ClienteTC[0]["nivel"].'</td>
-      <td class="columna-'.$CompaneroTC[0]["nivel"].'">'.$CompaneroTC[0]["nivel"].'</td>
-      <td class="columna-'.$SubordinadoTC[0]["nivel"].'">'.$SubordinadoTC[0]["nivel"].'</td>
-      <td class="columna-'.$JefeTC[0]["nivel"].'">'.$JefeTC[0]["nivel"].'</td>
+      <td class="columna_'.$AutoevaluacionTC[0]["nivel"].'">'.$AutoevaluacionTC[0]["nivel"].'</td>
+      <td class="columna_'.$ClienteTC[0]["nivel"].'">'.$ClienteTC[0]["nivel"].'</td>
+      <td class="columna_'.$CompaneroTC[0]["nivel"].'">'.$CompaneroTC[0]["nivel"].'</td>
+      <td class="columna_'.$SubordinadoTC[0]["nivel"].'">'.$SubordinadoTC[0]["nivel"].'</td>
+      <td class="columna_'.$JefeTC[0]["nivel"].'">'.$JefeTC[0]["nivel"].'</td>
     </tr>
     ';
     $plantilla.='</tbody></table></div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
     //fin de estadisticas
     
     //inicio graficos competencias
@@ -464,7 +474,7 @@ $fechaActual=time();
         '.$_preguntasTC[$i]["nom_comp"].'  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$CompetenciasTC[$i]["nivel"].' " style="width: '.$CompetenciasTC[$i]["promedio"].'%;">
+          <div class="graficos-generar graficos_'.$CompetenciasTC[$i]["nivel"].' " style="width: '.$CompetenciasTC[$i]["promedio"].'%;">
           '.$_preguntasTC[$i]["codigo"].'-'.$CompetenciasTC[$i]["promedio"].'%</div>
          </div><br>';        
     }
@@ -478,7 +488,8 @@ $fechaActual=time();
         <div class="grafico-cab-2"> S </div>
         <div class="grafico-cab-3"> N </div>
         <div class="grafico-cab-4"> E </div>
-       </div></div>'; 
+    </div>
+    </div>'; 
     //fin graficos competencias
     
     //inicio graficos rol
@@ -492,7 +503,7 @@ $fechaActual=time();
         AutoEvaluacion
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$AutoevaluacionTC[0]["nivel"].' " style="width: '.$AutoevaluacionTC[0]["promedio"].'%;">'.$AutoevaluacionTC[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$AutoevaluacionTC[0]["nivel"].' " style="width: '.$AutoevaluacionTC[0]["promedio"].'%;">'.$AutoevaluacionTC[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -501,7 +512,7 @@ $fechaActual=time();
         AutoEvaluacion
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$AutoevaluacionTC[0]["nivel"].' " style="width: '.$AutoevaluacionTC[0]["promedio"].'%;">'.$AutoevaluacionTC[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$AutoevaluacionTC[0]["nivel"].' " style="width: '.$AutoevaluacionTC[0]["promedio"].'%;">'.$AutoevaluacionTC[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -512,7 +523,7 @@ $fechaActual=time();
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$ClienteTC[0]["nivel"].' " style="width: '.$ClienteTC[0]["promedio"].'%;">'.$ClienteTC[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$ClienteTC[0]["nivel"].' " style="width: '.$ClienteTC[0]["promedio"].'%;">'.$ClienteTC[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -521,7 +532,7 @@ $fechaActual=time();
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$ClienteTC[0]["nivel"].' " style="width: '.$ClienteTC[0]["promedio"].'%;">'.$ClienteTC[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$ClienteTC[0]["nivel"].' " style="width: '.$ClienteTC[0]["promedio"].'%;">'.$ClienteTC[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -532,7 +543,7 @@ $fechaActual=time();
         Colaborador 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$CompaneroTC[0]["nivel"].' " style="width: '.$CompaneroTC[0]["promedio"].'%;">'.$CompaneroTC[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$CompaneroTC[0]["nivel"].' " style="width: '.$CompaneroTC[0]["promedio"].'%;">'.$CompaneroTC[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -541,7 +552,7 @@ $fechaActual=time();
         Colaborador 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$CompaneroTC[0]["nivel"].' " style="width: '.$CompaneroTC[0]["promedio"].'%;">'.$CompaneroTC[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$CompaneroTC[0]["nivel"].' " style="width: '.$CompaneroTC[0]["promedio"].'%;">'.$CompaneroTC[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -552,7 +563,7 @@ $fechaActual=time();
         Subordinado 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$SubordinadoTC[0]["nivel"].' " style="width: '.$SubordinadoTC[0]["promedio"].'%;">'.$SubordinadoTC[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$SubordinadoTC[0]["nivel"].' " style="width: '.$SubordinadoTC[0]["promedio"].'%;">'.$SubordinadoTC[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -561,7 +572,7 @@ $fechaActual=time();
         Subordinado 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$SubordinadoTC[0]["nivel"].' " style="width: '.$SubordinadoTC[0]["promedio"].'%;">'.$SubordinadoTC[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$SubordinadoTC[0]["nivel"].' " style="width: '.$SubordinadoTC[0]["promedio"].'%;">'.$SubordinadoTC[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -572,7 +583,7 @@ $fechaActual=time();
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$JefeTC[0]["nivel"].' " style="width: '.$JefeTC[0]["promedio"].'%;">'.$JefeTC[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$JefeTC[0]["nivel"].' " style="width: '.$JefeTC[0]["promedio"].'%;">'.$JefeTC[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -581,7 +592,7 @@ $fechaActual=time();
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$JefeTC[0]["nivel"].' " style="width: '.$JefeTC[0]["promedio"].'%;">'.$JefeTC[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$JefeTC[0]["nivel"].' " style="width: '.$JefeTC[0]["promedio"].'%;">'.$JefeTC[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -669,7 +680,7 @@ $fechaActual=time();
           <tr>
             <td> D = Deficicente</td>
             <td> 0-59</td>
-             <td style="background-color:rgba(255,0,0,0.5);"></td>>
+             <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
         </table></div>';
@@ -890,7 +901,7 @@ $fechaActual=time();
             <td>'.$PromediosAreaSubordinado[$i]["promedio"].'%</td>
             <td>'.$PromediosAreaJefe[$i]["promedio"].'%</td>
             <td>'.$Competencias[$i]["promedio"].'%</td>
-            <td class="columna-'.$Competencias[$i]["nivel"].'">'.$Competencias[$i]["nivel"].'</td>
+            <td class="columna_'.$Competencias[$i]["nivel"].'">'.$Competencias[$i]["nivel"].'</td>
           </tr>';
         
         $Autoevaluacion_suma [$i] = $PromediosAreaAutoEvaluacion[$i]["promedio"];
@@ -999,11 +1010,11 @@ if($Autoevaluacion[0]["promedio"] < 1){
     </tr>
     <tr>
      <th>Nivel</th>
-      <td class="columna-'.$Autoevaluacion[0]["nivel"].'">'.$Autoevaluacion[0]["nivel"].'</td>
-      <td class="columna-'.$Cliente[0]["nivel"].'">'.$Cliente[0]["nivel"].'</td>
-      <td class="columna-'.$Companero[0]["nivel"].'">'.$Companero[0]["nivel"].'</td>
-      <td class="columna-'.$Subordinado[0]["nivel"].'">'.$Subordinado[0]["nivel"].'</td>
-      <td class="columna-'.$Jefe[0]["nivel"].'">'.$Jefe[0]["nivel"].'</td>
+      <td class="columna_'.$Autoevaluacion[0]["nivel"].'">'.$Autoevaluacion[0]["nivel"].'</td>
+      <td class="columna_'.$Cliente[0]["nivel"].'">'.$Cliente[0]["nivel"].'</td>
+      <td class="columna_'.$Companero[0]["nivel"].'">'.$Companero[0]["nivel"].'</td>
+      <td class="columna_'.$Subordinado[0]["nivel"].'">'.$Subordinado[0]["nivel"].'</td>
+      <td class="columna_'.$Jefe[0]["nivel"].'">'.$Jefe[0]["nivel"].'</td>
     </tr>
     ';
     $plantilla.='</tbody></table></div>
@@ -1021,7 +1032,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         '.$_preguntas[$i]["nom_comp"].'
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Competencias[$i]["nivel"].' " style="width: '.$Competencias[$i]["promedio"].'%;">
+          <div class="graficos-generar graficos_'.$Competencias[$i]["nivel"].' " style="width: '.$Competencias[$i]["promedio"].'%;">
          '.$_preguntas[$i]["codigo"].' -  '.$Competencias[$i]["promedio"].'%</div>
          </div><br>';        
     }
@@ -1049,7 +1060,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Autoevaluacion  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Autoevaluacion[0]["nivel"].' " style="width: '.$Autoevaluacion[0]["promedio"].'%;">'.$Autoevaluacion[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$Autoevaluacion[0]["nivel"].' " style="width: '.$Autoevaluacion[0]["promedio"].'%;">'.$Autoevaluacion[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -1058,7 +1069,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Autoevaluacion  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Autoevaluacion[0]["nivel"].' " style="width: '.$Autoevaluacion[0]["promedio"].'%;">'.$Autoevaluacion[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$Autoevaluacion[0]["nivel"].' " style="width: '.$Autoevaluacion[0]["promedio"].'%;">'.$Autoevaluacion[0]["promedio"].'%</div>
          </div><br>';
     }
     if($Cliente[0]["promedio"] < 1){
@@ -1068,7 +1079,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Cliente[0]["nivel"].' " style="width: '.$Cliente[0]["promedio"].'%;">'.$Cliente[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$Cliente[0]["nivel"].' " style="width: '.$Cliente[0]["promedio"].'%;">'.$Cliente[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -1077,7 +1088,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Cliente[0]["nivel"].' " style="width: '.$Cliente[0]["promedio"].'%;">'.$Cliente[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$Cliente[0]["nivel"].' " style="width: '.$Cliente[0]["promedio"].'%;">'.$Cliente[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -1088,7 +1099,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Compañero  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Companero[0]["nivel"].' " style="width: '.$Companero[0]["promedio"].'%;">'.$Companero[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$Companero[0]["nivel"].' " style="width: '.$Companero[0]["promedio"].'%;">'.$Companero[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -1097,7 +1108,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Compañero  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Companero[0]["nivel"].' " style="width: '.$Companero[0]["promedio"].'%;">'.$Companero[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$Companero[0]["nivel"].' " style="width: '.$Companero[0]["promedio"].'%;">'.$Companero[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -1109,7 +1120,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Subordinado  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Subordinado[0]["nivel"].' " style="width: '.$Subordinado[0]["promedio"].'%;">'.$Subordinado[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$Subordinado[0]["nivel"].' " style="width: '.$Subordinado[0]["promedio"].'%;">'.$Subordinado[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -1118,7 +1129,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Subordinado  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Subordinado[0]["nivel"].' " style="width: '.$Subordinado[0]["promedio"].'%;">'.$Subordinado[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$Subordinado[0]["nivel"].' " style="width: '.$Subordinado[0]["promedio"].'%;">'.$Subordinado[0]["promedio"].'%</div>
          </div><br>';
     }
     
@@ -1130,7 +1141,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Jefe[0]["nivel"].' " style="width: '.$Jefe[0]["promedio"].'%;">'.$Jefe[0]["promedio"].'% (No Aplica)</div>
+          <div class="graficos-generar graficos_'.$Jefe[0]["nivel"].' " style="width: '.$Jefe[0]["promedio"].'%;">'.$Jefe[0]["promedio"].'% (No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -1139,7 +1150,7 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'.$Jefe[0]["nivel"].' " style="width: '.$Jefe[0]["promedio"].'%;">'.$Jefe[0]["promedio"].'%</div>
+          <div class="graficos-generar graficos_'.$Jefe[0]["nivel"].' " style="width: '.$Jefe[0]["promedio"].'%;">'.$Jefe[0]["promedio"].'%</div>
          </div><br>';
     }
     

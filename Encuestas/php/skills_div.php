@@ -12,7 +12,21 @@ function getUsuario($valor){
           }
     return $_usuario;
 }
-
+function getcategoria($r,$p){
+    require_once("cn.php"); $con = conectar();
+    // valor = id usuario
+    $SQL="SELECT 
+    ecsnts_categoria.Descripcion as categoria
+    from ecsnts_validacion, ecsnts_usuario, ecsnts_categoria
+    where ecsnts_validacion.Calificado = ".$r."
+    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado
+    and ecsnts_validacion.Categoria = ecsnts_categoria.Id_categoria
+    and ecsnts_validacion.periodo = '".$p."' LIMIT 1";
+    $execute=mysqli_query($con,$SQL);
+    
+    $_categoria = $resultado=mysqli_fetch_assoc($execute);
+    return $_categoria;
+}
 function getConteo($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     $_conteo = array();

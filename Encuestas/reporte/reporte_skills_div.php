@@ -4,6 +4,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 $r= $_POST['id'];
 $p = $_POST['periodo'];
+/*
 echo '-----------------------------';
 echo '<br>';
 echo 'id usuario:'.$r;
@@ -11,6 +12,7 @@ echo '<br>';
 echo 'periodo:'.$p;
 echo '<br>';
 echo '-----------------------------';
+*/
 require_once('vendor/autoload.php');
 //consultas
 require_once('../php/skills_div.php');
@@ -22,6 +24,8 @@ $css = file_get_contents('plantilla/reporte/estilos.css');
 //traemos datos gnerales
 $_usuario = array();
 $_usuario = getUsuario($r);
+$_categoria = array();
+$_categoria = getcategoria($r,$p);
 $_conteo = array();
 $_conteo = getConteo($r,$p);
 
@@ -193,11 +197,14 @@ foreach($_idPreguntasTC as $id_pre){
    $_CAAutoevaluacionTC []= getconteoCAAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
 }
 
-
+/*
 echo "Datos para generar pdf";
 echo "<br><br>";
 echo "<p>Datos del usuario</p>";
 var_dump($_usuario);
+echo "<br><br>";
+echo "<p>Categoria</p>";
+var_dump($_categoria);
 echo "<br><br>";
 echo "<p>Conteo Total</p>";
 var_dump($_conteo);
@@ -369,8 +376,10 @@ $_DAutoevaluacion ,"<br>",
 $_NNAutoevaluacion,"<br>",
 $_AAutoevaluacion ,"<br>",
 $_CAAutoevaluacion);
+echo '<br><br><br>';
+echo $_categoria['categoria'];
 die();
-
+*/
 
 $mpdf = new \Mpdf\Mpdf([
     'margin_top' => 20,
@@ -380,7 +389,7 @@ $mpdf = new \Mpdf\Mpdf([
 ]);
 
 
-$plantilla =getPlantilla($_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC);
+$plantilla =getPlantilla($p,$_categoria,$_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC);
 
 
 //var_dump($plantilla);die();
@@ -397,6 +406,8 @@ foreach($_usuario as $usuario){
 
 $name_doc = 'Evaluacion-360('.$nombre.').pdf';
 $mpdf -> Output($name_doc,"I");
+
+//echo $plantilla;
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
     include '../../../dominio.php';
