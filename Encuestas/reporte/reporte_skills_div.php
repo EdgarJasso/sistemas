@@ -70,19 +70,19 @@ $_preguntasTC = array();
 $_preguntasTC = getPreguntasTC($r);
 
 $_justificacionesJefeTC = array();
-$_justificacionesJefeTC = getJusficacionesJefeTC($r);
+$_justificacionesJefeTC = getJusficacionesJefeTC($r,$p);
 
 $_justificacionesClienteTC = array();
-$_justificacionesClienteTC = getJusficacionesClienteTC($r);
+$_justificacionesClienteTC = getJusficacionesClienteTC($r,$p);
 
 $_justificacionesCompaneroTC = array();
-$_justificacionesCompaneroTC = getJusficacionesCompañeroTC($r);
+$_justificacionesCompaneroTC = getJusficacionesCompañeroTC($r,$p);
 
 $_justificacionesSubordinadoTC = array();
-$_justificacionesSubordinadoTC = getJusficacionesSubordinadoTC($r);
+$_justificacionesSubordinadoTC = getJusficacionesSubordinadoTC($r,$p);
 
 $_justificacionesAutoevaluacionTC = array();
-$_justificacionesAutoevaluacionTC = getJusficacionesAutoevaluacionTC($r);
+$_justificacionesAutoevaluacionTC = getJusficacionesAutoevaluacionTC($r,$p);
 
 $_idPreguntasTC = array();
 $_idPreguntasTC = getIdPreguntasTC($r);
@@ -104,93 +104,93 @@ $_CDAutoevaluacionTC= array();$_DAutoevaluacionTC = array();$_NNAutoevaluacionTC
 //Area Jefe
 foreach($_idPreguntas as $id_preaj){
  
-   $_CDJefe[] = getconteoCDJefe( $id_preaj['id_pregunta'], $r);
-   $_DJefe[] = getconteoDJefe( $id_preaj['id_pregunta'], $r);
-   $_NNJefe[] = getconteoNNJefe( $id_preaj['id_pregunta'], $r);
-   $_AJefe []= getconteoAJefe( $id_preaj['id_pregunta'], $r);
-   $_CAJefe []= getconteoCAJefe( $id_preaj['id_pregunta'], $r);
+   $_CDJefe[] = getconteoCDJefe( $id_preaj['id_pregunta'], $r, $p);
+   $_DJefe[] = getconteoDJefe( $id_preaj['id_pregunta'], $r, $p);
+   $_NNJefe[] = getconteoNNJefe( $id_preaj['id_pregunta'], $r, $p);
+   $_AJefe []= getconteoAJefe( $id_preaj['id_pregunta'], $r, $p);
+   $_CAJefe []= getconteoCAJefe( $id_preaj['id_pregunta'], $r, $p);
 }
 //AreaCliente
 foreach($_idPreguntas as $id_pre){
-   $_CDCliente[] = getconteoCDCliente ($id_pre['id_pregunta'], $r);
-   $_DCliente[] = getconteoDCliente( $id_pre['id_pregunta'], $r);
-   $_NNCliente[] = getconteoNNCliente( $id_pre['id_pregunta'], $r);
-   $_ACliente []= getconteoACliente( $id_pre['id_pregunta'], $r);
-   $_CACliente []= getconteoCACliente( $id_pre['id_pregunta'], $r);
+   $_CDCliente[] = getconteoCDCliente ($id_pre['id_pregunta'], $r, $p);
+   $_DCliente[] = getconteoDCliente( $id_pre['id_pregunta'], $r, $p);
+   $_NNCliente[] = getconteoNNCliente( $id_pre['id_pregunta'], $r, $p);
+   $_ACliente []= getconteoACliente( $id_pre['id_pregunta'], $r, $p);
+   $_CACliente []= getconteoCACliente( $id_pre['id_pregunta'], $r, $p);
 }
 //Area Compañero
 foreach($_idPreguntas as $id_pre){
  
-   $_CDCompanero[] = getconteoCDCompañero( $id_pre['id_pregunta'], $r);
-   $_DCompanero[] = getconteoDCompañero( $id_pre['id_pregunta'], $r);
-   $_NNCompanero[] = getconteoNNCompañero( $id_pre['id_pregunta'], $r);
-   $_ACompanero []= getconteoACompañero( $id_pre['id_pregunta'], $r);
-   $_CACompanero []= getconteoCACompañero( $id_pre['id_pregunta'], $r);
+   $_CDCompanero[] = getconteoCDCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_DCompanero[] = getconteoDCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_NNCompanero[] = getconteoNNCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_ACompanero []= getconteoACompañero( $id_pre['id_pregunta'], $r, $p);
+   $_CACompanero []= getconteoCACompañero( $id_pre['id_pregunta'], $r, $p);
 }
 //Area Subordinado
 foreach($_idPreguntas as $id_pre){
  
-   $_CDSubordinado[] = getconteoCDSubordinado( $id_pre['id_pregunta'], $r);
-   $_DSubordinado[] = getconteoDSubordinado( $id_pre['id_pregunta'], $r);
-   $_NNSubordinado[] = getconteoNNSubordinado( $id_pre['id_pregunta'], $r);
-   $_ASubordinado []= getconteoASubordinado( $id_pre['id_pregunta'], $r);
-   $_CASubordinado []= getconteoCASubordinado( $id_pre['id_pregunta'], $r);
+   $_CDSubordinado[] = getconteoCDSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_DSubordinado[] = getconteoDSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_NNSubordinado[] = getconteoNNSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_ASubordinado []= getconteoASubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_CASubordinado []= getconteoCASubordinado( $id_pre['id_pregunta'], $r, $p);
 }
 //Area Autoevaluacion
 foreach($_idPreguntas as $id_pre){
  
-   $_CDAutoevaluacion[] = getconteoCDAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_DAutoevaluacion[] = getconteoDAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_NNAutoevaluacion[] = getconteoNNAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_AAutoevaluacion[]= getconteoAAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_CAAutoevaluacion []= getconteoCAAutoevaluacion( $id_pre['id_pregunta'], $r);
+   $_CDAutoevaluacion[] = getconteoCDAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_DAutoevaluacion[] = getconteoDAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_NNAutoevaluacion[] = getconteoNNAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_AAutoevaluacion[]= getconteoAAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_CAAutoevaluacion []= getconteoCAAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
 }
 
 
 //Tronco Comun Jefe
 foreach($_idPreguntasTC as $id_pre){
  
-   $_CDJefeTC[] = getconteoCDJefe( $id_pre['id_pregunta'], $r);
-   $_DJefeTC[] = getconteoDJefe( $id_pre['id_pregunta'], $r);
-   $_NNJefeTC[] = getconteoNNJefe( $id_pre['id_pregunta'], $r);
-   $_AJefeTC []= getconteoAJefe( $id_pre['id_pregunta'], $r);
-   $_CAJefeTC []= getconteoCAJefe( $id_pre['id_pregunta'], $r);
+   $_CDJefeTC[] = getconteoCDJefe( $id_pre['id_pregunta'], $r, $p);
+   $_DJefeTC[] = getconteoDJefe( $id_pre['id_pregunta'], $r, $p);
+   $_NNJefeTC[] = getconteoNNJefe( $id_pre['id_pregunta'], $r, $p);
+   $_AJefeTC []= getconteoAJefe( $id_pre['id_pregunta'], $r, $p);
+   $_CAJefeTC []= getconteoCAJefe( $id_pre['id_pregunta'], $r, $p);
 }
 //Tronco Comun Cliente
 foreach($_idPreguntasTC as $id_pre){
  
-   $_CDClienteTC[] = getconteoCDCliente ($id_pre['id_pregunta'], $r);
-   $_DClienteTC[] = getconteoDCliente( $id_pre['id_pregunta'], $r);
-   $_NNClienteTC[] = getconteoNNCliente( $id_pre['id_pregunta'], $r);
-   $_AClienteTC []= getconteoACliente( $id_pre['id_pregunta'], $r);
-   $_CAClienteTC []= getconteoCACliente( $id_pre['id_pregunta'], $r);
+   $_CDClienteTC[] = getconteoCDCliente ($id_pre['id_pregunta'], $r, $p);
+   $_DClienteTC[] = getconteoDCliente( $id_pre['id_pregunta'], $r, $p);
+   $_NNClienteTC[] = getconteoNNCliente( $id_pre['id_pregunta'], $r, $p);
+   $_AClienteTC []= getconteoACliente( $id_pre['id_pregunta'], $r, $p);
+   $_CAClienteTC []= getconteoCACliente( $id_pre['id_pregunta'], $r, $p);
 }
 //Tronco Comun Compañero
 foreach($_idPreguntasTC as $id_pre){
  
-   $_CDCompaneroTC[] = getconteoCDCompañero( $id_pre['id_pregunta'], $r);
-   $_DCompaneroTC[] = getconteoDCompañero( $id_pre['id_pregunta'], $r);
-   $_NNCompaneroTC[] = getconteoNNCompañero( $id_pre['id_pregunta'], $r);
-   $_ACompaneroTC []= getconteoACompañero( $id_pre['id_pregunta'], $r);
-   $_CACompaneroTC []= getconteoCACompañero( $id_pre['id_pregunta'], $r);
+   $_CDCompaneroTC[] = getconteoCDCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_DCompaneroTC[] = getconteoDCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_NNCompaneroTC[] = getconteoNNCompañero( $id_pre['id_pregunta'], $r, $p);
+   $_ACompaneroTC []= getconteoACompañero( $id_pre['id_pregunta'], $r, $p);
+   $_CACompaneroTC []= getconteoCACompañero( $id_pre['id_pregunta'], $r, $p);
 }
 //Tronco Comun Subordinado
 foreach($_idPreguntasTC as $id_pre){
  
-   $_CDSubordinadoTC[] = getconteoCDSubordinado( $id_pre['id_pregunta'], $r);
-   $_DSubordinadoTC[] = getconteoDSubordinado( $id_pre['id_pregunta'], $r);
-   $_NNSubordinadoTC[] = getconteoNNSubordinado( $id_pre['id_pregunta'], $r);
-   $_ASubordinadoTC []= getconteoASubordinado( $id_pre['id_pregunta'], $r);
-   $_CASubordinadoTC []= getconteoCASubordinado( $id_pre['id_pregunta'], $r);
+   $_CDSubordinadoTC[] = getconteoCDSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_DSubordinadoTC[] = getconteoDSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_NNSubordinadoTC[] = getconteoNNSubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_ASubordinadoTC []= getconteoASubordinado( $id_pre['id_pregunta'], $r, $p);
+   $_CASubordinadoTC []= getconteoCASubordinado( $id_pre['id_pregunta'], $r, $p);
 }
 //Tronco Comun Autoevaluacion
 foreach($_idPreguntasTC as $id_pre){
  
-   $_CDAutoevaluacionTC[] = getconteoCDAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_DAutoevaluacionTC[] = getconteoDAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_NNAutoevaluacionTC[] = getconteoNNAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_AAutoevaluacionTC []= getconteoAAutoevaluacion( $id_pre['id_pregunta'], $r);
-   $_CAAutoevaluacionTC []= getconteoCAAutoevaluacion( $id_pre['id_pregunta'], $r);
+   $_CDAutoevaluacionTC[] = getconteoCDAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_DAutoevaluacionTC[] = getconteoDAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_NNAutoevaluacionTC[] = getconteoNNAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_AAutoevaluacionTC []= getconteoAAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
+   $_CAAutoevaluacionTC []= getconteoCAAutoevaluacion( $id_pre['id_pregunta'], $r, $p);
 }
 
 
