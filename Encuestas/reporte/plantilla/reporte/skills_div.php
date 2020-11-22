@@ -1,3 +1,4 @@
+
 <?php  
 function getPlantilla($periodo,$categoria,$_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC){
     
@@ -5,7 +6,16 @@ function getPlantilla($periodo,$categoria,$_usuario,$_conteo,$_conteo_jefe,$_con
 date_default_timezone_set('America/Mexico_City');
 $hoy = getdate();
 $fechaActual=time();
-     $plantilla='<link rel="stylesheet" href="plantilla/reporte/estilos.css">
+     $plantilla='
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta 360</title>
+    <link rel="stylesheet" href="plantilla/reporte/estilos.css">
+</head>
+<body>
      <div class="logo">
      <center>
        <div class="int_logo">
@@ -249,35 +259,35 @@ $fechaActual=time();
      <h2>Nivel de desempeño</h2>
      <table>
             <thead>
-              <tr>
-              <th>Valor</th>
-              <th>Rango</th>
-              <th>Color</th>
+              <tr  style="font-size: 20px !important; heigth:10px;">
+              <th  >Valor</th>
+              <th  >Rango</th>
+              <th  >Color</th>
               </tr>
            </thead>
-           <tbody>
-           <tr>
-            <td> E = Excelente</td>
-            <td> 90-100</td>
+           <tbody class="letras">
+           <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > E = Excelente</td>
+            <td  > 90-100</td>
             <td style="background-color:rgba(48,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> N = Notable</td>
-            <td> 71-89</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > N = Notable</td>
+            <td  > 71-89</td>
             <td style="background-color:rgba(214,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> S = Satisfecho</td>
-            <td> 60-70</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > S = Satisfecho</td>
+            <td  > 60-70</td>
             <td style="background-color:rgba(255,108,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> D = Deficiente</td>
-            <td> 0-59</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > D = Deficiente</td>
+            <td  > 0-59</td>
              <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
-        </table></div><br>';
+        </table></div><br><br>';
  //acotacion
     
     //estadisticas
@@ -469,7 +479,6 @@ $fechaActual=time();
        ';
     for($i=0; $i< count($_idPreguntasTC); $i++){
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         '.$_preguntasTC[$i]["nom_comp"].'  
         </div>
@@ -498,7 +507,6 @@ $fechaActual=time();
     
     if($AutoevaluacionTC[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         AutoEvaluacion
         </div>
@@ -507,7 +515,6 @@ $fechaActual=time();
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         AutoEvaluacion
         </div>
@@ -518,7 +525,6 @@ $fechaActual=time();
     
     if($ClienteTC[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Cliente  
         </div>
@@ -527,7 +533,6 @@ $fechaActual=time();
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Cliente  
         </div>
@@ -538,7 +543,6 @@ $fechaActual=time();
     
     if($CompaneroTC[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Colaborador 
         </div>
@@ -547,7 +551,6 @@ $fechaActual=time();
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Colaborador 
         </div>
@@ -558,7 +561,6 @@ $fechaActual=time();
     
     if($SubordinadoTC[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Subordinado 
         </div>
@@ -567,7 +569,6 @@ $fechaActual=time();
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Subordinado 
         </div>
@@ -578,7 +579,6 @@ $fechaActual=time();
     
     if($JefeTC[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Jefe  
         </div>
@@ -587,7 +587,6 @@ $fechaActual=time();
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Jefe  
         </div>
@@ -655,37 +654,37 @@ $fechaActual=time();
      <h2>Nivel de desempeño</h2>
      <table>
             <thead>
-              <tr>
-              <th>Valor</th>
-              <th>Rango</th>
-              <th>Color</th>
+              <tr style="font-size: 20px !important; heigth:10px;">
+              <th  >Valor</th>
+              <th  >Rango</th>
+              <th  >Color</th>
               </tr>
            </thead>
-           <tbody>
-           <tr>
-            <td> E = Excelente</td>
-            <td> 90-100</td>
+           <tbody class="letras">
+           <tr style="font-size: 20px !important; heigth:10px;">
+            <td  > E = Excelente</td>
+            <td  > 90-100</td>
             <td style="background-color:rgba(48,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> N = Notable</td>
-            <td> 71-89</td>
+          <tr style="font-size: 20px !important; heigth:10px;">
+            <td  > N = Notable</td>
+            <td  > 71-89</td>
             <td style="background-color:rgba(214,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> S = Satisfecho</td>
-            <td> 60-70</td>
+          <tr style="font-size: 20px !important; heigth:10px;">
+            <td  > S = Satisfecho</td>
+            <td  > 60-70</td>
             <td style="background-color:rgba(255,108,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> D = Deficicente</td>
-            <td> 0-59</td>
+          <tr style="font-size: 20px !important; heigth:10px;">
+            <td  > D = Deficicente</td>
+            <td  > 0-59</td>
              <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
         </table></div>';
  //acotacion 
-    $plantilla.='<br><br><br><br><br><br><br><br><br><br><br><br>';
+    $plantilla.='<br>';
     //aqui empieza seccion pregunta area de jefe
     $PromediosAreaJefe= array();
     
@@ -1027,7 +1026,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
        ';
     for($i=0; $i< count($_idPreguntas); $i++){
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         '.$_preguntas[$i]["nom_comp"].'
         </div>
@@ -1055,7 +1053,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
  
     if($Autoevaluacion[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Autoevaluacion  
         </div>
@@ -1064,7 +1061,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Autoevaluacion  
         </div>
@@ -1074,7 +1070,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
     }
     if($Cliente[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Cliente  
         </div>
@@ -1083,7 +1078,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Cliente  
         </div>
@@ -1094,7 +1088,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
    if($Companero[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Compañero  
         </div>
@@ -1103,7 +1096,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Compañero  
         </div>
@@ -1115,7 +1107,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
      if($Subordinado[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Subordinado  
         </div>
@@ -1124,7 +1115,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Subordinado  
         </div>
@@ -1136,7 +1126,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
    if($Jefe[0]["promedio"] < 1){
     $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Jefe  
         </div>
@@ -1145,7 +1134,6 @@ if($Autoevaluacion[0]["promedio"] < 1){
          </div><br>';
     }else{
         $plantilla.='
-        <br>
         <div class="graficos-codigo">  
         Jefe  
         </div>
@@ -1174,19 +1162,19 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
     //estadisticas
    $plantilla.='
-   <center><h2>Promedio de competencias corporativas</h2></center>
+   <center><h3>Promedio de competencias corporativas</h3></center>
    <div class="preguntastc-solo">
      <table>
             <thead>
               <tr>
-              <th colspan="2" style="font-size:100px;">Pregunta</th><td></td>
-              <th style="font-size:100px;">AutoEvaluacion</th>
-              <th style="font-size:100px;">Cliente</th>
-              <th style="font-size:100px;">Colaborador</th>
-              <th style="font-size:100px;">Subordinado</th>
-              <th style="font-size:100px;">Jefe</th>
-              <th style="font-size:100px;">Total</th>
-              <th style="font-size:100px;">Nivel</th>
+              <th colspan="2" >Pregunta</th><td></td>
+              <th >AutoEvaluacion</th>
+              <th >Cliente</th>
+              <th >Colaborador</th>
+              <th >Subordinado</th>
+              <th >Jefe</th>
+              <th >Total</th>
+              <th >Nivel</th>
               </tr>
            </thead>
            <tbody>';
@@ -1200,30 +1188,30 @@ if($Autoevaluacion[0]["promedio"] < 1){
             $cadena_2 =substr( $_preguntasTC[$i]["descri"], 60, $x);
             
             $plantilla.='<tr>
-            <th colspan="2" style="font-size:100px;">
+            <th colspan="2" >
              '.$cadena_1.'<br>'.$cadena_2.'<br>
             </th><td></td>
-            <td style="font-size:100px;">'.$PromediosTCAutoEvaluacion[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCCliente[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCCompanero[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCSubordinado[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCJefe[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$CompetenciasTC[$i]["promedio"].'%</td>
-            <td class="columna-'.$CompetenciasTC[$i]["nivel"].'" style="font-size:100px;">'.$CompetenciasTC[$i]["nivel"].'</td>
+            <td >'.$PromediosTCAutoEvaluacion[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCCliente[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCCompanero[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCSubordinado[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCJefe[$i]["promedio"].'%</td>
+            <td >'.$CompetenciasTC[$i]["promedio"].'%</td>
+            <td class="columna_'.$CompetenciasTC[$i]["nivel"].'" >'.$CompetenciasTC[$i]["nivel"].'</td>
           </tr>';
             
         }else{  
         $plantilla.='<tr>
-            <th colspan="2" style="font-size:100px;">
+            <th colspan="2" >
               '.$_preguntasTC[$i]["descri"].'<br>
             </th><td></td>
-            <td style="font-size:100px;">'.$PromediosTCAutoEvaluacion[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCCliente[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCCompanero[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCSubordinado[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$PromediosTCJefe[$i]["promedio"].'%</td>
-            <td style="font-size:100px;">'.$CompetenciasTC[$i]["promedio"].'%</td>
-            <td class="columna-'.$CompetenciasTC[$i]["nivel"].'" style="font-size:100px;">'.$CompetenciasTC[$i]["nivel"].'</td>
+            <td >'.$PromediosTCAutoEvaluacion[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCCliente[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCCompanero[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCSubordinado[$i]["promedio"].'%</td>
+            <td >'.$PromediosTCJefe[$i]["promedio"].'%</td>
+            <td >'.$CompetenciasTC[$i]["promedio"].'%</td>
+            <td class="columna_'.$CompetenciasTC[$i]["nivel"].'" >'.$CompetenciasTC[$i]["nivel"].'</td>
           </tr>';
       }
     }
@@ -1231,20 +1219,20 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
     $plantilla.='
     <tr>
-     <td colspan="2"  style="font-size:100px;">Total</td><td></td>
-      <td style="font-size:100px;">'.$AutoevaluacionTC[0]["promedio"].'%</td>
-      <td style="font-size:100px;">'.$ClienteTC[0]["promedio"].'%</td>
-      <td style="font-size:100px;">'.$CompaneroTC[0]["promedio"].'%</td>
-      <td style="font-size:100px;">'.$SubordinadoTC[0]["promedio"].'%</td>
-      <td style="font-size:100px;">'.$JefeTC[0]["promedio"].'%</td>
+     <td colspan="2"  >Total</td><td></td>
+      <td >'.$AutoevaluacionTC[0]["promedio"].'%</td>
+      <td >'.$ClienteTC[0]["promedio"].'%</td>
+      <td >'.$CompaneroTC[0]["promedio"].'%</td>
+      <td >'.$SubordinadoTC[0]["promedio"].'%</td>
+      <td >'.$JefeTC[0]["promedio"].'%</td>
     </tr>
     <tr>
-     <td colspan="2" style="font-size:100px;">Nivel</td><td></td>
-      <td class="columna-'.$AutoevaluacionTC[0]["nivel"].'" style="font-size:100px;">'.$AutoevaluacionTC[0]["nivel"].'</td>
-      <td class="columna-'.$ClienteTC[0]["nivel"].'" style="font-size:100px;">'.$ClienteTC[0]["nivel"].'</td>
-      <td class="columna-'.$CompaneroTC[0]["nivel"].'" style="font-size:100px;">'.$CompaneroTC[0]["nivel"].'</td>
-      <td class="columna-'.$SubordinadoTC[0]["nivel"].'" style="font-size:100px;">'.$SubordinadoTC[0]["nivel"].'</td>
-      <td class="columna-'.$JefeTC[0]["nivel"].'" style="font-size:100px;">'.$JefeTC[0]["nivel"].'</td>
+     <td colspan="2" >Nivel</td><td></td>
+      <td class="columna_'.$AutoevaluacionTC[0]["nivel"].'" >'.$AutoevaluacionTC[0]["nivel"].'</td>
+      <td class="columna_'.$ClienteTC[0]["nivel"].'" >'.$ClienteTC[0]["nivel"].'</td>
+      <td class="columna_'.$CompaneroTC[0]["nivel"].'" >'.$CompaneroTC[0]["nivel"].'</td>
+      <td class="columna_'.$SubordinadoTC[0]["nivel"].'" >'.$SubordinadoTC[0]["nivel"].'</td>
+      <td class="columna_'.$JefeTC[0]["nivel"].'" >'.$JefeTC[0]["nivel"].'</td>
     </tr>
     ';
     $plantilla.='</tbody></table></div>';
@@ -1255,18 +1243,19 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
     //estadisticas
  $plantilla.='
-  <center><h3>Promedio de competencias de puesto</h3></center><div class="estadistica">
+  <center><h3>Promedio de competencias de puesto</h3></center>
+  <div class="estadistica">
      <table>
             <thead>
               <tr>
-              <th colspan="2"  style="font-size:100px;" >Pregunta</th><th></th>
-              <th style="font-size:100px;" >AutoEvaluacion</th>
-              <th style="font-size:100px;" >Cliente</th>
-              <th style="font-size:100px;" >Colaborador</th>
-              <th style="font-size:100px;" >Subordinado</th>
-              <th style="font-size:100px;" >Jefe</th>
-              <th style="font-size:100px;" >Total</th>
-              <th style="font-size:100px;" >Nivel</th>
+              <th colspan="2"  style="font-size:10050px50pxpx;" >Pregunta</th><th></th>
+              <th  >AutoEvaluacion</th>
+              <th  >Cliente</th>
+              <th  >Colaborador</th>
+              <th  >Subordinado</th>
+              <th  >Jefe</th>
+              <th  >Total</th>
+              <th  >Nivel</th>
               </tr>
            </thead>
            <tbody>';
@@ -1279,49 +1268,49 @@ if($Autoevaluacion[0]["promedio"] < 1){
             $cadena_2 =substr( $_preguntas[$i]["descri"], 60, $x);
             
             $plantilla.='<tr>
-            <th colspan="2"  style="font-size:100px;" >
+            <th colspan="2"   >
              '.$cadena_1.'<br>'.$cadena_2.' <br>
             </th><td></td>
-            <td  style="font-size:100px;" >'.$PromediosAreaAutoEvaluacion[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaCliente[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaCompanero[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaSubordinado[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaJefe[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$Competencias[$i]["promedio"].'%</td>
-            <td class="columna-'.$Competencias[$i]["nivel"].'"  style="font-size:100px;" >'.$Competencias[$i]["nivel"].'</td>
+            <td   >'.$PromediosAreaAutoEvaluacion[$i]["promedio"].'%</td>
+            <td   >'.$PromediosAreaCliente[$i]["promedio"].'%</td>
+            <td   >'.$PromediosAreaCompanero[$i]["promedio"].'%</td>
+            <td   >'.$PromediosAreaSubordinado[$i]["promedio"].'%</td>
+            <td   >'.$PromediosAreaJefe[$i]["promedio"].'%</td>
+            <td   >'.$Competencias[$i]["promedio"].'%</td>
+            <td class="columna_'.$Competencias[$i]["nivel"].'"   >'.$Competencias[$i]["nivel"].'</td>
           </tr>';
             
         }else{  
         $plantilla.='<tr>
-            <th colspan="2"  style="font-size:100px;" >
+            <th colspan="2"   >
               '.$_preguntas[$i]["descri"].' <br> 
             </th><td></td>
-            <td  style="font-size:100px;" >'.$PromediosAreaAutoEvaluacion[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaCliente[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaCompanero[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaSubordinado[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$PromediosAreaJefe[$i]["promedio"].'%</td>
-            <td  style="font-size:100px;" >'.$Competencias[$i]["promedio"].'%</td>
-            <td class="columna-'.$Competencias[$i]["nivel"].'"  style="font-size:100px;" >'.$Competencias[$i]["nivel"].'</td>
+            <td >'.$PromediosAreaAutoEvaluacion[$i]["promedio"].'%</td>
+            <td >'.$PromediosAreaCliente[$i]["promedio"].'%</td>
+            <td >'.$PromediosAreaCompanero[$i]["promedio"].'%</td>
+            <td >'.$PromediosAreaSubordinado[$i]["promedio"].'%</td>
+            <td >'.$PromediosAreaJefe[$i]["promedio"].'%</td>
+            <td >'.$Competencias[$i]["promedio"].'%</td>
+            <td class="columna_'.$Competencias[$i]["nivel"].'">'.$Competencias[$i]["nivel"].'</td>
           </tr>';
       }
     }
     $plantilla.='
     <tr>
-     <th colspan="2"  style="font-size:100px;" >Total</th><th></th>
-      <td style="font-size:100px;" >'.$Autoevaluacion[0]["promedio"].'%</td>
-      <td style="font-size:100px;" >'.$Cliente[0]["promedio"].'%</td>
-      <td style="font-size:100px;" >'.$Companero[0]["promedio"].'%</td>
-      <td style="font-size:100px;" >'.$Subordinado[0]["promedio"].'%</td>
-      <td style="font-size:100px;" >'.$Jefe[0]["promedio"].'%</td>
+     <th colspan="2" >Total</th><th></th>
+      <td>'.$Autoevaluacion[0]["promedio"].'%</td>
+      <td>'.$Cliente[0]["promedio"].'%</td>
+      <td >'.$Companero[0]["promedio"].'%</td>
+      <td >'.$Subordinado[0]["promedio"].'%</td>
+      <td >'.$Jefe[0]["promedio"].'%</td>
     </tr>
     <tr>
-     <th colspan="2" style="font-size:100px;" >Nivel</th><th></th>
-      <td class="columna-'.$Autoevaluacion[0]["nivel"].'" style="font-size:100px;" >'.$Autoevaluacion[0]["nivel"].'</td>
-      <td style="font-size:100px;"  class="columna-'.$Cliente[0]["nivel"].'">'.$Cliente[0]["nivel"].'</td>
-      <td  style="font-size:100px;" class="columna-'.$Companero[0]["nivel"].'">'.$Companero[0]["nivel"].'</td>
-      <td style="font-size:100px;"  class="columna-'.$Subordinado[0]["nivel"].'">'.$Subordinado[0]["nivel"].'</td>
-      <td  style="font-size:100px;" class="columna-'.$Jefe[0]["nivel"].'">'.$Jefe[0]["nivel"].'</td>
+     <th colspan="2">Nivel</th><th></th>
+      <td class="columna_'.$Autoevaluacion[0]["nivel"].'">'.$Autoevaluacion[0]["nivel"].'</td>
+      <td class="columna_'.$Cliente[0]["nivel"].'">'.$Cliente[0]["nivel"].'</td>
+      <td class="columna_'.$Companero[0]["nivel"].'">'.$Companero[0]["nivel"].'</td>
+      <td class="columna_'.$Subordinado[0]["nivel"].'">'.$Subordinado[0]["nivel"].'</td>
+      <td class="columna_'.$Jefe[0]["nivel"].'">'.$Jefe[0]["nivel"].'</td>
     </tr>
     ';
     $plantilla.='</tbody></table></div>';
@@ -1332,13 +1321,13 @@ if($Autoevaluacion[0]["promedio"] < 1){
     
     
 //seccion de justificaciones  empieza aqui 
-    $plantilla.='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+    $plantilla.='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
      $plantilla.='<div class="justificaciones">
      <center><h3>Justificaciones de competencias corporativas</h3></center>
     ';
     
      for($i = 0, $j=0; $i < count($_idPreguntasTC); $i++, $j=0 ){
-       $plantilla.='<div class="titular-jus-tc">'.$_preguntasTC[$i]["descri"].'</div>
+       $plantilla.='<br><div class="titular-jus-tc">'.$_preguntasTC[$i]["descri"].'</div>
        <div class="jus-jus">';
        foreach($_justificacionesJefeTC as $justificacion_jf_tc){
            
@@ -1453,7 +1442,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
        }
     
      }
-    $plantilla.='</tbody></table></div>';
+    $plantilla.='</tbody></table></div></body>
+    </html>';
     
 //seccion de justificaciones  empieza termina  area
     

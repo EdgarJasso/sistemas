@@ -67,8 +67,9 @@
     background: #F5F5F5;
   }
   
-  table th, table td { 
+  td { 
     text-align: center;
+    font-size: 11px !important;
   }
   
   table th {
@@ -77,58 +78,97 @@
     white-space: nowrap;        
     font-weight: normal;
   }
-  .Tronco-Comun{
-    border: 2px solid #000;
-  }
   .Acotacion{
-    width: 70%;
+    width: 50%;
     margin:0 auto;
     border:2px solid #000;
   }
   .estadistica{
     border: 2px solid #000;
   }
-  .columna_e, .graficos_e{
+  .columna_e{
     background-color: rgba(48,255,0,0.5) !important;
   }
-  .columna_n, .graficos_n{
+  .columna_n{
     background-color: rgba(214,255,0,0.5) !important;
   }
-  .columna_s, .graficos_s{
+  .columna_s{
     background-color: rgba(255,108,0,0.5) !important;
   }
-  .columna_d, .graficos_d{
+  .columna_d{
     background-color: rgba(255,0,0,0.5) !important;
   }
-  .graficos-auto-tc{
-    border:2px solid #000;
+
+  .graficos_e{
+    background-color: rgba(48,255,0,0.5) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    box-shadow: 10px 10px 5px  rgba(0, 0, 0, 0.2);
+  }
+ .graficos_n{
+    background-color: rgba(214,255,0,0.5) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    box-shadow: 10px 10px 5px  rgba(0, 0, 0, 0.2);
+  }
+   .graficos_s{
+    background-color: rgba(255,108,0,0.5) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    box-shadow: 10px 10px 5px  rgba(0, 0, 0, 0.2);
+  }
+   .graficos_d{
+    background-color: rgba(255,0,0,0.5) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
   }
   .graficos-cabezera{
     border:2px solid #000;
-    display: flex;
-    flex-flow: row wrap;
+    display: block;
   }
   .graficos-cabezera .grafico-cab-1{
     border:2px solid rgba(255,0,0,0.5);
     background-color: rgba(255,0,0,0.5);
-    flex-grow: 6;
     text-align: center;
+    float: left;
+    width: 57.5%;
   }
    .graficos-cabezera .grafico-cab-2{
     border:2px solid  rgba(255,108,0,0.5);
     background-color:  rgba(255,108,0,0.5);
     flex-grow: 1;
     text-align: center;
+    float: left;
+    width: 10%;
   }
+  
   .graficos-cabezera .grafico-cab-3{
     border:2px solid rgba(214,255,0,0.5);
     background-color: rgba(214,255,0,0.5);
     flex-grow: 2;
     text-align: center;
+    float: left;
+    width: 20%;
   }
   .graficos-cabezera .grafico-cab-4{
     border:2px solid  rgba(48,255,0,0.5);
     background-color:  rgba(48,255,0,0.5);
     flex-grow: 1;
     text-align: center;
+    float: left;
+    width: 10%;
+  }
+  .preguntastc-solo{
+    border: 2px solid #000;
+  }
+  .justificaciones{
+    text-align: center;
+  }
+  .titular-jus-tc{
+    color: #818181;
   }
