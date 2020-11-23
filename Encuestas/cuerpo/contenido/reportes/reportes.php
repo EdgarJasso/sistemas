@@ -33,9 +33,9 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             </form>
             </div>
             <!-- imprimir 360 fin-->
-            <!-- imprimir 360 inicio-->
+            <!-- imprimir general-->
             <div class="form-group">
-            <form action="../../reporte/reporte_skills_div.php" method="post">
+            <form action="../../reporte/skills.php" method="post">
                 <label class="etiqueta">Evaluacion General:</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:200px;">
@@ -59,7 +59,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                 <button class="btn btn-info" type="submit"><span class="icon-download2"></span>Generar</button>
             </form>
             </div>
-            <!-- imprimir 360 fin-->
+            <!-- imprimir general-->
             <!-- imprimir registro inicio-->
             <div class="form-group">
             <form action="../../reporte/registro.php" method="post">
