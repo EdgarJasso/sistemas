@@ -172,3 +172,17 @@
   .titular-jus-tc{
     color: #818181;
   }
+  .centro{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .enlazado{
+    border:2px solid black; 
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .question{
+    text-align: center;
+  }

@@ -15,14 +15,25 @@ function getUsuario($valor){
           }
     return $_usuario;
 }
-
-function getConteo($valor){
+function getcategoria($r,$p){
+    require_once("cn.php"); $con = conectar();
+    // valor = id usuario
+    $SQL="SELECT 
+    ecsnts_categoria.Descripcion as categoria
+    from ecsnts_validacion, ecsnts_usuario, ecsnts_categoria
+    where ecsnts_validacion.Calificado = ".$r."
+    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado
+    and ecsnts_validacion.Categoria = ecsnts_categoria.Id_categoria
+    and ecsnts_validacion.periodo = '".$p."' LIMIT 1";
+    $execute=mysqli_query($con,$SQL);
+    
+    $_categoria = $resultado=mysqli_fetch_assoc($execute);
+    return $_categoria;
+}
+function getConteo($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     $_conteo = array();
-    $SQL_c="SELECT COUNT(*) as conteo 
-    FROM ecsnts_validacion 
-    WHERE ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_validacion.Validacion = 'hecho'";
+    $SQL_c="SELECT COUNT(*) as conteo FROM ecsnts_validacion WHERE ecsnts_validacion.Calificado = ".$valor." and ecsnts_validacion.Validacion = 'hecho' and ecsnts_validacion.periodo = '".$periodo."'";
     $execute=mysqli_query($con,$SQL_c);
          while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_conteo[] = $row;
@@ -30,84 +41,60 @@ function getConteo($valor){
     return $_conteo;
 }
 
-function getPreguntas($valor){
+function getPreguntas($valor, $periodo){
     require_once("cn.php"); $con = conectar();
-    $SQL = "SELECT 
-    ecsnts_alidacion.Categoria as categoria 
-    from ecsnts_validacion, ecsnts_usuario 
-    where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
-    $execute=mysqli_query($con,$SQL);
-    $_categoria = $resultado=mysqli_fetch_assoc($execute);
-    //Jefe de Sistemas
-    $_pregunt = array();
-    
-    $SQL_p="SELECT 
-    ecsnts_preguntas.id_pregunta as idp, 
-    ecsnts_preguntas.competencia as codigo, 
-    ecsnts_competencias.nombre as nom_comp, 
-    ecsnts_preguntas.id_area as ida, 
-    ecsnts_area.nombre as nom_area, 
-    ecsnts_preguntas.categoria as categoria, 
-    ecsnts_preguntas.descripcion as descri 
-    FROM ecsnts_preguntas, ecsnts_area, ecsnts_competencias 
-    WHERE ecsnts_preguntas.categoria = '".$_categoria["categoria"]."' 
-    AND ecsnts_preguntas.id_area = ecsnts_area.id_area 
-    AND ecsnts_preguntas.competencia = ecsnts_competencias.codigo";
-
+        $SQL = "SELECT ecsnts_validacion.Categoria as categoria from ecsnts_validacion, ecsnts_usuario where ecsnts_validacion.Calificado = ".$valor." and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado  and ecsnts_validacion.periodo = '".$periodo."' LIMIT 1";
+        $execute=mysqli_query($con,$SQL);
+        $_categoria = $resultado=mysqli_fetch_assoc($execute);
+        //Jefe de Sistemas
+        $_pregunt = array();
+        
+    $SQL_p = "SELECT ecsnts_pregunta.id_pregunta as idp, ecsnts_pregunta.competencia as codigo, ecsnts_competencias.nombre as nom_comp, ecsnts_pregunta.id_area as ida, ecsnts_area.nombre as nom_area, ecsnts_pregunta.categoria as categoria, ecsnts_pregunta.descripcion as descri 
+    FROM ecsnts_pregunta, ecsnts_area, ecsnts_competencias, ecsnts_categoria
+    WHERE ecsnts_pregunta.categoria = ecsnts_categoria.Descripcion
+    AND ecsnts_categoria.Id_categoria = '".$_categoria["categoria"]."'
+    AND ecsnts_pregunta.id_area = ecsnts_area.id_area 
+    AND ecsnts_pregunta.competencia = ecsnts_competencias.codigo";
         $execute=mysqli_query($con,$SQL_p);
           while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_pregunt[] = $row;
           }
     return $_pregunt;
 }
-
-function getJusficaciones($valor){
+function getJusficaciones($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id usuario 
-    $SQL="SELECT 
-    ecsnts_validacion.Categoria as categoria 
-    from ecsnts_validacion, ecsnts_usuario 
-    where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
+    $SQL="SELECT ecsnts_validacion.Categoria as categoria, ecsnts_usuario.id_area as area from ecsnts_validacion, ecsnts_usuario where ecsnts_validacion.Calificado = ".$valor." and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
     $execute=mysqli_query($con,$SQL);
     
     $_categoria = $resultado=mysqli_fetch_assoc($execute);
   
     $_justificaiones = array();
-        $SQL_p="SELECT 
-        ecsnts_validacion.Calificador as ca, 
-        ecsnts_respuestas.id_registro as registro, 
-        ecsnts_respuestas.id_pregunta as idp, 
-        ecsnts_respuestas.respuesta as respuesta, 
-        ecsnts_respuestas.justificacion as justificacion 
-        from ecsnts_respuestas, ecsnts_preguntas, ecsnts_contesto, ecsnts_validacion 
-        WHERE ecsnts_respuestas.id_pregunta = ecsnts_preguntas.id_pregunta 
-        AND ecsnts_preguntas.categoria = '".$_categoria['categoria']."' 
-        AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-        AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-        AND ecsnts_validacion.Calificado =".$valor;
+        $SQL_p = "SELECT ecsnts_validacion.Calificador as ca, ecsnts_respuestas.id_registro as registro, ecsnts_respuestas.id_pregunta as idp, ecsnts_respuestas.respuesta as respuesta, ecsnts_respuestas.justificacion as justificacion from ecsnts_respuestas, ecsnts_pregunta, ecsnts_contesto, ecsnts_validacion , ecsnts_categoria WHERE ecsnts_pregunta.id_pregunta = ecsnts_respuestas.id_pregunta AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion AND ecsnts_validacion.Categoria = ecsnts_categoria.Id_categoria AND ecsnts_pregunta.id_area = ".$_categoria['area']." AND ecsnts_validacion.Categoria = ".$_categoria['categoria']." AND ecsnts_validacion.Calificado =".$valor." AND ecsnts_validacion.periodo = '".$periodo."'";    
+   
         $execute=mysqli_query($con,$SQL_p);
          while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_justificaiones[] = $row;
           }
     return $_justificaiones;
 }
-
-function getIdPreguntas($valor){
+function getIdPreguntas($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id usuario
-    $SQL="SELECT 
-    ecsnts_validacion.Categoria as categoria 
+    $SQL="SELECT ecsnts_validacion.Categoria as categoria 
     from ecsnts_validacion, ecsnts_usuario 
     where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
+    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado 
+    and ecsnts_validacion.periodo = '".$periodo."' LIMIT 1";
     $execute=mysqli_query($con,$SQL);
     
     $_categoria = $resultado=mysqli_fetch_assoc($execute);
   
     $_preguntas = array();
-        $SQL_p="SELECT id_pregunta FROM ecsnts_preguntas WHERE ecsnts_categoria = '".$_categoria['categoria']."'";
+        $SQL_p="SELECT id_pregunta 
+        FROM ecsnts_pregunta, ecsnts_categoria 
+        WHERE ecsnts_pregunta.categoria = ecsnts_categoria.Descripcion 
+        AND ecsnts_categoria.Id_categoria ='".$_categoria['categoria']."'";
         $execute=mysqli_query($con,$SQL_p);
          while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_preguntas[] = $row;
@@ -116,75 +103,80 @@ function getIdPreguntas($valor){
 }
 
 
-function getconteoCD($idp, $idu){
+function getconteoCD($idp, $idu, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id pregunta
    $SQL="SELECT COUNT(respuesta) AS 'CD' 
    FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente en desacuerdo' 
+   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente_en_desacuerdo' 
    AND ecsnts_respuestas.id_pregunta =".$idp."
    AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
+   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion
+   AND ecsnts_validacion.periodo = '".$periodo."'
    AND ecsnts_validacion.Calificado =".$idu;
     $exe=mysqli_query($con,$SQL);
      $mostrar=mysqli_fetch_array($exe);
     $r_p_cd=$mostrar["CD"];
     return $r_p_cd;
 }
-function getconteoD($idp, $idu){
+function getconteoDJ($idp, $idu, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id pregunta
    $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, contesto, validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'No estoy de acuerdo' 
+   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
+   WHERE ecsnts_respuestas.respuesta LIKE 'No_estoy_de_acuerdo' 
    AND ecsnts_respuestas.id_pregunta =".$idp."
    AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
    AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
+   AND ecsnts_validacion.periodo = '".$periodo."'
    AND ecsnts_validacion.Calificado =".$idu;
     $exe=mysqli_query($con,$SQL);
      $mostrar=mysqli_fetch_array($exe);
     $r_p_cd=$mostrar["CD"];
     return $r_p_cd;
 }
-function getconteoNN($idp, $idu){
+function getconteoNN($idp, $idu, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id pregunta
    $SQL="SELECT COUNT(respuesta) AS 'CD' 
    FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Ni acuerdo - ni en desacuerdo' 
+   WHERE ecsnts_respuestas.respuesta LIKE 'Ni_acuerdo_ni_en_desacuerdo' 
    AND ecsnts_respuestas.id_pregunta =".$idp."
    AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
    AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
+   AND ecsnts_validacion.periodo = '".$periodo."'
    AND ecsnts_validacion.Calificado =".$idu;
     $exe=mysqli_query($con,$SQL);
      $mostrar=mysqli_fetch_array($exe);
     $r_p_cd=$mostrar["CD"];
     return $r_p_cd;
 }
-function getconteoA($idp, $idu){
+function getconteoA($idp, $idu, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id pregunta
    $SQL="SELECT COUNT(respuesta) AS 'CD' 
    FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'De acuerdo' 
+   WHERE ecsnts_respuestas.respuesta LIKE 'De_acuerdo' 
    AND ecsnts_respuestas.id_pregunta =".$idp."
    AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
    AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
+   AND ecsnts_validacion.periodo = '".$periodo."'
    AND ecsnts_validacion.Calificado =".$idu;
     $exe=mysqli_query($con,$SQL);
      $mostrar=mysqli_fetch_array($exe);
     $r_p_cd=$mostrar["CD"];
     return $r_p_cd;
 }
-function getconteoCA($idp, $idu){
+function getconteoCA($idp, $idu, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id pregunta
    $SQL="SELECT COUNT(respuesta) AS 'CD' 
    FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente de acuerdo' 
+   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente_de_acuerdo' 
    AND ecsnts_respuestas.id_pregunta =".$idp."
    AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
    AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
+   AND ecsnts_validacion.periodo = '".$periodo."'
    AND ecsnts_validacion.Calificado =".$idu;
     $exe=mysqli_query($con,$SQL);
      $mostrar=mysqli_fetch_array($exe);
@@ -195,61 +187,24 @@ function getconteoCA($idp, $idu){
 
 function getPreguntasTC($valor){
     require_once("cn.php"); $con = conectar();
-    $SQL = "SELECT 
-    ecsnts_validacion.Categoria as categoria 
-    from ecsnts_validacion, ecsnts_usuario 
-    where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
-    $execute=mysqli_query($con,$SQL);
-    $_categoria = $resultado=mysqli_fetch_assoc($execute);
-    //Jefe de Sistemas
-    $_pregunt = array();
     
-    $SQL_p="SELECT 
-    ecsnts_preguntas.id_pregunta as idp, 
-    ecsnts_preguntas.competencia as codigo, 
-    ecsnts_competencias.nombre as nom_comp, 
-    ecsnts_preguntas.id_area as ida, 
-    ecsnts_area.nombre as nom_area, 
-    ecsnts_preguntas.categoria as categoria, 
-    ecsnts_preguntas.descripcion as descri 
-    FROM ecsnts_preguntas, ecsnts_area, ecsnts_competencias 
-    WHERE ecsnts_preguntas.categoria = 'Tronco Común' 
-    AND ecsnts_preguntas.id_area = ecsnts_area.id_area 
-    AND ecsnts_preguntas.competencia = ecsnts_competencias.codigo order by idp";
-
-        $execute=mysqli_query($con,$SQL_p);
+    $_pregunt = array();
+    $SQL_p="SELECT ecsnts_pregunta.id_pregunta as idp, ecsnts_pregunta.competencia as codigo, ecsnts_competencias.nombre as nom_comp, ecsnts_pregunta.id_area as ida, ecsnts_area.nombre as nom_area, ecsnts_pregunta.categoria as categoria, ecsnts_pregunta.descripcion as descri FROM ecsnts_pregunta, ecsnts_area, ecsnts_competencias WHERE ecsnts_pregunta.categoria = 'Tronco Común' AND ecsnts_pregunta.id_area = ecsnts_area.id_area AND ecsnts_pregunta.competencia = ecsnts_competencias.codigo";
+         
+    $execute=mysqli_query($con,$SQL_p);
           while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_pregunt[] = $row;
           }
     return $_pregunt;
 }
 
-function getJusficacionesTC($valor){
+function getJusficacionesTC($valor, $periodo){
     require_once("cn.php"); $con = conectar();
     // valor = id usuario 
-    $SQL="SELECT 
-    ecsnts_validacion.Categoria as categoria 
-    from ecsnts_validacion, ecsnts_usuario 
-    where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
-    $execute=mysqli_query($con,$SQL);
-    
-    $_categoria = $resultado=mysqli_fetch_assoc($execute);
-  
+   
     $_justificaiones = array();
-        $SQL_p="SELECT 
-        ecsnts_validacion.Calificador as ca, 
-        ecsnts_respuestas.id_registro as registro, 
-        ecsnts_respuestas.id_pregunta as idp, 
-        ecsnts_respuestas.respuesta as respuesta, 
-        ecsnts_respuestas.justificacion as justificacion 
-        from ecsnts_respuestas, ecsnts_preguntas, ecsnts_contesto, ecsnts_validacion 
-        WHERE ecsnts_respuestas.id_pregunta = ecsnts_preguntas.id_pregunta 
-        AND ecsnts_preguntas.categoria = 'Tronco Común' 
-        AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-        AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-        AND ecsnts_validacion.Calificado =".$valor;
+        $SQL_p = "SELECT ecsnts_validacion.Calificador as ca, ecsnts_respuestas.id_registro as registro, ecsnts_respuestas.id_pregunta as idp, ecsnts_respuestas.respuesta as respuesta, ecsnts_respuestas.justificacion as justificacion from ecsnts_respuestas, ecsnts_pregunta, ecsnts_contesto, ecsnts_validacion , ecsnts_categoria WHERE ecsnts_respuestas.id_pregunta = ecsnts_pregunta.id_pregunta AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion AND ecsnts_pregunta.categoria = ecsnts_categoria.Descripcion AND ecsnts_pregunta.categoria = 'Tronco Común' AND ecsnts_validacion.Calificado =".$valor." AND ecsnts_validacion.periodo = '".$periodo."'";  
+   
         $execute=mysqli_query($con,$SQL_p);
          while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_justificaiones[] = $row;
@@ -260,98 +215,14 @@ function getJusficacionesTC($valor){
 function getIdPreguntasTC($valor){
     require_once("cn.php"); $con = conectar();
     // valor = id usuario
-    $SQL="SELECT 
-    ecsnts_validacion.Categoria as categoria 
-    from ecsnts_validacion, ecsnts_usuario 
-    where ecsnts_validacion.Calificado = ".$valor." 
-    and ecsnts_usuario.id_usuario = ecsnts_validacion.Calificado LIMIT 1";
-    $execute=mysqli_query($con,$SQL);
-    
-    $_categoria = $resultado=mysqli_fetch_assoc($execute);
   
     $_preguntas = array();
-        $SQL_p="SELECT id_pregunta FROM ecsnts_preguntas WHERE categoria = 'Tronco Común'";
+        $SQL_p="SELECT id_pregunta FROM ecsnts_pregunta WHERE categoria = 'Tronco Común'";
         $execute=mysqli_query($con,$SQL_p);
          while($row = $resultado=mysqli_fetch_assoc($execute)){
          $_preguntas[] = $row;
           }
     return $_preguntas;
-}
-
-function getconteoCDTC($idp, $idu){
-    require_once("cn.php"); $con = conectar();
-    // valor = id pregunta
-   $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente en desacuerdo' 
-   AND ecsnts_respuestas.id_pregunta =".$idp."
-   AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-   AND ecsnts_validacion.Calificado =".$idu;
-    $exe=mysqli_query($con,$SQL);
-     $mostrar=mysqli_fetch_array($exe);
-    $r_p_cd=$mostrar["CD"];
-    return $r_p_cd;
-}
-function getconteoDTC($idp, $idu){
-    require_once("cn.php"); $con = conectar();
-    // valor = id pregunta
-   $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'No estoy de acuerdo' 
-   AND ecsnts_respuestas.id_pregunta =".$idp."
-   AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-   AND ecsnts_validacion.Calificado =".$idu;
-    $exe=mysqli_query($con,$SQL);
-     $mostrar=mysqli_fetch_array($exe);
-    $r_p_cd=$mostrar["CD"];
-    return $r_p_cd;
-}
-function getconteoNNTC($idp, $idu){
-    require_once("cn.php"); $con = conectar();
-    // valor = id pregunta
-   $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Ni acuerdo- ni en desacuerdo' 
-   AND ecsnts_respuestas.id_pregunta =".$idp."
-   AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-   AND ecsnts_validacion.Calificado =".$idu;
-    $exe=mysqli_query($con,$SQL);
-     $mostrar=mysqli_fetch_array($exe);
-    $r_p_cd=$mostrar["CD"];
-    return $r_p_cd;
-}
-function getconteoATC($idp, $idu){
-    require_once("cn.php"); $con = conectar();
-    // valor = id pregunta
-   $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'De acuerdo' 
-   AND ecsnts_respuestas.id_pregunta =".$idp."
-   AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-   AND ecsnts_validacion.Calificado =".$idu;
-    $exe=mysqli_query($con,$SQL);
-     $mostrar=mysqli_fetch_array($exe);
-    $r_p_cd=$mostrar["CD"];
-    return $r_p_cd;
-}
-function getconteoCATC($idp, $idu){
-    require_once("cn.php"); $con = conectar();
-    // valor = id pregunta
-   $SQL="SELECT COUNT(respuesta) AS 'CD' 
-   FROM ecsnts_respuestas, ecsnts_contesto, ecsnts_validacion 
-   WHERE ecsnts_respuestas.respuesta LIKE 'Completamente de acuerdo' 
-   AND ecsnts_respuestas.id_pregunta =".$idp."
-   AND ecsnts_respuestas.id_registro = ecsnts_contesto.id_registro 
-   AND ecsnts_contesto.id_validacion = ecsnts_validacion.Id_validacion 
-   AND ecsnts_validacion.Calificado =".$idu;
-    $exe=mysqli_query($con,$SQL);
-     $mostrar=mysqli_fetch_array($exe);
-    $r_p_cd=$mostrar["CD"];
-    return $r_p_cd;
 }
 
 ?>

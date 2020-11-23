@@ -1,32 +1,48 @@
 <?php  
 
-function getPlantilla($_usuario, $_conteo, $_preguntas, $_justificaciones, $_idPreguntas, $_CD, $_D, $_NN, $_A, $_CA, $_preguntasTC, $_justificacionesTC, $_idPreguntasTC, $_CDTC, $_DTC, $_NNTC, $_ATC, $_CATC){
+function getPlantilla($periodo, $_usuario, $_categoria, $_conteo, $_preguntas, $_justificaciones, $_idPreguntas, $_CD, $_D, $_NN, $_A, $_CA, $_preguntasTC, $_justificacionesTC, $_idPreguntasTC, $_CDTC, $_DTC, $_NNTC, $_ATC, $_CATC){
 date_default_timezone_set('America/Mexico_City');
 $hoy = getdate();
 $fechaActual=time();
-     $plantilla='
-       <h1><div class="logo">
-     
-      <div class="logo-1"><img src="img/cryoo.jpg" style=" width:80%;"></div>
-      <div class="logo-2"><img src="img/360.png" ></div> 
-      
-      </div></h1>
-      
-      <div id="company">
-        <div>Grupo Cryo</div>
-        <div>Circuito Economistas 31A,<br/> Edo. México 54085, MX</div>
-      </div>
-      <br>
-      <div id="project">
-        <div><span>Datos de impresion:</span> </div>';
-        $plantilla.='
-        <div><span>Fecha: </span>"'; 
-        $plantilla.= date("d-m-Y"); 
-        $plantilla.='"</div>
-        <div><span>Hora: </span>"'; 
-        $plantilla.= $hoy['hours'].":".$hoy['minutes'].":".$hoy['seconds'];
-        $plantilla.='"</div>
-     </div><br><br><br><br>';
+$plantilla='
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta General</title>
+<link rel="stylesheet" href="plantilla/reporte/estilos.css">
+</head>
+<body>
+<div class="logo">
+<center>
+  <div class="int_logo">
+    <img src="img/logo.png" style=" width:80%;">
+  </div>
+</center>
+</div>
+ 
+<div class="cabeza">
+<div class="izq">
+   <div id="project">
+   <br>
+       <div><span><b>Datos de Impresion:</b> </span> </div>
+       <span>Grupo Cryo</span>
+       <div>
+       Circuito Economistas 31A,<br /> Edo. México 54085, MX</span>
+       <br>';
+       $plantilla.='
+       <div><br><span>Fecha: </span>"'; 
+       $plantilla.=date("d-m-Y"); 
+       $plantilla.='"</div>
+       <div><span>Hora: </span>"'; 
+       $plantilla.= $hoy['hours'].":".$hoy['minutes'].":".$hoy['seconds'];
+       $plantilla.='"</div>
+       <div><span>Periodo: </span>'.$periodo.'
+       </div>
+   </div>
+   </div>
+</div>';
     
     foreach($_usuario as $usuario){
         $iduser = $usuario['idu'];
@@ -37,17 +53,20 @@ $fechaActual=time();
     foreach($_conteo as $conteo){
         $con = $conteo['conteo'];
     }
-    
-    $plantilla.='<div class="cabezera">
-     <div class="user"> 
-       <b>Id Usuario:</b> '.$iduser.' <br>
-       <b>Nombre:</b> '.$nombre.' <br>
-       <b>Area:</b> '.$area.' <br>
-     </div>
-     <div class="conteo"> 
-       <b>No. veces Evaluado:</b> '.$con.'
-     </div>
-    </div><br><br>';
+
+    $plantilla.='
+    <div class="der">
+        <div class="user"> 
+        <b>Id Usuario:</b> '.$iduser.' <br>
+        <b>Nombre:</b> '.$nombre.' <br>
+        <b>Area:</b> '.$area.' <br>
+        <b>Puesto:</b> '.$_categoria['categoria'].' <br>
+        </div><br>
+        <div class="conteo"> 
+        <b>No. veces Evaluado:</b> '.$con.'
+        </div>
+        </div>
+    </div><br>';
     
     $promedio = array();   $promedioTC = array();
   
@@ -142,21 +161,24 @@ $fechaActual=time();
          </table>
        </div>
        <div class="justificaciones">
-       <p style="font-size:14px;"><b>Justificaciones</b></p>';
+       <p style="font-size:12px;"><b>Justificaciones</b></p>';
        for($j=0; $j < count($_justificacionesTC) ;$j++){
            if($_preguntasTC[$i]["idp"] == $_justificacionesTC[$j]["idp"] ){
         
       // <p class="texto-qt"><b>Registro:</b> '.$_justificaciones[$j]["registro"].'&nbsp;&nbsp;<b>Id Pregunta:</b> '.$_justificaciones[$j]["idp"].'&nbsp;&nbsp; <b>Respuesta:</b> '.$_justificaciones[$j]["respuesta"].'<p><b>Justificacion:</b>
         $plantilla.='
        <div class="texto-j">
-           '.$_justificacionesTC[$j]["justificacion"].'</div><br>
+            <span>
+           '.$_justificacionesTC[$j]["justificacion"].'
+           </span>
+       </div>
        ';}}
         $plantilla.='</div>';
         $proTC = ($TOTALTC * 100) / $totalTC;
         $tempoTC = substr( $proTC, 0, 4);
        $promedioTC[$i]["promedio"] = $tempoTC;
          
-     $plantilla.='<div class="promed"><b>Promedio de Cumplimiento de competencia: </b> '.$tempoTC.'%</div></div><br>';
+     $plantilla.='<br><div class="promed"><b>Promedio de Cumplimiento de competencia: </b> '.$tempoTC.'%</div></div><br>';
     } 
    
     $NivelTC= array(); $Nivel=array();
@@ -195,34 +217,42 @@ $fechaActual=time();
            $plantilla.='</tbody>
         </table></div>
         <br><br><br>
+
         <div class="Acotacion">
      <h2>Nivel de desempeño</h2>
      <table>
             <thead>
-              <tr>
-              <th>Valor</th>
-              <th>Rango</th>
+              <tr  style="font-size: 20px !important; heigth:10px;">
+              <th  >Valor</th>
+              <th  >Rango</th>
+              <th  >Color</th>
               </tr>
            </thead>
-           <tbody>
-           <tr>
-            <td> E = Excelente</td>
-            <td> 90-100</td>
+           <tbody class="letras">
+           <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > E = Excelente</td>
+            <td  > 90-100</td>
+            <td style="background-color:rgba(48,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> N = Notable</td>
-            <td> 71-89</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > N = Notable</td>
+            <td  > 71-89</td>
+            <td style="background-color:rgba(214,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> S = Satisfecho</td>
-            <td> 60-70</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > S = Satisfecho</td>
+            <td  > 60-70</td>
+            <td style="background-color:rgba(255,108,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> D = Deficiente</td>
-            <td> 0-59</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > D = Deficiente</td>
+            <td  > 0-59</td>
+             <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
-        </table></div></div>';
+        </table></div>
+        
+        </div>';
     
      $plantilla.='</div><br><br><br><br>';
     
@@ -238,7 +268,7 @@ $fechaActual=time();
         '.$_preguntasTC[$i]["codigo"].'  -  '.$promedioTC[$i]["promedio"].'%
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'. $NivelTC[$i]["nivel"].' " style="width: '.$promedioTC[$i]["promedio"].'%;">'.$_preguntasTC[$i]["nom_comp"].'</div>
+          <div class="graficos-generar graficos_'. $NivelTC[$i]["nivel"].' " style="width: '.$promedioTC[$i]["promedio"].'%;">'.$_preguntasTC[$i]["nom_comp"].'</div>
          </div><br>';        
     }
     
@@ -350,14 +380,17 @@ $fechaActual=time();
       // <p class="texto-qt"><b>Registro:</b> '.$_justificaciones[$j]["registro"].'&nbsp;&nbsp;<b>Id Pregunta:</b> '.$_justificaciones[$j]["idp"].'&nbsp;&nbsp; <b>Respuesta:</b> '.$_justificaciones[$j]["respuesta"].'<p><b>Justificacion:</b>
         $plantilla.='
        <div class="texto-j">
-           '.$_justificaciones[$j]["justificacion"].'</div><br>
+            <span>
+           '.$_justificaciones[$j]["justificacion"].'
+            </span>
+        </div>
        ';}}
         $plantilla.='</div>';
         $pro = ($TOTAL * 100) / $total;
         $tempo = substr( $pro, 0, 4);
        $promedio[$i]["promedio"] = $tempo;
          
-     $plantilla.='<div class="promed"><b>Promedio de Cumplimiento de competencia: </b> '.$tempo.'%</div></div><br>';
+     $plantilla.='<br><div class="promed"><b>Promedio de Cumplimiento de competencia: </b> '.$tempo.'%</div></div><br>';
     }
      
     $plantilla.='
@@ -399,30 +432,36 @@ $fechaActual=time();
      <h2>Nivel de desempeño</h2>
      <table>
             <thead>
-              <tr>
-              <th>Valor</th>
-              <th>Rango</th>
+              <tr  style="font-size: 20px !important; heigth:10px;">
+              <th  >Valor</th>
+              <th  >Rango</th>
+              <th  >Color</th>
               </tr>
            </thead>
-           <tbody>
-           <tr>
-            <td> E = Excelente</td>
-            <td> 90-100</td>
+           <tbody class="letras">
+           <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > E = Excelente</td>
+            <td  > 90-100</td>
+            <td style="background-color:rgba(48,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> N = Notable</td>
-            <td> 71-89</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > N = Notable</td>
+            <td  > 71-89</td>
+            <td style="background-color:rgba(214,255,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> S = Satisfecho</td>
-            <td> 60-70</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > S = Satisfecho</td>
+            <td  > 60-70</td>
+            <td style="background-color:rgba(255,108,0,0.5);"></td>
           </tr>
-          <tr>
-            <td> D = Deficiente</td>
-            <td> 0-59</td>
+          <tr  style="font-size: 20px !important; heigth:10px;">
+            <td  > D = Deficiente</td>
+            <td  > 0-59</td>
+             <td style="background-color:rgba(255,0,0,0.5);"></td>
           </tr>
           </tbody>
-        </table></div></div>';
+        </table></div>
+        </div>';
     
     
     $plantilla.='
@@ -436,7 +475,7 @@ $fechaActual=time();
         '.$_preguntas[$i]["codigo"].'  -  '.$promedio[$i]["promedio"].'%
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos-'. $Nivel[$i]["nivel"].' " style="width: '.$promedio[$i]["promedio"].'%;"> '.$_preguntas[$i]["nom_comp"].'</div>
+          <div class="graficos-generar graficos_'. $Nivel[$i]["nivel"].' " style="width: '.$promedio[$i]["promedio"].'%;"> '.$_preguntas[$i]["nom_comp"].'</div>
          </div><br>';        
     }
     $plantilla.='<br>
