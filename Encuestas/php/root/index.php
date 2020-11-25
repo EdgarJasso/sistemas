@@ -199,14 +199,14 @@ if($now > $_SESSION['expire']) {
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
+<div class="tab-pane fade active in" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
    <div class="container-fluid">
       <div id="contenedor_encuestas_faltantes"></div>
    </div>
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade active in" id="pills-reporte" role="tabpanel" aria-labelledby="pills-reporte-tab">
+<div class="tab-pane fade " id="pills-reporte" role="tabpanel" aria-labelledby="pills-reporte-tab">
    <div class="container-fluid">
       <div id="contenedor_reporte"></div>
    </div>
@@ -287,8 +287,8 @@ if($now > $_SESSION['expire']) {
 </body>
 </html>
 <?php
-} else {
+}else {
    echo "Inicia Sesion para acceder a este contenido.<br>";
-   echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
+   echo '<script type="text/javascript">window.location = "'.URL.'prueba1/Encuestas";</script>';
 exit;
 }?>

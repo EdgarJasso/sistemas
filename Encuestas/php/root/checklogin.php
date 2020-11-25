@@ -34,7 +34,7 @@ try {
         $_SESSION['permiso'] = $result['permiso'];
         $_SESSION['id'] = $result['id_usuario'];
         $_SESSION['start'] =time();
-        $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
+        $_SESSION['expire'] = $_SESSION['start'] + (1 * 60);// minutos de sesion
         $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
         if($_SESSION['permiso']='root'){
@@ -54,7 +54,8 @@ $db = $database ->close();
 
 }else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
-    echo '<script type="text/javascript">window.location = "'.URL.'/BITACORA";</script>';
+    include '../../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 }
 
 ?>
