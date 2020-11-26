@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 function getUsuario($valor){
     require_once("cn.php"); $con = conectar();
@@ -223,6 +225,12 @@ function getIdPreguntasTC($valor){
          $_preguntas[] = $row;
           }
     return $_preguntas;
+}
+
+}else{
+    echo "Inicia Sesion para acceder a este contenido.<br>";
+    include '../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 }
 
 ?>

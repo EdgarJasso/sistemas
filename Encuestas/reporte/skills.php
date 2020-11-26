@@ -1,4 +1,6 @@
-<?php 
+<?php
+session_start();
+if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 $r= $_POST['id'];
 $p = $_POST['periodo'];
@@ -94,4 +96,10 @@ foreach($_usuario as $usuario){
 
 $name_doc = 'Evaluacion-('.$nombre.').pdf';
 $mpdf -> Output($name_doc,"I");
+}else{
+    echo "Inicia Sesion para acceder a este contenido.<br>";
+    include '../../dominio.php';
+    echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
+}
 ?>
+

@@ -37,6 +37,7 @@ $mpdf->writeHtml( $plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
 $mpdf -> Output("Reporte_del_Registro(".$r.").pdf","D");
 } else {
     echo "Inicia Sesion para acceder a este contenido.<br>";
+    include '../../dominio.php';
     echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
  exit;
  }

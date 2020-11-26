@@ -147,7 +147,7 @@
             }
 	}else{
 		echo "Inicia Sesion para acceder a este contenido.<br>";
-		include '../../../dominio.php';
+		include '../../../../dominio.php';
     echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 	}
 ?> 
