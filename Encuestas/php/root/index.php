@@ -77,6 +77,12 @@ if($now > $_SESSION['expire']) {
    <div id="contenido-menu">
       <ul class="">  
           <li>   
+                 <a class="nav-link" id="pills-grafico-tab" data-toggle="pill" href="#pills-grafico" 
+                     role="tab" aria-controls="pills-grafico" aria-selected="false">DashBoard
+                    <span class="icon-home"></span>
+                 </a>
+          </li>
+          <li>   
                  <a class="nav-link" id="pills-encuestas_faltantes-tab" data-toggle="pill" href="#pills-encuestas_faltantes" 
                      role="tab" aria-controls="pills-area" aria-selected="false">Evaluaciones
                     <span class="icon-home"></span>
@@ -136,12 +142,19 @@ if($now > $_SESSION['expire']) {
                     <span class="icon-home"></span>
                  </a>
           </li>
+        
     </ul>
    </div>
    
    <div id="contenido-general" class="">
    <div class="tab-content" id="pills-tabContent">
-
+<!-- inicio -->
+<div class="tab-pane fade  active in" id="pills-grafico" role="tabpanel" aria-labelledby="pills-grafico-tab">
+   <div class="container-fluid">
+      <div id="contenedor_grafico"></div>
+   </div>
+  </div>
+<!-- fin -->
 <!-- inicio -->
 <div class="tab-pane  " id="pills-area" role="tabpanel" aria-labelledby="pills-area-tab">
    <div class="container-fluid">
@@ -199,7 +212,7 @@ if($now > $_SESSION['expire']) {
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade active in" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
+<div class="tab-pane fade" id="pills-encuestas_faltantes" role="tabpanel" aria-labelledby="pills-encuestas_faltantes-tab">
    <div class="container-fluid">
       <div id="contenedor_encuestas_faltantes"></div>
    </div>
@@ -280,6 +293,7 @@ if($now > $_SESSION['expire']) {
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
     $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');  
     $('#contenedor_reporte').load('../../cuerpo/contenido/reportes/reportes.php');  
+    $('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
     
 });
 </script>

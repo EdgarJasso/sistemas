@@ -219,3 +219,9 @@ background-color: #fff;
     padding-left: 5px;  
 }
 /*estilos datatables*/
+/*estilos panel grafico*/
+#grafico{
+    border: 2px solid #494949;
+    border-radius: 5px;
+}
+/*estilos panel grafico*/
