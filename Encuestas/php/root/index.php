@@ -46,6 +46,9 @@ if($now > $_SESSION['expire']) {
   <link rel="stylesheet" href="../../package/dist/sweetalert2.min.css">
 
   <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.min.css">
+
+  <link rel="stylesheet" href="../../graficos/Chart.css">
+  <link rel="stylesheet" href="../../graficos/Chart.min.css">
   
 </head>
 <body>
@@ -250,6 +253,11 @@ if($now > $_SESSION['expire']) {
 <script src="../../package/dist/sweetalert2.min.js"></script>
 <script src="../../js/moment.min.js"></script>
 <script src="../../js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="../../graficos/Chart.js"></script>
+<script src="../../graficos/Chart.min.js"></script>
+<script src="../../graficos/Chart.bundle.js"></script>
+<script src="../../graficos/Chart.bundle.min.js"></script>
 
 <script src="../../js/dataTables.buttons.min.js"></script>
 <script src="../../js/jszip.min.js"></script>
