@@ -9,7 +9,7 @@
 
         <div id="container_all_one">
 
-            <div id="container_all_one_one">
+            <div id="container_of_grafic">
 
             <form class="text-center">
                 <div class="">
@@ -33,7 +33,7 @@
 
             </div>
 
-            <div id="container_all_one_two">
+            <div id="container_of_grafic">
                 <form class="text-center" id="grafico_area_form">
                     <div class="">
                     <h4 class="">Encuestas Faltantes del Area:</h4>    
@@ -68,11 +68,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <br>
         <div id="container_all_two">
 
 
-            <div id="container_all_one_three">
+            <div id="container_of_grafic">
 
             <form class="text-center" id="grafico_califica_form">
                 <div class="">
@@ -110,7 +110,7 @@
 
             </div>
 
-            <div id="container_all_one_four">
+            <div id="container_of_grafic">
                 <form class="text-center" id="grafico_evaluado_form">
                     <div class="">
                         <h4 class="">Evaluaciones Faltantes del usuario:</h4> 
