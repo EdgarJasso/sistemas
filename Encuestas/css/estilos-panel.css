@@ -224,10 +224,35 @@ background-color: #fff;
     border: 2px solid #494949;
     border-radius: 5px;
 }
-#grafico_periodo_contenedor{
+#container_all_graficos{
+    border: 2px solid red;
+}
+#container_all_one, #container_all_two{
+    border:2px solid green; 
+    display: flex;
+    justify-content: center;
+}
+#container_all_one_one{
+    border:2px solid black;
+    flex-grow: 5;
+}
+#container_all_one_two{
+    border:2px solid darkmagenta;
+    flex-grow: 5;
+}
+#container_all_one_three{
+    border:2px solid darkgoldenrod;
+    flex-grow: 4;
+}
+#container_all_one_four{
+    border:2px solid darkmagenta;
+    flex-grow: 4;
+}
+#grafico_periodo_contenedor, #grafico_area_contenedor, #grafico_califica_contenedor, #grafico_evaluado_contenedor{
     border:3px solid blue;
-    width: 500px;
-    height: 250px;
     margin: 0 auto;
+    margin-top:-10px;
+    max-width: 450px;
+    max-height: 250px;
 }
 /*estilos panel grafico*/
