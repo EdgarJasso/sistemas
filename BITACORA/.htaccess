@@ -2,9 +2,9 @@
 Options All -Indexes
 
 #Paginas de Error personalizadas
-#ErrorDocument 404 /bitacora/404.html
-#ErrorDocument 403 /bitacora/403.html
-#ErrorDocument 500 /bitacora/500.html
+ErrorDocument 404 /bitacora/404.php
+ErrorDocument 403 /bitacora/403.php
+ErrorDocument 500 /bitacora/500.php
 
 
 #Redirigir a sitio en mantenimiento o construccion

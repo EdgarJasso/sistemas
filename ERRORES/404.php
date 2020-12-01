@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERROR 403</title>
+    <title>ERROR 404</title>
 </head>
 <body>
     <style>
@@ -45,8 +45,9 @@
 
 <div class="contenedor">
     <div class="row">
-    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2017/08/error403-800x419.jpg" alt="403">
-       <a href="http://sistemascryo.atwebpages.com/">Regresar</a>
+    <?php include '../dominio.php';?>
+    <img src="<?=URL?>/ERRORES/404.jpg" alt="404">
+       <a href="<?=URL?>">Regresar</a>
     </div>
 </div>
 

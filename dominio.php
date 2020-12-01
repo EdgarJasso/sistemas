@@ -1,4 +1,4 @@
 <?php 
-define("URL", "http://localhost/sistemas");
+define("URL", "http://sistemascryo.atwebpages.com");
 //http://sistemascryo.atwebpages.com
 ?>

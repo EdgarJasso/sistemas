@@ -2,23 +2,20 @@
 ob_start();
 function conectar(){
  
-	/*$user="reliabl1";
-	$db="reliabl1_pruebas";
-	$pass="6kdT2k9cJ2";
-	$server="67.227.144.72";
-	$con=mysqli_connect($server,$user,$pass,$db) or die("Error".mysql_error());
-    */
-//    $user="YhqF5BBmwH";
-//	$db="YhqF5BBmwH";
-//	$pass="ArhDcwsUBQ";
-//	$server="remotemysql.com";
-//	$con=mysqli_connect($server,$user, $pass,$db) or die("Error".mysql_error());
-	
+	$user="3571327_sistemas";
+	$db="3571327_sistemas";
+	$pass = "alohomora_5246";
+	$server="fdb29.awardspace.net";
+/*
 	$user="root";
 	$db="sistemas";
+	$pass = "";
 	$server="localhost";
+*/
+	
+	
     
-	$con=mysqli_connect($server,$user,"",$db) or die("Error".mysqli_connect_error());
+	$con=mysqli_connect($server,$user,$pass,$db) or die("Error".mysqli_connect_error());
 	$base=mysqli_set_charset($con,"utf8")or die ("Error".mysqli_connect_error());
     
     //echo "Connected successfully";

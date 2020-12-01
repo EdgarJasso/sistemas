@@ -35,8 +35,9 @@
 
 <div class="contenedor">
     <div class="row">
-        <img src="http://via.placeholder.com/250x180" alt="500">
-        <a href="http://sistemascryo.atwebpages.com/">Regresar</a>
+    <?php include '../dominio.php';?>
+    <img src="<?=URL?>/ERRORES/500.jpg" alt="500">
+       <a href="<?=URL?>">Regresar</a>
     </div>
 </div>
 
