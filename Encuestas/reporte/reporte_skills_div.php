@@ -13,7 +13,7 @@ echo 'periodo:'.$p;
 echo '<br>';
 echo '-----------------------------';
 */
-require_once('vendor/autoload.php');
+require_once('../../vendor/autoload.php');
 //consultas
 require_once('../php/skills_div.php');
 //plantilla html

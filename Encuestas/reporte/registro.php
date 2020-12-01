@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 $r= $_POST['id'];
-require_once('vendor/autoload.php');
+require_once('../../vendor/autoload.php');
 //datos desde php
 require_once('../php/registro.php');
 //plantilla html

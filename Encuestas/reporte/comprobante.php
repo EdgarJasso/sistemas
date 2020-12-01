@@ -4,7 +4,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
 ob_start();
 $r= $_POST['id'];
 $p = $_POST['periodo'];
-require_once('vendor/autoload.php');
+require_once('../../vendor/autoload.php');
 //plantilla html
 require_once('plantilla/reporte/comprobante.php');
 //plantilla php

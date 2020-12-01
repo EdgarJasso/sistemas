@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['log']) && $_SESSION['log'] == true){
 ob_start();
 $id= $_GET['id'];
-require_once('vendor/autoload.php');
+require_once('../../vendor/autoload.php');
 //plantilla html
 require_once('plantilla/reporte/bitacora_p.php');
 //plantilla php

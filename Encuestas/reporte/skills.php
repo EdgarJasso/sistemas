@@ -6,7 +6,7 @@ $r= $_POST['id'];
 $p = $_POST['periodo'];
 echo $r;
 echo $p;
-require_once('vendor/autoload.php');
+require_once('../../vendor/autoload.php');
 //consultas
 require_once('../php/skils.php');
 //plantilla html
