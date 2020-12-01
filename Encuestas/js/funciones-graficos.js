@@ -37,8 +37,8 @@ function grafico_periodo(){
                     labels: ['Faltantes', 'Hechas'],
                     datasets: [{
                         label: periodo,
-                        backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
-                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
+                        backgroundColor: ['rgb(201,202,205)','rgb(0,64,138)'],
+                        borderColor: ['rgb(103,104,105)','rgb(0,33,70)'],
                         data: response
                     }]
                 },
@@ -63,7 +63,6 @@ function grafico_periodo(){
         }
     });
 }
-
 function grafico_area(){
     $('#grafico_area').remove();
    $('#grafico_area_contenedor').append('<canvas id="grafico_area"></canvas>');
@@ -92,8 +91,8 @@ function grafico_area(){
                    labels: ['Faltantes', 'Hechas'],
                    datasets: [{
                        label: periodo,
-                       backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
-                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
+                       backgroundColor: ['rgb(201,202,205)','rgb(0,64,138)'],
+                       borderColor: ['rgb(103,104,105)','rgb(0,33,70)'],
                        data: response
                    }]
                },
@@ -147,8 +146,8 @@ function grafico_califica(){
                     labels: ['Faltantes', 'Hechas'],
                     datasets: [{
                         label: periodo,
-                        backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
-                        borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
+                        backgroundColor: ['rgb(201,202,205)','rgb(0,64,138)'],
+                        borderColor: ['rgb(103,104,105)','rgb(0,33,70)'],
                         data: response
                     }]
                 },
@@ -174,7 +173,6 @@ function grafico_califica(){
         }
     });
 }
-
 function grafico_evaluado(){
     $('#grafico_evaluado').remove();
    $('#grafico_evaluado_contenedor').append('<canvas id="grafico_evaluado"></canvas>');
@@ -203,8 +201,8 @@ function grafico_evaluado(){
                    labels: ['Faltantes', 'Hechas'],
                    datasets: [{
                        label: periodo,
-                       backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
-                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
+                       backgroundColor: ['rgb(201,202,205)','rgb(0,64,138)'],
+                       borderColor: ['rgb(103,104,105)','rgb(0,33,70)'],
                        data: response
                    }]
                },
