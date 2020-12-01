@@ -37,8 +37,8 @@ function grafico_periodo(){
                     labels: ['Faltantes', 'Hechas'],
                     datasets: [{
                         label: periodo,
-                        backgroundColor: ['rgb(220,20,3)','rgb(0,192,35)'],
-                        borderColor: ['rgb(251,32,3)','rgb(0,255,46)'],
+                        backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
+                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
                         data: response
                     }]
                 },
@@ -92,8 +92,8 @@ function grafico_area(){
                    labels: ['Faltantes', 'Hechas'],
                    datasets: [{
                        label: periodo,
-                       backgroundColor: ['rgb(220,20,3)','rgb(0,192,35)'],
-                       borderColor: ['rgb(251,32,3)','rgb(0,255,46)'],
+                       backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
+                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
                        data: response
                    }]
                },
@@ -147,8 +147,8 @@ function grafico_califica(){
                     labels: ['Faltantes', 'Hechas'],
                     datasets: [{
                         label: periodo,
-                        backgroundColor: ['rgb(220,20,3)','rgb(0,192,35)'],
-                        borderColor: ['rgb(251,32,3)','rgb(0,255,46)'],
+                        backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
+                        borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
                         data: response
                     }]
                 },
@@ -203,8 +203,8 @@ function grafico_evaluado(){
                    labels: ['Faltantes', 'Hechas'],
                    datasets: [{
                        label: periodo,
-                       backgroundColor: ['rgb(220,20,3)','rgb(0,192,35)'],
-                       borderColor: ['rgb(251,32,3)','rgb(0,255,46)'],
+                       backgroundColor: ['rgb(0.25,54)','rgb(79,79,79)'],
+                       borderColor: ['rgb(0,46,99)','rgb(188, 188, 188)'],
                        data: response
                    }]
                },
