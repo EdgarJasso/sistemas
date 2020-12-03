@@ -1,4 +1,4 @@
 <?php 
-define("URL", "http://sistemascryo.atwebpages.com");
+define("URL", "http://sistemasgrupocryo.great-site.net");
 //http://sistemascryo.atwebpages.com
 ?>

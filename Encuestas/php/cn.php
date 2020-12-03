@@ -2,10 +2,10 @@
 ob_start();
 function conectar(){
  
-	$user="3571327_sistemas";
-	$db="3571327_sistemas";
-	$pass = "alohomora_5246";
-	$server="fdb29.awardspace.net";
+	$user="epiz_27376931";
+	$db="epiz_27376931_sistemas";
+	$pass = "hj7CPr92l7K";
+	$server="sql302.epizy.com";
 /*
 	$user="root";
 	$db="sistemas";

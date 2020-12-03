@@ -2,9 +2,9 @@
  ob_start();
 Class Connection{ 
  
-	private $server = "mysql:host=fdb29.awardspace.net;dbname=3571327_sistemas";
-	private $username = "3571327_sistemas";
-	private $password = "alohomora_5246";
+	private $server = "mysql:host=sql302.epizy.com;dbname=epiz_27376931_sistemas";
+	private $username = "epiz_27376931";
+	private $password = "hj7CPr92l7K";
 	private $options  = array(
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
