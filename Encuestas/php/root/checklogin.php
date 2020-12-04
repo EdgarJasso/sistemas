@@ -37,11 +37,9 @@ try {
         $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
         $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
-        if($_SESSION['permiso']='root'){
-            echo $rows;
-        }else{
-            echo $rows;
-        }
+        
+        echo $rows;
+        
     }else{
         echo $rows;
     }

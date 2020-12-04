@@ -67,7 +67,7 @@ function agregardatosVal(Calificador, Calificado, Nombre, Validacion, Area, Cate
 		$('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 		$('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
 		$('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
-
+		$('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
 	}else{
 			console.log(r);
 			Swal.fire({
@@ -137,7 +137,8 @@ function actualizaDatosVal(){
     $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
     $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
-		}else{
+	$('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
+}else{
 					console.log(r);
 					Swal.fire({
 						title: 'Error en el proceso!\n\n\n'+r,
@@ -179,6 +180,7 @@ function eliminarDatosVal(id){
     $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
     $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
+	$('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
 }else{
 				console.log(r);
 				Swal.fire({

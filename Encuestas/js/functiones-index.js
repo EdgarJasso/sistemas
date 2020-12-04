@@ -29,7 +29,7 @@ function CheckLogin(){
                 });
                 setTimeout(
                     function(){
-                        window.location.href = "../php/root/index.php";
+                        window.location.href = "../php/root/redir.php";
                     }, 2000);
             }else if(r==0){
                 console.log(r);

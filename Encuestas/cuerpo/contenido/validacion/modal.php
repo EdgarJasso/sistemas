@@ -12,6 +12,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <center><h4 class="modal-title">Evaluacion:</h4></center>
       </div>
       <div class="modal-body">
+      <center><span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span></center>
       <form id="evaluacion_datos">
         <div id="evaluacion_cuerpo" class="">
           
@@ -22,7 +23,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       </form>
       </div>
       <div class="modal-footer">
-        <center><span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span></center>
+        
       </div>
     </div>
   </div>
@@ -39,6 +40,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <center><h4 class="modal-title">Evaluacion:</h4></center>
       </div>
       <div class="modal-body">
+      <center><span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span></center>
       <form id="evaluacion_datos_s">
         <div id="evaluacion_cuerpo_s" class="">
           
@@ -48,7 +50,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       </form>
       </div>
       <div class="modal-footer">
-        <center><span><b>Nota:</b> Si tocas afuera de la ventana o cierras la misma, el proceso se perdera!</span></center>
+        
       </div>
     </div>
   </div>

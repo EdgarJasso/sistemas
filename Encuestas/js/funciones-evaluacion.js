@@ -88,7 +88,8 @@ function enviar_evaluacion(){
     $('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
     $('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
     $('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
-		},
+	$('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
+},
 		error: function (response) {
 			console.log('error:'+response);
 		}
@@ -126,7 +127,8 @@ function enviar_evaluacion_s(){
 				$('#contenedor_usuario').load('../../cuerpo/contenido/usuarios/tabla.php');  
 				$('#contenedor_validacion').load('../../cuerpo/contenido/validacion/tabla.php');  
 				$('#contenedor_encuestas_faltantes').load('../../cuerpo/contenido/validacion/tabla_individual.php');
-		},
+				$('#contenedor_grafico').load('../../cuerpo/contenido/grafico/grafico.php');  
+			},
 		error: function (response) {
 			console.log('error:'+response);
 		}

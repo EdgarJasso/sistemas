@@ -237,3 +237,20 @@ background-color: #fff;
     max-height: 250px;
 }
 /*estilos panel grafico*/
+@media(max-width:650px){
+    #container_all_one, #container_all_two {
+        display: block;
+    }
+    .dataTables_filter{
+        width: 100%;
+    }
+    .dataTables_paginate{
+        display: grid;
+        grid-template-columns: repeat(4, 20%);
+        justify-content: center;
+        align-items: start;
+        text-align: center;
+        width: 98%;
+        margin: 0 auto;
+    }
+}

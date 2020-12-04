@@ -40,11 +40,9 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             </thead>
             <tbody>';
         $contador = 0; $conta = 0;
-        $link = 'encuesta';
         foreach ($datos as $imprimir) {
             $contador++;
             if($imprimir['Validacion']=='pendiente'){
-                if($imprimir['Categoria'] == 'Seguridad'){$link="encuesta_v2";}else{$link="encuesta";}
                 $html.='
                 <tr>
                     <td>'.$imprimir['periodo'].'</td>
@@ -55,7 +53,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                     <td class=" col-12 label label-danger">'.$imprimir['Validacion'].'</td>
                     <td>
                         <center>';
-                        if ($imprimir['Categoria'] == 32) {
+                        if ($imprimir['Area'] == 2) {
                             $html.='<button  type="button" id="" class="seguridad btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar_s" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 
                         }else{
                             $html.='<button  type="button" id="" class="validacion btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 

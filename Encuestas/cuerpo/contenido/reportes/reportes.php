@@ -16,7 +16,34 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                          include_once('../../../php/connection.php');
                             $database = new Connection();
                             $db = $database->open();
-                            $sql = "SELECT * FROM ecsnts_usuario;";
+                            $sql = "SELECT * FROM ecsnts_usuario where id_area != 2;";
+                            foreach ($db->query($sql) as $row) {
+                                echo '<option value="'.$row['id_usuario'].'">'.$row['id_usuario'].'- '.$row['nombre'].'</option>';
+                            }
+                         ?>
+                     </select>
+                     <select name="periodo" id="" class="form-control" style="max-width:100px;">
+                            <?php for ($i=20; $i <=30 ; $i++) { 
+                            echo ' <option value="20'.$i.'-1">20'.$i.'-1</option>';
+                            echo ' <option value="20'.$i.'-2">20'.$i.'-2</option>';
+                            }?>
+                     </select>
+                 </div>
+                <button class="btn btn-info" type="submit"><span class="icon-download2"></span>Generar</button>
+            </form>
+            </div>
+            <!-- imprimir 360 fin-->
+            <!-- imprimir 360 inicio-->
+            <div class="form-group">
+            <form action="../../reporte/reporte_skills_div_s.php" method="post">
+                <label class="etiqueta">Evaluacion 360(Seguridad):</label>
+                 <div class="form-group">
+                     <select id="" class="form-control" name="id" style="max-width:200px;">
+                         <?php
+                         include_once('../../../php/connection.php');
+                            $database = new Connection();
+                            $db = $database->open();
+                            $sql = "SELECT * FROM ecsnts_usuario where id_area = 2;";
                             foreach ($db->query($sql) as $row) {
                                 echo '<option value="'.$row['id_usuario'].'">'.$row['id_usuario'].'- '.$row['nombre'].'</option>';
                             }

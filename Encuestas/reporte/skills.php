@@ -80,7 +80,7 @@ $mpdf = new \Mpdf\Mpdf([
 $plantilla =getPlantilla($p, $_usuario, $_categoria, $_conteo, $_preguntas, $_justificaciones, $_idPreguntas, $_CD, $_D, $_NN, $_A, $_CA, $_preguntasTC, $_justificacionesTC, $_idPreguntasTC, $_CDTC, $_DTC, $_NNTC, $_ATC, $_CATC);
 
 
-var_dump($plantilla);die();
+//var_dump($plantilla);die();
 
 
 $mpdf->writeHtml( $css, \Mpdf\HTMLParserMode::HEADER_CSS);

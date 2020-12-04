@@ -311,6 +311,6 @@ if($now > $_SESSION['expire']) {
 <?php
 }else {
    echo "Inicia Sesion para acceder a este contenido.<br>";
-   echo '<script type="text/javascript">window.location = "'.URL.'prueba1/Encuestas";</script>';
+   echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
 exit;
 }?>
