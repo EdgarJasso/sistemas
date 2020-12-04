@@ -70,4 +70,19 @@
  .pregunta_contenedor .pregunta_radios .pregunta_opcion > input[type="radio"]:checked{
     border: 2px solid #494949;
  }
- 
+ @media(max-width:450px){
+    #titulo_evaluacion {
+        width: 100%;
+    }
+    #cuerpo_evaluacion{
+        width: 100%;
+    }
+    .pregunta_contenedor .pregunta_radios {
+        display: flex;
+        justify-content: center;
+    }
+    .pregunta_contenedor .pregunta_radios .pregunta_opcion {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+ }

@@ -15,7 +15,6 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <th>Id Validacion</th>
 				<th>Califica</th>
 				<th>Evaluado</th>
-				<th>Nombre</th>
 				<th>Estado</th>
         <th>Area</th>
 				<th>Categoria</th>
@@ -30,7 +29,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_validacion";
+          $query="SELECT ecsnts_validacion.Id_validacion as Id_validacion, ecsnts_validacion.Calificador as Calificador, ecsnts_validacion.Calificado as Calificado, ecsnts_validacion.Nombre as Nombre, ecsnts_validacion.Validacion as Validacion, ecsnts_validacion.Area as Area, ecsnts_validacion.Categoria as Categoria, ecsnts_validacion.tipo as tipo, ecsnts_validacion.periodo as periodo, ecsnts_usuario.nombre as usuario_nombre, ecsnts_area.nombre as area_nombre, ecsnts_categoria.Descripcion as Categoria_nombre FROM ecsnts_validacion, ecsnts_usuario, ecsnts_area, ecsnts_categoria WHERE ecsnts_validacion.Calificador = ecsnts_usuario.id_usuario AND ecsnts_usuario.id_area = ecsnts_area.id_area AND ecsnts_area.id_area = ecsnts_categoria.Id_area";
            foreach ($db->query($query) as $row) {
              $datos = $row['Id_validacion']."||".
                       $row['Calificador']."||".
@@ -44,12 +43,11 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
              ?> 
              <tr>
              <td><?php echo $row['Id_validacion']; ?></td>
-				    <td><?php echo $row['Calificador']; ?></td>
-				    <td><?php echo $row['Calificado']; ?></td>
-				    <td><?php echo $row['Nombre']; ?></td>
+				    <td><?php echo $row['Calificador'].' - '.$row['usuario_nombre']; ?></td>
+				    <td><?php echo $row['Calificado'].' - '.$row['Nombre']; ?></td>
 				    <td><?php echo $row['Validacion']; ?></td>
-            <td><?php echo $row['Area']; ?></td>
-				    <td><?php echo $row['Categoria']; ?></td>
+            <td><?php echo $row['Area'].' - '.$row['area_nombre']; ?></td>
+				    <td><?php echo $row['Categoria'].' - '.$row['Categoria_nombre']; ?></td>
 				    <td><?php echo $row['tipo']; ?></td>
 				    <td><?php echo $row['periodo']; ?></td>
               <td> 
@@ -83,7 +81,6 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <th>Id Validacion</th>
 				<th>Califica</th>
 				<th>Evaluado</th>
-				<th>Nombre</th>
 				<th>Estado</th>
         <th>Area</th>
 				<th>Categoria</th>
