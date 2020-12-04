@@ -1,7 +1,7 @@
 <?php        
 include '../../../dominio.php';
 session_start();
-if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['permiso']=='root') {
+if (isset($_SESSION['log']) && $_SESSION['log'] == true && $_SESSION['permiso']=='root') { 
    include('../../php/connection.php');
    //ob_start(); 
 $now = time();

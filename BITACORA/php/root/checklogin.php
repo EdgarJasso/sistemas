@@ -2,13 +2,13 @@
 if(isset($_POST['name']) && isset($_POST['pass'])){
 include '../connection.php';
     $name = $_POST['name'];
-    $pass = $_POST['pass'];
+    $pass = $_POST['pass']; 
     date_default_timezone_set("America/Mexico_City");
         if ($name == "Admin" && $pass == "Alohomora") { 
             session_start();
                $_SESSION['log'] = true;
                $_SESSION['name'] = "admin";
-               $_SESSION['permiso'] = "admin";
+               $_SESSION['permiso'] = "root";
                $_SESSION['start'] =time();
                $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
                $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );

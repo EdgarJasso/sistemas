@@ -511,7 +511,7 @@ $fechaActual=time();
         AutoEvaluacion
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$AutoevaluacionTC[0]["nivel"].' " style="width: '.$AutoevaluacionTC[0]["promedio"].'%;">'.$AutoevaluacionTC[0]["promedio"].'% (No Aplica)</div>
+          <div>(No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -529,8 +529,8 @@ $fechaActual=time();
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$ClienteTC[0]["nivel"].' " style="width: '.$ClienteTC[0]["promedio"].'%;">'.$ClienteTC[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div> 
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -547,7 +547,7 @@ $fechaActual=time();
         Colaborador 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$CompaneroTC[0]["nivel"].' " style="width: '.$CompaneroTC[0]["promedio"].'%;">'.$CompaneroTC[0]["promedio"].'% (No Aplica)</div>
+            <div>(No Aplica)</div>
          </div><br>';
     }else{
         $plantilla.='
@@ -565,8 +565,8 @@ $fechaActual=time();
         Subordinado 
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$SubordinadoTC[0]["nivel"].' " style="width: '.$SubordinadoTC[0]["promedio"].'%;">'.$SubordinadoTC[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -583,8 +583,8 @@ $fechaActual=time();
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$JefeTC[0]["nivel"].' " style="width: '.$JefeTC[0]["promedio"].'%;">'.$JefeTC[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+        <div>(No Aplica)</div> 
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -1057,8 +1057,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Autoevaluacion  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$Autoevaluacion[0]["nivel"].' " style="width: '.$Autoevaluacion[0]["promedio"].'%;">'.$Autoevaluacion[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -1074,8 +1074,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Cliente  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$Cliente[0]["nivel"].' " style="width: '.$Cliente[0]["promedio"].'%;">'.$Cliente[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -1092,8 +1092,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Compañero  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$Companero[0]["nivel"].' " style="width: '.$Companero[0]["promedio"].'%;">'.$Companero[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -1111,8 +1111,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Subordinado  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$Subordinado[0]["nivel"].' " style="width: '.$Subordinado[0]["promedio"].'%;">'.$Subordinado[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
@@ -1130,8 +1130,8 @@ if($Autoevaluacion[0]["promedio"] < 1){
         Jefe  
         </div>
         <div class="graficos-100"> 
-          <div class="graficos-generar graficos_'.$Jefe[0]["nivel"].' " style="width: '.$Jefe[0]["promedio"].'%;">'.$Jefe[0]["promedio"].'% (No Aplica)</div>
-         </div><br>';
+            <div>(No Aplica)</div>
+        </div><br>';
     }else{
         $plantilla.='
         <div class="graficos-codigo">  
