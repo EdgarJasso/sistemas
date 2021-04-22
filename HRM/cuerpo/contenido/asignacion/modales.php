@@ -25,6 +25,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_asi_emp"></td>  
                 </tr>  
                 <tr>  
+                     <td width="30%"><label>Periodo</label></td>  
+                     <td width="70%" id="view_asi_periodo"></td>  
+                </tr>
+                <tr>  
                      <td width="30%"><label>Dias</label></td>  
                      <td width="70%" id="view_asi_dias"></td>  
                 </tr>
@@ -72,7 +76,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     $sql_lista ="SELECT id_empleado, nombre from hrm_empleado";
                   }else{}
 
-                  if($_SESSION['permiso']=='jefe-area'){
+                 /*if($_SESSION['permiso']=='jefe-area'){
                     $sql_lista ="SELECT 
                     hrm_empleado.id_empleado as id_empleado, 
                     hrm_empleado.nombre as nombre,
@@ -84,7 +88,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                       AND hrm_area.id_area = hrm_puesto.id_area 
                       AND hrm_puesto.id_puesto = hrm_antiguedad.id_puesto 
                       AND hrm_area.nombre = '".$_SESSION['area']."'";
-                  }else{}
+                  }else{}*/
 
                   foreach ($dbd->query($sql_lista) as $row_lista) {
                   $databasedias = new Connection();
@@ -187,6 +191,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        </div>
 
        <div class="form-group">
+       	<label for="">Periodo(cuatrimestre):</label>
+         <select name="Asi_periodo" id="Asi_periodo" class="form-control">
+          <option value="null" > -Seleccione un tipo- </option>
+         <?php for ($i=21; $i <=30 ; $i++) { 
+          echo ' <option value="20'.$i.'-1">20'.$i.'-1</option>';
+          echo ' <option value="20'.$i.'-2">20'.$i.'-2</option>';
+          echo ' <option value="20'.$i.'-3">20'.$i.'-3</option>';
+          echo ' <option value="20'.$i.'-4">20'.$i.'-4</option>';
+         }?>
+         </select>
+         <span class="help-block" id="text_asi_periodo"></span>
+       </div>
+
+       <div class="form-group">
        	<label for="idempleado">Dias:</label>
        	<select class="form-control" name="Asi_dias" id="Asi_dias">
          <?php for($i = 1; $i<=10 ; $i++){?>
@@ -249,7 +267,19 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          }?>
        	</select>
        </div>
-
+       <div class="form-group">
+       	<label for="">Periodo(cuatrimestre):</label>
+         <select name="Asi_periodo_e" id="Asi_periodo_e" class="form-control">
+          <option value="null" > -Seleccione un tipo- </option>
+         <?php for ($i=21; $i <=30 ; $i++) { 
+          echo ' <option value="20'.$i.'-1">20'.$i.'-1</option>';
+          echo ' <option value="20'.$i.'-2">20'.$i.'-2</option>';
+          echo ' <option value="20'.$i.'-3">20'.$i.'-3</option>';
+          echo ' <option value="20'.$i.'-4">20'.$i.'-4</option>';
+         }?>
+         </select>
+         <span class="help-block" id="text_asi_periodo_e"></span>
+       </div>
        <div class="form-group">
        	<label for="idempleado">Dias:</label>
        	<select class="form-control" name="Asi_dias_e" id="Asi_dias_e">

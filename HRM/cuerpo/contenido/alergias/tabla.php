@@ -5,16 +5,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
  <center>
-     <h2>Permisos</h2>
+     <h2>Alergias</h2>
      </center>
-  	<button  type="button" class="btn btn-primary btn-sm boton-add" data-toggle="modal" data-target="#Agregar_horas" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
+  	<button  type="button" class="btn btn-primary btn-sm boton-add" data-toggle="modal" data-target="#Agregar_alergia" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
  
-   <table class="table table-hover table-bordered table-condensed table-striped" id="horas">
+   <table class="table table-hover table-bordered table-condensed table-striped" id="Alergias">
     <thead>
 	 <tr> 
 		 <th>Empleado</th>
-		 <th>Dia</th>
-         <th>Horas</th>
+		 <th>Tipo Sangre</th>
+     <th>Contacto</th>
      <th><center>Accion</center></th>
 	 </tr>
 	</thead>
@@ -25,27 +25,29 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $database = new Connection();
          $db = $database->open();
          
-        $query="SELECT hrm_horas.id_hora as id_hora, hrm_horas.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as ape_p, hrm_horas.fecha as fecha, hrm_horas.horas as horas From hrm_empleado, hrm_horas WHERE hrm_horas.id_empleado = hrm_empleado.id_empleado";
+        $query="SELECT hrm_alergias.id_alergia as id_alergia, hrm_alergias.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as apellido, hrm_alergias.descripcion as descripcion, hrm_alergias.tipo_sangre as tipo_sangre, hrm_alergias.tel_contacto as contacto From hrm_empleado, hrm_alergias WHERE hrm_alergias.id_empleado = hrm_empleado.id_empleado";
 
 
            foreach ($db->query($query) as $row) {
 
-             $datosHorasV = $row['id_hora']."||".
+             $datosAlergiasV = $row['id_alergia']."||".
                       $row['id_empleado'] ."||".
                       $row['nombre'] ."||".
-                      $row['ape_p'] ."||".
-                      $row['fecha']."||".
-                      $row['horas'];
+                      $row['apellido'] ."||".
+                      $row['descripcion']."||".
+                      $row['tipo_sangre']."||".
+                      $row['contacto'];
 
-             $datosHorasE = $row['id_hora']."||".
+             $datosAlergiasE = $row['id_alergia']."||".
              $row['id_empleado'] ."||".
-             $row['fecha']."||".
-             $row['horas'];
+             $row['descripcion']."||".
+             $row['tipo_sangre']."||".
+             $row['contacto'];
              ?> 
              <tr>
-              <td><?php echo $row['id_empleado']." - ".$row['nombre'].' '.$row['ape_p']; ?></td>
-              <td><?php echo $row['fecha']; ?></td>
-              <td><?php echo $row['horas']; ?></td>
+              <td><?php echo $row['id_empleado']." - ".$row['nombre'].' '.$row['apellido']; ?></td>
+              <td><?php echo $row['tipo_sangre']; ?></td>
+              <td><?php echo $row['contacto']; ?></td>
               <td> 
                <center>
                 <div class="btn-group">
@@ -56,14 +58,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                  <div class="dropdown-menu box">
                  
 				        <button type="button" class="btn btn-info btn-sm" 
-                  data-toggle="modal" data-target="#Ver_horas" 
-                  onclick="AgregarHoras('<?php echo $datosHorasV?>')"><span class="icon-eye"></span></button>
+                  data-toggle="modal" data-target="#Ver_alergias" 
+                  onclick="AgregarAlergias('<?php echo $datosAlergiasV?>')"><span class="icon-eye"></span></button>
                   
                   <button type="button" class="btn btn-warning btn-sm" 
-                  data-toggle="modal" data-target="#Editar_horas" 
-                  onclick="agregarformHoras('<?php echo $datosHorasE?>')"><span class="icon-pencil"></span></button>
+                  data-toggle="modal" data-target="#Editar_alergias" 
+                  onclick="agregarformAlergias('<?php echo $datosAlergiasE?>')"><span class="icon-pencil"></span></button>
                    
-				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarHoras(<?php echo $row['id_hora'] ?>)"><span class="icon-cross"></span></button>
+				  <button type="button" class="btn btn-danger btn-sm" onclick="preguntarAlergias(<?php echo $row['id_alergia'] ?>)"><span class="icon-cross"></span></button>
 				 </div>
                 </div>  
                </center>
@@ -78,8 +80,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	<tfoot>
 	<tr>
          <th>Empleado</th>
-		 <th>Dia</th>
-         <th>Horas</th>
+		     <th>Tipo Sangre</th>
+         <th>Contacto</th>
          <th><center>Accion</center></th>
 	</tr>
 	</tfoot>
@@ -89,7 +91,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <?php include('modales.php');?>
 <script>
     $(document).ready( function () {
-    $('#horas').DataTable({
+    $('#Alergias').DataTable({
 		 dom: 'Bfrtip',
         buttons: [
             'copyHtml5',
@@ -118,7 +120,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     });
   });
  </script>
- <script src="../../js/funciones-horas.js"></script>
+ <script src="../../js/funciones-alergias.js"></script>
  <?php 
 }else {
   echo "Inicia Sesion para acceder a este contenido.<br>";

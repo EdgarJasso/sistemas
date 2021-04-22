@@ -4,13 +4,33 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	include('../../../php/connection.php');
 		$database = new Connection();
 		$db = $database->open();
+		$id_jefe = "";
+		$fecha = date("d/m/Y");
+		$color = "";
+		try {
+			$database = new Connection();
+			 $db = $database->open();
+			 $query="SELECT jefe_directo, color FROM hrm_antiguedad WHERE id_empleado =".$_POST['ide'];
+			 $stmt = $db->prepare($query);        
+    		 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    		 $stmt->execute();
+    		 $result = $stmt->fetch();
+			 $color = $result['color'];
+			 $jefe = $result['jefe_directo'];
+			 $id_jefe = explode(" -", $jefe);
+
+			} catch (PDOException $e) {
+			   echo "Error: ".$e->getMessage()." !<br>"; 
+			 }
 		try{
-			$stmt = $db->prepare("INSERT INTO hrm_vacaciones ( id_empleado, dia, color, estado) 
-            VALUES (:id_empleado, :dia, :color,  :estado)");
+			$stmt = $db->prepare("INSERT INTO hrm_vacaciones ( id_empleado,id_jefe, fecha, dia, color, estado) 
+            VALUES (:id_empleado, :id_jefe, :fecha, :dia, :color,  :estado)");
 			$result= ( $stmt->execute(array(
                 ':id_empleado' => $_POST['ide'],
+				':id_jefe' => $id_jefe[0],
+				':fecha' => $fecha,
 				':dia' => $_POST['dia'],
-				':color' => $_POST['color'],
+				':color' => $color,
                 ':estado' => $_POST['estado']
             
             )) ) ? '1' : '0';	

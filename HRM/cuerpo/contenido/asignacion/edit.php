@@ -10,7 +10,8 @@ include('../../../php/connection.php');
 			$ida = $_POST['idas'];
             $ide = $_POST['ide'];
 			$dias = $_POST['dias'];
-			$sql = "UPDATE hrm_asignacion SET id_empleado='$ide', dias_habilies ='$dias' WHERE id_asignacion = '$ida'";
+			$periodo = $_POST['periodo'];
+			$sql = "UPDATE hrm_asignacion SET id_empleado='$ide', dias_habilies ='$dias', periodo = '$periodo' WHERE id_asignacion = '$ida'";
         
             $result = ( $db->exec($sql) ) ? '1' : '0';
            echo $result;

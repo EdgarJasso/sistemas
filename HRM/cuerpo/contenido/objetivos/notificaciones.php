@@ -13,7 +13,7 @@ include_once('../../../php/connection.php');
                     <td><?php echo $result_notifi['f_limite'];?></td>
                     <td>
                       <center>
-                        <button class="btn btn-default" onclick="actualizaNotificacion('<?php echo $result_notifi['id_objetivo'];?>')" >Descartar</button>
+                        <button class="btn btn-default" onclick="actualizaNotificacion('<?php echo $result_notifi['id_objetivo'];?>')" >Revision</button>
                       </center>
                     </td>
                   </tr>

@@ -25,7 +25,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_vac_emp"></td>  
                 </tr>  
                 <tr>  
-                     <td width="30%"><label>Dia</label></td>  
+                     <td width="30%"><label>Fecha de registro</label></td>  
+                     <td width="70%" id="view_vac_fecha"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Dia solicitado</label></td>  
                      <td width="70%" id="view_vac_dia"></td>  
                 </tr>
                 <tr>  
@@ -103,13 +107,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          <span class="help-block" id="text_help_vac_f"></span>
         </div>
 
-        <div class="form-group">
-         <label>Color:</label>
-         <center><input type="color" name="vac_color" id="vac_color"><br>
-         <label>Distintivo en el calendario!</label>
-         </center>
-        </div>
-
        <div class="form-group">
        	<label for="idempleado">Estado:</label>
        	<select class="form-control" name="vac_estado" id="vac_estado">
@@ -144,13 +141,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
          <label >Fecha:</label>
          <input type="date" name="vac_dia_u" id="vac_dia_u" max="2030-12-31" min="2020-05-01" class="form-control">
-        </div>
-
-        <div class="form-group">
-         <label>Color:</label>
-         <center><input type="color" name="vac_color_u" id="vac_color_u"><br>
-         <label>Distintivo en el calendario!</label>
-         </center>
         </div>
 
       </div>
@@ -210,19 +200,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          }?>
        	</select>
        </div>
-
+       <input type="hidden" name="vac_fecha_e" id="vac_fecha_e">
        <div class="form-group">
          <label >Fecha:</label>
          <input type="date" name="vac_dia_e" id="vac_dia_e" max="2030-12-31" min="2020-05-01" class="form-control">
          <span class="help-block" id="text_help_vac_f_e"></span>
         
-        </div>
-
-        <div class="form-group">
-         <label>Color:</label>
-         <center><input type="color" name="vac_color_e" id="vac_color_e"><br>
-         <label>Distintivo en el calendario!</label>
-         </center>
         </div>
 
        <div class="form-group">
@@ -254,19 +237,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <div class="modal-body">
         <input type="hidden" name="Vac_idvacaciones_eu" id="Vac_idvacaciones_eu">
         <input type="hidden" name="Vac_idempleado_eu" id="Vac_idempleado_eu">
+        <input type="hidden" name="Vac_idjefe_eu" id="Vac_idjefe_eu">
+        <input type="hidden" name="Vac_fecha_eu" id="Vac_fecha_eu">
       
        <div class="form-group">
          <label >Fecha:</label>
          <input type="date" name="vac_dia_eu" id="vac_dia_eu" max="2030-12-31" min="2020-05-01" class="form-control">
         </div>
-
-        <div class="form-group">
-         <label>Color:</label>
-         <center><input type="color" name="vac_color_eU" id="vac_color_eU"><br>
-         <label>Distintivo en el calendario!</label>
-         </center>
-        </div>
-
+        <input type="hidden" name="Vac_color_eu" id="Vac_color_eu">
         <input type="hidden" name="Vac_estado_eu" id="Vac_estado_eu">
 
       </div>

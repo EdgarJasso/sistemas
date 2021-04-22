@@ -1,6 +1,5 @@
 
 function AgregarObj(datos){ 
-    // alert(datos);
      d = datos.split('||');
  
      nombre_p =" - ".concat(d[2]);
@@ -12,20 +11,24 @@ function AgregarObj(datos){
      $('#view_obj_id').html(d[0]);
      $('#view_obj_puesto').html(puesto);
      $('#view_obj_emp').html(empleado);
-     $('#view_obj_tit').html(d[5]);
-     $('#view_obj_desc').html(d[6]);
-     $('#view_obj_f').html(d[7]);
-     $('#view_obj_cum').html(d[8]);
-     $('#view_obj_pot').html(d[9]);
+     $('#view_obj_objetivo').html(d[5]);
+     $('#view_obj_tema').html(d[6]);
+     $('#view_obj_subtema').html(d[7]);
+     $('#view_obj_periodo').html(d[8]);
+     $('#view_obj_fecha').html(d[9]);
+	 $('#view_obj_estado').html(d[10]);
+	 $('#view_obj_cumplio').html(d[11]);
+	 $('#view_obj_comentarios').html(d[12]);
  }
- function agregardatosObj(idp, ide, tit, desc, fecha, cumplio, porce){
+ function agregardatosObj(idp, ide, objetivo, tema, subtema,periodo, fecha, comentarios){
      cadena="idp=" + idp +
             "&ide=" + ide+
-            "&tit=" + tit +
-            "&desc=" + desc +
-            "&fecha=" + fecha +
-            "&cumplio=" + cumplio +
-            "&porce=" + porce;
+            "&objetivo=" + objetivo +
+            "&tema=" + tema +
+            "&subtema=" + subtema +
+            "&periodo=" + periodo +
+			"&fecha_asignacion=" + fecha +
+			"&comentarios=" + comentarios;
     // alert(cadena);
      $.ajax({
          type:"post",
@@ -72,33 +75,38 @@ function AgregarObj(datos){
      $('#Obj_id_e').val(d[0]);
      $('#Obj_idpuesto_e').val(d[1]);
      $('#Obj_idempleado_e').val(d[2]);
-     $('#Obj_tit_e').val(d[3]);
-     $('#Obj_descripcion_e').val(d[4]);
-     $('#Obj_ff_e').val(d[5]);
-     $('#Obj_cumplio_e[value='+d[6]+']').prop('checked', true);
-     $('#Obj_por_e').val(d[7]);
-     $('#porcentaje_salida_e').html(d[7]);  
+     $('#Obj_objetivo_e').val(d[3]);
+     $('#Obj_tema_e').val(d[4]);
+     $('#Obj_subtema_e').val(d[5]);
+	 $('#Obj_periodo_e').val(d[6]);
+	 $('#Obj_ff_e').val(d[7]);
+     $('#Obj_realizado_e[value='+d[8]+']').prop('checked', true);
+     $('#Obj_comentarios_e').html(d[9]);  
  }
  
  function actualizaDatosObj(){
      id=$('#Obj_id_e').val();
      idp=$('#Obj_idpuesto_e').val();
      ide=$('#Obj_idempleado_e').val();
-     tit=$('#Obj_tit_e').val();
-     desc=$('#Obj_descripcion_e').val();
-     ff=$('#Obj_ff_e').val();
-     cum = $('input[name=Obj_cumplio_e]:checked').val();
-     por =$('#Obj_por_e').val();
+     objetivo=$('#Obj_objetivo_e').val();
+     tema=$('#Obj_tema_e').val();
+     subtema=$('#Obj_subtema_e').val();
+	 periodo=$('#Obj_periodo_e').val();
+	 fecha=$('#Obj_ff_e').val();
+     realizado = $('input[name=Obj_realizado_e]:checked').val();
+     comentarios =$('#Obj_comentarios_e').val();
 
      cadenaObj=
      "ido="+ id +
      "&idp=" + idp +
      "&ide="+ ide+
-     "&tit="+ tit+
-     "&desc="+ desc +
-     "&ff="+ ff +
-     "&cum="+ cum +
-     "&por="+ por;
+     "&objetivo="+ objetivo+
+     "&tema="+ tema +
+     "&subtema="+ subtema +
+     "&periodo="+ periodo +
+	 "&fecha_asignacion="+ fecha +
+	 "&realizado="+ realizado +
+     "&comentarios="+ comentarios;
      
      //alert(cadenaObj);
  
@@ -191,100 +199,135 @@ function AgregarObj(datos){
  
  $(document).ready(function(){
     $("#guardar_objetivos").click(validarNuevoObjetivo);
-
-        $("#Obj_tit").keyup(validarObjTit);
-		$("#Obj_descripcion").keyup(validarObjDesc);
+        $("#Obj_objetivo").keyup(validarObjObjetivo);
+		$("#Obj_tema").keyup(validarObjTema);
+		$("#Obj_subtema").keyup(validarObjSubtema);
         $("#Obj_ff").keyup(validarObjFecha);
         $("#Obj_ff").click(validarObjFecha);
         
         
     $("#actualizar_objetivo").click(validarNuevoObjetivo_E);
-        $("#Obj_tit_e").keyup(validarObjTit_e);
-        $("#Obj_descripcion_e").keyup(validarObjDesc_e);
-        $("#Obj_ff_e").keyup(validarObjFecha_e);
-        $("#Obj_ff_e").click(validarObjFecha_e);
+	$("#Obj_objetivo_e").keyup(validarObjObjetivo_e);
+	$("#Obj_tema_e").keyup(validarObjTema_e);
+	$("#Obj_subtema_e").keyup(validarObjSubtema_e);
+	$("#Obj_ff_e").keyup(validarObjFecha_e);
+	$("#Obj_ff_e").click(validarObjFecha_e);
 		
 });
 
 
 function validarNuevoObjetivo(){
-    var obj_tit = validarObjTit();
-	var obj_desc = validarObjDesc();
-	var obj_ff = validarObjFecha();
+    var Obj_objetivo = validarObjObjetivo();
+	var Obj_tema = validarObjTema();
+	var obj_subtema = validarObjSubtema();
+	var obj_fecha = validarObjFecha();
 
-	if (obj_tit=="true" && obj_desc=="true" && obj_ff=="true" ) {
+	if (Obj_objetivo=="true" && Obj_tema=="true" && obj_subtema=="true" && obj_fecha == "true") {
 		alertify.success("Enviando datos...");
         idp = $('#Obj_idpuesto').val();
         ide = $('#Obj_idempleado').val();
-        tit = $('#Obj_tit').val();
-        desc = $('#Obj_descripcion').val();
+        objetivo = $('#Obj_objetivo').val();
+		tema = $('#Obj_tema').val();
+		subtema = $('#Obj_subtema').val();
+        periodo = $('#Obj_periodo').val();
         fecha = $('#Obj_ff').val();
-        cumplio = $('input[name=Obj_cumplio]:checked').val();
-        porce = $('#Obj_por').val();
+        comentarios = $('#Obj_comentarios').val();
           
-        agregardatosObj(idp, ide, tit, desc, fecha, cumplio, porce);
+        agregardatosObj(idp, ide, objetivo, tema, subtema, periodo, fecha, comentarios);
 	} else{
 		alertify.error('Favor de revisar datos');
 	}
 }
-function validarObjTit(){  
-	var valor = document.getElementById("Obj_tit").value;
+function validarObjObjetivo(){  
+	var valor = document.getElementById("Obj_objetivo").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_texto_obj_tit').remove();
-		$('#Obj_tit').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_tit').parent().append('<span id="icono_texto_obj_tit" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_tit').text("Ingrese un caracter").show();
+		$('#icono_texto_obj_obj').remove();
+		$('#Obj_objetivo').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_objetivo').parent().append('<span id="icono_texto_obj_obj" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_objetivo').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else if( valor.length <= 5  ){
-		$('#icono_texto_obj_tit').remove();
-		$('#Obj_tit').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_tit').parent().append('<span id="icono_texto_obj_tit" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_tit').text("Longitud valida 5-50 caracteres").show();
+		$('#icono_texto_obj_obj').remove();
+		$('#Obj_objetivo').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_objetivo').parent().append('<span id="icono_texto_obj_obj" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_objetivo').text("Longitud valida 5-50 caracteres").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_texto_obj_tit').remove();
-		$('#Obj_tit').parent().attr("class", "form-group has-success has-feedback");
-		$('#Obj_tit').parent().children("span").text("").hide();
-		$('#Obj_tit').parent().append('<span id="icono_texto_obj_tit" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_texto_obj_obj').remove();
+		$('#Obj_objetivo').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_objetivo').parent().children("span").text("").hide();
+		$('#Obj_objetivo').parent().append('<span id="icono_texto_obj_obj" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
 	console.log("final :"+estado);
 	return estado;
 }
-function validarObjDesc(){  
-	var valor = document.getElementById("Obj_descripcion").value;
+function validarObjTema(){  
+	var valor = document.getElementById("Obj_tema").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_texto_obj_desc').remove();
-		$('#Obj_descripcion').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_descripcion').parent().append('<span id="icono_texto_obj_desc" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_desc').text("Ingrese un caracter").show();
+		$('#icono_texto_obj_tema').remove();
+		$('#Obj_tema').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_tema').parent().append('<span id="icono_texto_obj_tema" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_tema').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
-	}else if( valor.length <= 15  ){
-		$('#icono_texto_obj_desc').remove();
-		$('#Obj_descripcion').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_descripcion').parent().append('<span id="icono_texto_obj_desc" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_desc').text("Longitud valida 15-150 caracteres").show();
+	}else if( valor.length <= 5  ){
+		$('#icono_texto_obj_tema').remove();
+		$('#Obj_tema').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_tema').parent().append('<span id="icono_texto_obj_tema" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_tema').text("Longitud valida 5-150 caracteres").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_texto_obj_desc').remove();
-		$('#Obj_descripcion').parent().attr("class", "form-group has-success has-feedback");
-		$('#Obj_descripcion').parent().children("span").text("").hide();
-		$('#Obj_descripcion').parent().append('<span id="icono_texto_obj_desc" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_texto_obj_tema').remove();
+		$('#Obj_tema').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_tema').parent().children("span").text("").hide();
+		$('#Obj_tema').parent().append('<span id="icono_texto_obj_tema" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+function validarObjSubtema(){  
+	var valor = document.getElementById("Obj_subtema").value;
+	let numeros = /[0-9]/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
+
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_texto_obj_subtema').remove();
+		$('#Obj_subtema').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_subtema').parent().append('<span id="icono_texto_obj_subtema" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_subtema').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else if( valor.length <= 5  ){
+		$('#icono_texto_obj_subtema').remove();
+		$('#Obj_subtema').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_subtema').parent().append('<span id="icono_texto_obj_subtema" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_subtema').text("Longitud valida 5-200 caracteres").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_texto_obj_subtema').remove();
+		$('#Obj_subtema').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_subtema').parent().children("span").text("").hide();
+		$('#Obj_subtema').parent().append('<span id="icono_texto_obj_subtema" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
@@ -292,8 +335,6 @@ function validarObjDesc(){
 	return estado;
 }
 function validarObjFecha(){
-	
-		
 	var valor = document.getElementById("Obj_ff").value;
 	let numeros = /[0-9]/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
@@ -322,75 +363,108 @@ function validarObjFecha(){
 
 
 function validarNuevoObjetivo_E(){
-    var obj_tit_e = validarObjTit_e();
-	var obj_desc_e = validarObjDesc_e();
-	var obj_ff_e = validarObjFecha_e();
+    var obj_obj_e = validarObjObjetivo_e();
+	var obj_tema_e = validarObjTema_e();
+	var obj_subtema_e = validarObjSubtema_e();
+	var obj_fecha_e = validarObjFecha_e();
 
-	if (obj_tit_e=="true" && obj_desc_e=="true" && obj_ff_e=="true" ) {
+	if (obj_obj_e=="true" && obj_tema_e=="true" && obj_subtema_e=="true"&& obj_fecha_e == "true" ) {
 		alertify.success("Enviando datos...");
          actualizaDatosObj();
 	} else{
 		alertify.error('Favor de revisar datos');
 	}
 }
-function validarObjTit_e(){  
-	var valor = document.getElementById("Obj_tit_e").value;
+function validarObjObjetivo_e(){  
+	var valor = document.getElementById("Obj_objetivo_e").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_texto_obj_tit_e').remove();
-		$('#Obj_tit_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_tit_e').parent().append('<span id="icono_texto_obj_tit_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_tit_e').text("Ingrese un caracter").show();
+		$('#icono_texto_obj_obj_e').remove();
+		$('#Obj_objetivo_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_objetivo_e').parent().append('<span id="icono_texto_obj_obj_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_objetivo_e').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
 	}else if( valor.length <= 5  ){
-		$('#icono_texto_obj_tit_e').remove();
-		$('#Obj_tit_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_tit_e').parent().append('<span id="icono_texto_obj_tit_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_tit_e').text("Longitud valida 5-50 caracteres").show();
+		$('#icono_texto_obj_obj_e').remove();
+		$('#Obj_objetivo_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_objetivo_e').parent().append('<span id="icono_texto_obj_obj_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_objetivo_e').text("Longitud valida 5-50 caracteres").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_texto_obj_tit_e').remove();
-		$('#Obj_tit_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#Obj_tit_e').parent().children("span").text("").hide();
-		$('#Obj_tit_e').parent().append('<span id="icono_texto_obj_tit_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_texto_obj_obj_e').remove();
+		$('#Obj_objetivo_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_objetivo_e').parent().children("span").text("").hide();
+		$('#Obj_objetivo_e').parent().append('<span id="icono_texto_obj_obj_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
 	console.log("final :"+estado);
 	return estado;
 }
-function validarObjDesc_e(){  
-	var valor = document.getElementById("Obj_descripcion_e").value;
+function validarObjTema_e(){  
+	var valor = document.getElementById("Obj_tema_e").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
 	if( valor == null || valor.length == 0 || espacios.test(valor) ){
-		$('#icono_ticono_texto_obj_desc_eexto_obj_desc').remove();
-		$('#Obj_descripcion_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_descripcion_e').parent().append('<span id="icono_texto_obj_desc_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_desc_e').text("Ingrese una fecha valida").show();
+		$('#icono_texto_obj_tema_e').remove();
+		$('#Obj_tema_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_tema_e').parent().append('<span id="icono_texto_obj_tema_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_tema_e').text("Ingrese un caracter").show();
 		estado  = "false";
 		console.log(estado);
-	}else if( valor.length <= 15  ){
-		$('#icono_texto_obj_desc_e').remove();
-		$('#Obj_descripcion_e').parent().attr("class", "form-group has-error has-feedback");
-		$('#Obj_descripcion_e').parent().append('<span id="icono_texto_obj_desc_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_obj_desc_e').text("Longitud no valida 15 caracteres").show();
+	}else if( valor.length <= 5  ){
+		$('#icono_texto_obj_tema_e').remove();
+		$('#Obj_tema_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_tema_e').parent().append('<span id="icono_texto_obj_tema_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_tema_e').text("Longitud valida 5-50 caracteres").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
-		$('#icono_texto_obj_desc_e').remove();
-		$('#Obj_descripcion_e').parent().attr("class", "form-group has-success has-feedback");
-		$('#Obj_descripcion_e').parent().children("span").text("").hide();
-		$('#Obj_descripcion_e').parent().append('<span id="icono_texto_obj_desc_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#icono_texto_obj_tema_e').remove();
+		$('#Obj_tema_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_tema_e').parent().children("span").text("").hide();
+		$('#Obj_tema_e').parent().append('<span id="icono_texto_obj_tema_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
+		estado  = "true";
+		console.log(estado);
+	}
+	console.log("final :"+estado);
+	return estado;
+}
+function validarObjSubtema_e(){  
+	var valor = document.getElementById("Obj_subtema_e").value;
+	let numeros = /[0-9]/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,10}$/;
+	let espacios = /^\s$/;
+	let estado  = "false";
+
+	if( valor == null || valor.length == 0 || espacios.test(valor) ){
+		$('#icono_texto_obj_subtema_e').remove();
+		$('#Obj_subtema_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_subtema_e').parent().append('<span id="icono_texto_obj_subtema_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_subtema_e').text("Ingrese un caracter").show();
+		estado  = "false";
+		console.log(estado);
+	}else if( valor.length <= 5  ){
+		$('#icono_texto_obj_subtema_e').remove();
+		$('#Obj_subtema_e').parent().attr("class", "form-group has-error has-feedback");
+		$('#Obj_subtema_e').parent().append('<span id="icono_texto_obj_subtema_e" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
+		$('#text_help_obj_subtema_e').text("Longitud valida 5-50 caracteres").show();
+		estado  = "false";
+		console.log(estado);
+	}else{
+		$('#icono_texto_obj_subtema_e').remove();
+		$('#Obj_subtema_e').parent().attr("class", "form-group has-success has-feedback");
+		$('#Obj_subtema_e').parent().children("span").text("").hide();
+		$('#Obj_subtema_e').parent().append('<span id="icono_texto_obj_subtema_e" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}
@@ -398,8 +472,6 @@ function validarObjDesc_e(){
 	return estado;
 }
 function validarObjFecha_e(){
-	
-		
 	var valor = document.getElementById("Obj_ff_e").value;
 	let numeros = /[0-9]/;
 	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;

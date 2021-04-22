@@ -243,7 +243,7 @@ function validarNuevoEmpleado(){
 function validarNombre(){  
 	var valor = document.getElementById("Empleado_nombre").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{3,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{3,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -282,7 +282,7 @@ function validarNombre(){
 function validarApellidoP(){
 	var valor = document.getElementById("Empleado_ap").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -321,7 +321,7 @@ function validarApellidoP(){
 function validarApellidoM(){
 	var valor = document.getElementById("Empleado_am").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -548,7 +548,7 @@ function validarNuevoEmpleado_E(){
 function validarNombre_E(){  
 	var valor = document.getElementById("Empleado_nombreAct").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{3,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚÑñ]{3,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚÑñ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -587,7 +587,7 @@ function validarNombre_E(){
 function validarApellidoP_E(){
 	var valor = document.getElementById("Empleado_apAct").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚÑñ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚÑñ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -626,7 +626,7 @@ function validarApellidoP_E(){
 function validarApellidoM_E(){
 	var valor = document.getElementById("Empleado_amAct").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚÑñ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚÑñ]{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 

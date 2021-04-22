@@ -29,24 +29,28 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_ant_pues"></td>  
                 </tr>
                 <tr>  
+                     <td width="30%"><label>Jefe Directo</label></td>  
+                     <td width="70%" id="view_ant_jefe"></td>  
+                </tr>
+                <tr>  
                      <td width="30%"><label>Activo</label></td>  
                      <td width="70%" id="view_ant_activo"></td>  
                 </tr>
                 <tr>  
-                     <td width="30%"><label>Fecha Inicio</label></td>  
+                     <td width="30%"><label>Fecha de Alta</label></td>  
                      <td width="70%" id="view_ant_fi"></td>  
                 </tr>
                 <tr>  
-                     <td width="30%"><label>Fecha Final</label></td>  
+                     <td width="30%"><label>Fecha de Baja</label></td>  
                      <td width="70%" id="view_ant_ff"></td>  
-                </tr>
-                <tr>  
-                     <td width="30%"><label>Aumento</label></td>  
-                     <td width="70%" id="view_ant_aum"></td>  
                 </tr>
                 <tr>  
                      <td width="30%"><label>Comentarios</label></td>  
                      <td width="70%" id="view_ant_com"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Color distintivo calendario</label></td>  
+                     <td width="70%" id="view_ant_color"></td>  
                 </tr>
            </table>  
          </div>
@@ -102,6 +106,22 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          }?>
        	</select>
        </div>
+       <div class="form-group">
+       	<label for="idjefe">Jefe Directo:</label>
+       	<select class="form-control" name="Ant_idjefe" id="Ant_idjefe">
+       	<?php 
+        try {
+        $database = new Connection();
+         $db = $database->open();
+            $query="select * from hrm_empleado";
+           foreach ($db->query($query) as $row) {?>
+            <option value="<?php echo $row["id_empleado"]."  -  ".$row["nombre"]."  ".$row["ape_p"]?>"><?php echo $row["id_empleado"]."  -  ".$row["nombre"]."  ".$row["ape_p"]?></option><?php
+           }
+        } catch (PDOException $e) {
+           echo "Error: ".$e->getMessage()." !<br>"; 
+         }?>
+       	</select>
+       </div>
 
        <div class="form-group">
          <label for="">Activo:</label><br>
@@ -120,24 +140,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          <input type="date" name="Ant_fi" id="Ant_fi" max="2030-12-31" min="2000-01-01" class="form-control">
          <span class="help-block" id="text_help_ant_fi"></span>
         </div>
-
-        <div class="form-group">
-         <label >Fecha Final:</label>
-         <input type="date" name="Ant_ff" id="Ant_ff" max="2030-12-31" min="2000-01-01" class="form-control">
-         <span class="help-block" id="text_help_ant_ff"></span>
-        </div>
       
-       <div class="form-group">
-         <label for="">Aumento:</label><br>
-         <center>
-         <label class="radio-inline">
-          <input type="radio" name="Ant_aum" id="Ant_aum" checked value="denegado">Denegado
-         </label>
-         <label class="radio-inline">
-          <input type="radio" name="Ant_aum" id="Ant_aum" value="aprobado">Aprobado
-         </label>
-         </center>
-       </div>
        <div class="form-group">
           <label for="comentarios" class="control-label">
             Comentarios:
@@ -200,6 +203,22 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          }?>
        	</select>
        </div>
+       <div class="form-group">
+       	<label for="idjefe">Jefe Directo:</label>
+       	<select class="form-control" name="Ant_idjefe_e" id="Ant_idjefe_e">
+       	<?php 
+        try {
+        $database = new Connection();
+         $db = $database->open();
+            $query="select * from hrm_empleado";
+           foreach ($db->query($query) as $row) {?>
+            <option value="<?php echo  $row["id_empleado"]."  -  ".$row["nombre"]."  ".$row["ape_p"]?>"><?php echo $row["id_empleado"]."  -  ".$row["nombre"]."  ".$row["ape_p"]?></option><?php
+           }
+        } catch (PDOException $e) {
+           echo "Error: ".$e->getMessage()." !<br>"; 
+         }?>
+       	</select>
+       </div>
 
        <div class="form-group">
          <label for="">Activo:</label><br>
@@ -226,18 +245,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          <span class="help-block" id="text_help_ant_ff_e"></span>
        
         </div>
-      
-       <div class="form-group">
-         <label for="">Aumento:</label><br>
-         <center>
-         <label class="radio-inline">
-          <input type="radio" name="Ant_aum_e" id="Ant_aum_e"  checked value="denegado">Denegado
-         </label>
-         <label class="radio-inline">
-          <input type="radio" name="Ant_aum_e" id="Ant_aum_e" value="aprobado">Aprobado
-         </label>
-         </center>
-       </div>
+
        <div class="form-group">
           <label for="comentarios" class="control-label">
             Comentarios:
@@ -246,6 +254,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <textarea class="form-control" rows="3" id="Ant_com_e" name="Ant_com_e" placeholder="Comentarios" style="resize:none;" required></textarea>
             <span class="help-block" id="text_help_ant_com_e"></span>
           </div>
+        </div>
+
+        <div class="form-group">
+         <label>Color:</label>
+         <center><input type="color" name="Ant_color_e" id="Ant_color_e"><br>
+         <label>Distintivo en el calendario!</label>
+         </center>
         </div>
     
       </div>

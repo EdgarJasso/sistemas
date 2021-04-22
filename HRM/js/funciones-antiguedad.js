@@ -11,21 +11,23 @@ function AgregarAnt(datos){
 	$('#view_ant_id').html(d[0]);
 	$('#view_ant_emp').html(empleado);
 	$('#view_ant_pues').html(puesto);
-	$('#view_ant_activo').html(d[6]);
-    $('#view_ant_fi').html(d[7]);
-    $('#view_ant_ff').html(d[8]);
-	$('#view_ant_aum').html(d[9]);
+	$('#view_ant_jefe').html(d[6]);
+	$('#view_ant_activo').html(d[7]);
+    $('#view_ant_fi').html(d[8]);
+    $('#view_ant_ff').html(d[9]);
 	$('#view_ant_com').html(d[10]);
+	$('#view_ant_color').css("background-color",d[11]);
 }
  
-function agregardatosAnt(ideant, idpant, activo, feciant, fecfant, aumant, com){
+function agregardatosAnt(ideant, idpant,idj, activo, feciant, fecfant, com){
 	cadena="ide=" + ideant +
 		   "&idp=" + idpant+
+		   "&jefe=" + idj+
 		   "&activo=" + activo+
            "&fi=" + feciant +
            "&ff=" + fecfant +
-		   "&aum=" + aumant +
-		   "&com=" + com;
+		   "&com=" + com +
+		   "&color=" + colorHEX();
 		   
     //alert(cadena);
 	$.ajax({
@@ -72,32 +74,35 @@ function agregarformAnt(datos){
 	$('#Ant_idantiguedad_e').val(d[0]);
 	$('#Ant_idempleado_e').val(d[1]);
 	$('#Ant_idpuesto_e').val(d[2]);
-	$('#Ant_activo_e').val(d[3]);
-    $('#Ant_fi_e').val(d[4]);
-    $('#Ant_ff_e').val(d[5]);
-	$('#Ant_aum_e').val(d[6]);
+	$('#Ant_idjefe_e').val(d[3]);
+	$("input[name='Ant_activo_e'][value='"+d[4]+"']").prop('checked', true);
+    $('#Ant_fi_e').val(d[5]);
+    $('#Ant_ff_e').val(d[6]);
 	$('#Ant_com_e').val(d[7]);
+	$('#Ant_color_e').val(d[8]);
 }
 
 function actualizaDatosAnt(){
     ida=$('#Ant_idantiguedad_e').val();
 	ide=$('#Ant_idempleado_e').val();
 	idp=$('#Ant_idpuesto_e').val();
-	activo = $('input[name=Ant_activo_e]:checked').val();
+	jefe=$('#Ant_idjefe_e').val();
+	activo = $('input[name="Ant_activo_e"]:checked').val();
     fi=$('#Ant_fi_e').val();
     ff=$('#Ant_ff_e').val();
-    valor = $('input[name=Ant_aum_e]:checked').val();
 	com=$('#Ant_com_e').val();
+	color=$('#Ant_color_e').val();
 	
 	cadenaAnt=
     "ida="+ ida +
 	"&ide=" + ide +
 	"&idp="+ idp+
-	"&activo=" + activo+
+	"&jefe="+ jefe+
+	"&activo=" + activo +
     "&fi="+ fi +
     "&ff="+ ff + 
-	"&aum="+ valor+
-	"&com="+ com;
+	"&com="+ com +
+	"&color=" + color;
     
    // alert(cadenaAnt);
 
@@ -207,13 +212,13 @@ function validarNuevaAnt(){
 		alertify.success("Enviando datos...");
 		ideant = $('#Ant_idempleado').val();
 		idpant = $('#Ant_idpuesto').val();
+		idjd = $('#Ant_idjefe').val();
 		activo = $('input[name=Ant_activo]:checked').val();
 		feciant = $('#Ant_fi').val();
-		fecfant = $('#Ant_ff').val();
-		valor = $('input[name=Ant_aum]:checked').val();
+		fecfant = "pendiente";
 		com = $('#Ant_com').val();
 		
-	 agregardatosAnt(ideant, idpant, activo, feciant, fecfant, valor, com);
+	 agregardatosAnt(ideant, idpant, idjd, activo, feciant, fecfant, com);
 	} else{
 		alertify.error('Favor de revisar datos');
 	}
@@ -341,4 +346,18 @@ function validarFechaAntF_E(){
 	console.log("formato: "+valor);
 	console.log("final :"+estado);
 	return estado;
+}
+function generarLetra(){
+	var letras = ["a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9"];
+	var numero = (Math.random()*15).toFixed(0);
+	return letras[numero];
+}
+	
+function colorHEX(){
+	var coolor = "";
+	for(var i=0;i<6;i++){
+		coolor = coolor + generarLetra() ;
+	}
+	console.log('#'+coolor);
+	return "#" + coolor;
 }

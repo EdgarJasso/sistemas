@@ -5,7 +5,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
  <center>
-     <h2>Categoria</h2>
+     <h2>Puestos Desempañados</h2>
      </center>
   	<button  type="button" class="btn btn-primary btn-sm boton-add" data-toggle="modal" data-target="#Agregar_Categoria" id="boton_add"><span class="icon-plus"></span> Nuevo</button>
  

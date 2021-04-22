@@ -7,7 +7,6 @@
 	
 	$_id_empleado = $_POST['id'];
 
-	
 try {
 	$sql_select_path = "SELECT * FROM hrm_documentos WHERE id_empleado =".$_id_empleado;
 	foreach ($db->query($sql_select_path) as $row) {
@@ -32,6 +31,25 @@ catch(PDOException $e){
 	echo $documentos;
 }
 //empleado
+$nombre_completo;
+try {
+    $SQL ="SELECT * FROM
+    hrm_empleado
+    WHERE  hrm_usuario.id_empleado =".$_id_empleado;
+    $database = new Connection();
+    $db = $database->open();     
+	$stmt = $db->prepare($SQL);   
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->execute();
+    $result = $stmt->fetch();
+	$nombre_completo = $result["nombre"]." ".$result["ape_p"]." ".$result["ape_m"];
+$db = $database ->close();
+} catch (PDOException $e) {
+    $result = $e->getMessage();
+    echo $result;
+}
+
+
 try{
 	$sql = "DELETE FROM hrm_empleado WHERE id_empleado = '".$_id_empleado."'";
 	// declaración if-else en la ejecución de nuestra consulta
@@ -48,7 +66,22 @@ if ( $documentos == 1 && $empleado == 1) {
 	//echo 'Exito';
 $ruta = "../Archivos/".$_id_empleado;
 	rmdir("".$ruta."");
-	echo '1';
+	date_default_timezone_set('America/Mexico_City');
+	$DateAndTime = date('m-d-Y h:i:s a', time()); 
+		try{
+			$stmt = $db->prepare("INSERT INTO hrm_bajas (id_empleado, nombre_completo, fecha) VALUES (:id_empleado, :nombre_completo, :fecha)");
+			$result= ( $stmt->execute(array(
+                ':id_empleado' => $_id_empleado,
+                ':nombre_completo' => $nombre_completo,
+                ':fecha' => $DateAndTime,
+            )) ) ? '1' : '0';	
+	    echo $result;
+		}
+		catch(PDOException $e){
+            $result = $e->getMessage();
+            echo $result;
+		}
+	//echo '1';
 } else if ( $documentos == 0) {
 	echo '1';
 }

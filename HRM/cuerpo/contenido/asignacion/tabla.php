@@ -14,6 +14,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <thead>
 	 <tr> 
 		 <th>Empleado</th>
+     <th>Periodo</th>
 		 <th>Dias Habiles</th>
      <th><center>Accion</center></th>
 	 </tr>
@@ -32,41 +33,27 @@ if($_SESSION['permiso']=='admin'){
   hrm_asignacion.id_asignacion as id_asignacion, 
   hrm_asignacion.id_empleado as id_empleado, 
   hrm_empleado.nombre as nombre_empleado, 
-  hrm_asignacion.dias_habilies as dias 
+  hrm_asignacion.periodo as periodo,
+  hrm_asignacion.dias_habilies as dias
   FROM hrm_asignacion, hrm_empleado 
   WHERE hrm_asignacion.id_empleado = hrm_empleado.id_empleado";
-}else{}
-
-if($_SESSION['permiso']=='jefe-area'){
-  $query ="SELECT 
-  hrm_asignacion.id_asignacion as id_asignacion, 
-  hrm_asignacion.id_empleado as id_empleado, 
-  hrm_empleado.nombre as nombre_empleado, 
-  hrm_asignacion.dias_habilies as dias 
-  FROM hrm_asignacion, hrm_empleado, hrm_area, hrm_antiguedad, hrm_puesto 
-  WHERE hrm_asignacion.id_empleado = hrm_empleado.id_empleado 
-  AND hrm_area.id_area = hrm_puesto.id_area 
-  AND hrm_puesto.id_puesto = hrm_antiguedad.id_puesto 
-  AND hrm_empleado.id_empleado = hrm_antiguedad.id_empleado 
-  AND hrm_area.nombre = '".$_SESSION['area']."'";
-}else{}
-
-
-
-
+}
            foreach ($db->query($query) as $row) {
 
              $datosAsiV = $row['id_asignacion']."||".
                       $row['id_empleado'] ."||".
                       $row['nombre_empleado']."||".
-                      $row['dias'];
+                      $row['dias']."||".
+                      $row['periodo'];
 
              $datosAsiE = $row['id_asignacion']."||".
                           $row['id_empleado'] ."||".
-                          $row['dias'];
+                          $row['dias']."||".
+                          $row['periodo'];
              ?> 
              <tr>
               <td><?php echo $row['id_empleado']." - ".$row['nombre_empleado']; ?></td>
+              <td><?php echo $row['periodo']; ?></td>
               <td><?php echo $row['dias']; ?></td>
               <td> 
                <center>
@@ -101,6 +88,7 @@ if($_SESSION['permiso']=='jefe-area'){
 	<tr>
      <th>Empleado</th>
 		 <th>Dias Habiles</th>
+     <th>Periodo</th>
      <th><center>Accion</center></th>
 	</tr>
 	</tfoot>
@@ -146,8 +134,9 @@ if($_SESSION['permiso']=='jefe-area'){
 
 		  ideasi = $('#Asi_idempleado').val();
 		  dias = $('#Asi_dias').val();
+      periodo = $('#Asi_periodo').val();
           
-       agregardatosAsi(ideasi, dias);
+       agregardatosAsi(ideasi, dias, periodo);
     });
     
   $('#actualizar_asignacion').click(function(){

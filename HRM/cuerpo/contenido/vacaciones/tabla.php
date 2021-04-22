@@ -35,6 +35,7 @@ if($_SESSION['permiso']=='admin'){
           hrm_vacaciones.id_vacaciones as id_vacaciones,
            hrm_vacaciones.id_empleado as id_empleado, 
            hrm_empleado.nombre as nombre_empleado, 
+           hrm_vacaciones.fecha as fecha, 
            hrm_vacaciones.dia as dia, 
            hrm_vacaciones.color as color, 
            hrm_vacaciones.estado as estado 
@@ -63,14 +64,15 @@ if($_SESSION['permiso']=='jefe-area'){
              $datosVacV = $row['id_vacaciones']."||".
                       $row['id_empleado'] ."||".
                       $row['nombre_empleado']."||".
+                      $row['fecha']."||".
                       $row['dia']."||".
                       $row['color']."||".
                       $row['estado'];
 
              $datosVacE = $row['id_vacaciones']."||".
              $row['id_empleado'] ."||".
+             $row['fecha']."||".
              $row['dia']."||".
-             $row['color']."||".
              $row['estado'];
              ?> 
              <tr>

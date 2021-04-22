@@ -184,6 +184,12 @@ return out;
          </a>
         </li>
         <li>   
+         <a class="nav-link" id="pills-nosotros-tab" data-toggle="pill" href="#pills-nosotros" 
+         role="tab" aria-controls="pills-nosotros" aria-selected="false">Nosotros
+          <span class="icon-briefcase"></span>
+         </a>
+        </li>
+        <li>   
          <a class="nav-link" id="pills-calendario-tab" data-toggle="pill" href="#pills-calendario" 
          role="tab" aria-controls="pills-calendario" aria-selected="false">Calendario
           <span class="icon-calendar"></span>
@@ -305,6 +311,41 @@ return out;
                   </div>
               </div>
             </div>
+            <br>
+    <button type="button" class="btn btn-primary bt-direccion" data-toggle="collapse" data-target="#alergias">Alergias <span class="icon-magic-wand"></span></button>
+    <div id="alergias" class="collapse">
+      <div class="container-fluid perfil">
+
+      <?php 
+       try {
+        $database = new Connection();
+         $db = $database->open();
+          $query="select * from hrm_alergias where hrm_alergias.id_empleado = ".$_SESSION['idempleado'];
+           foreach ($db->query($query) as $row) {
+      ?>
+      <div class="direccion_perfil">
+                    <div class="fecha_perfil">
+                      <h5>Descripcion</h5>
+                         <p><?php echo $row['descripcion']?></p>
+                    </div>
+                    <div class="fecha_perfil">
+                      <h5>Tipo de Sangre</h5>
+                         <p><?php echo $row['tipo_sangre']?></p>
+                    </div>
+                    <div class="fecha_perfil">
+                      <h5>Telefono de Contacto</h5>
+                         <p><?php echo $row['tel_contacto']?></p>
+                    </div>
+                    
+          </div>
+          <?php 
+           }
+           $db = null;                 
+           } catch (PDOException $e) {
+           echo "Error: ".$e->getMessage()." !<br>";
+          }?>
+      </div>
+    </div>
 <br>
     <button type="button" class="btn btn-primary bt-direccion" data-toggle="collapse" data-target="#direccion">Direccion <span class="icon-magic-wand"></span></button>
     <div id="direccion" class="collapse">
@@ -395,10 +436,6 @@ return out;
           <h5>Fecha Ingreso:</h5>
           <p><?php echo $result['fecha']?></p>
           </div>
-          <div class="bloque">
-          <h5>Sueldo:</h5>
-          <p><b>$</b><?php echo $result['sueldo']?></p>
-        </div>
         </div>
       </div>
   </div>
@@ -414,8 +451,10 @@ return out;
   </div>
   <div class="tab-pane fade " id="pills-documentos" role="tabpanel" aria-labelledby="pills-documentos-tab">
     <div id="documenos_doctos">
-
     </div>
+  </div>
+  <div class="tab-pane fade" id="pills-nosotros" role="tabpanel" aria-labelledby="pills-nosotros-tab">
+    <div id="vacaciones_nosotros"></div>
   </div>
   <div class="tab-pane fade  " id="pills-calendario" role="tabpanel" aria-labelledby="pills-calendario-tab">
 
@@ -494,6 +533,7 @@ $(document).ready(function(){
      $('#vacaciones_usuario').load('vacaciones/tabla_u.php'); 
      $('#documenos_doctos').load('documentos/tabla_u.php'); 
      $('#tableofnotifi').load('objetivos/notificaciones.php'); 
+     $('#vacaciones_nosotros').load('PDF/todo.php'); 
      $('#bt-noti').load('objetivos/badges.php'); 
      
   });

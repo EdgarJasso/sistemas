@@ -1,20 +1,22 @@
-<?php  
+<?php   
 	session_start(); 
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	include('../../../php/connection.php');
 	$database = new Connection();
 		$db = $database->open();
 		try{
-			$ida = $_POST['ida'];
+			$idal= $_POST['idal'];
             $ide = $_POST['ide'];
-			$idp = $_POST['idp'];
-			$jefe = $_POST['jefe'];
-			$act = $_POST['activo'];
-            $fi = $_POST['fi'];
-            $ff = $_POST['ff'];
-			$com = $_POST['com'];
-			$color = $_POST['color'];
-			$sql = "UPDATE hrm_antiguedad SET id_empleado='$ide', id_puesto ='$idp', jefe_directo ='$jefe', activo= '$act', fecha_inicio = '$fi', fecha_fin = '$ff' , comentarios ='$com' , color = '$color' WHERE id_antiguedad = '$ida'";
+			$descripcion = $_POST['descripcion'];
+			$tipo_sangre = $_POST['tipo_sangre'];
+			$tel_contacto = $_POST['tel_contacto'];
+			$sql = "UPDATE hrm_alergias SET 
+			id_empleado='$ide', 
+			descripcion ='$descripcion', 
+			tipo_sangre ='$tipo_sangre', 
+			tel_contacto = '$tel_contacto'
+			WHERE id_alergia = '$idal'";
+        
             $result = ( $db->exec($sql) ) ? '1' : '0';
            echo $result;
             

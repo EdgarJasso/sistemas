@@ -30,11 +30,22 @@ try {
 ?>
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
+  <?php
+  echo '
+  <div class="alert alert-info mt-5" role="alert">
+   <center>
+    Por favor revisa las vacaciones solicitadas por tu equipo de trabajo
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Agregar_vacaciones_user" id="boton_review"><span class="icon-user-check"></span> Revisar</button>
+   </center>
+  </div>';
+  //SELECT * FROM hrm_antiguedad WHERE hrm_antiguedad.jefe_directo LIKE '%34 - MARIEL FERNANDEZ%'
+  ?>
+
  <center>
         <h2>Dias Disponibles:
           <b><?php echo $ddv?></b>
         </h2>
-      </center><br>
+  </center><br>
     <?php
     if($ddv >= 1){
       $out_v = '<button  type="button" class="btn btn-primary btn-sm boton-add" data-toggle="modal" data-target="#Agregar_vacaciones_user" id="boton_add"><span class="icon-plus"></span> Nuevo</button>';
@@ -59,18 +70,21 @@ try {
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT hrm_vacaciones.id_vacaciones as id_vacaciones, hrm_vacaciones.id_empleado as id_empleado, hrm_empleado.nombre as nombre_empleado, hrm_vacaciones.dia as dia, hrm_vacaciones.color as color, hrm_vacaciones.estado as estado FROM hrm_vacaciones, hrm_empleado WHERE hrm_vacaciones.id_empleado = hrm_empleado.id_empleado AND hrm_empleado.id_empleado=".$_SESSION['idempleado'];
+          $query="SELECT hrm_vacaciones.id_vacaciones as id_vacaciones, hrm_vacaciones.id_empleado as id_empleado, hrm_empleado.nombre as nombre_empleado, hrm_vacaciones.dia as dia, hrm_vacaciones.color as color, hrm_vacaciones.estado as estado, hrm_vacaciones.id_jefe as jefe, hrm_vacaciones.fecha as fecha FROM hrm_vacaciones, hrm_empleado WHERE hrm_vacaciones.id_empleado = hrm_empleado.id_empleado AND hrm_empleado.id_empleado=".$_SESSION['idempleado'];
            foreach ($db->query($query) as $row) {
 
              $datosVacVU = $row['id_vacaciones']."||".
                       $row['id_empleado'] ."||".
                       $row['nombre_empleado']."||".
+                      $row['fecha']."||".
                       $row['dia']."||".
                       $row['color']."||".
                       $row['estado'];
 
              $datosVacEU = $row['id_vacaciones']."||".
              $row['id_empleado'] ."||".
+             $row['jefe']."||".
+             $row['fecha']."||".
              $row['dia']."||".
              $row['color']."||".
              $row['estado'];

@@ -8,11 +8,13 @@ function AgregarAsi(datos){
      $('#view_asi_id').html(d[0]);
      $('#view_asi_emp').html(empleado);
      $('#view_asi_dias').html(d[3]);
+     $('#view_asi_periodo').html(d[4]);
  }
  
- function agregardatosAsi(ideasi, dias){
+ function agregardatosAsi(ideasi, dias, periodo){
      cadena="ide=" + ideasi +
-            "&dias=" + dias;
+            "&dias=" + dias +
+            "&periodo=" + periodo;
      //alert(cadena);
      $.ajax({
          type:"post",
@@ -59,17 +61,20 @@ function AgregarAsi(datos){
      $('#Asi_idasignacion_e').val(d[0]);
      $('#Asi_idempleado_e').val(d[1]);
      $('#Asi_dias_e').val(d[2]);
+     $('#Asi_periodo_e').val(d[3]);
  }
  
  function actualizaDatosAsi(){
      ida=$('#Asi_idasignacion_e').val();
      ide=$('#Asi_idempleado_e').val();
      dias=$('#Asi_dias_e').val();
+     periodo=$('#Asi_periodo_e').val();
      
      cadenaAsi=
      "idas="+ ida +
      "&ide=" + ide +
-     "&dias="+ dias;
+     "&dias="+ dias + 
+     "&periodo=" + periodo;
      
     // alert(cadenaAsi);
  

@@ -23,7 +23,9 @@ try {
     hrm_usuario.clave as clave, 
     hrm_usuario.permiso as permiso, 
     hrm_empleado.nombre as nombre, 
-    hrm_area.nombre as area 
+    hrm_area.nombre as area, 
+    hrm_antiguedad.jefe_directo as jefe,
+    hrm_antiguedad.color as color 
     FROM
     hrm_empleado, hrm_usuario, hrm_antiguedad, hrm_area, hrm_puesto 
     WHERE 
@@ -57,6 +59,8 @@ try {
         $_SESSION['name'] = $result['nombre'];
         $_SESSION['permiso'] = $result['permiso'];
         $_SESSION['area'] = $result['area'];
+        $_SESSION['jefe'] = $result['jefe'];
+        $_SESSION['color'] = $result['color'];
         date_default_timezone_set('America/Mexico_City');
         $_SESSION['start'] =time();
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10

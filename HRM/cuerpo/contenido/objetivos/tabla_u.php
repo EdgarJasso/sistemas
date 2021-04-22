@@ -22,25 +22,29 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT hrm_objetivos.id_objetivo as id_objetivo, hrm_objetivos.id_puesto as id_puesto, hrm_puesto.nombre as nombre_puesto, hrm_objetivos.id_empleado as id_empleado, hrm_empleado.nombre as nombre_empleado, hrm_objetivos.titulo as titulo, hrm_objetivos.descripcion as descripcion, hrm_objetivos.f_limite as fecha, hrm_objetivos.cumplio as cumplio, hrm_objetivos.porcentaje as porcentaje FROM hrm_objetivos, hrm_puesto, hrm_empleado WHERE hrm_objetivos.id_puesto = hrm_puesto.id_puesto AND hrm_objetivos.id_empleado = hrm_empleado.id_empleado AND hrm_empleado.id_empleado =".$_SESSION['idempleado'];
-           foreach ($db->query($query) as $row) {
+         $query = "SELECT hrm_objetivos.id_objetivo as id_objetivo, hrm_objetivos.id_puesto as id_puesto, hrm_puesto.nombre as nombre_puesto, hrm_objetivos.id_empleado as id_empleado, hrm_empleado.nombre as nombre_empleado, hrm_objetivos.objetivo as objetivo, hrm_objetivos.tema as tema, hrm_objetivos.subtema as subtema, hrm_objetivos.periodo as periodo, hrm_objetivos.fecha_asignacion as fecha, hrm_objetivos.estado as estado, hrm_objetivos.realizado as realizado, hrm_objetivos.comentarios as comentarios FROM hrm_objetivos, hrm_puesto, hrm_empleado WHERE hrm_objetivos.id_puesto = hrm_puesto.id_puesto AND hrm_objetivos.id_empleado = hrm_empleado.id_empleado AND hrm_objetivos.id_empleado =".$_SESSION["idempleado"];
+         foreach ($db->query($query) as $row) {
 
-             $datosObjV = $row['id_objetivo']."||".
-                          $row['id_puesto']."||".
-                          $row['nombre_puesto']."||".
-                          $row['id_empleado'] ."||".
-                          $row['nombre_empleado']."||".
-                          $row['titulo']."||".
-                          $row['descripcion']."||".
-                          $row['fecha']."||".
-                          $row['cumplio']."||".
-                          $row['porcentaje'];
+            $datosObjV = $row['id_objetivo']."||".
+                         $row['id_puesto']."||".
+                         $row['nombre_puesto']."||".
+                         $row['id_empleado'] ."||".
+                         $row['nombre_empleado']."||".
+                         $row['objetivo']."||".
+                         $row['tema']."||".
+                         $row['subtema']."||".
+                         $row['periodo']."||".
+                         $row['fecha']."||".
+                         $row['estado']."||".
+                         $row['realizado']."||".
+                         $row['comentarios'];
+
              ?> 
              <tr>
               <td><?php echo $row['id_puesto']." - ".$row['nombre_puesto']; ?></td>
               <td><?php echo $row['id_empleado']." - ".$row['nombre_empleado']; ?></td>
-              <td><?php echo $row['titulo']; ?></td>
-              <td><?php echo $row['fecha']; ?></td>
+              <td><?php echo $row['objetivo'];?></td>
+              <td><?php echo $row['fecha']." - ".$row['periodo']; ?></td>
               <td> 
                <center>
                

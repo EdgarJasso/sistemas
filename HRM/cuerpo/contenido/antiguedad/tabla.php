@@ -30,11 +30,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {?>
           hrm_area.nombre as area_nombre,
           hrm_antiguedad.id_puesto as id_puesto, 
           hrm_puesto.nombre as puesto_nombre, 
+          hrm_antiguedad.jefe_directo as jefe, 
           hrm_antiguedad.activo as activo,
           hrm_antiguedad.fecha_inicio as fecha_inicio, 
           hrm_antiguedad.fecha_fin as fecha_fin, 
-          hrm_antiguedad.Aumento as aumento,
-          hrm_antiguedad.comentarios as comentarios 
+          hrm_antiguedad.comentarios as comentarios,
+          hrm_antiguedad.color as color  
           FROM
           hrm_antiguedad, hrm_empleado, hrm_puesto, hrm_area 
           WHERE 
@@ -51,20 +52,22 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {?>
                       $row['id_puesto']."||".
                       $row['area_nombre']."||".
                       $row['puesto_nombre']."||".
+                      $row['jefe']."||".
                       $row['activo']."||".
                       $row['fecha_inicio']."||".
                       $row['fecha_fin']."||".
-                      $row['aumento']."||".
-                      $row['comentarios'];
+                      $row['comentarios']."||".
+                      $row['color'];
 
              $datosAntE = $row['id_antiguedad']."||".
                           $row['id_empleado'] ."||".
                           $row['id_puesto']."||".
+                          $row['jefe']."||".
                           $row['activo']."||".
                           $row['fecha_inicio']."||".
                           $row['fecha_fin']."||".
-                          $row['aumento']."||".
-                          $row['comentarios'];
+                          $row['comentarios']."||".
+                          $row['color'];
              ?> 
              <tr>
               <td><?php echo $row['id_empleado']." - ".$row['nombre_empleado']; ?></td>

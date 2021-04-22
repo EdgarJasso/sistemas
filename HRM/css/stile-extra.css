@@ -108,7 +108,7 @@ body{
 #usuarios_length select, #empleados_length select{
     color: #337ab7;
 }
-#objetivos_filter, #asignacion_filter, #vacaciones_filter, #horas_filter, #documentos_filter, #imagen_filter{
+#objetivos_filter, #asignacion_filter, #vacaciones_filter, #horas_filter, #documentos_filter, #imagen_filter, #Alergias_filter, #bajas_filter{
     float: left;
     margin-left: 30%;
     color: white;
@@ -122,16 +122,20 @@ body{
 #vacaciones_filter input[type="search"],
 #horas_filter input[type="search"],
 #documentos_filter input[type="search"],
+#Alergias_filter input[type="search"],
+#bajas_filter input[type="search"],
 #imagen_filter input[type="search"]{
     background-color: transparent;
     border: unset;
     border-bottom: 2px solid white;
 }
 #objetivos_filter input[type="search"]:focus,
+#bajas_filter input[type="search"]:focus,
 #asignacion_filter input[type="search"]:focus,
 #vacaciones_filter input[type="search"]:focus,
 #horas_filter input[type="search"]:focus,
 #documentos_filter input[type="search"]:focus,
+#Alergias_filter input[type="search"]:focus,
 #imagen_filter input[type="search"]:focus
 {
     border: 2px solid white;
@@ -142,6 +146,8 @@ body{
 #vacaciones_paginate,
 #horas_paginate, 
 #documentos_paginate, 
+#Alergias_paginate, 
+#bajas_paginate, 
 #imagen_paginate{
     padding: 10px 15px;
     text-align: center;
@@ -152,6 +158,8 @@ body{
 #vacaciones_first, #vacaciones_previous, #vacaciones_next, #vacaciones_last,
 #horas_first, #horas_previous, #horas_next, #horas_last,
 #documentos_first, #documentos_previous,  #documentos_next,  #documentos_last, 
+#Alergias_first, #Alergias_previous,  #Alergias_next,  #Alergias_last, 
+#bajas_first, #bajas_previous,  #bajas_next,  #bajas_last, 
 #imagen_first, #imagen_previous, #imagen_next, #imagen_last{
     padding: 10px 15px;
     margin-right: 10px;
@@ -163,6 +171,8 @@ body{
 #vacaciones_first:hover, #vacaciones_previous:hover, #vacaciones_next:hover, #vacaciones_last:hover,
 #horas_first:hover, #horas_previous:hover, #horas_next:hover, #horas_last:hover,
 #documentos_first:hover, #documentos_previous:hover,  #documentos_next:hover,  #documentos_last:hover, 
+#Alergias_first:hover, #Alergias_previous:hover,  #Alergias_next:hover,  #Alergias_last:hover, 
+#bajas_first:hover, #bajas_previous:hover,  #bajas_next:hover,  #bajas_last:hover, 
 #imagen_first:hover, #imagen_previous:hover, #imagen_next:hover, #imagen_last:hover{
     border: 2px solid white;
     text-decoration: none;
@@ -200,4 +210,14 @@ text-align: center;
 
 #home-f{
     background-color: rgba(0 ,0, 0, 0.0);
+}
+
+#organigrama{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background-color: #337ab7 !important;
+    color: #e9e9e9 !important;
+}
+.titulo_politica{
+    font-weight: bold;
 }

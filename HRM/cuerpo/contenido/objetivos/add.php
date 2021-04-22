@@ -7,17 +7,19 @@ include('../../../php/connection.php');
 		$db = $database->open();
 		try{
 			$estado = "pendiente";
-			$stmt = $db->prepare("INSERT INTO hrm_objetivos (id_puesto, id_empleado, titulo, descripcion, f_limite, cumplio, porcentaje, estado) 
-            VALUES (:id_puesto, :id_empleado, :titulo, :descripcion, :f_limite, :cumplio, :porcentaje, :estado)");
+			$stmt = $db->prepare("INSERT INTO hrm_objetivos (id_puesto, id_empleado, objetivo, tema, subtema, periodo, fecha_asignacion, estado, realizado, comentarios) 
+            VALUES (:id_puesto, :id_empleado, :objetivo, :tema, :subtema, :periodo, :fecha_asignacion, :estado, :realizado, :comentarios)");
 			$result= ( $stmt->execute(array(
                 ':id_puesto'  => $_POST['idp'],
 				':id_empleado'  => $_POST['ide'],
-				':titulo'  => $_POST['tit'],
-                ':descripcion'  => $_POST['desc'],
-                ':f_limite'  => $_POST['fecha'],
-                ':cumplio'  => $_POST['cumplio'],
-				':porcentaje'  => $_POST['porce'],
-				':estado' => $estado
+				':objetivo'  => $_POST['objetivo'],
+                ':tema'  => $_POST['tema'],
+                ':subtema'  => $_POST['subtema'],
+                ':periodo'  => $_POST['periodo'],
+				':fecha_asignacion'  => $_POST['fecha_asignacion'],
+				':estado' => $estado,
+				':realizado' => $estado,
+				':comentarios'  => $_POST['comentarios']
             )) ) ? '1' : '0';	
 	    echo $result;
 		}

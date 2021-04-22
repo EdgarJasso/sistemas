@@ -7,15 +7,15 @@ function AgregarVac(datos){
  
      $('#view_vac_id').html(d[0]);
      $('#view_vac_emp').html(empleado);
-     $('#view_vac_dia').html(d[3]);
-     $('#view_color_dia').css("background-color",d[4]);
-     $('#view_vac_estado').html(d[5]);
+     $('#view_vac_fecha').html(d[3]);
+     $('#view_vac_dia').html(d[4]);
+     $('#view_color_dia').css("background-color",d[5]);
+     $('#view_vac_estado').html(d[6]);
  }
  
- function agregardatosVac(ide_vac, dia_vac, color_vac, estado_vac){
+ function agregardatosVac(ide_vac, dia_vac, estado_vac){
      cadena="ide=" + ide_vac +
             "&dia=" + dia_vac+
-            "&color=" + color_vac+
             "&estado=" + estado_vac;
      //alert(cadena);
      $.ajax({
@@ -57,9 +57,8 @@ function AgregarVac(datos){
      });
  }  
 
- function agregardatosVacU(dia_vac_u, color_vac_u){
-    cadena="dia=" + dia_vac_u+
-           "&color=" + color_vac_u;
+ function agregardatosVacU(dia_vac_u, ){
+    cadena="dia=" + dia_vac_u;
    // alert(cadena);
     $.ajax({
         type:"post",
@@ -90,38 +89,40 @@ function AgregarVac(datos){
     });
 } 
  
-
  function agregarformVac(datos){
      d = datos.split('||');
   
      $('#Vac_idvacaciones_e').val(d[0]);
      $('#Vac_idempleado_e').val(d[1]);
-     $('#vac_dia_e').val(d[2]);
-     $('#vac_color_e').val(d[3]);
+     $('#vac_fecha_e').val(d[2]);
+     $('#vac_dia_e').val(d[3]);
      $('#vac_estado_e').val(d[4]);
  }
+
  function agregarformVacU(datos){
     d = datos.split('||');
  
     $('#Vac_idvacaciones_eu').val(d[0]);
     $('#Vac_idempleado_eu').val(d[1]);
-    $('#vac_dia_eu').val(d[2]);
-    $('#vac_color_eU').val(d[3]);
-    $('#Vac_estado_eu').val(d[4]);
+    $('#Vac_idjefe_eu').val(d[2]);
+    $('#Vac_fecha_eu').val(d[3]);
+    $('#vac_dia_eu').val(d[4]);
+    $('#Vac_color_eu').val(d[5]);
+    $('#Vac_estado_eu').val(d[6]);
 }
 
 function actualizaDatosVac(){
     idv_vac=$('#Vac_idvacaciones_e').val();
     ide_vac=$('#Vac_idempleado_e').val();
+    fecha_vac=$('#vac_fecha_e').val();
     dia_vac=$('#vac_dia_e').val();
-    color_vac=$('#vac_color_e').val();
     estado_vac=$('#vac_estado_e').val();
 
     cadenaVac=
     "idv="+ idv_vac +
     "&ide=" + ide_vac +
+    "&fecha="+ fecha_vac+
     "&dia="+ dia_vac+
-    "&color="+ color_vac+
     "&estado="+ estado_vac;
     
     //alert(cadenaVac);
@@ -166,16 +167,20 @@ function actualizaDatosVac(){
 
 }
 
- function actualizaDatosVacU(){
+ function actualizaDatosVacU(){ 
      idv_vac=$('#Vac_idvacaciones_eu').val();
      ide_vac=$('#Vac_idempleado_eu').val();
+     idj_vac=$('#Vac_idjefe_eu').val();
+     fecha_vac=$('#Vac_fecha_eu').val();
      dia_vac=$('#vac_dia_eu').val();
-     color_vac=$('#vac_color_eU').val();
+     color_vac=$('#Vac_color_eu').val();
      estado_vac=$('#Vac_estado_eu').val();
 
      cadenaVac=
      "idv="+ idv_vac +
      "&ide=" + ide_vac +
+     "&jefe=" + idj_vac +
+     "&fecha=" + fecha_vac +
      "&dia="+ dia_vac+
      "&color="+ color_vac+
      "&estado="+ estado_vac;
@@ -338,9 +343,8 @@ function validarNuevoVacacion(){
         alertify.success("Enviando datos...");
           ide_vac = $('#Vac_idempleado').val();
             dia_vac = $('#vac_dia').val();
-            color_vac = $('#vac_color').val();
             estado_vac = $('#vac_estado').val();
-             agregardatosVac(ide_vac, dia_vac, color_vac, estado_vac);
+             agregardatosVac(ide_vac, dia_vac, estado_vac);
          } else{
 		alertify.error('Favor de revisar datos');
 	}

@@ -179,6 +179,12 @@ return out;
                     </a>
                 </li>
                 <li>   
+                    <a class="nav-link" id="pills-alergias-tab" data-toggle="pill" href="#pills-alergias" 
+                    role="tab" aria-controls="pills-alergias" aria-selected="false">Alergias
+                    <span class="icon-aid-kit"></span>
+                     </a>
+                </li>
+                <li>   
                     <a class="nav-link" id="pills-direccion-tab" data-toggle="pill" href="#pills-direccion" 
                     role="tab" aria-controls="pills-direccion" aria-selected="false">Direccion
                     <span class="icon-location2"></span>
@@ -215,12 +221,30 @@ return out;
                      <span class="icon-search"></span>
                     </a>
                 </li>
+                <li>   
+                    <a class="nav-link" id="pills-bajas-tab" data-toggle="pill" href="#pills-bajas" 
+                     role="tab" aria-controls="pills-bajas" aria-selected="false">Bajas
+                     <span class="icon-user-minus"></span>
+                    </a>
+                </li>
             </ul>
         </li>
 
         <li>
           <a href="#">Extra<span class="icon-link"></span></a>
              <ul>
+                <li>   
+                    <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
+                  role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
+                    <span class="icon-users"></span>
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-politicas" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Politicas
+                    <span class="icon-file-zip"></span>
+                 </a>
+                </li>
                 <li>   
                   <a class="nav-link" id="pills-objetivos-tab" data-toggle="pill" href="#pills-objetivos" 
                   role="tab" aria-controls="pills-objetivos" aria-selected="false">Objetivos
@@ -280,7 +304,7 @@ return out;
 <div class="container-fluid" id="contenido_general">
 <a href="#" class="" id="bt_menu_new"><span class="icon-menu"></span></a>	
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade in active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <div class="container-fluid">
       <div class="jumbotron jumbotron-fluid" id="home-f">
         <center>  
@@ -308,6 +332,12 @@ return out;
   </div>
 <!-- fin -->
 <!-- inicio -->
+<div class="tab-pane fade" id="pills-alergias" role="tabpanel" aria-labelledby="pills-alergias-tab">
+   <div class="container-fluid">
+      <div id="contenedor_alergias"></div>
+   </div>
+  </div>
+<!-- fin --><!-- inicio -->
 <div class="tab-pane fade" id="pills-direccion" role="tabpanel" aria-labelledby="pills-direccion-tab">
    <div class="container-fluid">
       <div id="contenedor_direccion"></div>
@@ -339,6 +369,27 @@ return out;
 <div class="tab-pane fade" id="pills-consulta" role="tabpanel" aria-labelledby="pills-consulta-tab">
    <div class="container-fluid">
       <div id="contenedor_consulta"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-organigrama" role="tabpanel" aria-labelledby="pills-organigrama-tab">
+   <div class="container-fluid">
+      <div id="contenedor_organigrama"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-bajas" role="tabpanel" aria-labelledby="pills-bajas-tab">
+   <div class="container-fluid">
+      <div id="contenedor_bajas"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade in active" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
+   <div class="container-fluid">
+      <div id="contenedor_politicas"></div>
    </div>
   </div>
 <!-- fin -->
@@ -425,6 +476,7 @@ $(document).ready(function(){
   
      $('#contenedor_empleados').load('empleados/tabla.php'); 
      $('#contenedor_usuarios').load('usuarios/tabla.php'); 
+     $('#contenedor_alergias').load('alergias/tabla.php'); 
      $('#contenedor_direccion').load('direccion/tabla.php'); 
      $('#contenedor_area').load('area/tabla.php'); 
      $('#contenedor_categoria').load('categoria/tabla.php'); 
@@ -433,9 +485,12 @@ $(document).ready(function(){
      $('#contenedor_objetivos').load('objetivos/tabla.php'); 
      $('#contenedor_asignacion').load('asignacion/tabla.php'); 
      $('#contenedor_vacaciones').load('vacaciones/tabla.php'); 
+     $('#contenedor_bajas').load('bajas/tabla.php'); 
      $('#contenedor_horas').load('horas/tabla.php'); 
      $('#contenedor_documentosnuevos').load('documentos/tabla.php'); 
      $('#contenedor_imagen').load('imagen/tabla.php'); 
+     $('#contenedor_organigrama').load('PDF/organigrama.php'); 
+     $('#contenedor_politicas').load('PDF/politicas.php'); 
      
 	});
 </script>
