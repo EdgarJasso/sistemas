@@ -15,7 +15,7 @@ include('../../../php/connection.php');
 				':nomina' => $_POST['nomina']
             )) ) ? '1' : '0';	
 	    echo $result;
-		}
+		} 
 		catch(PDOException $e){
 			echo $e->getMessage();
 		}

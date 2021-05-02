@@ -9,8 +9,10 @@ include('../../../php/connection.php');
             $ide = $_POST['ide'];
 			$clave = $_POST['clave'];
             $permiso = $_POST['permiso'];
+			$nomina = $_POST['nomina'];
+			
 
-			$sql = "UPDATE hrm_usuario SET id_empleado='$ide', clave ='$clave',  permiso = '$permiso' WHERE id_usuario = '$id'";
+			$sql = "UPDATE hrm_usuario SET id_empleado='$ide', clave ='$clave',  permiso = '$permiso' ,  nomina = '$nomina' WHERE id_usuario = '$id'";
 			// declaración if-else en la ejecución de nuestra consulta
 			$result = ( $db->exec($sql) ) ? '1' : '0'; 
 			

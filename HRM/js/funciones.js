@@ -6,12 +6,14 @@ function AgregarView(datos){
     $('#view_user_nombre').html(name);
 	$('#view_user_clav').html(d[3]);
 	$('#view_user_permis').html(d[4]);
+	$('#view_user_nomina').html(d[5]);
 }
  
-function agregardatos(id_empleado, clave, permiso){
+function agregardatos(id_empleado, clave, permiso, nomina){
 	cadena="ide="+ id_empleado +
            "&clave=" + clave +
-		   "&permiso=" + permiso;
+		   "&permiso=" + permiso +
+		   "&nomina=" + nomina; 
 	$.ajax({
 		type:"post",
 		url:"../contenido/usuarios/add.php",
@@ -66,11 +68,13 @@ function actualizaDatosUsuario(){
     ide=$('#idempleado').val();
 	clave=$('#clave_u').val();
 	permiso=$('#permiso_u').val();
+	nomina = $("#nomina_u:checked").val();
 
 	cadena="id="+id+
            "&ide="+ ide+
 	       "&clave=" + clave +
-		   "&permiso=" + permiso;
+		   "&permiso=" + permiso +
+		   "&nomina=" + nomina;
 	
 		   $.ajax({
 			type:"post",
@@ -201,7 +205,8 @@ function validarNuevoUsuario(){
 		id_empleado = $('#empleado').val();
 		clave = $('#clave').val();
 		permiso = $('#permiso').val();
-     agregardatos(id_empleado, clave, permiso);
+		nomina = $("#nomina:checked").val();
+     agregardatos(id_empleado, clave, permiso, nomina);
 	} else{
 		alertify.error('Favor de revisar datos');
 	}

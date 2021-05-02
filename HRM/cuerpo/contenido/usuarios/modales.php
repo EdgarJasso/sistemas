@@ -92,7 +92,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        </div>
        <div class="form-check">
        <label class="form-check-label" for="nomina">Acceso a nomina</label><br>
-        <input type="checkbox" class="form-check-input" id="nomina">
+        <input type="checkbox" class="form-check-input" id="nomina" value="activado">
       </div>
       </div>
       <div class="modal-footer">
@@ -149,7 +149,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        </div>
        <div class="form-check">
        <label class="form-check-label" for="nomina_u">Acceso a nomina</label><br>
-        <input type="checkbox" class="form-check-input" id="nomina_u" name="nomina_u">
+       <input type="checkbox" class="form-check-input" id="nomina_u" value="activado">
       </div>
       </div>
       <div class="modal-footer">

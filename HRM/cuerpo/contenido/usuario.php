@@ -470,6 +470,75 @@ return out;
   </div>
 </div>
 </div>
+<!-- View -->  
+<div class="modal fade" id="RevisarObjetivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center><h4 class="modal-title">Revisar Objetivos:</h4></center>
+      </div>
+      <div class="modal-body">
+       <div id="usuarios_detail">
+       	<div class="table-responsive">
+           <table class="table table-bordered">
+                <tr>  
+                     <td width="30%"><label>Id Objetivo</label></td>  
+                     <td width="70%" id="view_user_id"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Puesto</label></td>  
+                     <td width="70%" id="view_user_puesto"></td>  
+                </tr>  
+                <tr>  
+                     <td width="30%"><label>Empleado</label></td>  
+                     <td width="70%" id="view_user_emp"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Objetivo</label></td>  
+                     <td width="70%" id="view_user_objetivo"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Tema</label></td>  
+                     <td width="70%" id="view_user_tema"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Subtema</label></td>  
+                     <td width="70%" id="view_user_subtema"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Periodo</label></td>  
+                     <td width="70%" id="view_user_periodo"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Fecha de Asignacion</label></td>  
+                     <td width="70%" id="view_user_fecha"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Estado de Revicion</label></td>  
+                     <td width="70%" id="view_user_estado"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Cumplio</label></td>  
+                     <td width="70%" id="view_user_cumplio"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Comentarios</label></td>  
+                     <td width="70%" id="view_user_comentarios"></td>  
+                </tr>
+                <input type="hidden" name="view_user_id_objetivo" id="view_user_id_objetivo">
+           </table>  
+         </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" onclick="actualizaNotificacion()"data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- modal view notificaciones-->
 <div class="modal fade" id="Ver_nofificaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -486,8 +555,8 @@ return out;
            <table class="table table-bordered" id="table_notificaciones">
                 <thead>
                   <tr>
-                    <th>Titulo</th>
-                    <th>Fecha Final</th>
+                    <th>Objetivo</th>
+                    <th>Fecha asignacion</th>
                     <th>Accion</th>
                   </tr>
                 </thead>
@@ -496,12 +565,13 @@ return out;
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Titulo</th>
-                    <th>Fecha Final</th>
+                <th>Objetivo</th>
+                    <th>Fecha asignacion</th>
                     <th>Accion</th>
                   </tr>
                 </tfoot>
            </table>  
+          
          </div>
        </div>
       </div>
@@ -570,7 +640,27 @@ $(document).ready(function(){
      
   });
   
+function cargarObjetivoModal(datos){ 
+  d = datos.split('||');
+ 
+ nombre_p =" - ".concat(d[2]);
+ puesto = d[1].concat(nombre_p);
 
+ nombre_e =" - ".concat(d[4]);
+ empleado = d[3].concat(nombre_e);
+ $('#view_user_id_objetivo').val(d[0]);
+ $('#view_user_id').html(d[0]);
+ $('#view_user_puesto').html(puesto);
+ $('#view_user_emp').html(empleado);
+ $('#view_user_objetivo').html(d[5]);
+ $('#view_user_tema').html(d[6]);
+ $('#view_user_subtema').html(d[7]);
+ $('#view_user_periodo').html(d[8]);
+ $('#view_user_fecha').html(d[9]);
+$('#view_user_estado').html(d[10]);
+$('#view_user_cumplio').html(d[11]);
+$('#view_user_comentarios').html(d[12]);
+}
   function changePassword(){
     old=$('#passOld').val();
 	  nueva=$('#passNew').val();
@@ -605,11 +695,11 @@ $(document).ready(function(){
 			}
 		});
   }
-  function actualizaNotificacion(idevt){
-     id=idevt;
-
+  function actualizaNotificacion(){
+    idou=$('#view_user_id_objetivo').val(); 
+    alert(idou);
      cadenanot=
-     "ido="+ id ;
+     "ido="+ idou ;
      
      //alert(cadenaObj);
  
