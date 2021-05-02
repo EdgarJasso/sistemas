@@ -7,12 +7,12 @@ include('../../../php/connection.php');
 		$clave = rtrim ($_POST['clave']);
 		
 		try{
-			$stmt = $db->prepare("INSERT INTO hrm_usuario (id_empleado, clave, permiso) VALUES (:ide,:clave, :permiso)");
+			$stmt = $db->prepare("INSERT INTO hrm_usuario (id_empleado, clave, permiso, nomina) VALUES (:ide,:clave, :permiso, :nomina)");
 			$result= ( $stmt->execute(array(
                 ':ide' => $_POST['ide'],
                 ':clave' => $clave,
-                ':permiso' => $_POST['permiso']
-            
+                ':permiso' => $_POST['permiso'],
+				':nomina' => $_POST['nomina']
             )) ) ? '1' : '0';	
 	    echo $result;
 		}

@@ -37,6 +37,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                       $row['rfc']."||".
                       $row['nss']."||".
                       $row['celular'];
+              $datosDelete = $row['id_empleado']."||".
+              $row['nombre'] ."||".
+              $row['ape_p']."||".
+              $row['ape_m'];
              ?> 
              <tr>
               <td><?php echo $row['id_empleado']; ?></td>

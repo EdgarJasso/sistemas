@@ -304,7 +304,7 @@ return out;
 <div class="container-fluid" id="contenido_general">
 <a href="#" class="" id="bt_menu_new"><span class="icon-menu"></span></a>	
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="tab-pane fade  in active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <div class="container-fluid">
       <div class="jumbotron jumbotron-fluid" id="home-f">
         <center>  
@@ -387,7 +387,7 @@ return out;
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade in active" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
+<div class="tab-pane fade" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
    <div class="container-fluid">
       <div id="contenedor_politicas"></div>
    </div>

@@ -25,17 +25,19 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT hrm_usuario.id_usuario as id, hrm_usuario.id_empleado as ide, hrm_empleado.nombre as nombre, hrm_usuario.clave as clave, hrm_usuario.permiso as per FROM hrm_usuario, hrm_empleado WHERE hrm_usuario.id_empleado = hrm_empleado.id_empleado";
+          $query="SELECT hrm_usuario.id_usuario as id, hrm_usuario.id_empleado as ide, hrm_empleado.nombre as nombre, hrm_usuario.clave as clave, hrm_usuario.permiso as per, hrm_usuario.nomina as nomina FROM hrm_usuario, hrm_empleado WHERE hrm_usuario.id_empleado = hrm_empleado.id_empleado";
            foreach ($db->query($query) as $row) {
              $datos = $row['id']."||".
                       $row['ide']."||".
                       $row['clave'] ."||".
-                      $row['per'];
+                      $row['per'] ."||".
+                      $row['nomina'];
              $datosV = $row['id']."||".
                       $row['ide']."||".
                       $row['nombre']."||".
                       $row['clave'] ."||".
-                      $row['per'];
+                      $row['per'] ."||".
+                      $row['nomina'];
              ?> 
              <tr>
               <td><?php echo $row['id']; ?></td>

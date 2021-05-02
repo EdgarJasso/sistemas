@@ -388,6 +388,9 @@ return out;
           }?>
       </div>
     </div>
+    <br>
+    <button  type="button" class="btn btn-success btn-sm boton-add" data-toggle="modal" data-target="#changePassword" id="boton_add"><span class="icon-lock"></span> Cambio de Clave de acceso</button>
+ 
     </center>
      </div>
     </div>
@@ -509,6 +512,33 @@ return out;
   </div>
 </div>
 <!-- modal view notificaciones-->
+<!-- modal change password-->
+<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center><h4 class="modal-title">Cambio de Clave de acceso</h4></center>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Clave anterior</label>
+          <input type="text" class="form-control" id="passOld" placeholder="Clave Antigua">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Clave Nueva</label>
+          <input type="text" class="form-control" id="passNew" placeholder="Clave Nueva">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="changePass">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal change password-->
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/jquery-3.4.1.min.js"></script>
 <script src="../../js/funciones-usuario.js"></script>
@@ -535,10 +565,46 @@ $(document).ready(function(){
      $('#tableofnotifi').load('objetivos/notificaciones.php'); 
      $('#vacaciones_nosotros').load('PDF/todo.php'); 
      $('#bt-noti').load('objetivos/badges.php'); 
+
+     $("#changePass").click(changePassword);
      
   });
   
 
+  function changePassword(){
+    old=$('#passOld').val();
+	  nueva=$('#passNew').val();
+    cadena=
+    "old="+ old +
+	  "&nueva=" +nueva;
+    $.ajax({
+			type:"post",
+      url:"usuarios/password.php",
+			data:cadena,
+			success:function(r){
+             if(r==1){
+              Swal.fire({
+                          title: 'Actualizado Exitosamente!',
+                          icon: 'success',
+                          timer: 3000,
+                          timerProgressBar: true,
+                          showCancelButton: false,
+                          showConfirmButton: false
+                      });
+              $('#passOld').val('');
+	            $('#passNew').val('');
+              }else{
+              // alertify.error("fallo en el servidor...");
+              console.log(r);
+              Swal.fire({
+                title: 'Error en el proceso!\n\n'+r,
+                icon: 'error',
+                confirmButtonText: 'Continuar'
+              });
+              }
+			}
+		});
+  }
   function actualizaNotificacion(idevt){
      id=idevt;
 

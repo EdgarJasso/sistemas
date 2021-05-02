@@ -61,6 +61,7 @@ try {
         $_SESSION['area'] = $result['area'];
         $_SESSION['jefe'] = $result['jefe'];
         $_SESSION['color'] = $result['color'];
+        $_SESSION['clave'] = $result['clave'];
         date_default_timezone_set('America/Mexico_City');
         $_SESSION['start'] =time();
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10

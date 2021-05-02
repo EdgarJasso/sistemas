@@ -31,6 +31,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <tr>  
                      <td width="30%"><label>Permiso</label></td>  
                      <td width="70%" id="view_user_permis"></td>  
+                </tr> 
+                <tr>  
+                     <td width="30%"><label>Permiso para nomina</label></td>  
+                     <td width="70%" id="view_user_nomina"></td>  
                 </tr>   
            </table>  
          </div>
@@ -86,6 +90,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          </select>
          <span class="help-block" id="text_user_per"></span>
        </div>
+       <div class="form-check">
+       <label class="form-check-label" for="nomina">Acceso a nomina</label><br>
+        <input type="checkbox" class="form-check-input" id="nomina">
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" id="guardar_usua">Guardar</button>
@@ -139,6 +147,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          </select>
          <span class="help-block" id="text_user_perAct"></span>
        </div>
+       <div class="form-check">
+       <label class="form-check-label" for="nomina_u">Acceso a nomina</label><br>
+        <input type="checkbox" class="form-check-input" id="nomina_u" name="nomina_u">
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" id="actualizar_usuario">Actualizar</button>

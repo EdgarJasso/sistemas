@@ -151,7 +151,6 @@ function eliminarDatosEmp(id){
 		url:"../contenido/empleados/delete.php",
 		data: cadena,
 		success:function(r){
-		//	alert(r);
          if((r==1)){
 			 
 	//alertify.success("Eliminado con exito!");
