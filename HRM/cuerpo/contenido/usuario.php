@@ -595,12 +595,13 @@ return out;
       <div class="modal-body">
         <div class="form-group">
           <label for="">Clave anterior</label>
-          <input type="text" class="form-control" id="passOld" placeholder="Clave Antigua">
+          <input type="text" class="form-control" id="passOld" placeholder="Clave Antigua"  pattern="[A-Za-zÑñ0-9.]{1,20}" >
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Clave Nueva</label>
-          <input type="text" class="form-control" id="passNew" placeholder="Clave Nueva">
+          <input type="text" class="form-control" id="passNew" placeholder="Clave Nueva"  pattern="[A-Za-zÑñ0-9.]{1,20}" >
         </div>
+        <p class="font-weight-bold bg-info">El sistema no reconoce los siguientes caracteres: ! " # $ % & ' ( ) * +, - / ^ _ `</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="changePass">Confirmar</button>
@@ -697,7 +698,6 @@ $('#view_user_comentarios').html(d[12]);
   }
   function actualizaNotificacion(){
     idou=$('#view_user_id_objetivo').val(); 
-    alert(idou);
      cadenanot=
      "ido="+ idou ;
      

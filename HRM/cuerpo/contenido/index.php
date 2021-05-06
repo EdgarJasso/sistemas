@@ -64,70 +64,20 @@ echo $msj;
   <script src="../../package/dist/sweetalert2.all.min.js"></script>
   
 <script>
-function fecha() {
-  var f = new Date();
-  
-  var meses = new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
-  
-  var dia = new Array ("01","02","03","04","05","06","07","08","09","10",
-  					   "11","12","13","14","15","16","17","18","19","20",
-  					   "21","22","23","24","25","26","27","28","29","30",
-                       "31");
-var out = "'" + f.getFullYear() + "-" + meses[f.getMonth()]+ "-" +dia[f.getDate()-1] + "'";
-return out;
-}
+   function fecha() {
+   var f = new Date();
+   
+   var meses = new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
+   
+   var dia = new Array ("01","02","03","04","05","06","07","08","09","10",
+                     "11","12","13","14","15","16","17","18","19","20",
+                     "21","22","23","24","25","26","27","28","29","30",
+                        "31");
+      var out = "'" + f.getFullYear() + "-" + meses[f.getMonth()]+ "-" +dia[f.getDate()-1] + "'";
+      return out;
+   }
 
 </script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
-      height: 'parent',
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
-      },
-      defaultView: 'dayGridMonth',
-      defaultDate: '<?php echo $_SESSION['fecha'] ?>',
-      navLinks: true, 
-      editable: false,
-      eventLimit: true,
-      locale : 'es',
-      events: [
-        <?php 
-  try {
-    $database_cal = new Connection();
-    $db_c = $database_cal->open();
-    $sql_calendario = "SELECT hrm_vacaciones.id_vacaciones as id_vacaiones, hrm_vacaciones.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as ape, hrm_vacaciones.dia as dia, hrm_vacaciones.color as color FROM hrm_vacaciones, hrm_empleado WHERE hrm_vacaciones.id_empleado = hrm_empleado.id_empleado AND hrm_vacaciones.estado = 'Aprobado'";  
-          foreach ($db_c->query($sql_calendario) as $row_c) {
-          ?>
-        
-        {
-          id:'<?php echo $row_c["id_vacaiones"]?>',
-          title:'<?php echo $row_c["nombre"]." ".$row_c["ape"]?>',
-          start:'<?php echo $row_c["dia"]?>',
-          color: '<?php echo $row_c["color"]?>',
-        },
-        <?php 
-           }
-           $db_c = null;                 
-           } catch (PDOException $e) {
-           echo "Error: ".$e->getMessage()." !<br>";
-  }?>
-
-      ]
-    }); 
-
-    calendar.render();
-  });
-
-</script>
-
-
 
   <!-- fin librerias calendario -->
 
@@ -147,7 +97,31 @@ return out;
 <script src="../../js/vfs_fonts.js"></script>
 <script src="../../js/buttons.html5.min.js"></script>
 <script src="../../js/reloj.js"></script>
-     
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      height: 'parent',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+      },
+      defaultView: 'dayGridMonth',
+      defaultDate: '<?php echo $_SESSION['fecha'] ?>',
+      navLinks: true, 
+      editable: false,
+      eventLimit: true,
+      locale : 'es',
+      events: 'http://localhost/sistemas/HRM/cuerpo/contenido/calendario_eventos.php',
+    }); 
+
+    calendar.render();
+  });
+
+</script>
 </head>
 <body>
 <header>
@@ -459,9 +433,28 @@ return out;
 <script>
     reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', '<?php echo URL;?>/HRM/php/root/logout.php');
 </script>
+<?php
+include_once('../../php/connection.php');
+$selectArea = "";
+try {
+   $database = new Connection();
+    $db = $database->open();
+     $query="select * from hrm_area";
+     $selectArea = "<select class='select_area' id='select_area'><option value='0'>Todas</option>";
+      foreach ($db->query($query) as $regristro) {
+        $selectArea .="<option value=\'".$regristro['id_area']."\'>".$regristro['nombre']."</option>";
+      }
+      $selectArea .="</select>";
+      echo $selectArea;
+      $db = null;                 
+      } catch (PDOException $e) {
+         echo "Error: ".$e->getMessage()." !<br>";
+      }
+?>
 <script type="text/javascript">
 $(document).ready(function(){
-
+ 
+$(".fc-left").append("<?php echo $selectArea?>");
     $('.mennu li ul').slideUp();
 
      $('#bt_menu_new').on('click', function(){
@@ -472,7 +465,6 @@ $(document).ready(function(){
 		$('#contenido_general').toggleClass('abrir');
 	});
 
-     
   
      $('#contenedor_empleados').load('empleados/tabla.php'); 
      $('#contenedor_usuarios').load('usuarios/tabla.php'); 
