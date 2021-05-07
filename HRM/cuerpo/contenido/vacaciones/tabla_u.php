@@ -35,7 +35,7 @@ try {
   <div class="alert alert-info mt-5" role="alert">
    <center>
     Por favor revisa las vacaciones solicitadas por tu equipo de trabajo
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Agregar_vacaciones_user" id="boton_review"><span class="icon-user-check"></span> Revisar</button>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Revicion_de_Vacaciones" onclick="CalificarEquipo('.$_SESSION['idempleado'].')"><span class="icon-user-check"></span> Revisar</button>
    </center>
   </div>';
   //SELECT * FROM hrm_antiguedad WHERE hrm_antiguedad.jefe_directo LIKE '%34 - MARIEL FERNANDEZ%'

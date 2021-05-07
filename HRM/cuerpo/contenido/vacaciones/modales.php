@@ -136,7 +136,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <center><h4 class="modal-title">Agregar Vacacion:</h4></center>
       </div>
       <div class="modal-body">
-      <div class="form-group">
     
        <div class="form-group">
          <label >Fecha:</label>
@@ -151,7 +150,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </div>
 </div>
 </div>
-
+ <!-- Modal de  Add Usuario-->
 
 <!-- Editar -->  
 <div class="modal fade" id="Editar_vacaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -254,6 +253,27 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </div>
   </div>
 </div>
+ <!-- Modal de Revision Vacaciones equipo-->
+ <div class="modal fade" id="Revicion_de_Vacaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center><h4 class="modal-title">Revicion de Vacaciones:</h4></center>
+      </div>
+      <div class="modal-body">
+         <div id="tabla_calificar_jefe"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" id="">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+ <!-- Modal de  Add Usuario SELECT * FROM hrm_vacaciones, hrm_empleado WHERE hrm_vacaciones.id_jefe = 28 AND hrm_vacaciones.id_empleado = hrm_empleado.id_empleado AND hrm_vacaciones.estado = 'Pendiente' -->
 <?php 
 }else {
   echo "Inicia Sesion para acceder a este contenido.<br>";

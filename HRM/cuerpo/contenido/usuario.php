@@ -526,7 +526,7 @@ return out;
                 </tr>
                 <tr>  
                      <td width="30%"><label>Comentarios</label></td>  
-                     <td width="70%" id="view_user_comentarios"></td>  
+                     <td width="70%" id="tabla_calificar_jefe"></td>  
                 </tr>
                 <input type="hidden" name="view_user_id_objetivo" id="view_user_id_objetivo">
            </table>  
@@ -721,6 +721,20 @@ $('#view_user_comentarios').html(d[12]);
          });
  
  }
+ 
+function CalificarEquipo(id){
+    cadena = "id="+id;
+    $.ajax({
+        type: "post",
+        url:"vacaciones/califica_equipo.php",
+        data: cadena,
+        success: function (response) {
+            console.log(response);
+            $('#tabla_calificar_jefe').html(response);
+            
+        }
+    });
+}
 
 </script>
 

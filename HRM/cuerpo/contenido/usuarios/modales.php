@@ -85,7 +85,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        	<select class="form-control" name="permiso" id="permiso">
        		<option value="user">Usuario</option>
           <option value="objetivos">Objetivos</option>
-          <option value="jefe-area">Jefe de Area</option>
+          <option value="gerente">Gerente</option>  
        		<option value="admin">Administrador</option>
          </select>
          <span class="help-block" id="text_user_per"></span>
@@ -142,7 +142,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        	<select class="form-control" name="permiso" id="permiso_u">
          <option value="user">Usuario</option>
           <option value="objetivos">Objetivos</option>
-          <option value="jefe-area">Jefe de Area</option>
+          <option value="gerente">Gerente</option>
        		<option value="admin">Administrador</option>
          </select>
          <span class="help-block" id="text_user_perAct"></span>
