@@ -38,6 +38,20 @@ if($_SESSION['permiso']=='admin'){
   FROM hrm_asignacion, hrm_empleado 
   WHERE hrm_asignacion.id_empleado = hrm_empleado.id_empleado";
 }
+if($_SESSION['permiso']=='gerente'){
+                    $query ="SELECT 
+                    hrm_asignacion.id_asignacion as id_asignacion, 
+                    hrm_asignacion.id_empleado as id_empleado, 
+                    hrm_empleado.nombre as nombre_empleado,
+                    hrm_asignacion.periodo as periodo, 
+                    hrm_asignacion.dias_habilies as dias 
+                    FROM hrm_asignacion, hrm_empleado, hrm_area, hrm_antiguedad, hrm_puesto 
+                    WHERE hrm_asignacion.id_empleado = hrm_empleado.id_empleado 
+                    AND hrm_area.id_area = hrm_puesto.id_area 
+                    AND hrm_puesto.id_puesto = hrm_antiguedad.id_puesto 
+                    AND hrm_empleado.id_empleado = hrm_antiguedad.id_empleado 
+                    AND hrm_area.nombre = '".$_SESSION['area']."'";
+}
            foreach ($db->query($query) as $row) {
 
              $datosAsiV = $row['id_asignacion']."||".

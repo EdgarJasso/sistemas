@@ -31,15 +31,35 @@ try {
 <div class="row"> 
  <div class="col-sm-12 table-responsive">
   <?php
-  echo '
-  <div class="alert alert-info mt-5" role="alert">
-   <center>
-    Por favor revisa las vacaciones solicitadas por tu equipo de trabajo
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Revicion_de_Vacaciones" onclick="CalificarEquipo('.$_SESSION['idempleado'].')"><span class="icon-user-check"></span> Revisar</button>
-   </center>
-  </div>';
-  //SELECT * FROM hrm_antiguedad WHERE hrm_antiguedad.jefe_directo LIKE '%34 - MARIEL FERNANDEZ%'
-  ?>
+  try {
+    $SQL ="SELECT hrm_vacaciones.id_vacaciones as id_vacaciones, hrm_empleado.nombre as nombre, hrm_vacaciones.fecha as fecha, hrm_vacaciones.estado as estado  FROM hrm_vacaciones, hrm_empleado WHERE hrm_vacaciones.id_jefe = ".$_SESSION['idempleado']." AND hrm_vacaciones.id_empleado = hrm_empleado.id_empleado AND hrm_vacaciones.estado = 'Pendiente'";
+    
+    $database = new Connection();
+    $db = $database->open();
+    $stmt = $db->prepare($SQL);        
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $rows = $stmt->rowCount();
+
+    if($rows>0){
+      echo '
+      <div class="alert alert-info mt-5" role="alert">
+       <center>
+        Por favor revisa las vacaciones solicitadas por tu equipo de trabajo
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Revicion_de_Vacaciones" onclick="CalificarEquipo('.$_SESSION['idempleado'].')"><span class="icon-user-check"></span> Revisar</button>
+       </center>
+      </div>';
+      
+    }else{
+        echo '';
+    }
+$db = $database ->close();
+} catch (PDOException $e) {
+    $result = $e->getMessage();
+    echo $result;
+}
+?>
 
  <center>
         <h2>Dias Disponibles:

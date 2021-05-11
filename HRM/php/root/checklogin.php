@@ -21,7 +21,8 @@ try {
     hrm_empleado.id_empleado as id_empleado, 
     hrm_usuario.id_usuario as id_usuario,
     hrm_usuario.clave as clave, 
-    hrm_usuario.permiso as permiso, 
+    hrm_usuario.permiso as permiso,
+    hrm_usuario.nomina as nomina,  
     hrm_empleado.nombre as nombre, 
     hrm_area.nombre as area, 
     hrm_antiguedad.jefe_directo as jefe,
@@ -62,6 +63,7 @@ try {
         $_SESSION['jefe'] = $result['jefe'];
         $_SESSION['color'] = $result['color'];
         $_SESSION['clave'] = $result['clave'];
+        $_SESSION['nomina'] = $result['nomina'];
         date_default_timezone_set('America/Mexico_City');
         $_SESSION['start'] =time();
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
@@ -74,7 +76,7 @@ try {
             $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);// minutos de sesion 5
             $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
             $_SESSION['fecha'] = date('Y-m-d', $_SESSION['expire'] );
-        }elseif($_SESSION['permiso']=='jefe-area'){
+        }elseif($_SESSION['permiso']=='gerente'){
             $_SESSION['expire'] = $_SESSION['start'] + (20 * 60);// minutos de sesion 20
             $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
             $_SESSION['fecha'] = date('Y-m-d', $_SESSION['expire'] );

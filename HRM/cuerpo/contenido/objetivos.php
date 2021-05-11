@@ -148,6 +148,18 @@ return out;
         <li>
           <a href="#">Extra<span class="icon-link"></span></a>
              <ul>
+             <li>   
+                    <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
+                  role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
+                    <span class="icon-users"></span>
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-politicas" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Politicas
+                    <span class="icon-file-zip"></span>
+                 </a>
+                </li>
                 <li>   
                   <a class="nav-link" id="pills-objetivos-tab" data-toggle="pill" href="#pills-objetivos" 
                   role="tab" aria-controls="pills-objetivos" aria-selected="false">Objetivos
@@ -217,6 +229,20 @@ return out;
    </div>
   </div>
 </div>
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-organigrama" role="tabpanel" aria-labelledby="pills-organigrama-tab">
+   <div class="container-fluid">
+      <div id="contenedor_organigrama"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
+   <div class="container-fluid">
+      <div id="contenedor_politicas"></div>
+   </div>
+  </div>
+<!-- fin -->
 
 
 </div>
@@ -265,6 +291,9 @@ $(document).ready(function(){
 
      $('#contenedor_objetivos').load('objetivos/tabla.php'); 
      $('#contenedor_documentos').load('documentos/tabla_o.php'); 
+     
+     $('#contenedor_organigrama').load('PDF/organigrama.php'); 
+     $('#contenedor_politicas').load('PDF/politicas.php'); 
      
 	});
 </script>

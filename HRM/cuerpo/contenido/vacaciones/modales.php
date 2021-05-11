@@ -78,7 +78,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           $query="select * from hrm_empleado";
         }else{}
 
-        if($_SESSION['permiso']=='jefe-area'){
+        if($_SESSION['permiso']=='gerente'){
           $query ="SELECT 
           hrm_empleado.id_empleado as id_empleado, 
           hrm_empleado.nombre as nombre,
@@ -177,7 +177,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           $query="select * from hrm_empleado";
         }else{}
 
-        if($_SESSION['permiso']=='jefe-area'){
+        if($_SESSION['permiso']=='gerente'){
           $query ="SELECT 
           hrm_empleado.id_empleado as id_empleado, 
           hrm_empleado.nombre as nombre,

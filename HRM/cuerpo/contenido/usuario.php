@@ -218,8 +218,8 @@ return out;
           if($_SESSION['permiso']=='admin'){
             $modo='<a href="../contenido/index.php" class="btn btn-info">Modo Administrador</a>';
             $num = '30';
-          }elseif($_SESSION['permiso']=='jefe-area'){
-            $modo='<a href="../contenido/jefe-area.php" class="btn btn-info">Modo Jefe Area</a>';
+          }elseif($_SESSION['permiso']=='gerente'){
+            $modo='<a href="../contenido/gerente.php" class="btn btn-info">Modo Gerente</a>';
             $num = '20';
           }elseif($_SESSION['permiso']=='objetivos'){
             $modo='<a href="../contenido/objetivos.php" class="btn btn-info">Modo Objetivos</a>';

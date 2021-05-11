@@ -1,7 +1,7 @@
 <?php       
 include '../../../dominio.php';
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['permiso']=='jefe-area') {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['permiso']=='gerente') {
 ob_start();
 //include('../../php/cn.php');
 include('../../php/connection.php');
@@ -29,7 +29,7 @@ echo $msj;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>HRM(Jefe de Area)</title> 
+  <title>HRM(Gerente)</title> 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../../img/icono.png" type="image/x-icon">
@@ -150,6 +150,30 @@ return out;
         <li>
           <a href="#">Extra<span class="icon-link"></span></a>
              <ul>
+                <?php 
+                if($_SESSION['nomina']=='activado'){
+                  echo '
+                <li>   
+                  <a class="nav-link" id="pills-nomina-tab" data-toggle="pill" href="#pills-nomina" 
+                  role="tab" aria-controls="pills-nomina" aria-selected="false">Nomina
+                    <span class="icon-price-tag"></span>
+                 </a>
+                </li>';
+                }?>
+
+
+             <li>   
+                    <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
+                  role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
+                    <span class="icon-users"></span>
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-politicas" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Politicas
+                    <span class="icon-file-zip"></span>
+                 </a>
+                </li>
                 <li>   
                     <a class="nav-link" id="pills-asignacion-tab" data-toggle="pill" href="#pills-asignacion" 
                      role="tab" aria-controls="pills-asignacion" aria-selected="false">Asignacion Dias
@@ -209,6 +233,27 @@ return out;
 <div class="tab-pane fade" id="pills-vacaciones" role="tabpanel" aria-labelledby="pills-vacaciones-tab">
    <div class="container-fluid">
       <div id="contenedor_vacaciones"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-nomina" role="tabpanel" aria-labelledby="pills-nomina-tab">
+   <div class="container-fluid">
+      <div id="contenedor_nomina"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-organigrama" role="tabpanel" aria-labelledby="pills-organigrama-tab">
+   <div class="container-fluid">
+      <div id="contenedor_organigrama"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
+   <div class="container-fluid">
+      <div id="contenedor_politicas"></div>
    </div>
   </div>
 <!-- fin -->
@@ -278,6 +323,9 @@ $(document).ready(function(){
      $('#contenedor_vacaciones').load('vacaciones/tabla.php'); 
      $('#contenedor_documentos').load('documentos/tabla.php'); 
      $('#contenedor_imagen').load('imagen/tabla.php'); 
+     $('#contenedor_nomina').load('nomina/tabla.php');
+     $('#contenedor_organigrama').load('PDF/organigrama.php'); 
+     $('#contenedor_politicas').load('PDF/politicas.php'); 
 	});
 </script>
 </body>

@@ -13,9 +13,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       header('Location: '.URL.'/HRM/cuerpo/contenido/usuario.php');
       echo "user"; exit;
     }else{}
-    if($_SESSION['permiso']=='jefe-area'){
-       header('Location: '.URL.'/HRM/cuerpo/contenido/jefe-area.php');
-       echo "jefe"; exit;
+    if($_SESSION['permiso']=='gerente'){
+       header('Location: '.URL.'/HRM/cuerpo/contenido/gerente.php');
+       echo "gerente"; exit;
     }else{}
     if($_SESSION['permiso']=='objetivos'){
       header('Location: '.URL.'/HRM/cuerpo/contenido/objetivos.php');

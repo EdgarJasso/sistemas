@@ -76,7 +76,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     $sql_lista ="SELECT id_empleado, nombre from hrm_empleado";
                   }else{}
 
-                 /*if($_SESSION['permiso']=='jefe-area'){
+                 if($_SESSION['permiso']=='gerente'){
                     $sql_lista ="SELECT 
                     hrm_empleado.id_empleado as id_empleado, 
                     hrm_empleado.nombre as nombre,
@@ -88,7 +88,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                       AND hrm_area.id_area = hrm_puesto.id_area 
                       AND hrm_puesto.id_puesto = hrm_antiguedad.id_puesto 
                       AND hrm_area.nombre = '".$_SESSION['area']."'";
-                  }else{}*/
+                  }else{}
 
                   foreach ($dbd->query($sql_lista) as $row_lista) {
                   $databasedias = new Connection();
@@ -166,7 +166,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               $query="select * from hrm_empleado";
             }else{}
 
-            if($_SESSION['permiso']=='jefe-area'){
+            if($_SESSION['permiso']=='gerente'){
               $query  = "SELECT 
                 hrm_empleado.id_empleado as id_empleado, 
                 hrm_empleado.nombre as nombre,
@@ -245,7 +245,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           $query="select * from hrm_empleado";
         }else{}
 
-        if($_SESSION['permiso']=='jefe-area'){
+        if($_SESSION['permiso']=='gerente'){
           $query ="SELECT 
           hrm_empleado.id_empleado as id_empleado, 
           hrm_empleado.nombre as nombre,
@@ -258,6 +258,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             AND hrm_area.id_area = hrm_puesto.id_area 
             AND hrm_puesto.id_puesto = hrm_antiguedad.id_puesto 
             AND hrm_area.nombre = '".$_SESSION['area']."'";
+            
         }else{}
            foreach ($db->query($query) as $row) {?>
             <option value="<?php echo $row["id_empleado"]?>"><?php echo $row["id_empleado"]."  -  ".$row["nombre"]."  ".$row["ape_p"]?></option><?php

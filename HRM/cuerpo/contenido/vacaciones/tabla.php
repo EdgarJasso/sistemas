@@ -43,14 +43,15 @@ if($_SESSION['permiso']=='admin'){
            WHERE hrm_vacaciones.id_empleado = hrm_empleado.id_empleado";
 }else{}
 
-if($_SESSION['permiso']=='jefe-area'){
+if($_SESSION['permiso']=='gerente'){
   $query ="SELECT 
-  hrm_vacaciones.id_vacaciones as id_vacaciones, 
-  hrm_vacaciones.id_empleado as id_empleado, 
-  hrm_empleado.nombre as nombre_empleado, 
-  hrm_vacaciones.dia as dia, 
-  hrm_vacaciones.color as color, 
-  hrm_vacaciones.estado as estado 
+  hrm_vacaciones.id_vacaciones as id_vacaciones,
+           hrm_vacaciones.id_empleado as id_empleado, 
+           hrm_empleado.nombre as nombre_empleado, 
+           hrm_vacaciones.fecha as fecha, 
+           hrm_vacaciones.dia as dia, 
+           hrm_vacaciones.color as color, 
+           hrm_vacaciones.estado as estado 
   FROM hrm_vacaciones, hrm_empleado, hrm_area, hrm_antiguedad, hrm_puesto 
   WHERE hrm_vacaciones.id_empleado = hrm_empleado.id_empleado 
   AND hrm_area.id_area = hrm_puesto.id_area 
