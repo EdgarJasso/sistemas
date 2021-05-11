@@ -26,17 +26,17 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_usuario";
+          $query="SELECT ecsnts_usuario.id_usuario as id_usuario, ecsnts_usuario.id_area as id_area, ecsnts_area.nombre as area, ecsnts_usuario.nombre as nombre, ecsnts_usuario.clave as clave, ecsnts_usuario.permiso as permiso FROM ecsnts_usuario, ecsnts_area";
            foreach ($db->query($query) as $row) {
              $datos = $row['id_usuario']."||".
-                      $row['id_area']."||".
+                      $row['id_area']." - ". $row['area']."||".
                       $row['nombre']."||".
                       $row['clave']."||".
                       $row['permiso'];
              ?> 
              <tr>
              <td><?php echo $row['id_usuario']; ?></td>
-				    <td><?php echo $row['id_area']; ?></td>
+				    <td><?php echo $row['id_area']." - ".$row['area']; ?></td>
 				    <td><?php echo $row['nombre']; ?></td>
 				    <td><?php echo $row['clave']; ?></td>
 				    <td><?php echo $row['permiso']; ?></td>

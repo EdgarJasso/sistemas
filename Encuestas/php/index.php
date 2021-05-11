@@ -37,10 +37,13 @@
                     </span>
                 </div>
   </div>
-   <br>
-  <center>
-  <button type="submit" name="entrar" id="entrar" class="btn btn-success"><span class="icon-enter"></span> Entrar</button></center>
-  </form>
+   <br> 
+   <center>
+    <a href="../../index.html" class="btn btn-warning">Regresar</a>
+    <button type="reset" class="btn btn-default">Cancelar</button>  
+    <button type="submit" name="entrar" id="entrar" class="btn btn-success"><span class="icon-enter"></span> Entrar</button>
+   </center>
+</form>
   <br><br>
 </div>  
 <script src="../js/jquery-3.4.1.min.js"></script>

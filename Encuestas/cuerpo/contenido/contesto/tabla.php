@@ -26,17 +26,17 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_contesto";
+          $query="SELECT ecsnts_contesto.id_campo as id_campo, ecsnts_contesto.id_usuario as id_usuario, ecsnts_usuario.nombre as nombre, ecsnts_contesto.id_validacion as id_validacion, ecsnts_contesto.id_registro aS id_registro, ecsnts_contesto.fecha as fecha FROM ecsnts_contesto, ecsnts_usuario";
            foreach ($db->query($query) as $row) {
              $datos = $row['id_campo']."||".
-                      $row['id_usuario']."||".
+                      $row['id_usuario']." ".$row['nombre']."||".
                       $row['id_validacion']."||".
                       $row['id_registro']."||".
                       $row['fecha'];
              ?> 
              <tr>
              <td><?php echo $row['id_campo']; ?></td>
-				    <td><?php echo $row['id_usuario']; ?></td>
+				    <td><?php echo $row['id_usuario']." - ".$row['nombre']; ?></td>
 				    <td><?php echo $row['id_validacion']; ?></td>
 				    <td><?php echo $row['id_registro']; ?></td>
 				    <td><?php echo $row['fecha']; ?></td>

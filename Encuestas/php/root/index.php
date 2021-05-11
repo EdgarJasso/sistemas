@@ -82,67 +82,67 @@ if($now > $_SESSION['expire']) {
           <li>   
                  <a class="nav-link" id="pills-grafico-tab" data-toggle="pill" href="#pills-grafico" 
                      role="tab" aria-controls="pills-grafico" aria-selected="false">DashBoard
-                    <span class="icon-home"></span>
+                    <span class="icon-pie-chart"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-encuestas_faltantes-tab" data-toggle="pill" href="#pills-encuestas_faltantes" 
                      role="tab" aria-controls="pills-area" aria-selected="false">Evaluaciones
-                    <span class="icon-home"></span>
+                    <span class="icon-clipboard"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-area" 
                      role="tab" aria-controls="pills-area" aria-selected="false">Area
-                    <span class="icon-home"></span>
+                    <span class="icon-tree"></span>
                  </a>
           </li>
            <li>   
                  <a class="nav-link" id="pills-categoria-tab" data-toggle="pill" href="#pills-categoria" 
                      role="tab" aria-controls="pills-categoria" aria-selected="false">Categoria
-                    <span class="icon-home"></span>
+                    <span class="icon-checkbox-checked"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-competencias-tab" data-toggle="pill" href="#pills-competencias" 
                      role="tab" aria-controls="pills-competencias" aria-selected="false">Competencias
-                    <span class="icon-home"></span>
+                    <span class="icon-bookmarks"></span>
                  </a>
           </li>
            <li>   
                  <a class="nav-link" id="pills-contesto-tab" data-toggle="pill" href="#pills-contesto" 
                      role="tab" aria-controls="pills-contesto" aria-selected="false">Contesto
-                    <span class="icon-home"></span>
+                    <span class="icon-upload2"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-pregunta-tab" data-toggle="pill" href="#pills-pregunta" 
                      role="tab" aria-controls="pills-pregunta" aria-selected="false">Preguntas
-                    <span class="icon-home"></span>
+                    <span class="icon-bubble"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-respuesta-tab" data-toggle="pill" href="#pills-respuesta" 
                      role="tab" aria-controls="pills-respuesta" aria-selected="false">Respuestas
-                    <span class="icon-home"></span>
+                    <span class="icon-bubble2"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-usuario-tab" data-toggle="pill" href="#pills-usuario" 
                      role="tab" aria-controls="pills-usuario" aria-selected="false">Usuarios
-                    <span class="icon-home"></span>
+                    <span class="icon-users"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-validacion-tab" data-toggle="pill" href="#pills-validacion" 
                      role="tab" aria-controls="pills-validacion" aria-selected="false">Validacion
-                    <span class="icon-home"></span>
+                    <span class="icon-target"></span>
                  </a>
           </li>
           <li>   
                  <a class="nav-link" id="pills-reporte-tab" data-toggle="pill" href="#pills-reporte" 
                      role="tab" aria-controls="pills-reporte" aria-selected="false">Reportes
-                    <span class="icon-home"></span>
+                    <span class="icon-file-pdf"></span>
                  </a>
           </li>
         

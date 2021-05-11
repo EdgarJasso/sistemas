@@ -293,7 +293,7 @@ return out;
 <script src="../../js/vfs_fonts.js"></script>
 <script src="../../js/buttons.html5.min.js"></script>
 <script src="../../js/reloj.js"></script>
-
+ 
 <script>
     reloj('<?php echo  $_SESSION['reloj']; ?>', 'clock', 'Sesion Cerrada', '<?php echo URL?>/HRM/php/root/logout.php');
 </script>

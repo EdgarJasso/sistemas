@@ -26,18 +26,18 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT * FROM ecsnts_pregunta";
+          $query="SELECT ecsnts_pregunta.id_pregunta as id_pregunta, ecsnts_pregunta.competencia as competencia, ecsnts_pregunta.id_area as id_area, ecsnts_area.nombre as nombre, ecsnts_pregunta.categoria as categoria, ecsnts_pregunta.descripcion as descripcion FROM ecsnts_pregunta, ecsnts_area";
            foreach ($db->query($query) as $row) {
              $datos = $row['id_pregunta']."||".
                       $row['competencia']."||".
-                      $row['id_area']."||".
+                      $row['id_area']." - ".$row['nombre']."||".
                       $row['categoria']."||".
                       $row['descripcion'];
              ?> 
              <tr>
              <td><?php echo $row['id_pregunta']; ?></td>
 				    <td><?php echo $row['competencia']; ?></td>
-				    <td><?php echo $row['id_area']; ?></td>
+				    <td><?php echo $row['id_area']." - ".$row['nombre']; ?></td>
 				    <td><?php echo $row['categoria']; ?></td>
 				    <td><?php echo $row['descripcion']; ?></td>
               <td> 

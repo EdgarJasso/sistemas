@@ -207,6 +207,16 @@ echo $msj;
         <li>
           <a href="#">Extra<span class="icon-link"></span></a>
              <ul>
+             <?php 
+                if($_SESSION['nomina']=='activado'){
+                  echo '
+                <li>   
+                  <a class="nav-link" id="pills-nomina-tab" data-toggle="pill" href="#pills-nomina" 
+                  role="tab" aria-controls="pills-nomina" aria-selected="false">Nomina
+                    <span class="icon-price-tag"></span>
+                 </a>
+                </li>';
+                }?>
                 <li>   
                     <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
                   role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
@@ -409,6 +419,13 @@ echo $msj;
    </div>
   </div>
 <!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-nomina" role="tabpanel" aria-labelledby="pills-nomina-tab">
+   <div class="container-fluid">
+      <div id="contenedor_nomina"></div>
+   </div>
+  </div>
+<!-- fin -->
   <div class="tab-pane fade" id="pills-calendario" role="tabpanel" aria-labelledby="pills-calendario-tab">
    <div id='calendar-container'>   
     <div id='calendar'></div>
@@ -483,6 +500,7 @@ $(".fc-left").append("<?php echo $selectArea?>");
      $('#contenedor_imagen').load('imagen/tabla.php'); 
      $('#contenedor_organigrama').load('PDF/organigrama.php'); 
      $('#contenedor_politicas').load('PDF/politicas.php'); 
+     $('#contenedor_nomina').load('nomina/tabla.php');
      
 	});
 </script>
