@@ -9,6 +9,7 @@ if(isset($_POST['name']) && isset($_POST['pass'])){
                    $_SESSION['loggedin'] = true;
                    $_SESSION['name'] = "admin";
                    $_SESSION['permiso']='admin';
+                   $_SESSION['nomina'] = 'activado';
                    $_SESSION['start'] =time();
                    $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
                    $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );

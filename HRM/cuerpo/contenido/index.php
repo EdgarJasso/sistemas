@@ -208,7 +208,7 @@ echo $msj;
           <a href="#">Extra<span class="icon-link"></span></a>
              <ul>
              <?php 
-                if($_SESSION['nomina']=='activado'){
+               if($_SESSION['nomina']=='activado'){
                   echo '
                 <li>   
                   <a class="nav-link" id="pills-nomina-tab" data-toggle="pill" href="#pills-nomina" 
