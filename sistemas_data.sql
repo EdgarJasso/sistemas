@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2020 a las 02:49:42
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 12-05-2021 a las 02:45:56
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemas`
 --
+CREATE DATABASE IF NOT EXISTS `sistemas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `sistemas`;
 
 -- --------------------------------------------------------
 
@@ -28,10 +29,11 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `ecsnts_area`
 --
 
-CREATE TABLE `ecsnts_area` (
-  `id_area` int(2) NOT NULL,
-  `nombre` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+CREATE TABLE IF NOT EXISTS `ecsnts_area` (
+  `id_area` int(2) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_area`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_area`
@@ -39,7 +41,8 @@ CREATE TABLE `ecsnts_area` (
 
 INSERT INTO `ecsnts_area` (`id_area`, `nombre`) VALUES
 (1, 'General'),
-(2, 'Administración');
+(2, 'Seguridad'),
+(3, 'Administración');
 
 -- --------------------------------------------------------
 
@@ -47,11 +50,12 @@ INSERT INTO `ecsnts_area` (`id_area`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `ecsnts_categoria`
 --
 
-CREATE TABLE `ecsnts_categoria` (
-  `Id_categoria` int(2) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_categoria` (
+  `Id_categoria` int(2) NOT NULL AUTO_INCREMENT,
   `Id_area` int(2) NOT NULL,
-  `Descripcion` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Descripcion` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`Id_categoria`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_categoria`
@@ -60,7 +64,9 @@ CREATE TABLE `ecsnts_categoria` (
 INSERT INTO `ecsnts_categoria` (`Id_categoria`, `Id_area`, `Descripcion`) VALUES
 (1, 1, 'Tronco Común'),
 (2, 1, 'Tronco Común Seguridad'),
-(3, 2, 'Programador Jr');
+(3, 2, 'Escolta'),
+(4, 3, 'Programador jr'),
+(5, 3, 'Contador Senior');
 
 -- --------------------------------------------------------
 
@@ -68,12 +74,13 @@ INSERT INTO `ecsnts_categoria` (`Id_categoria`, `Id_area`, `Descripcion`) VALUES
 -- Estructura de tabla para la tabla `ecsnts_competencias`
 --
 
-CREATE TABLE `ecsnts_competencias` (
-  `id_competencia` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_competencias` (
+  `id_competencia` int(3) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
   `nombre` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion` varchar(300) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `descripcion` varchar(300) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_competencia`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_competencias`
@@ -86,7 +93,9 @@ INSERT INTO `ecsnts_competencias` (`id_competencia`, `codigo`, `nombre`, `descri
 (4, 'F4', 'ddddd', 'ddddd'),
 (5, 'F5', 'eeeee', 'eeeee'),
 (6, 'H1', 'zzzzz', 'zzzzz'),
-(7, 'H2', 'xxxxx', 'xxxxx');
+(7, 'H2', 'xxxxx', 'xxxxx'),
+(8, 'C1', 'contador ', 'senior'),
+(9, 'c2', 'contador', 'senior prueba');
 
 -- --------------------------------------------------------
 
@@ -94,20 +103,23 @@ INSERT INTO `ecsnts_competencias` (`id_competencia`, `codigo`, `nombre`, `descri
 -- Estructura de tabla para la tabla `ecsnts_contesto`
 --
 
-CREATE TABLE `ecsnts_contesto` (
-  `id_campo` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_contesto` (
+  `id_campo` int(3) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(3) NOT NULL,
   `id_validacion` int(11) NOT NULL,
   `id_registro` int(6) NOT NULL,
-  `fecha` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `fecha` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_campo`),
+  KEY `fk_validacion_contesto` (`id_validacion`),
+  KEY `id_registro` (`id_registro`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_contesto`
 --
 
 INSERT INTO `ecsnts_contesto` (`id_campo`, `id_usuario`, `id_validacion`, `id_registro`, `fecha`) VALUES
-(1, 1, 1, 1, '27-11-2020 02:10 pm');
+(4, 1, 3, 1, '05-12-2020 03:48 pm');
 
 -- --------------------------------------------------------
 
@@ -115,13 +127,14 @@ INSERT INTO `ecsnts_contesto` (`id_campo`, `id_usuario`, `id_validacion`, `id_re
 -- Estructura de tabla para la tabla `ecsnts_pregunta`
 --
 
-CREATE TABLE `ecsnts_pregunta` (
-  `id_pregunta` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_pregunta` (
+  `id_pregunta` int(3) NOT NULL AUTO_INCREMENT,
   `competencia` varchar(5) COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_area` int(2) NOT NULL,
   `categoria` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `descripcion` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_pregunta`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_pregunta`
@@ -130,11 +143,19 @@ CREATE TABLE `ecsnts_pregunta` (
 INSERT INTO `ecsnts_pregunta` (`id_pregunta`, `competencia`, `id_area`, `categoria`, `descripcion`) VALUES
 (1, 'F1', 1, 'Tronco Común', 'Tronco Común - 1'),
 (2, 'F2', 1, 'Tronco Común', 'Tronco Común - 2'),
-(3, 'F3', 1, 'Tronco Común', 'Tronco Común - 3'),
-(4, 'F4', 1, 'Tronco Común', 'Tronco Común - 4'),
+(3, 'F3', 1, 'Tronco Común', 'Tronco Común -3'),
+(4, 'F4', 1, 'Tronco Común', 'Tronco Común -4'),
 (5, 'F5', 1, 'Tronco Común', 'Tronco Común - 5'),
-(6, 'H1', 2, 'Programador Jr', 'Programador Jr - 1'),
-(7, 'H2', 2, 'Programador Jr', 'Programador Jr - 2');
+(6, 'F1', 1, 'Tronco Común Seguridad', 'seguridad tc 1'),
+(7, 'F2', 1, 'Tronco Común Seguridad', 'seguridad tc 2'),
+(8, 'F3', 1, 'Tronco Común Seguridad', 'seguridad tc 3'),
+(9, 'F4', 1, 'Tronco Común Seguridad', 'seguridad tc 4'),
+(10, 'F5', 1, 'Tronco Común Seguridad', 'seguridad tc 5'),
+(11, 'H1', 3, 'Programador jr', 'programador jr -1'),
+(12, 'H2', 3, 'Programador jr', 'programador jr -2'),
+(13, 'H1', 2, 'Escolta', 'escolta 1'),
+(14, 'H2', 2, 'Escolta', 'escolta 2'),
+(15, 'C1', 3, 'Contador Senior', 'esto es una prueba de la pregunta a contador senior');
 
 -- --------------------------------------------------------
 
@@ -142,26 +163,28 @@ INSERT INTO `ecsnts_pregunta` (`id_pregunta`, `competencia`, `id_area`, `categor
 -- Estructura de tabla para la tabla `ecsnts_respuestas`
 --
 
-CREATE TABLE `ecsnts_respuestas` (
-  `id_respuesta` int(6) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_respuestas` (
+  `id_respuesta` int(6) NOT NULL AUTO_INCREMENT,
   `id_registro` int(6) NOT NULL,
   `id_pregunta` int(3) NOT NULL,
   `respuesta` varchar(30) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `justificacion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `justificacion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_respuesta`),
+  KEY `fk_registro_respuestas` (`id_registro`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_respuestas`
 --
 
 INSERT INTO `ecsnts_respuestas` (`id_respuesta`, `id_registro`, `id_pregunta`, `respuesta`, `justificacion`) VALUES
-(1, 1, 1, 'Completamente_de_acuerdo', 'Autoevaluacion Tc - 1 (e)'),
-(2, 1, 2, 'De_acuerdo', 'Autoevaluacion Tc - 2 (b)'),
-(3, 1, 3, 'Ni_acuerdo_ni_en_desacuerdo', 'Autoevaluacion Tc - 3 (n)'),
-(4, 1, 4, 'No_estoy_de_acuerdo', 'Autoevaluacion Tc - 4(m)'),
-(5, 1, 5, 'Completamente_en_desacuerdo', 'Autoevaluacion Tc - 5(t)'),
-(6, 1, 6, 'Completamente_de_acuerdo', 'Autoevaluacion cat - 1 (e)'),
-(7, 1, 7, 'De_acuerdo', 'Autoevaluacion cat - 2 (b)');
+(15, 1, 1, 'Completamente_de_acuerdo', 'Autoevaluación tc1 e'),
+(16, 1, 2, 'De_acuerdo', 'Autoevaluación tc2 b'),
+(17, 1, 3, 'Ni_acuerdo_ni_en_desacuerdo', 'Autoevaluación tc3 n'),
+(18, 1, 4, 'No_estoy_de_acuerdo', 'Autoevaluación tc4 m'),
+(19, 1, 5, 'Completamente_en_desacuerdo', 'Autoevaluación tc5 t'),
+(20, 1, 11, 'Completamente_de_acuerdo', 'Area 1 esjdjd'),
+(21, 1, 12, 'Completamente_de_acuerdo', 'Area 2 ehejeji');
 
 -- --------------------------------------------------------
 
@@ -169,24 +192,22 @@ INSERT INTO `ecsnts_respuestas` (`id_respuesta`, `id_registro`, `id_pregunta`, `
 -- Estructura de tabla para la tabla `ecsnts_usuario`
 --
 
-CREATE TABLE `ecsnts_usuario` (
-  `id_usuario` int(2) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_usuario` (
+  `id_usuario` int(2) NOT NULL AUTO_INCREMENT,
   `id_area` int(2) NOT NULL,
   `nombre` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
   `clave` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `permiso` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `permiso` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_usuario`
 --
 
 INSERT INTO `ecsnts_usuario` (`id_usuario`, `id_area`, `nombre`, `clave`, `permiso`) VALUES
-(1, 2, 'Edgar Jasso', 'Alohomora', 'root'),
-(2, 2, 'Mariel Hernandez', 'Alohomora', 'root'),
-(3, 2, 'Josue Carreño', 'Alohomora', 'root'),
-(4, 2, 'David Millan', 'Alohomora', 'root'),
-(5, 2, 'Jennifer RR', 'Alohomora', 'root');
+(1, 3, 'Edgar Jasso', 'Alohomora', 'root'),
+(2, 2, 'Ismael', 'Alohomora', 'user');
 
 -- --------------------------------------------------------
 
@@ -194,8 +215,8 @@ INSERT INTO `ecsnts_usuario` (`id_usuario`, `id_area`, `nombre`, `clave`, `permi
 -- Estructura de tabla para la tabla `ecsnts_validacion`
 --
 
-CREATE TABLE `ecsnts_validacion` (
-  `Id_validacion` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ecsnts_validacion` (
+  `Id_validacion` int(4) NOT NULL AUTO_INCREMENT,
   `Calificador` int(2) NOT NULL,
   `Calificado` int(2) NOT NULL,
   `Nombre` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -203,22 +224,34 @@ CREATE TABLE `ecsnts_validacion` (
   `Area` int(4) NOT NULL,
   `Categoria` int(4) NOT NULL,
   `tipo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `periodo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `periodo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`Id_validacion`),
+  KEY `fk_usuario_validacion` (`Calificador`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ecsnts_validacion`
 --
 
 INSERT INTO `ecsnts_validacion` (`Id_validacion`, `Calificador`, `Calificado`, `Nombre`, `Validacion`, `Area`, `Categoria`, `tipo`, `periodo`) VALUES
-(1, 1, 1, 'Edgar Jasso', 'hecho', 2, 3, 'Autoevaluacion', '2020-2'),
-(2, 2, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Jefe', '2020-2'),
-(3, 3, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Compañero', '2020-2'),
-(4, 4, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Subordinado', '2020-2'),
-(5, 5, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Cliente', '2020-2'),
-(6, 2, 2, 'Mariel Hernandez', 'pendiente', 2, 3, 'Autoevaluacion', '2020-2'),
-(8, 1, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Autoevaluacion', '2020-2'),
-(9, 1, 1, 'Edgar Jasso', 'pendiente', 2, 3, 'Autoevaluacion', '2020-2');
+(3, 1, 1, 'Edgar Jasso', 'hecho', 3, 4, 'Autoevaluacion', '2020-2'),
+(4, 1, 2, 'Ismael', 'pendiente', 2, 3, 'Cliente', '2020-2'),
+(5, 2, 2, 'Ismael', 'pendiente', 2, 3, 'Autoevaluacion', '2020-2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hrm_alergias`
+--
+
+CREATE TABLE IF NOT EXISTS `hrm_alergias` (
+  `id_alergia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` int(11) NOT NULL,
+  `descripcion` varchar(300) NOT NULL,
+  `tipo_sangre` varchar(5) NOT NULL,
+  `tel_contacto` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_alergia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -226,12 +259,14 @@ INSERT INTO `ecsnts_validacion` (`Id_validacion`, `Calificador`, `Calificado`, `
 -- Estructura de tabla para la tabla `hrm_alertas`
 --
 
-CREATE TABLE `hrm_alertas` (
-  `id_alerta` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_alertas` (
+  `id_alerta` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
   `numero` int(2) NOT NULL,
-  `estado` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `estado` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_alerta`),
+  KEY `fk_alertas_empleado` (`id_empleado`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -239,25 +274,27 @@ CREATE TABLE `hrm_alertas` (
 -- Estructura de tabla para la tabla `hrm_antiguedad`
 --
 
-CREATE TABLE `hrm_antiguedad` (
-  `id_antiguedad` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_antiguedad` (
+  `id_antiguedad` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
   `id_puesto` int(3) NOT NULL,
+  `jefe_directo` varchar(50) NOT NULL,
   `activo` varchar(10) NOT NULL,
   `fecha_inicio` varchar(15) NOT NULL,
   `fecha_fin` varchar(15) NOT NULL,
-  `aumento` varchar(10) NOT NULL,
-  `comentarios` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `comentarios` varchar(150) NOT NULL,
+  `color` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_antiguedad`),
+  KEY `fk_antiguedad_puesto` (`id_puesto`),
+  KEY `fk_antiguedad_empleado` (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_antiguedad`
 --
 
-INSERT INTO `hrm_antiguedad` (`id_antiguedad`, `id_empleado`, `id_puesto`, `activo`, `fecha_inicio`, `fecha_fin`, `aumento`, `comentarios`) VALUES
-(8, 9, 8, 'ALTA', '2019-03-01', '', '', ''),
-(9, 43, 13, 'alta', '2019-03-01', '', 'denegado', ''),
-(10, 34, 8, 'alta', '2018-01-01', '', 'denegado', '');
+INSERT INTO `hrm_antiguedad` (`id_antiguedad`, `id_empleado`, `id_puesto`, `jefe_directo`, `activo`, `fecha_inicio`, `fecha_fin`, `comentarios`, `color`) VALUES
+(1, 9, 20, '8  -  AARON ALEJANDRO  MONTENEGRO', 'alta', '2019-01-01', 'pendiente', '', '#c5327f');
 
 -- --------------------------------------------------------
 
@@ -265,10 +302,11 @@ INSERT INTO `hrm_antiguedad` (`id_antiguedad`, `id_empleado`, `id_puesto`, `acti
 -- Estructura de tabla para la tabla `hrm_area`
 --
 
-CREATE TABLE `hrm_area` (
-  `id_area` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `hrm_area` (
+  `id_area` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_area`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_area`
@@ -288,10 +326,28 @@ INSERT INTO `hrm_area` (`id_area`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `hrm_asignacion`
 --
 
-CREATE TABLE `hrm_asignacion` (
-  `id_asignacion` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_asignacion` (
+  `id_asignacion` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
-  `dias_habilies` varchar(2) NOT NULL
+  `dias_habilies` varchar(2) NOT NULL,
+  `periodo` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_asignacion`),
+  KEY `fk_asignacion_empleado` (`id_empleado`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hrm_bajas`
+--
+
+CREATE TABLE IF NOT EXISTS `hrm_bajas` (
+  `id_baja` int(11) NOT NULL AUTO_INCREMENT,
+  `id_empleado` int(11) NOT NULL,
+  `nombre_completo` varchar(50) NOT NULL,
+  `fecha` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_baja`),
+  KEY `id_empleado` (`id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -300,8 +356,8 @@ CREATE TABLE `hrm_asignacion` (
 -- Estructura de tabla para la tabla `hrm_direccion`
 --
 
-CREATE TABLE `hrm_direccion` (
-  `id_direccion` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_direccion` (
+  `id_direccion` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
   `pais` varchar(20) NOT NULL,
   `estado` varchar(30) NOT NULL,
@@ -309,8 +365,10 @@ CREATE TABLE `hrm_direccion` (
   `colonia` varchar(30) NOT NULL,
   `calle` varchar(30) NOT NULL,
   `numero` varchar(5) NOT NULL,
-  `entre_calles` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `entre_calles` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_direccion`),
+  KEY `fk_direccion_empleado` (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_direccion`
@@ -366,15 +424,17 @@ INSERT INTO `hrm_direccion` (`id_direccion`, `id_empleado`, `pais`, `estado`, `m
 -- Estructura de tabla para la tabla `hrm_documentos`
 --
 
-CREATE TABLE `hrm_documentos` (
-  `id_documento` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_documentos` (
+  `id_documento` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(11) NOT NULL,
   `titulo` varchar(30) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `tipo` varchar(100) NOT NULL,
   `tamano` varchar(20) NOT NULL,
-  `ruta` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ruta` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_documento`),
+  KEY `fk_documentos_empleados` (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=337 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_documentos`
@@ -408,33 +468,23 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (33, 50, 'Comprobante de domicilio', '', 'application/pdf', '704089', 'Archivos/50/CD.pdf'),
 (34, 50, 'CURP', '', 'application/pdf', '1032257', 'Archivos/50/CURP.pdf'),
 (35, 50, 'Numero de Seguro Social', '', 'application/pdf', '665252', 'Archivos/50/NSS.pdf'),
-(36, 51, 'Acta de Nacimiento ', '', 'application/pdf', '1336715', 'Archivos/51/AN.pdf'),
-(37, 51, 'Comprobante de domicilio', '', 'application/pdf', '815181', 'Archivos/51/CD.pdf'),
-(38, 51, 'CURP', '', 'application/pdf', '961708', 'Archivos/51/CURP.pdf'),
-(39, 51, 'Numero de Seguro Social', '', 'application/pdf', '1000072', 'Archivos/51/NSS.pdf'),
-(40, 51, 'RFC', '', 'application/pdf', '880213', 'Archivos/51/RFC.pdf'),
-(41, 13, 'Acta de Nacimiento ', '', 'application/pdf', '3935122', 'Archivos/13/AN.pdf'),
-(42, 13, 'INE', '', 'application/pdf', '621084', 'Archivos/13/INE.pdf'),
-(43, 13, 'RFC', '', 'application/pdf', '1073821', 'Archivos/13/RFC.pdf'),
+(216, 26, 'PASAPORTE', '', 'application/pdf', '215049', 'Archivos/26/PASAPORTE.pdf'),
+(215, 26, 'IMSS', '', 'application/pdf', '253779', 'Archivos/26/IMSS.pdf'),
+(214, 26, 'INE', '', 'application/pdf', '163495', 'Archivos/26/INE.pdf'),
+(213, 26, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '479180', 'Archivos/26/CERTIFICADO DE ESTUDIOS.pdf'),
 (44, 14, 'Acta de Nacimiento ', '', 'application/pdf', '1146811', 'Archivos/14/AN.pdf'),
 (45, 14, 'CURP', '', 'application/pdf', '1014989', 'Archivos/14/CURP.pdf'),
 (46, 14, 'INE', '', 'application/pdf', '811954', 'Archivos/14/INE.pdf'),
 (47, 14, 'Numero de Seguro Social', '', 'application/pdf', '1057443', 'Archivos/14/NSS.pdf'),
 (48, 52, 'Comprobante de domicilio', '', 'application/pdf', '858001', 'Archivos/52/CD.pdf'),
 (49, 52, 'CURP', '', 'application/pdf', '1153083', 'Archivos/52/CURP.pdf'),
-(50, 15, 'Acta de Nacimiento ', '', 'application/pdf', '1168800', 'Archivos/15/AN.pdf'),
-(51, 15, 'CURP', '', 'application/pdf', '4317795', 'Archivos/15/CURP.pdf'),
-(52, 15, 'INE', '', 'application/pdf', '606717', 'Archivos/15/INE.pdf'),
-(53, 15, 'Numero de Seguro Social', '', 'application/pdf', '615870', 'Archivos/15/NSS.pdf'),
-(54, 15, 'RFC', '', 'application/pdf', '985751', 'Archivos/15/RFC.pdf'),
-(55, 17, 'Acta de Nacimiento ', '', 'application/pdf', '1813040', 'Archivos/17/AN.pdf'),
-(56, 17, 'Comprobante de domicilio', '', 'application/pdf', '924250', 'Archivos/17/CD.pdf'),
-(57, 17, 'CURP', '', 'application/pdf', '1018152', 'Archivos/17/CURP.pdf'),
-(58, 17, 'INE', '', 'application/pdf', '955216', 'Archivos/17/INE.pdf'),
-(59, 17, 'Numero de Seguro Social', '', 'application/pdf', '1634668', 'Archivos/17/NSS.pdf'),
-(60, 16, 'Comprobante de domicilio', '', 'application/pdf', '898915', 'Archivos/16/CD.pdf'),
+(236, 55, 'RFC', '', 'application/pdf', '178563', 'Archivos/55/RFC.pdf'),
+(235, 55, 'CURP', '', 'application/pdf', '276694', 'Archivos/55/CURP.pdf'),
+(234, 55, 'IMSS', '', 'application/pdf', '351782', 'Archivos/55/IMSS.pdf'),
+(233, 55, 'INE', '', 'application/pdf', '134339', 'Archivos/55/INE.pdf'),
+(333, 16, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '245787', 'Archivos/16/Comprobante se domicilio Paco Piña.pdf'),
 (61, 16, 'CURP', '', 'application/pdf', '905255', 'Archivos/16/CURP.pdf'),
-(63, 16, 'INE', '', 'application/pdf', '654591', 'Archivos/16/INE.pdf'),
+(331, 16, 'INE 1', '', 'application/pdf', '356420', 'Archivos/16/ONE Paco Piña_2 ine.pdf'),
 (64, 16, 'LICENCIA DE CONDUCIR', '', 'application/pdf', '639761', 'Archivos/16/LC.pdf'),
 (65, 16, 'Numero de Seguro Social', '', 'application/pdf', '902471', 'Archivos/16/NSS.pdf'),
 (66, 16, 'Pasaporte', '', 'application/pdf', '676412', 'Archivos/16/PSPT.pdf'),
@@ -442,28 +492,22 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (68, 19, 'Comprobante de domicilio', '', 'application/pdf', '1856715', 'Archivos/19/CD.pdf'),
 (69, 19, 'INE', '', 'application/pdf', '745888', 'Archivos/19/INE.pdf'),
 (70, 19, 'Numero de Seguro Social', '', 'application/pdf', '656703', 'Archivos/19/NSS.pdf'),
-(71, 18, 'Numero de Seguro Social', '', 'application/pdf', '656703', 'Archivos/18/NSS.pdf'),
-(72, 18, 'Acta de Nacimiento ', '', 'application/pdf', '1750530', 'Archivos/18/AN.pdf'),
-(73, 18, 'Comprobante de domicilio', '', 'application/pdf', '921600', 'Archivos/18/CD.pdf'),
-(74, 18, 'CURP', '', 'application/pdf', '1286884', 'Archivos/18/CURP.pdf'),
-(75, 18, 'INE', '', 'application/pdf', '631645', 'Archivos/18/INE.pdf'),
-(76, 18, 'Numero de Seguro Social', '', 'application/pdf', '1796640', 'Archivos/18/NSS.pdf'),
+(227, 30, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '370332', 'Archivos/30/CERTIFICADO DE ESTUDIOS.pdf'),
+(335, 16, 'INE', '', 'application/pdf', '250888', 'Archivos/16/INE PACO PIÑA.pdf'),
+(224, 28, 'LICENCIA', '', 'application/pdf', '256053', 'Archivos/28/LICENCIA.pdf'),
 (77, 20, 'Acta de Nacimiento ', '', 'application/pdf', '1342977', 'Archivos/20/AN.pdf'),
 (78, 20, 'Comprobante de domicilio', '', 'application/pdf', '1235274', 'Archivos/20/CD.pdf'),
 (79, 20, 'CURP', '', 'application/pdf', '836647', 'Archivos/20/CURP.pdf'),
 (80, 20, 'INE', '', 'application/pdf', '807019', 'Archivos/20/INE.pdf'),
 (81, 20, 'LICENCIA DE CONDUCIR', '', 'application/pdf', '557281', 'Archivos/20/LC.pdf'),
-(83, 53, 'Comprobante de domicilio', '', 'application/pdf', '1153546', 'Archivos/53/CD.pdf'),
-(84, 53, 'CURP', '', 'application/pdf', '962519', 'Archivos/53/CURP.pdf'),
-(85, 53, 'Numero de Seguro Social', '', 'application/pdf', '1159846', 'Archivos/53/NSS.pdf'),
+(328, 59, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '246188', 'Archivos/59/CERTIFICADO DE ESTUDIOS.pdf'),
+(327, 59, 'RFC', '', 'application/pdf', '142217', 'Archivos/59/RFC.pdf'),
 (86, 22, 'Acta de Nacimiento ', '', 'application/pdf', '1333739', 'Archivos/22/AN.pdf'),
 (89, 22, 'Numero de Seguro Social', '', 'application/pdf', '1452132', 'Archivos/22/NSS.pdf'),
 (90, 22, 'CURP', '', 'application/pdf', '1011873', 'Archivos/22/CURP.pdf'),
 (91, 22, 'Comprobante de domicilio', '', 'application/pdf', '856863', 'Archivos/22/CD.pdf'),
-(92, 23, 'Acta de Nacimiento ', '', 'application/pdf', '1626330', 'Archivos/23/AN.pdf'),
-(93, 23, 'Comprobante de domicilio', '', 'application/pdf', '839258', 'Archivos/23/CD.pdf'),
-(94, 23, 'CURP', '', 'application/pdf', '1143912', 'Archivos/23/CURP.pdf'),
-(95, 23, 'RFC', '', 'application/pdf', '833279', 'Archivos/23/RFC.pdf'),
+(232, 55, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '432410', 'Archivos/55/CERTIFICADO DE ESTUDIOS.pdf'),
+(231, 55, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '272977', 'Archivos/55/COMPROBANTE DE DOMICILIO.pdf'),
 (97, 26, 'Acta de Nacimiento ', '', 'application/pdf', '1291909', 'Archivos/26/AN.pdf'),
 (98, 26, 'Comprobante de domicilio', '', 'application/pdf', '1391421', 'Archivos/26/CD.pdf'),
 (99, 26, 'CURP', '', 'application/pdf', '962474', 'Archivos/26/CURP.pdf'),
@@ -475,10 +519,9 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (105, 24, 'Comprobante de domicilio', '', 'application/pdf', '878295', 'Archivos/24/CD.pdf'),
 (106, 24, 'CURP', '', 'application/pdf', '1165082', 'Archivos/24/CURP.pdf'),
 (107, 24, 'RFC', '', 'application/pdf', '2438221', 'Archivos/24/RFC.pdf'),
-(108, 25, 'Acta de Nacimiento ', '', 'application/pdf', '1402727', 'Archivos/25/AN.pdf'),
-(109, 25, 'CURP', '', 'application/pdf', '1250882', 'Archivos/25/CURP.pdf'),
-(110, 25, 'Numero de Seguro Social', '', 'application/pdf', '849589', 'Archivos/25/NSS.pdf'),
-(111, 25, 'RFC', '', 'application/pdf', '1294961', 'Archivos/25/RFC.pdf'),
+(230, 55, 'ACTA DE NACIMIENTO', '', 'application/pdf', '333794', 'Archivos/55/ACTA DE NACIMIENTO.pdf'),
+(229, 30, 'INE', '', 'application/pdf', '208619', 'Archivos/30/INE.pdf'),
+(228, 30, 'PASAPORTE Y VISA', '', 'application/pdf', '383402', 'Archivos/30/PASAPORTE Y VISA.pdf'),
 (112, 28, 'Acta de Nacimiento ', '', 'application/pdf', '1608968', 'Archivos/28/AN.pdf'),
 (113, 28, 'Comprobante de domicilio', '', 'application/pdf', '1070710', 'Archivos/28/CD.pdf'),
 (114, 28, 'CURP', '', 'application/pdf', '1113941', 'Archivos/28/CURP.pdf'),
@@ -487,11 +530,9 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (117, 27, 'Acta de Nacimiento ', '', 'application/pdf', '1163778', 'Archivos/27/AN.pdf'),
 (118, 27, 'CURP', '', 'application/pdf', '858313', 'Archivos/27/CURP.pdf'),
 (119, 27, '', '', 'application/pdf', '658768', 'Archivos/27/RFC.pdf'),
-(120, 29, 'Acta de Nacimiento ', '', 'application/pdf', '1500453', 'Archivos/29/AN.pdf'),
-(121, 29, 'Comprobante de domicilio', '', 'application/pdf', '1140172', 'Archivos/29/CD.pdf'),
-(122, 29, 'CURP', '', 'application/pdf', '539168', 'Archivos/29/CURP.pdf'),
-(123, 29, 'Numero de Seguro Social', '', 'application/pdf', '539168', 'Archivos/29/NSS.pdf'),
-(124, 29, 'RFC', '', 'application/pdf', '539168', 'Archivos/29/RFC.pdf'),
+(332, 28, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '145775', 'Archivos/28/COMPROBANTE DE DOMICILIO MATUS.pdf'),
+(330, 16, 'INE 2 ', '', 'application/pdf', '320519', 'Archivos/16/ONE Paco Piña_1 (2).pdf'),
+(329, 59, 'ACTA DE NACIMIENTO', '', 'application/pdf', '274962', 'Archivos/59/ACTA DE NACIMIENTO.pdf'),
 (125, 30, 'Acta de Nacimiento ', '', 'application/pdf', '1720691', 'Archivos/30/AN.pdf'),
 (126, 30, 'Comprobante de domicilio', '', 'application/pdf', '1870873', 'Archivos/30/CD.pdf'),
 (127, 30, 'CURP', '', 'application/pdf', '1734693', 'Archivos/30/CURP.pdf'),
@@ -502,20 +543,17 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (132, 45, 'Numero de Seguro Social', '', 'application/pdf', '1539436', 'Archivos/45/NSS.pdf'),
 (133, 45, 'RFC', '', 'application/pdf', '839532', 'Archivos/45/RFC.pdf'),
 (135, 46, 'Acta de Nacimiento ', '', 'application/pdf', '1993495', 'Archivos/46/AN.pdf'),
-(136, 46, 'Comprobante de domicilio', '', 'application/pdf', '1673781', 'Archivos/46/CD.pdf'),
+(303, 46, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '289569', 'Archivos/46/COMPROBANTE DE DOMICILIO.pdf'),
 (137, 46, 'CURP', '', 'application/pdf', '1074189', 'Archivos/46/CURP.pdf'),
 (138, 46, 'Numero de Seguro Social', '', 'application/pdf', '1074189', 'Archivos/46/NSS.pdf'),
-(139, 32, 'Acta de Nacimiento ', '', 'application/pdf', '1348380', 'Archivos/32/AN.pdf'),
-(140, 32, 'Comprobante de domicilio', '', 'application/pdf', '769254', 'Archivos/32/CD.pdf'),
-(141, 32, 'CURP', '', 'application/pdf', '748236', 'Archivos/32/CURP.pdf'),
-(142, 32, 'RFC', '', 'application/pdf', '748236', 'Archivos/32/RFC.pdf'),
+(223, 28, 'INE', '', 'application/pdf', '325197', 'Archivos/28/INE.pdf'),
+(222, 28, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '276212', 'Archivos/28/CERTIFICADO DE ESTUDIOS.pdf'),
 (143, 35, 'Acta de Nacimiento ', '', 'application/pdf', '1491691', 'Archivos/35/AN.pdf'),
 (144, 35, 'Comprobante de domicilio', '', 'application/pdf', '928733', 'Archivos/35/CD.pdf'),
 (145, 35, 'CURP', '', 'application/pdf', '1214118', 'Archivos/35/CURP.pdf'),
 (146, 35, 'Numero de Seguro Social', '', 'application/pdf', '695550', 'Archivos/35/NSS.pdf'),
-(147, 47, 'Acta de Nacimiento ', '', 'application/pdf', '1724989', 'Archivos/47/AN.pdf'),
-(148, 47, 'CURP', '', 'application/pdf', '359234', 'Archivos/47/CURP.pdf'),
-(149, 47, 'INE', '', 'application/pdf', '1676234', 'Archivos/47/INE.pdf'),
+(218, 27, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '262976', 'Archivos/27/CERTIFICADO DE ESTUDIOS.pdf'),
+(334, 27, 'INE', '', 'application/pdf', '366405', 'Archivos/27/INE CARLOS MATUS.pdf'),
 (150, 34, 'Acta de Nacimiento ', '', 'application/pdf', '2403538', 'Archivos/34/AN.pdf'),
 (151, 34, 'Comprobante de domicilio', '', 'application/pdf', '920870', 'Archivos/34/CD.pdf'),
 (152, 34, 'CURP', '', 'application/pdf', '1003277', 'Archivos/34/CURP.pdf'),
@@ -524,16 +562,14 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (155, 37, 'Acta de Nacimiento ', '', 'application/pdf', '1289929', 'Archivos/37/AN.pdf'),
 (156, 37, 'Comprobante de domicilio', '', 'application/pdf', '1111496', 'Archivos/37/CD.pdf'),
 (157, 37, 'CURP', '', 'application/pdf', '1183183', 'Archivos/37/CURP.pdf'),
-(158, 38, 'Comprobante de domicilio', '', 'application/pdf', '1283703', 'Archivos/38/CD.pdf'),
-(159, 38, 'CURP', '', 'application/pdf', '1058779', 'Archivos/38/CURP.pdf'),
-(160, 38, 'Numero de Seguro Social', '', 'application/pdf', '1203893', 'Archivos/38/NSS.pdf'),
-(161, 39, 'Comprobante de domicilio', '', 'application/pdf', '1184693', 'Archivos/39/CD.pdf'),
-(162, 39, 'CURP', '', 'application/pdf', '1108013', 'Archivos/39/CURP.pdf'),
-(163, 39, 'RFC', '', 'application/pdf', '669149', 'Archivos/39/RFC.pdf'),
-(165, 40, 'Acta de Nacimiento ', '', 'application/pdf', '1942131', 'Archivos/40/AN.pdf'),
-(166, 40, 'Comprobante de domicilio', '', 'application/pdf', '1012264', 'Archivos/40/CD.pdf'),
-(167, 40, 'CURP', '', 'application/pdf', '702065', 'Archivos/40/CURP.pdf'),
-(168, 40, 'RFC', '', 'application/pdf', '505524', 'Archivos/40/RFC.pdf'),
+(221, 27, 'PASAPORTE Y VISA', '', 'application/pdf', '285593', 'Archivos/27/PASAPORTE Y VISA.pdf'),
+(220, 27, 'IMSS', '', 'application/pdf', '303217', 'Archivos/27/IMSS.pdf'),
+(219, 27, 'LICENCIA', '', 'application/pdf', '214656', 'Archivos/27/LICENCIA.pdf'),
+(325, 58, 'CV', '', 'application/pdf', '236607', 'Archivos/58/CV.pdf'),
+(324, 58, 'DATOS BANCARIOS', '', 'application/pdf', '201258', 'Archivos/58/DATOS BNCARIOS.pdf'),
+(322, 58, 'AFORE', '', 'application/pdf', '214003', 'Archivos/58/AFORE.pdf'),
+(323, 58, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '229498', 'Archivos/58/COMPROBANTE DE DOMICILIO.pdf'),
+(326, 59, 'LICENCIA', '', 'application/pdf', '211776', 'Archivos/59/LICENCIA.pdf'),
 (169, 41, 'Acta de Nacimiento ', '', 'application/pdf', '1783085', 'Archivos/41/AN.pdf'),
 (170, 41, 'Comprobante de domicilio', '', 'application/pdf', '1310797', 'Archivos/41/CD.pdf'),
 (171, 41, 'CURP', '', 'application/pdf', '1204733', 'Archivos/41/CURP.pdf'),
@@ -553,7 +589,99 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 (185, 44, 'Acta de Nacimiento ', '', 'application/pdf', '1120323', 'Archivos/44/AN.pdf'),
 (186, 44, 'Comprobante de domicilio', '', 'application/pdf', '689215', 'Archivos/44/CD.pdf'),
 (188, 44, 'Numero de Seguro Social', '', 'application/pdf', '704187', 'Archivos/44/NSS.pdf'),
-(189, 44, 'CURP', '', 'application/pdf', '1021385', 'Archivos/44/CURP.pdf');
+(189, 44, 'CURP', '', 'application/pdf', '1021385', 'Archivos/44/CURP.pdf'),
+(190, 8, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '246912', 'Archivos/8/CERTIFICADO DE ESTUDIOS.pdf'),
+(191, 8, 'INE', '', 'application/pdf', '170535', 'Archivos/8/INE.pdf'),
+(192, 9, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '191199', 'Archivos/9/CERTIFICADO DE ESTUDIOS.pdf'),
+(193, 11, 'ACTA DE NACIMIENTO', '', 'application/pdf', '313515', 'Archivos/11/ACTA DE NACIMIENTO.pdf'),
+(196, 12, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '205236', 'Archivos/12/CERTIFICADO DE ESTUDIOS.pdf'),
+(195, 11, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '713237', 'Archivos/11/CERTIFICADO DE ESTUDIOS.pdf'),
+(197, 12, 'IMSS', '', 'application/pdf', '304520', 'Archivos/12/IMSS.pdf'),
+(202, 14, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '273391', 'Archivos/14/CERTIFICADO DE ESTUDIOS.pdf'),
+(203, 14, 'LICENCIA', '', 'application/pdf', '199137', 'Archivos/14/LICENCIA.pdf'),
+(204, 14, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '161745', 'Archivos/14/CERTIFICADO DE ESTUDIOS.pdf'),
+(205, 16, 'ACTA DE NACIMIENTO', '', 'application/pdf', '483906', 'Archivos/16/ACTA DE NACIMIENTO.pdf'),
+(207, 20, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '208836', 'Archivos/20/CERTIFICADO DE ESTUDIOS.pdf'),
+(208, 20, 'IMSS', '', 'application/pdf', '311531', 'Archivos/20/IMSS.pdf'),
+(209, 22, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '282978', 'Archivos/22/CERTIFICADO DE ESTUDIOS.pdf'),
+(210, 22, 'INE', '', 'application/pdf', '205685', 'Archivos/22/INE.pdf'),
+(211, 19, 'CURP', '', 'application/pdf', '276694', 'Archivos/19/CURP.pdf'),
+(212, 22, 'LICENCIA', '', 'application/pdf', '217768', 'Archivos/22/LICENCIA.pdf'),
+(237, 33, 'ACTA DE NACIMIENTO', '', 'application/pdf', '764200', 'Archivos/33/ACTA DE NACIMIENTO.pdf'),
+(238, 33, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '250697', 'Archivos/33/COMPROBANTE DE DOMICILIO.pdf'),
+(239, 33, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '208195', 'Archivos/33/CERTIFICADO DE ESTUDIOS.pdf'),
+(240, 33, 'INE', '', 'application/pdf', '204523', 'Archivos/33/INE.pdf'),
+(241, 33, 'IMSS', '', 'application/pdf', '137384', 'Archivos/33/IMSS.pdf'),
+(242, 33, 'CURP', '', 'application/pdf', '339299', 'Archivos/33/CURP.pdf'),
+(243, 33, 'RFC', '', 'application/pdf', '498687', 'Archivos/33/RFC.pdf'),
+(244, 34, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '197945', 'Archivos/34/CERTIFICADO DE ESTUDIOS.pdf'),
+(245, 34, 'INE', '', 'application/pdf', '209149', 'Archivos/34/INE.pdf'),
+(246, 34, 'IMSS', '', 'application/pdf', '172770', 'Archivos/34/IMSS.pdf'),
+(247, 34, 'PASAPORTE Y VISA', '', 'application/pdf', '157788', 'Archivos/34/PASAPORTE Y VISA.pdf'),
+(248, 35, 'INE', '', 'application/pdf', '227400', 'Archivos/35/INE.pdf'),
+(249, 35, 'PASAPORTE Y VISA', '', 'application/pdf', '218461', 'Archivos/35/PASAPORTE Y VISA.pdf'),
+(250, 36, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '317283', 'Archivos/36/COMPROBANTE DE DOMICILIO.pdf'),
+(251, 36, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '185406', 'Archivos/36/CERTIFICADO DE ESTUDIOS.pdf'),
+(252, 36, 'INE', '', 'application/pdf', '183454', 'Archivos/36/INE.pdf'),
+(253, 36, 'PASAPORTE Y VISA', '', 'application/pdf', '155034', 'Archivos/36/PASAPORTE Y VISA.pdf'),
+(254, 37, 'INE', '', 'application/pdf', '147405', 'Archivos/37/INE.pdf'),
+(255, 37, 'LICENCIA', '', 'application/pdf', '189242', 'Archivos/37/LICENCIA.pdf'),
+(321, 58, 'PASAPORTE Y VISA', '', 'application/pdf', '169960', 'Archivos/58/PASAPORTE Y VISA.pdf'),
+(320, 58, 'LICENCIA', '', 'application/pdf', '114406', 'Archivos/58/LICENCIA.pdf'),
+(319, 58, 'CURP', '', 'application/pdf', '76913', 'Archivos/58/CURP.pdf'),
+(318, 58, 'INE', '', 'application/pdf', '148113', 'Archivos/58/INE.pdf'),
+(316, 58, 'ACTA DE NACIMIENTO', '', 'application/pdf', '222100', 'Archivos/58/ACTA DE NACIMIENTO.pdf'),
+(317, 58, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '206456', 'Archivos/58/CERTIFICADO DE ESTUDIOS.pdf'),
+(265, 41, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '246065', 'Archivos/41/CERTIFICADO DE ESTUDIOS.pdf'),
+(266, 41, 'INE', '', 'application/pdf', '120515', 'Archivos/41/INE.pdf'),
+(267, 41, 'PASAPORTE Y VISA', '', 'application/pdf', '178030', 'Archivos/41/PASAPORTE Y VISA.pdf'),
+(268, 41, 'RFC', '', 'application/pdf', '174214', 'Archivos/41/RFC.pdf'),
+(269, 42, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '137087', 'Archivos/42/COMPROBANTE DE DOMICILIO.pdf'),
+(270, 42, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '182913', 'Archivos/42/CERTIFICADO DE ESTUDIOS.pdf'),
+(271, 42, 'INE', '', 'application/pdf', '597120', 'Archivos/42/INE.pdf'),
+(272, 42, 'PASAPORTE', '', 'application/pdf', '455184', 'Archivos/42/PASAPORTE.pdf'),
+(273, 43, 'PASAPORTE', '', 'application/pdf', '231130', 'Archivos/43/PASAPORTE.pdf'),
+(274, 44, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '269754', 'Archivos/44/CERTIFICADO DE ESTUDIOS.pdf'),
+(275, 44, 'INE', '', 'application/pdf', '171283', 'Archivos/44/INE.pdf'),
+(276, 49, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '209215', 'Archivos/49/CERTIFICADO DE ESTUDIOS.pdf'),
+(277, 49, 'INE', '', 'application/pdf', '200158', 'Archivos/49/INE.pdf'),
+(278, 49, 'LICENCIA', '', 'application/pdf', '152597', 'Archivos/49/LICENCIA.pdf'),
+(279, 49, 'IMSS', '', 'application/pdf', '195325', 'Archivos/49/IMSS.pdf'),
+(280, 49, 'CURP', '', 'application/pdf', '387672', 'Archivos/49/CURP.pdf'),
+(281, 50, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '215143', 'Archivos/50/CERTIFICADO DE ESTUDIOS.pdf'),
+(282, 50, 'PASAPORTE Y VISA', '', 'application/pdf', '182831', 'Archivos/50/PASAPORTE Y VISA.pdf'),
+(283, 50, 'RESIDENCIA PERMANENTE', '', 'application/pdf', '102771', 'Archivos/50/RESIDENCIA PERMANENTE.pdf'),
+(284, 52, 'ACTA DE NACIMIENTO', '', 'application/pdf', '330010', 'Archivos/52/ACTA DE NACIMIENTO.pdf'),
+(285, 52, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '268119', 'Archivos/52/CERTIFICADO DE ESTUDIOS.pdf'),
+(286, 52, 'INE', '', 'application/pdf', '175699', 'Archivos/52/INE.pdf'),
+(287, 52, 'IMSS', '', 'application/pdf', '253589', 'Archivos/52/IMSS.pdf'),
+(288, 54, 'INE', '', 'application/pdf', '149765', 'Archivos/54/INE.pdf'),
+(289, 54, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '128517', 'Archivos/54/CERTIFICADO DE ESTUDIOS.pdf'),
+(290, 54, 'IMSS', '', 'application/pdf', '221285', 'Archivos/54/IMSS.pdf'),
+(291, 56, 'ACTA DE NACIMIENTO', '', 'application/pdf', '317380', 'Archivos/56/ACTA DE NACIMIENTO.pdf'),
+(292, 56, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '252759', 'Archivos/56/COMPROBANTE DE DOMICILIO.pdf'),
+(293, 56, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '303924', 'Archivos/56/CERTIFICADO DE ESTUDIOS.pdf'),
+(294, 56, 'INE', '', 'application/pdf', '187165', 'Archivos/56/INE.pdf'),
+(295, 56, 'IMSS', '', 'application/pdf', '225550', 'Archivos/56/IMSS.pdf'),
+(296, 56, 'CURP', '', 'application/pdf', '242075', 'Archivos/56/CURP.pdf'),
+(297, 56, 'RFC', '', 'application/pdf', '170907', 'Archivos/56/RFC.pdf'),
+(298, 45, 'ACTA DE NACIMIENTO', '', 'application/pdf', '435233', 'Archivos/45/ACTA DE NACIMIENTO.pdf'),
+(299, 45, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '310029', 'Archivos/45/CERTIFICADO DE ESTUDIOS.pdf'),
+(300, 45, 'LICENCIA', '', 'application/pdf', '145605', 'Archivos/45/LICENCIA.pdf'),
+(301, 8, 'PASAPORTE Y VISA', '', 'application/pdf', '222078', 'Archivos/8/PASAPORTE Y VISA.pdf'),
+(302, 45, 'RESIDENCIA PERMANENTE', '', 'application/pdf', '222322', 'Archivos/45/RESIDENCIA PERMANENTE.pdf'),
+(304, 46, 'INE', '', 'application/pdf', '158967', 'Archivos/46/INE.pdf'),
+(305, 48, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '167527', 'Archivos/48/CERTIFICADO DE ESTUDIOS.pdf'),
+(306, 48, 'INE', '', 'application/pdf', '246668', 'Archivos/48/INE.pdf'),
+(307, 48, 'LICENCIA', '', 'application/pdf', '152514', 'Archivos/48/LICENCIA.pdf'),
+(308, 48, 'PASAPORTE', '', 'application/pdf', '300759', 'Archivos/48/PASAPORTE.pdf'),
+(309, 57, 'ACTA DE NACIMIENTO', '', 'application/pdf', '869028', 'Archivos/57/ACTA DE NACIMIENTO.pdf'),
+(310, 57, 'COMPROBANTE DE DOMICILIO', '', 'application/pdf', '395741', 'Archivos/57/COMPROBANTE DE DOMICILIO.pdf'),
+(311, 57, 'CERTIFICADO DE ESTUDIOS', '', 'application/pdf', '286768', 'Archivos/57/CERTIFICADO DE ESTUDIOS.pdf'),
+(312, 57, 'INE', '', 'application/pdf', '354929', 'Archivos/57/INE.pdf'),
+(313, 57, 'IMSS', '', 'application/pdf', '342659', 'Archivos/57/IMSS.pdf'),
+(314, 57, 'CURP', '', 'application/pdf', '375454', 'Archivos/57/CURP.pdf'),
+(315, 57, 'PASAPORTE', '', 'application/pdf', '139909', 'Archivos/57/PASAPORTE.pdf');
 
 -- --------------------------------------------------------
 
@@ -561,8 +689,8 @@ INSERT INTO `hrm_documentos` (`id_documento`, `id_empleado`, `titulo`, `descripc
 -- Estructura de tabla para la tabla `hrm_empleado`
 --
 
-CREATE TABLE `hrm_empleado` (
-  `id_empleado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_empleado` (
+  `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
   `ape_p` varchar(30) NOT NULL,
   `ape_m` varchar(30) DEFAULT NULL,
@@ -570,8 +698,9 @@ CREATE TABLE `hrm_empleado` (
   `curp` varchar(20) DEFAULT NULL,
   `rfc` varchar(20) DEFAULT NULL,
   `nss` varchar(12) DEFAULT NULL,
-  `celular` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `celular` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_empleado`
@@ -583,46 +712,36 @@ INSERT INTO `hrm_empleado` (`id_empleado`, `nombre`, `ape_p`, `ape_m`, `fecha_na
 (10, 'ANTONIO ', 'FERNANDES', 'TEIXEIRA', '1976-11-26', 'FETA761126HNERXN03', 'FETA761126SK0', '03177633470', '5557527094'),
 (11, 'ARIANA', 'HERNANDEZ', 'OLVERA', '1997-03-10', 'HEOA970128MTLRLR06', 'HEOA9701281C3', '37169756832', '7491076191'),
 (12, 'ASTRID VERENICE', 'HERNANDEZ', 'GUERRERO', '1980-01-06', 'HEGA800106MDFRRS07', 'HEGA800106MN1', '32998061918', '5534702001'),
-(13, 'DANAE', 'ALVAREZ', 'JIMENEZ', '1981-05-11', 'AAJD810511HDFLMN03', 'AAJD810511953', '90008102023', '5560783346'),
 (14, 'DIEGO ARTURO', 'GALICIA', 'DORANTES', '1990-05-09', 'GADD900509HMCLRG00', 'GADD900509TZ3', '92119007455', '5587257350'),
-(15, 'ERICK', 'ZAMORA', 'HERNANDEZ', '1995-06-05', 'ZAHE950605HHGMRR01', 'JACE970928RG0', '16169595991', '7713303311'),
-(16, 'FRANSISCO JAVIER', 'PINAA', 'OLMEDO', '1963-09-13', 'PIOF630913HDFXRL07', 'PIOF630913E31', '42826335145', '5500000000'),
-(17, 'FERNANDO RAUL', 'PORTER', 'GUTIERREZ', '1971-06-21', 'POGF710621HDFRTR09', 'JACE970928RG1', '37947114288', '5540946422'),
-(18, 'GABRIELA GUADALUPE', 'ALDAMA', 'VELAZCO', '1985-06-18', 'AAVG850618MDFLLBO4', 'AAVG8506188M8', '02188586719', '5500000000'),
+(16, 'FRANCISCO JAVIER', 'PINAA', 'OLMEDO', '1963-09-13', 'PIOF630913HDFXRL07', 'PIOF630913E31', '42826335145', '5500000000'),
 (19, 'GUILLERMINA', 'HERRERA', 'RAMIREZ', '1962-01-11', 'HERG620111MDFRML00', 'HERG620111UK3', '06796202031', '5500000000'),
 (20, 'ISMAEL', 'TERAN ', 'NEPOMUCENO', '1970-06-17', 'TENI700617HMCRPS04', 'TENI700617PN7', '19867008252', '5518173464'),
 (22, 'JAVIER', 'HERNANDEZ', 'CERVANTES', '1992-06-13', 'HECJ920613HMCRRV04', 'HECJ920613LHA', '03189216918', '5582359115'),
-(23, 'JAVIER JULIAN', 'GARCIA', 'RUIZZ', '1994-02-13', 'GARJ940213HDFRZV05', 'GARJ9402138R8', '96917376939', '5522654002'),
 (24, 'JOSE ARMANDO', 'CARRILLO', 'RICOO', '1982-03-07', 'CARA820307HGTRCR02', 'CARA8203077Y4', '55169388791', '5544260251'),
-(25, 'JOSE ERNESTO', 'DEJESUS', 'CAMACHO', '1995-01-31', 'JECE950125HDFSMR07', 'JECE950125MX1', '01109515005', '5527827962'),
 (26, 'JENIFER ADRIANA', 'REYES', 'RAMIREZ', '1992-07-08', 'RERJ920708MMCYMN00', 'RERJ920708B33', '10159286698', '5518148504'),
 (27, 'JUAN CARLOS', 'MATUS', 'GUERRERO', '1979-07-24', 'MAGJ790724HDFTRN07', 'MAGJ790724F97', '37017900889', '5539632552'),
-(28, 'JOSUE', 'CARRENO', 'CAMACHO', '1985-05-19', 'CACJ850519HDFRMS02', 'CACJ850519TF1', '92128500078', '5512246166'),
-(29, 'KAREN ARIEL', 'CASTILLO', 'ROSAS', '1993-08-05', 'CARK930805MDFSSR06', 'CARK930805PWA', '07119303415', '5549404821'),
+(28, 'JOSUE', 'CARREÑO', 'CAMACHO', '1985-05-19', 'CACJ850519HDFRMS02', 'CACJ850519TF1', '92128500078', '5512246166'),
 (30, 'KAREN BERENICE', 'FUENTES', 'ORTIZ', '1995-11-21', 'FUOK951121MMCNRR07', 'FUOK951121750', '92109533940', '5521839459'),
-(31, 'LILIANA ', 'ACOSTA ', 'PENALOZA', '1981-03-20', 'AOPL810320MMCCXL05', 'AOPL810320A54', '68978157839', '5500000000'),
-(32, 'LUIS DAVID', 'MILLAN', 'LOPEZ', '1977-08-25', 'MILL770825HDFLPS02', 'MILL770825LS4', '90008102023', '5563578891'),
+(56, 'JAZMIN', 'HERNANDEZ', 'FRANCISCO', '2001-12-17', 'HEFY011217MMCRRZA9', 'HEFY0112175T6', '03170130128', '5551841148'),
+(57, 'YOLOTZY VIRIDIANA', 'CASTRO', 'MENDOZA', '1998-07-31', 'CAMY980731MMCSNL09', 'CAMY980731IS2', '12169862534', '5554318656'),
 (33, 'MANUEL', 'ESTRADA', 'FLORES', '1982-06-09', 'EAFM820609HDFSLN08', 'EAFM8206096D0', '90058202681', '5500000000'),
 (34, 'MARIEL', 'FERNANDEZ', 'MENDEZ', '1975-05-30', 'FEMM750530MVZRNR00', 'FEMM7505302Z5', '83967518503', '5514749955'),
 (35, 'MARIA FERNANDA', 'ALARCON', 'CASTILLEJOS', '1994-10-31', 'AACF941031MDFLSR02', 'AACF941031GF7', '45139433838', '5568052401'),
 (36, 'MIGUEL ANGEL', 'FLORES', 'FLORES', '1979-11-19', 'FOFM791119HGRLLG03', 'JACE970928RG2', '32998061918', '5500000000'),
 (37, 'ALEJANDRA MILDRED', 'FUENTES', 'ORTIZ', '2001-03-01', 'FUOM000301MMCNRLA9', 'JACE970928RG2', '16169595991', '5527037878'),
-(38, 'MONTSERRAT ', 'BRAVO', 'ARZATE', '1991-09-06', 'BAAM910906MDFRRN02', 'JACE970928RG2', '01139105702', '5554943193'),
-(39, 'NADIA MONSERRAT', 'HERNANDEZ', 'MONTOYA', '1991-11-20', 'HEMN911120MDFRND09', 'HEMN9111203Z2', '32998061918', '5541457433'),
-(40, 'PAULINA', 'OLVERA', 'RAMIREZ', '1984-05-16', 'OEAP840516MDFLLL00', 'OEAP840516PH6', '28058410995', '5518570293'),
+(58, 'VIRGINIA', 'MATUS', 'PINEDA', '1979-01-18', 'MAPV790118MDFTNR07', 'MAPV790118L44', '39017902857', '5520853904'),
+(59, 'MARTIN ALFONSO', 'GARCIA', 'LAZOO', '1964-09-02', 'GALM640902HDFRZR08', 'GALM640902954', '37906404134', '5518975484'),
 (41, 'RICARDO', 'DELVILLAR', 'ALMEIDA', '1989-06-20', 'VIAR890614HDFLLC05', 'VIAR890614JS4', '92078949754', '5575192965'),
 (42, 'ROSANGELA', 'BADILLO', 'MUNOZ', '1981-01-13', 'BAMR801206MDFDXS05', 'BAMR801206N69', '11058008282', '5585605460'),
 (43, 'ROSANGELA', 'DELCARMEN', 'LOPEZDEDIAZ', '1995-06-16', 'LODR950616MNEPZS06', 'LODR95061643A', '03199558549', '5560269270'),
 (44, 'YEIMI', 'RIVERA', 'GONZALEZ', '1997-02-17', 'RIGY970217MDFVNM02', 'HEGA800106MN1', '92159711511', '5564894612'),
 (45, 'KARYS', 'MACHADO', 'MALAVE', '1982-06-25', 'JACE970928HMCSHD04', 'MAMK8206257F3', '02188287920', '5514123618'),
 (46, 'LIZETTE AKETZALI', 'VEGAA', 'MORAA', '1997-07-07', 'VEML970707MMCGRZ00', 'JACE970928RG2', '03209751787', '5561510400'),
-(47, 'MARIA FERNANDA', 'GONGORA', 'FLORES', '1996-11-13', 'GOFF961113MMCNLR03', 'JACE970928RG2', '32998061918', '5520816324'),
 (48, 'VANIA PIETRA', 'SANTA', 'MEDINA', '1989-01-18', 'PIMV890118MDFTDN04', 'JACE970928RG2', '05158989607', '5518238357'),
 (49, 'ALEJANDRO', 'ESCALONA', 'CASTANEDA', '1995-12-01', 'EACA951201HMCSSL06', 'EACA9512011B1', '02179537424', '5526579260'),
 (50, 'AUDRA VANESSA', 'BLANCO', 'GALLARDO', '1977-05-25', 'BAGA770525MNELLD08', 'JACE970928RG2', '02187786617', '5550605792'),
-(51, 'BRAYAN ADRIAN', 'NAVARRETE', 'MALTOS', '1995-02-05', 'NAMB950205HDFVLR06', 'NAMB950205IJ7', '16169523558', '5553128475'),
+(55, 'LILIANA', 'ACOSTA', 'PENALOZA', '1981-03-20', 'AOPL810320MMCCXL05', 'AOPL810320A54', '68978157839', '5516573270'),
 (52, 'EDGAR ', 'JASSO', 'CHAPARRO ', '1997-09-28', 'JACE970928HMCSHD04', 'JACE970328RG2', '90008102023', '5544156213'),
-(53, 'IVONNE', 'RAMIREZ', 'GARDUNO ', '1992-07-31', 'RAGI920731MDFMRV07', 'RAGI920731H23', '92119238142', '5531343786'),
 (54, 'JONTHAN ALEJANDRO', 'GOMEZ ', 'GARCIA', '1982-12-03', 'GOGJ821203HDFMRN09', 'GOGJ821203IX7', '28988205010', '5574783203');
 
 -- --------------------------------------------------------
@@ -631,12 +750,14 @@ INSERT INTO `hrm_empleado` (`id_empleado`, `nombre`, `ape_p`, `ape_m`, `fecha_na
 -- Estructura de tabla para la tabla `hrm_horas`
 --
 
-CREATE TABLE `hrm_horas` (
-  `id_hora` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_horas` (
+  `id_hora` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
   `fecha` varchar(20) NOT NULL,
-  `horas` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `horas` varchar(2) NOT NULL,
+  PRIMARY KEY (`id_hora`),
+  KEY `fk_horas_empleado` (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -644,17 +765,22 @@ CREATE TABLE `hrm_horas` (
 -- Estructura de tabla para la tabla `hrm_objetivos`
 --
 
-CREATE TABLE `hrm_objetivos` (
-  `id_objetivo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_objetivos` (
+  `id_objetivo` int(11) NOT NULL AUTO_INCREMENT,
   `id_puesto` int(3) NOT NULL,
   `id_empleado` int(3) NOT NULL,
-  `titulo` varchar(50) NOT NULL,
-  `descripcion` varchar(150) NOT NULL,
-  `f_limite` varchar(15) NOT NULL,
-  `cumplio` varchar(10) NOT NULL,
-  `porcentaje` varchar(5) DEFAULT NULL,
-  `estado` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `objetivo` varchar(50) NOT NULL,
+  `tema` varchar(150) NOT NULL,
+  `subtema` varchar(200) NOT NULL,
+  `periodo` varchar(20) NOT NULL,
+  `fecha_asignacion` varchar(20) DEFAULT NULL,
+  `estado` varchar(20) NOT NULL,
+  `realizado` varchar(20) NOT NULL,
+  `comentarios` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_objetivo`),
+  KEY `fk_objetivos_puesto` (`id_puesto`),
+  KEY `fk_objetivos_empleado` (`id_empleado`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -662,14 +788,16 @@ CREATE TABLE `hrm_objetivos` (
 -- Estructura de tabla para la tabla `hrm_puesto`
 --
 
-CREATE TABLE `hrm_puesto` (
-  `id_puesto` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_puesto` (
+  `id_puesto` int(11) NOT NULL AUTO_INCREMENT,
   `id_area` int(3) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `sueldo` varchar(10) NOT NULL,
-  `comentarios` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `comentarios` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_puesto`),
+  KEY `fk_puesto_area` (`id_area`)
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_puesto`
@@ -717,21 +845,22 @@ INSERT INTO `hrm_puesto` (`id_puesto`, `id_area`, `nombre`, `descripcion`, `suel
 -- Estructura de tabla para la tabla `hrm_usuario`
 --
 
-CREATE TABLE `hrm_usuario` (
-  `id_usuario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_usuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(11) NOT NULL,
   `clave` varchar(20) NOT NULL,
-  `permiso` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `permiso` varchar(10) NOT NULL,
+  `nomina` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `fk_usuario_empleado` (`id_empleado`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `hrm_usuario`
 --
 
-INSERT INTO `hrm_usuario` (`id_usuario`, `id_empleado`, `clave`, `permiso`) VALUES
-(8, 9, 'A.GONZALEZ         ', 'admin'),
-(9, 43, 'R.DELCARMEN         ', 'objetivos'),
-(10, 34, 'M.FERNANDEZ         ', 'admin');
+INSERT INTO `hrm_usuario` (`id_usuario`, `id_empleado`, `clave`, `permiso`, `nomina`) VALUES
+(1, 9, 'A.GONZALEZ', 'admin', 'undefined');
 
 -- --------------------------------------------------------
 
@@ -739,13 +868,17 @@ INSERT INTO `hrm_usuario` (`id_usuario`, `id_empleado`, `clave`, `permiso`) VALU
 -- Estructura de tabla para la tabla `hrm_vacaciones`
 --
 
-CREATE TABLE `hrm_vacaciones` (
-  `id_vacaciones` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_vacaciones` (
+  `id_vacaciones` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
+  `id_jefe` int(11) NOT NULL,
+  `fecha` varchar(10) NOT NULL,
   `dia` varchar(15) NOT NULL,
   `color` varchar(10) NOT NULL,
-  `estado` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `estado` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_vacaciones`),
+  KEY `fk_vacaciones_empleado` (`id_empleado`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -753,10 +886,11 @@ CREATE TABLE `hrm_vacaciones` (
 -- Estructura de tabla para la tabla `tkd_area`
 --
 
-CREATE TABLE `tkd_area` (
-  `id_area` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `tkd_area` (
+  `id_area` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_area`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -764,14 +898,16 @@ CREATE TABLE `tkd_area` (
 -- Estructura de tabla para la tabla `tkd_bitacora`
 --
 
-CREATE TABLE `tkd_bitacora` (
-  `id_bitacora` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tkd_bitacora` (
+  `id_bitacora` int(11) NOT NULL AUTO_INCREMENT,
   `id_peticion` int(4) NOT NULL,
   `encargado` varchar(30) NOT NULL,
   `fecha` varchar(20) NOT NULL,
   `estado` varchar(20) NOT NULL,
-  `comentarios` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `comentarios` varchar(300) NOT NULL,
+  PRIMARY KEY (`id_bitacora`),
+  KEY `fk_bitacora_peticion` (`id_peticion`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -779,13 +915,15 @@ CREATE TABLE `tkd_bitacora` (
 -- Estructura de tabla para la tabla `tkd_empleado`
 --
 
-CREATE TABLE `tkd_empleado` (
-  `id_empleado` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tkd_empleado` (
+  `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `id_area` int(2) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido_p` varchar(30) NOT NULL,
-  `apellido_m` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `apellido_m` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_empleado`),
+  KEY `fk_area_empleado` (`id_area`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -793,15 +931,17 @@ CREATE TABLE `tkd_empleado` (
 -- Estructura de tabla para la tabla `tkd_peticiones`
 --
 
-CREATE TABLE `tkd_peticiones` (
-  `id_peticion` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tkd_peticiones` (
+  `id_peticion` int(11) NOT NULL AUTO_INCREMENT,
   `id_empleado` int(3) NOT NULL,
   `area` varchar(30) NOT NULL,
   `fecha` varchar(20) NOT NULL,
   `servicio` varchar(50) NOT NULL,
   `comentarios` varchar(300) NOT NULL,
-  `estado` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `estado` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_peticion`),
+  KEY `fk_peticion_empleado` (`id_empleado`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -809,10 +949,11 @@ CREATE TABLE `tkd_peticiones` (
 -- Estructura de tabla para la tabla `tkd_servicios`
 --
 
-CREATE TABLE `tkd_servicios` (
-  `id_servicio` int(11) NOT NULL,
-  `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `tkd_servicios` (
+  `id_servicio` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_servicio`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -820,453 +961,13 @@ CREATE TABLE `tkd_servicios` (
 -- Estructura de tabla para la tabla `tkd_usuarios`
 --
 
-CREATE TABLE `tkd_usuarios` (
-  `id_usuario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tkd_usuarios` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) NOT NULL,
   `pass` varchar(50) NOT NULL,
-  `permiso` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `ecsnts_area`
---
-ALTER TABLE `ecsnts_area`
-  ADD PRIMARY KEY (`id_area`);
-
---
--- Indices de la tabla `ecsnts_categoria`
---
-ALTER TABLE `ecsnts_categoria`
-  ADD PRIMARY KEY (`Id_categoria`);
-
---
--- Indices de la tabla `ecsnts_competencias`
---
-ALTER TABLE `ecsnts_competencias`
-  ADD PRIMARY KEY (`id_competencia`);
-
---
--- Indices de la tabla `ecsnts_contesto`
---
-ALTER TABLE `ecsnts_contesto`
-  ADD PRIMARY KEY (`id_campo`),
-  ADD KEY `fk_validacion_contesto` (`id_validacion`),
-  ADD KEY `id_registro` (`id_registro`);
-
---
--- Indices de la tabla `ecsnts_pregunta`
---
-ALTER TABLE `ecsnts_pregunta`
-  ADD PRIMARY KEY (`id_pregunta`);
-
---
--- Indices de la tabla `ecsnts_respuestas`
---
-ALTER TABLE `ecsnts_respuestas`
-  ADD PRIMARY KEY (`id_respuesta`),
-  ADD KEY `fk_registro_respuestas` (`id_registro`);
-
---
--- Indices de la tabla `ecsnts_usuario`
---
-ALTER TABLE `ecsnts_usuario`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
--- Indices de la tabla `ecsnts_validacion`
---
-ALTER TABLE `ecsnts_validacion`
-  ADD PRIMARY KEY (`Id_validacion`),
-  ADD KEY `fk_usuario_validacion` (`Calificador`);
-
---
--- Indices de la tabla `hrm_alertas`
---
-ALTER TABLE `hrm_alertas`
-  ADD PRIMARY KEY (`id_alerta`),
-  ADD KEY `fk_alertas_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_antiguedad`
---
-ALTER TABLE `hrm_antiguedad`
-  ADD PRIMARY KEY (`id_antiguedad`),
-  ADD KEY `fk_antiguedad_puesto` (`id_puesto`),
-  ADD KEY `fk_antiguedad_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_area`
---
-ALTER TABLE `hrm_area`
-  ADD PRIMARY KEY (`id_area`);
-
---
--- Indices de la tabla `hrm_asignacion`
---
-ALTER TABLE `hrm_asignacion`
-  ADD PRIMARY KEY (`id_asignacion`),
-  ADD KEY `fk_asignacion_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_direccion`
---
-ALTER TABLE `hrm_direccion`
-  ADD PRIMARY KEY (`id_direccion`),
-  ADD KEY `fk_direccion_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_documentos`
---
-ALTER TABLE `hrm_documentos`
-  ADD PRIMARY KEY (`id_documento`),
-  ADD KEY `fk_documentos_empleados` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_empleado`
---
-ALTER TABLE `hrm_empleado`
-  ADD PRIMARY KEY (`id_empleado`);
-
---
--- Indices de la tabla `hrm_horas`
---
-ALTER TABLE `hrm_horas`
-  ADD PRIMARY KEY (`id_hora`),
-  ADD KEY `fk_horas_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_objetivos`
---
-ALTER TABLE `hrm_objetivos`
-  ADD PRIMARY KEY (`id_objetivo`),
-  ADD KEY `fk_objetivos_puesto` (`id_puesto`),
-  ADD KEY `fk_objetivos_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_puesto`
---
-ALTER TABLE `hrm_puesto`
-  ADD PRIMARY KEY (`id_puesto`),
-  ADD KEY `fk_puesto_area` (`id_area`);
-
---
--- Indices de la tabla `hrm_usuario`
---
-ALTER TABLE `hrm_usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `fk_usuario_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `hrm_vacaciones`
---
-ALTER TABLE `hrm_vacaciones`
-  ADD PRIMARY KEY (`id_vacaciones`),
-  ADD KEY `fk_vacaciones_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `tkd_area`
---
-ALTER TABLE `tkd_area`
-  ADD PRIMARY KEY (`id_area`);
-
---
--- Indices de la tabla `tkd_bitacora`
---
-ALTER TABLE `tkd_bitacora`
-  ADD PRIMARY KEY (`id_bitacora`),
-  ADD KEY `fk_bitacora_peticion` (`id_peticion`);
-
---
--- Indices de la tabla `tkd_empleado`
---
-ALTER TABLE `tkd_empleado`
-  ADD PRIMARY KEY (`id_empleado`),
-  ADD KEY `fk_area_empleado` (`id_area`);
-
---
--- Indices de la tabla `tkd_peticiones`
---
-ALTER TABLE `tkd_peticiones`
-  ADD PRIMARY KEY (`id_peticion`),
-  ADD KEY `fk_peticion_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `tkd_servicios`
---
-ALTER TABLE `tkd_servicios`
-  ADD PRIMARY KEY (`id_servicio`);
-
---
--- Indices de la tabla `tkd_usuarios`
---
-ALTER TABLE `tkd_usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_area`
---
-ALTER TABLE `ecsnts_area`
-  MODIFY `id_area` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_categoria`
---
-ALTER TABLE `ecsnts_categoria`
-  MODIFY `Id_categoria` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_competencias`
---
-ALTER TABLE `ecsnts_competencias`
-  MODIFY `id_competencia` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_contesto`
---
-ALTER TABLE `ecsnts_contesto`
-  MODIFY `id_campo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_pregunta`
---
-ALTER TABLE `ecsnts_pregunta`
-  MODIFY `id_pregunta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_respuestas`
---
-ALTER TABLE `ecsnts_respuestas`
-  MODIFY `id_respuesta` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_usuario`
---
-ALTER TABLE `ecsnts_usuario`
-  MODIFY `id_usuario` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `ecsnts_validacion`
---
-ALTER TABLE `ecsnts_validacion`
-  MODIFY `Id_validacion` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `hrm_alertas`
---
-ALTER TABLE `hrm_alertas`
-  MODIFY `id_alerta` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `hrm_antiguedad`
---
-ALTER TABLE `hrm_antiguedad`
-  MODIFY `id_antiguedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `hrm_area`
---
-ALTER TABLE `hrm_area`
-  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `hrm_asignacion`
---
-ALTER TABLE `hrm_asignacion`
-  MODIFY `id_asignacion` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `hrm_direccion`
---
-ALTER TABLE `hrm_direccion`
-  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT de la tabla `hrm_documentos`
---
-ALTER TABLE `hrm_documentos`
-  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
-
---
--- AUTO_INCREMENT de la tabla `hrm_empleado`
---
-ALTER TABLE `hrm_empleado`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT de la tabla `hrm_horas`
---
-ALTER TABLE `hrm_horas`
-  MODIFY `id_hora` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `hrm_objetivos`
---
-ALTER TABLE `hrm_objetivos`
-  MODIFY `id_objetivo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `hrm_puesto`
---
-ALTER TABLE `hrm_puesto`
-  MODIFY `id_puesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT de la tabla `hrm_usuario`
---
-ALTER TABLE `hrm_usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `hrm_vacaciones`
---
-ALTER TABLE `hrm_vacaciones`
-  MODIFY `id_vacaciones` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_area`
---
-ALTER TABLE `tkd_area`
-  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_bitacora`
---
-ALTER TABLE `tkd_bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_empleado`
---
-ALTER TABLE `tkd_empleado`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_peticiones`
---
-ALTER TABLE `tkd_peticiones`
-  MODIFY `id_peticion` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_servicios`
---
-ALTER TABLE `tkd_servicios`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tkd_usuarios`
---
-ALTER TABLE `tkd_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `ecsnts_contesto`
---
-ALTER TABLE `ecsnts_contesto`
-  ADD CONSTRAINT `fk_validacion_contesto` FOREIGN KEY (`id_validacion`) REFERENCES `ecsnts_validacion` (`Id_validacion`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ecsnts_respuestas`
---
-ALTER TABLE `ecsnts_respuestas`
-  ADD CONSTRAINT `fk_registro_respuestas` FOREIGN KEY (`id_registro`) REFERENCES `ecsnts_contesto` (`id_registro`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ecsnts_validacion`
---
-ALTER TABLE `ecsnts_validacion`
-  ADD CONSTRAINT `fk_usuario_validacion` FOREIGN KEY (`Calificador`) REFERENCES `ecsnts_usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_alertas`
---
-ALTER TABLE `hrm_alertas`
-  ADD CONSTRAINT `fk_alertas_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_antiguedad`
---
-ALTER TABLE `hrm_antiguedad`
-  ADD CONSTRAINT `fk_antiguedad_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_antiguedad_puesto` FOREIGN KEY (`id_puesto`) REFERENCES `hrm_puesto` (`id_puesto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_asignacion`
---
-ALTER TABLE `hrm_asignacion`
-  ADD CONSTRAINT `fk_asignacion_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_direccion`
---
-ALTER TABLE `hrm_direccion`
-  ADD CONSTRAINT `fk_direccion_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_documentos`
---
-ALTER TABLE `hrm_documentos`
-  ADD CONSTRAINT `fk_documentos_empleados` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_horas`
---
-ALTER TABLE `hrm_horas`
-  ADD CONSTRAINT `fk_horas_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_objetivos`
---
-ALTER TABLE `hrm_objetivos`
-  ADD CONSTRAINT `fk_objetivos_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_objetivos_puesto` FOREIGN KEY (`id_puesto`) REFERENCES `hrm_puesto` (`id_puesto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_puesto`
---
-ALTER TABLE `hrm_puesto`
-  ADD CONSTRAINT `fk_puesto_area` FOREIGN KEY (`id_area`) REFERENCES `hrm_area` (`id_area`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_usuario`
---
-ALTER TABLE `hrm_usuario`
-  ADD CONSTRAINT `fk_usuario_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `hrm_vacaciones`
---
-ALTER TABLE `hrm_vacaciones`
-  ADD CONSTRAINT `fk_vacaciones_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `hrm_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tkd_bitacora`
---
-ALTER TABLE `tkd_bitacora`
-  ADD CONSTRAINT `fk_bitacora_peticion` FOREIGN KEY (`id_peticion`) REFERENCES `tkd_peticiones` (`id_peticion`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tkd_empleado`
---
-ALTER TABLE `tkd_empleado`
-  ADD CONSTRAINT `fk_area_empleado` FOREIGN KEY (`id_area`) REFERENCES `tkd_area` (`id_area`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tkd_peticiones`
---
-ALTER TABLE `tkd_peticiones`
-  ADD CONSTRAINT `fk_peticion_empleado` FOREIGN KEY (`id_empleado`) REFERENCES `tkd_empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
+  `permiso` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
