@@ -46,7 +46,7 @@ header{
     width: 35px;
     height: 35px;
     display: block;
-    background-color: #024959;
+    background-color: #00408a;
     padding: 1px;
     text-align: center;
     color: #eee;
@@ -62,7 +62,7 @@ nav ul li{
     height: auto;
     border-right: 3px solid #bebebe;
     border-bottom: 1px solid #bebebe;
-    background-color: #024959;
+    background-color: #00408a;
 }
 nav ul li a{
     color: #fff;

@@ -136,7 +136,7 @@ return out;
  window.onload = function(){
    var contenedor = document.getElementById('contenedor_carga');
    contenedor.style.visibility = 'hidden';
-   conenedor.style.opacity = '0'
+   contenedor.style.opacity = '0'
  }
 </script>
 <!-- <div id="clock"></div> -->
@@ -601,6 +601,10 @@ return out;
           <label for="formGroupExampleInput2">Clave Nueva</label>
           <input type="text" class="form-control" id="passNew" placeholder="Clave Nueva"  pattern="[A-Za-zÑñ0-9.]{1,20}" >
         </div>
+        <div class="form-group">
+          <label for="formGroup">Confirmacion</label>
+          <input type="text" class="form-control" id="passConfirm" placeholder="Confirmacion"  pattern="[A-Za-zÑñ0-9.]{1,20}" >
+        </div>
         <p class="font-weight-bold bg-info">El sistema no reconoce los siguientes caracteres: ! " # $ % & ' ( ) * +, - / ^ _ `</p>
       </div>
       <div class="modal-footer">
@@ -665,7 +669,9 @@ $('#view_user_comentarios').html(d[12]);
   function changePassword(){
     old=$('#passOld').val();
 	  nueva=$('#passNew').val();
-    cadena=
+    confirmacion=$('#passConfirm').val();
+    if(nueva == confirmacion){
+      cadena=
     "old="+ old +
 	  "&nueva=" +nueva;
     $.ajax({
@@ -684,6 +690,7 @@ $('#view_user_comentarios').html(d[12]);
                       });
               $('#passOld').val('');
 	            $('#passNew').val('');
+              $('#passConfirm').val('');
               }else{
               // alertify.error("fallo en el servidor...");
               console.log(r);
@@ -695,6 +702,15 @@ $('#view_user_comentarios').html(d[12]);
               }
 			}
 		});
+    }else{
+      Swal.fire({
+                title: 'Las Contraseñas no coinciden',
+                icon: 'error',
+                confirmButtonText: 'Continuar'
+              });
+    }
+
+    
   }
   function actualizaNotificacion(){
     idou=$('#view_user_id_objetivo').val(); 

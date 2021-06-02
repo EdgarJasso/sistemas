@@ -4,7 +4,7 @@ Class Connection{
 	/*private $server = "mysql:host=sql302.epizy.com;dbname=epiz_27376931_sistemas";
 	private $username = "epiz_27376931";
 	private $password = "hj7CPr92l7K";
-*/
+ 	*/ 
 	private $server = "mysql:host=localhost;dbname=sistemas";
 	private $username = "root";
 	private $password = "";

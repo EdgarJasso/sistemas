@@ -1,5 +1,5 @@
 <?php
- ob_start();
+ ob_start(); 
 Class Connection{ 
 /* private $server = "mysql:host=sql302.epizy.com;dbname=epiz_27376931_sistemas";
 	private $username = "epiz_27376931";

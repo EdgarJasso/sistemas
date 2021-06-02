@@ -96,6 +96,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <option value="B-">B-</option>
           <option value="AB+">AB+</option>
           <option value="AB-">AB-</option>
+          <option value="RH+">RH+</option>
+          <option value="RH-">RH-</option>
        	</select>
        </div>
 
@@ -163,6 +165,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <option value="B-">B-</option>
           <option value="AB+">AB+</option>
           <option value="AB-">AB-</option>
+          <option value="RH+">RH+</option>
+          <option value="RH-">RH-</option>
        	</select>
        </div>
 

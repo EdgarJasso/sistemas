@@ -127,7 +127,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          <label for="">Activo:</label><br>
          <center>
          <label class="radio-inline">
-          <input type="radio" name="Ant_activo" id="Ant_activo" checked value="alta">Alta
+          <input type="radio" name="Ant_prueba" id="Ant_prueba" checked value="prueba">Prueba
+         </label>
+         <label class="radio-inline">
+          <input type="radio" name="Ant_activo" id="Ant_activo"  value="alta">Alta
          </label>
          <label class="radio-inline">
           <input type="radio" name="Ant_activo" id="Ant_activo" value="baja">Baja
@@ -224,7 +227,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
          <label for="">Activo:</label><br>
          <center>
          <label class="radio-inline">
-          <input type="radio" name="Ant_activo_e" id="Ant_activo_e" checked value="alta">Alta
+          <input type="radio" name="Ant_prueba_e" id="Ant_prueba_e" checked value="prueba">Prueba
+         </label>
+         <label class="radio-inline">
+          <input type="radio" name="Ant_activo_e" id="Ant_activo_e"  value="alta">Alta
          </label>
          <label class="radio-inline">
           <input type="radio" name="Ant_activo_e" id="Ant_activo_e" value="baja">Baja

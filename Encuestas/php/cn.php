@@ -5,7 +5,7 @@ function conectar(){
 	$db="epiz_27376931_sistemas";
 	$pass = "hj7CPr92l7K";
 	$server="sql302.epizy.com";
- */
+ */ 
 	$user="root";
 	$db="sistemas";
 	$pass = "";

@@ -206,7 +206,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="periodo">Periodo:</label>
        	<select class="form-control" name="Obj_periodo" id="Obj_periodo">
-         <option value="Quincenal">Quincenal</option>
          <option value="Mensual">Mensual</option>
          <option value="Bimestral">Bimestral</option> 
          <option value="Trimestal">Trimestral</option>
@@ -308,7 +307,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="periodo">Periodo:</label>
        	<select class="form-control" name="Obj_periodo_e" id="Obj_periodo_e">
-         <option value="Quincenal">Quincenal</option>
          <option value="Mensual">Mensual</option>
          <option value="Bimestral">Bimestral</option> 
          <option value="Trimestal">Trimestral</option>
