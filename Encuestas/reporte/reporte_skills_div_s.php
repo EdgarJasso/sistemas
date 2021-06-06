@@ -1,7 +1,8 @@
 <?php
+/*
 session_start();
 if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
-ob_start();
+ob_start();*/
 $r= $_POST['id'];
 $p = $_POST['periodo'];
 /*
@@ -198,6 +199,7 @@ foreach($_idPreguntasTC as $id_pre){
 }
 
 /*
+
 echo "Datos para generar pdf";
 echo "<br><br>";
 echo "<p>Datos del usuario</p>";
@@ -381,19 +383,20 @@ echo $_categoria['categoria'];
 die();
 */
 
-$mpdf = new \Mpdf\Mpdf([
-    'margin_top' => 20,
-	'margin_left' => 10,
-	'margin_right' => 10,
-	'mirrorMargins' => true
-]);
+
 
 
 $plantilla =getPlantilla($p,$_categoria,$_usuario,$_conteo,$_conteo_jefe,$_conteo_Cliente,$_conteo_Companero,$_conteo_Subordinado,$_conteo_Autoevaluacion,$_preguntas,$_justificacionesJefe,$_justificacionesCliente,$_justificacionesCompanero,$_justificacionesSubordinado,$_justificacionesAutoevaluacion,$_idPreguntas,$_CDJefe,$_DJefe,$_NNJefe,$_AJefe,$_CAJefe,$_CDCliente,$_DCliente,$_NNCliente,$_ACliente,$_CACliente,$_CDCompanero,$_DCompanero,$_NNCompanero,$_ACompanero,$_CACompanero, $_CDSubordinado,$_DSubordinado,$_NNSubordinado,$_ASubordinado, $_CASubordinado, $_CDAutoevaluacion,$_DAutoevaluacion, $_NNAutoevaluacion,$_AAutoevaluacion,$_CAAutoevaluacion,$_preguntasTC,$_justificacionesJefeTC,$_justificacionesClienteTC,$_justificacionesCompaneroTC,$_justificacionesSubordinadoTC,$_justificacionesAutoevaluacionTC,$_idPreguntasTC,$_CDJefeTC,$_DJefeTC,$_NNJefeTC,$_AJefeTC,$_CAJefeTC,$_CDClienteTC,$_DClienteTC,$_NNClienteTC,$_AClienteTC,$_CAClienteTC,$_CDCompaneroTC,$_DCompaneroTC,$_NNCompaneroTC,$_ACompaneroTC,$_CACompaneroTC,$_CDSubordinadoTC,$_DSubordinadoTC, $_NNSubordinadoTC,$_ASubordinadoTC, $_CASubordinadoTC, $_CDAutoevaluacionTC,$_DAutoevaluacionTC, $_NNAutoevaluacionTC,$_AAutoevaluacionTC, $_CAAutoevaluacionTC);
 
 
-//var_dump($plantilla);die();
-
+var_dump($plantilla);die();
+/*
+$mpdf = new \Mpdf\Mpdf([
+   'margin_top' => 20,
+  'margin_left' => 10,
+  'margin_right' => 10,
+  'mirrorMargins' => true
+]);
 
 $mpdf->writeHtml( $css, \Mpdf\HTMLParserMode::HEADER_CSS);
 $mpdf->writeHtml( $plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
@@ -412,5 +415,5 @@ $mpdf -> Output($name_doc,"I");
     echo "Inicia Sesion para acceder a este contenido.<br>";
     include '../../dominio.php';
     echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
-}
+}*/
 ?>
