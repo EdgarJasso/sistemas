@@ -1,5 +1,5 @@
 <?php 
-define("URL", "http://localhost/sistemas");
+define("URL", "http://sistemasgrupocryo.great-site.net");
 //http://sistemasgrupocryo.great-site.net
 //http://localhost/sistemas
 ?> 

@@ -115,7 +115,7 @@ echo $msj;
       editable: false,
       eventLimit: true,
       locale : 'es',
-      events: 'http://localhost/sistemas/HRM/cuerpo/contenido/calendario_eventos.php',
+      events: 'http://sistemasgrupocryo.great-site.net/HRM/cuerpo/contenido/calendario_eventos.php',
     }); 
 
     calendar.render();
