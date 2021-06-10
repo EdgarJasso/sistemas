@@ -6,6 +6,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true && $
    include('../../php/connection.php');
    //ob_start(); 
 $now = time();
+
 if($now > $_SESSION['expire']) {
     $msj="<script>
             Swal.fire({
@@ -17,15 +18,14 @@ if($now > $_SESSION['expire']) {
                 showConfirmButton: false
             });
             setTimeout(
-                function(){
+                function(){ 
                     location.href= ".URL."/Encuestas/php/root/logout.php;
             }, 2000);
-          </script>";
+            </script>";
   echo $msj;
   session_destroy();
   }
 ?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +52,6 @@ if($now > $_SESSION['expire']) {
   
 </head>
 <body>
-
    <header>
       <div class="menu">
         <button type="button" id="btn-menu">
@@ -272,7 +271,7 @@ if($now > $_SESSION['expire']) {
    contenedor.style.visibility = 'hidden';
    contenedor.style.opacity = '0';
  }
- reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion Cerrada', '<?php echo URL;?>/Encuestas/php/root/logout.php');
+ reloj('<?php echo  $_SESSION['reloj']; ?>', 'reloj', 'Sesion cerrada', '<?php echo URL;?>/Encuestas/php/root/logout.php');
  
  $(document).ready(function(){
     //menu

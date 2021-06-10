@@ -9,11 +9,13 @@
             $ide = $_POST['ide'];
 			$descripcion = $_POST['descripcion'];
 			$tipo_sangre = $_POST['tipo_sangre'];
+			$nombre_contacto = $_POST['nombre_contacto'];
 			$tel_contacto = $_POST['tel_contacto'];
 			$sql = "UPDATE hrm_alergias SET 
 			id_empleado='$ide', 
 			descripcion ='$descripcion', 
 			tipo_sangre ='$tipo_sangre', 
+			nombre_contacto ='$nombre_contacto', 
 			tel_contacto = '$tel_contacto'
 			WHERE id_alergia = '$idal'";
         

@@ -1,4 +1,4 @@
-<?php
+<?php 
 if(isset($_POST['name']) && isset($_POST['pass'])){
 include '../connection.php';
 $name = $_POST['name'];
@@ -10,7 +10,7 @@ if ($name == "Admin" && $pass == "Alohomora") {
         $_SESSION['name'] = "root";
         $_SESSION['permiso'] = "root";
         $_SESSION['start'] =time();
-        $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);// minutos de sesion
+        $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);// minutos de sesion
         $_SESSION['reloj'] = date('m/d/Y H:i:s', $_SESSION['expire'] );
         $_SESSION['estacion'] = "localhost";//localhost  || 192.168.0.10
          echo '1';

@@ -25,7 +25,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $database = new Connection();
          $db = $database->open();
          
-        $query="SELECT hrm_alergias.id_alergia as id_alergia, hrm_alergias.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as apellido, hrm_alergias.descripcion as descripcion, hrm_alergias.tipo_sangre as tipo_sangre, hrm_alergias.tel_contacto as contacto From hrm_empleado, hrm_alergias WHERE hrm_alergias.id_empleado = hrm_empleado.id_empleado";
+        $query="SELECT hrm_alergias.id_alergia as id_alergia, hrm_alergias.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as apellido, hrm_alergias.descripcion as descripcion, hrm_alergias.tipo_sangre as tipo_sangre, hrm_alergias.nombre_contacto as nombre_contacto, hrm_alergias.tel_contacto as tel_contacto From hrm_empleado, hrm_alergias WHERE hrm_alergias.id_empleado = hrm_empleado.id_empleado";
 
 
            foreach ($db->query($query) as $row) {
@@ -36,18 +36,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                       $row['apellido'] ."||".
                       $row['descripcion']."||".
                       $row['tipo_sangre']."||".
-                      $row['contacto'];
+                      $row['nombre_contacto']."||".
+                      $row['tel_contacto'];
 
              $datosAlergiasE = $row['id_alergia']."||".
              $row['id_empleado'] ."||".
              $row['descripcion']."||".
              $row['tipo_sangre']."||".
-             $row['contacto'];
+             $row['nombre_contacto']."||".
+             $row['tel_contacto'];
              ?> 
              <tr>
               <td><?php echo $row['id_empleado']." - ".$row['nombre'].' '.$row['apellido']; ?></td>
               <td><?php echo $row['tipo_sangre']; ?></td>
-              <td><?php echo $row['contacto']; ?></td>
+              <td><?php echo $row['nombre_contacto']." - ".$row['tel_contacto']; ?></td>
               <td> 
                <center>
                 <div class="btn-group">

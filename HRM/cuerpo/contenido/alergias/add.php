@@ -5,12 +5,13 @@ include('../../../php/connection.php');
 	$database = new Connection();
 		$db = $database->open();
 		try{
-			$stmt = $db->prepare("INSERT INTO hrm_alergias ( id_empleado, descripcion, tipo_sangre, tel_contacto) 
-            VALUES (:id_empleado, :descripcion, :tipo_sangre, :tel_contacto)");
+			$stmt = $db->prepare("INSERT INTO hrm_alergias ( id_empleado, descripcion, tipo_sangre, nombre_contacto,  tel_contacto) 
+            VALUES (:id_empleado, :descripcion, :tipo_sangre, :nombre_contacto, :tel_contacto)");
 			$result= ( $stmt->execute(array(
                 ':id_empleado' => $_POST['id_empleado'],
 				':descripcion' => $_POST['descripcion'],
 				':tipo_sangre' => $_POST['tipo_sangre'],
+				':nombre_contacto' => $_POST['nombre_contacto'],
 				':tel_contacto' => $_POST['tel_contacto']
             
             )) ) ? '1' : '0';	

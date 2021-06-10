@@ -33,8 +33,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_alergia_sangre"></td>  
                 </tr>
                 <tr>  
+                     <td width="30%"><label>Nombre de Contacto</label></td>  
+                     <td width="70%" id="view_alergia_nombre_contacto"></td>  
+                </tr>
+                <tr>  
                      <td width="30%"><label>Telefono de Contacto</label></td>  
-                     <td width="70%" id="view_alergia_contacto"></td>  
+                     <td width="70%" id="view_alergia_tel_contacto"></td>  
                 </tr>
            </table>  
          </div>
@@ -99,6 +103,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <option value="RH+">RH+</option>
           <option value="RH-">RH-</option>
        	</select>
+       </div>
+        
+       <div class="form-group">
+       	<label for="">Nombre de Contacto:</label>
+         <input type="text" class="form-control" id="Alergias_nombre_contacto" placeholder="Ingrese Nombre de contacto">
+         <span class="help-block" id="text_alergias_nombre_contacto"></span>
        </div>
 
        <div class="form-group">
@@ -168,6 +178,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <option value="RH+">RH+</option>
           <option value="RH-">RH-</option>
        	</select>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Nombre de Contacto:</label>
+         <input type="text" class="form-control" id="Alergias_nombre_contacto_e" placeholder="Ingrese Nombre de contacto">
+         <span class="help-block" id="text_alergias_nombre_contacto_e"></span>
        </div>
 
        <div class="form-group">

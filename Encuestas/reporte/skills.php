@@ -1,6 +1,8 @@
 <?php
-session_start();
-if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
+/*session_start();
+var_dump($_SESSION);
+
+if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){*/
 ob_start();
 $r= $_POST['id'];
 $p = $_POST['periodo'];
@@ -43,15 +45,14 @@ $_CA = array();$_CATC = array();
 foreach($_idPreguntas as $id_pre){
  
    $_CD[] = getconteoCD( $id_pre['id_pregunta'], $r,$p);
-  
    $_D[] = getconteoDJ( $id_pre['id_pregunta'], $r,$p);
-   
    $_NN[] = getconteoNN( $id_pre['id_pregunta'], $r,$p);
-   
    $_A []= getconteoA( $id_pre['id_pregunta'], $r,$p);
-  
    $_CA []= getconteoCA( $id_pre['id_pregunta'], $r,$p);
 }
+
+
+
 foreach($_idPreguntasTC as $id_pre){
  
    $_CDTC[] = getconteoCD( $id_pre['id_pregunta'], $r,$p);
@@ -69,20 +70,20 @@ foreach($_idPreguntasTC as $id_pre){
 //echo "TC-------";echo "<p>preguntas correspondientes</p>";var_dump($_preguntasTC); echo "<br><br>";echo "<p>datos de respuestas / justificaciones</p>";var_dump($_justificacionesTC); echo "<br><br>";echo "<p>preguntas del area</p>";var_dump($_idPreguntasTC); echo "<br><br>";echo "datos graficos";echo "<p>CD</p>";var_dump($_CDTC); echo "<br>";echo "<p>D</p>";var_dump($_DTC); echo "<br>";echo "<p>NN</p>";var_dump($_NNTC); echo "<br>";echo "<p>A</p>";var_dump($_ATC); echo "<br>";echo "<p>CA</p>";var_dump($_CATC); echo "<br>";die();
 
 
+
+
+
+$plantilla =getPlantilla($p, $_usuario, $_categoria, $_conteo, $_preguntas, $_justificaciones, $_idPreguntas, $_CD, $_D, $_NN, $_A, $_CA, $_preguntasTC, $_justificacionesTC, $_idPreguntasTC, $_CDTC, $_DTC, $_NNTC, $_ATC, $_CATC);
+
+
+var_dump($plantilla);die();
+/*
 $mpdf = new \Mpdf\Mpdf([
     'margin_top' => 20,
 	'margin_left' => 10,
 	'margin_right' => 10,
 	'mirrorMargins' => true
 ]);
-
-
-$plantilla =getPlantilla($p, $_usuario, $_categoria, $_conteo, $_preguntas, $_justificaciones, $_idPreguntas, $_CD, $_D, $_NN, $_A, $_CA, $_preguntasTC, $_justificacionesTC, $_idPreguntasTC, $_CDTC, $_DTC, $_NNTC, $_ATC, $_CATC);
-
-
-//var_dump($plantilla);die();
-
-
 $mpdf->writeHtml( $css, \Mpdf\HTMLParserMode::HEADER_CSS);
 $mpdf->writeHtml( $plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
 
@@ -94,10 +95,10 @@ foreach($_usuario as $usuario){
 
 $name_doc = 'Evaluacion-('.$nombre.').pdf';
 $mpdf -> Output($name_doc,"I");
-}else{
+/*}else{
     echo "Inicia Sesion para acceder a este contenido.<br>";
     include '../../dominio.php';
     echo '<script type="text/javascript">window.location = "'.URL.'/Encuestas";</script>';
-}
+}*/
 ?>
 

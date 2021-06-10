@@ -12,13 +12,15 @@ function AgregarAlergias(datos){
      $('#view_alergia_emp').html(empleado);
      $('#view_alergia_descripcion').html(d[4]);
      $('#view_alergia_sangre').html(d[5]);
-     $('#view_alergia_contacto').html(d[6]);
+     $('#view_alergia_nombre_contacto').html(d[6]);
+     $('#view_alergia_tel_contacto').html(d[7]);
  }
  
- function agregardatosAlergias(id_empleado, descripcion, tipo_sangre, tel_contacto){
+ function agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto,  tel_contacto){
      cadenaH="id_empleado=" + id_empleado+
             "&descripcion=" + descripcion+
             "&tipo_sangre=" + tipo_sangre+
+            "&nombre_contacto=" + nombre_contacto+
             "&tel_contacto=" + tel_contacto;
      //alert(cadena);
      $.ajax({
@@ -69,7 +71,8 @@ function AgregarAlergias(datos){
      $('#Alergias_idempleado_e').val(d[1]);
      $('#Alergias_descripcion_e').val(d[2]);
      $('#Alergias_tipo_sangre_e').val(d[3]);
-     $('#Alergias_tel_contacto_e').val(d[4]);
+     $('#Alergias_nombre_contacto_e').val(d[4]);
+     $('#Alergias_tel_contacto_e').val(d[5]);
  }
 
 function actualizaDatosAlergias(){
@@ -77,6 +80,7 @@ function actualizaDatosAlergias(){
     ide=$('#Alergias_idempleado_e').val();
     descripcion=$('#Alergias_descripcion_e').val();
     tipo_sangre=$('#Alergias_tipo_sangre_e').val();
+    nombre_contacto=$('#Alergias_nombre_contacto_e').val();
     tel_contacto=$('#Alergias_tel_contacto_e').val();
 
 
@@ -85,6 +89,7 @@ function actualizaDatosAlergias(){
     "&ide=" + ide +
     "&descripcion="+ descripcion+
     "&tipo_sangre="+ tipo_sangre+
+    "&nombre_contacto="+ nombre_contacto+
     "&tel_contacto="+ tel_contacto;
     
     //alert(cadenaVac);
@@ -198,10 +203,11 @@ function validarNuevaAlergia(){
     id_empleado = $('#Alergias_idempleado').val();
     descripcion = $('#Alergias_descripcion').val();
     tipo_sangre = $('#Alergias_tipo_sangre').val();
+    nombre_contacto = $('#Alergias_nombre_contacto').val();
     tel_contacto = $('#Alergias_tel_contacto').val();
-    agregardatosAlergias(id_empleado, descripcion, tipo_sangre, tel_contacto)
+    agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto, tel_contacto)
          
-}
+} 
 
 
 function validarNuevaHoras_E(){

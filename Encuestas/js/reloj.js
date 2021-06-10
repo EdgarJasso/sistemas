@@ -19,8 +19,7 @@ const reloj = (deadline, elemento, finalMessage, link) => {
     const timeUpdate = setInterval( () =>{
         let t = getRemainTime(deadline);
         el.innerHTML = `${remainMinutes}m:${t.remainSeconds}s`;
-        if(t.remainMinutes < 1 && t.remainSeconds <= 1 || t.remainMinutes > 11 
-            ){
+        if(t.remainMinutes < 1 && t.remainSeconds <= 1 || t.remainMinutes > 11){
             clearInterval(timeUpdate);
             el.innerHTML = finalMessage;
             //alert(finalMessage);
@@ -36,7 +35,6 @@ const reloj = (deadline, elemento, finalMessage, link) => {
                 function(){
                     document.location.href=link;
                 }, 2000);
-            
         }
     }, 1000)
 };
