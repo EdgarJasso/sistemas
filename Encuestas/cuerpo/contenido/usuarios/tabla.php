@@ -26,7 +26,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT ecsnts_usuario.id_usuario as id_usuario, ecsnts_usuario.id_area as id_area, ecsnts_area.nombre as area, ecsnts_usuario.nombre as nombre, ecsnts_usuario.clave as clave, ecsnts_usuario.permiso as permiso FROM ecsnts_usuario, ecsnts_area";
+          $query="SELECT ecsnts_usuario.id_usuario as id_usuario, ecsnts_usuario.id_area as id_area, ecsnts_area.nombre as area, ecsnts_usuario.nombre as nombre, ecsnts_usuario.clave as clave, ecsnts_usuario.permiso as permiso FROM ecsnts_usuario, ecsnts_area WHERE ecsnts_area.id_area = ecsnts_usuario.id_area";
            foreach ($db->query($query) as $row) {
              $datos = $row['id_usuario']."||".
                       $row['id_area']." - ". $row['area']."||".

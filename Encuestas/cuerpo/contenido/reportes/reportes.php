@@ -8,7 +8,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
         <div class="container">
             <!-- imprimir 360 inicio-->
             <div class="form-group">
-            <form action="../../reporte/reporte_skills_div.php" method="post">
+            <form action="../../reporte/reporte_skills_div.php" method="post" target="_blank">
                 <label class="etiqueta">Evaluacion 360:</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:200px;">
@@ -29,13 +29,13 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                             }?>
                      </select>
                  </div>
-                <button class="btn btn-info" type="submit"><span class="icon-download2"></span>Generar</button>
+                <button class="btn btn-info" type="submit" targer><span class="icon-download2"></span>Generar</button>
             </form>
             </div>
             <!-- imprimir 360 fin-->
             <!-- imprimir 360 inicio-->
             <div class="form-group">
-            <form action="../../reporte/reporte_skills_div_s.php" method="post">
+            <form action="../../reporte/reporte_skills_div_s.php" method="post" target="_blank">
                 <label class="etiqueta">Evaluacion 360(Seguridad):</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:200px;">
@@ -62,7 +62,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             <!-- imprimir 360 fin-->
             <!-- imprimir general-->
             <div class="form-group">
-            <form action="../../reporte/skills.php" method="post">
+            <form action="../../reporte/skills.php" method="post" target="_blank">
                 <label class="etiqueta">Evaluacion General:</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:200px;">
@@ -89,7 +89,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             <!-- imprimir general-->
             <!-- imprimir registro inicio-->
             <div class="form-group">
-            <form action="../../reporte/registro.php" method="post">
+            <form action="../../reporte/registro.php" method="post" target="_blank">
                 <label class="etiqueta">Reporte de Registro:</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:150px;">
@@ -110,7 +110,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
             <!-- imprimir registro fin-->
             <!-- imprimir registros por empleado & periodo inicio-->
             <div class="form-group">
-            <form action="../../reporte/comprobante.php" method="post">
+            <form action="../../reporte/comprobante.php" method="post" target="_blank">
                 <label class="etiqueta">Generar Comprobante:</label>
                  <div class="form-group">
                      <select id="" class="form-control" name="id" style="max-width:200px;">

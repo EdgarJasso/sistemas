@@ -53,7 +53,7 @@ if (isset($_SESSION['log_encuestas']) && $_SESSION['log_encuestas'] == true){
                     <td class=" col-12 label label-danger">'.$imprimir['Validacion'].'</td>
                     <td>
                         <center>';
-                        if ($imprimir['Area'] == 2) {
+                        if ($imprimir['Area'] == 'Seguridad') {
                             $html.='<button  type="button" id="" class="seguridad btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar_s" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 
                         }else{
                             $html.='<button  type="button" id="" class="validacion btn btn-primary btn-sm boton-add color-p" data-toggle="modal" data-target="#Contestar" data-validacion="'.$imprimir['Id_validacion'].'"><span class="icon-bubble"></span>&nbsp;Contestar</button>'; 
