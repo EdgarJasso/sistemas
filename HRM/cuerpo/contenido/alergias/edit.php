@@ -11,12 +11,20 @@
 			$tipo_sangre = $_POST['tipo_sangre'];
 			$nombre_contacto = $_POST['nombre_contacto'];
 			$tel_contacto = $_POST['tel_contacto'];
+			$par_contacto = $_POST['par_contacto'];
+			$nombre_contacto_ex = $_POST['nombre_contacto_ex'];
+			$tel_contacto_ex = $_POST['tel_contacto_ex'];
+			$par_contacto_ex = $_POST['par_contacto_ex'];
 			$sql = "UPDATE hrm_alergias SET 
 			id_empleado='$ide', 
 			descripcion ='$descripcion', 
 			tipo_sangre ='$tipo_sangre', 
 			nombre_contacto ='$nombre_contacto', 
-			tel_contacto = '$tel_contacto'
+			tel_contacto = '$tel_contacto',
+			parentesco_contacto ='$par_contacto',
+			nombre_contacto_extra ='$nombre_contacto_ex', 
+			tel_contacto_extra = '$tel_contacto_ex',
+			parentesco_contacto_extra ='$par_contacto_ex'
 			WHERE id_alergia = '$idal'";
         
             $result = ( $db->exec($sql) ) ? '1' : '0';

@@ -25,7 +25,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_alergia_emp"></td>  
                 </tr>  
                 <tr>  
-                     <td width="30%"><label>Descripcion</label></td>  
+                     <td width="30%"><label>Alergia</label></td>  
                      <td width="70%" id="view_alergia_descripcion"></td>  
                 </tr>
                 <tr>  
@@ -33,12 +33,28 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_alergia_sangre"></td>  
                 </tr>
                 <tr>  
-                     <td width="30%"><label>Nombre de Contacto</label></td>  
+                     <td width="30%"><label>Nombre de Contacto 1</label></td>  
                      <td width="70%" id="view_alergia_nombre_contacto"></td>  
                 </tr>
                 <tr>  
-                     <td width="30%"><label>Telefono de Contacto</label></td>  
+                     <td width="30%"><label>Telefono de Contacto 1</label></td>  
                      <td width="70%" id="view_alergia_tel_contacto"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Parentesco de Contacto 1</label></td>  
+                     <td width="70%" id="view_alergia_par_contacto"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Nombre de Contacto 2</label></td>  
+                     <td width="70%" id="view_alergia_nombre_contacto_extra"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Telefono de Contacto 2</label></td>  
+                     <td width="70%" id="view_alergia_tel_contacto_extra"></td>  
+                </tr>
+                <tr>  
+                     <td width="30%"><label>Parentesco de Contacto 2</label></td>  
+                     <td width="70%" id="view_alergia_par_contacto_extra"></td>  
                 </tr>
            </table>  
          </div>
@@ -81,7 +97,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
        <div class="form-group">
           <label for="comentarios" class="control-label">
-            Descripcion:
+            Alergia:
           </label>
          <div class="">
             <textarea class="form-control" rows="3" id="Alergias_descripcion" name="Alergias_descripcion" placeholder="Descripcion" style="resize:none;" required></textarea>
@@ -92,29 +108,53 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="idempleado">Tipo de Sangre:</label>
        	<select class="form-control" name="Alergias_tipo_sangre" id="Alergias_tipo_sangre">
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="RH+">RH+</option>
-          <option value="RH-">RH-</option>
+         <option value="O positivo">O positivo</option>
+          <option value="O negativo">O negativo</option>
+          <option value="A positivo">A positivo</option>
+          <option value="A negativo">A negativo</option>
+          <option value="B positivo">B positivo</option>
+          <option value="B negativo">B negativo</option>
+          <option value="AB positivo">AB positivo</option>
+          <option value="AB negativo">AB negativo</option>
+          <option value="RH positivo">RH positivo</option>
+          <option value="RH negativo">RH negativo</option>
        	</select>
        </div>
         
        <div class="form-group">
-       	<label for="">Nombre de Contacto:</label>
+       	<label for="">Nombre de Contacto 1:</label>
          <input type="text" class="form-control" id="Alergias_nombre_contacto" placeholder="Ingrese Nombre de contacto">
          <span class="help-block" id="text_alergias_nombre_contacto"></span>
        </div>
 
        <div class="form-group">
-       	<label for="">Telefono de Contacto:</label>
+       	<label for="">Telefono de Contacto 1:</label>
          <input type="text" class="form-control" id="Alergias_tel_contacto" placeholder="Ingrese Telefono">
          <span class="help-block" id="text_alergias_tel_contacto"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Parentesco de Contacto 1:</label>
+         <input type="text" class="form-control" id="Alergias_par_contacto" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_par_contacto"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Nombre de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_nombre_contacto_extra" placeholder="Ingrese Nombre de contacto">
+         <span class="help-block" id="text_alergias_nombre_contacto_2"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Telefono de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_tel_contacto_extra" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_tel_contacto_2"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Parentesco de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_par_contacto_extra" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_par_contacto_2"></span>
        </div>
 
       </div>
@@ -156,7 +196,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
        <div class="form-group">
           <label for="comentarios_e" class="control-label">
-            Descripcion:
+            Alergia:
           </label>
          <div class="">
             <textarea class="form-control" rows="3" id="Alergias_descripcion_e" name="Alergias_descripcion_e" placeholder="Descripcion" style="resize:none;" required></textarea>
@@ -167,29 +207,53 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="idempleado">Tipo de Sangre:</label>
        	<select class="form-control" name="Alergias_tipo_sangre_e" id="Alergias_tipo_sangre_e">
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="RH+">RH+</option>
-          <option value="RH-">RH-</option>
+          <option value="O positivo">O positivo</option>
+          <option value="O negativo">O negativo</option>
+          <option value="A positivo">A positivo</option>
+          <option value="A negativo">A negativo</option>
+          <option value="B positivo">B positivo</option>
+          <option value="B negativo">B negativo</option>
+          <option value="AB positivo">AB positivo</option>
+          <option value="AB negativo">AB negativo</option>
+          <option value="RH positivo">RH positivo</option>
+          <option value="RH negativo">RH negativo</option>
        	</select>
        </div>
 
        <div class="form-group">
-       	<label for="">Nombre de Contacto:</label>
+       	<label for="">Nombre de Contacto 1:</label>
          <input type="text" class="form-control" id="Alergias_nombre_contacto_e" placeholder="Ingrese Nombre de contacto">
          <span class="help-block" id="text_alergias_nombre_contacto_e"></span>
        </div>
 
        <div class="form-group">
-       	<label for="">Telefono de Contacto:</label>
+       	<label for="">Telefono de Contacto 1:</label>
          <input type="text" class="form-control" id="Alergias_tel_contacto_e" placeholder="Ingrese Telefono">
          <span class="help-block" id="text_alergias_tel_contacto_e"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Parentesco de Contacto 1:</label>
+         <input type="text" class="form-control" id="Alergias_par_contacto_e" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_par_contacto_e"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Nombre de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_nombre_contacto_extra_e" placeholder="Ingrese Nombre de contacto">
+         <span class="help-block" id="text_alergias_nombre_contacto_2_e"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Telefono de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_tel_contacto_extra_e" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_tel_contacto_2_e"></span>
+       </div>
+
+       <div class="form-group">
+       	<label for="">Parentesco de Contacto 2:</label>
+         <input type="text" class="form-control" id="Alergias_par_contacto_extra_e" placeholder="Ingrese Telefono">
+         <span class="help-block" id="text_alergias_par_contacto_2_e"></span>
        </div>
       
       </div>

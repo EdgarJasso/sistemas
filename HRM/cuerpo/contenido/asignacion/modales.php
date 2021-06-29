@@ -207,7 +207,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="idempleado">Dias:</label>
        	<select class="form-control" name="Asi_dias" id="Asi_dias">
-         <?php for($i = 1; $i<=10 ; $i++){?>
+         <?php for($i = 1; $i<=13 ; $i++){?>
         <option value="<?php echo $i?>"><?php echo $i?></option>
          <?php }?>
        	</select>
@@ -284,7 +284,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        <div class="form-group">
        	<label for="idempleado">Dias:</label>
        	<select class="form-control" name="Asi_dias_e" id="Asi_dias_e">
-         <?php for($i = 1; $i<=10 ; $i++){?>
+         <?php for($i = 1; $i<=13 ; $i++){?>
         <option value="<?php echo $i?>"><?php echo $i?></option>
          <?php }?>
        	</select>

@@ -281,7 +281,7 @@ function validarNombre(){
 function validarApellidoP(){
 	var valor = document.getElementById("Empleado_ap").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -320,7 +320,7 @@ function validarApellidoP(){
 function validarApellidoM(){
 	var valor = document.getElementById("Empleado_am").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 

@@ -14,14 +14,23 @@ function AgregarAlergias(datos){
      $('#view_alergia_sangre').html(d[5]);
      $('#view_alergia_nombre_contacto').html(d[6]);
      $('#view_alergia_tel_contacto').html(d[7]);
+     $('#view_alergia_par_contacto').html(d[8]);
+     $('#view_alergia_nombre_contacto_extra').html(d[9]);
+     $('#view_alergia_tel_contacto_extra').html(d[10]);
+     $('#view_alergia_par_contacto_extra').html(d[11]);
+     
  }
  
- function agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto,  tel_contacto){
+ function agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto,  tel_contacto, par_contacto, nombre_contacto_extra,  tel_contacto_extra, par_contacto_extra){
      cadenaH="id_empleado=" + id_empleado+
             "&descripcion=" + descripcion+
             "&tipo_sangre=" + tipo_sangre+
             "&nombre_contacto=" + nombre_contacto+
-            "&tel_contacto=" + tel_contacto;
+            "&tel_contacto=" + tel_contacto +
+            "&par_contacto=" + par_contacto +
+            "&nombre_contacto_ex=" + nombre_contacto_extra+
+            "&tel_contacto_ex=" + tel_contacto_extra +
+            "&par_contacto_ex=" + par_contacto_extra;
      //alert(cadena);
      $.ajax({
          type:"post",
@@ -73,6 +82,11 @@ function AgregarAlergias(datos){
      $('#Alergias_tipo_sangre_e').val(d[3]);
      $('#Alergias_nombre_contacto_e').val(d[4]);
      $('#Alergias_tel_contacto_e').val(d[5]);
+     $('#Alergias_par_contacto_e').val(d[6]);
+     $('#Alergias_nombre_contacto_extra_e').val(d[7]);
+     $('#Alergias_tel_contacto_extra_e').val(d[8]);
+     $('#Alergias_par_contacto_extra_e').val(d[9]);
+
  }
 
 function actualizaDatosAlergias(){
@@ -82,6 +96,10 @@ function actualizaDatosAlergias(){
     tipo_sangre=$('#Alergias_tipo_sangre_e').val();
     nombre_contacto=$('#Alergias_nombre_contacto_e').val();
     tel_contacto=$('#Alergias_tel_contacto_e').val();
+    par_contacto=$('#Alergias_par_contacto_e').val();
+    nombre_contacto_extra=$('#Alergias_nombre_contacto_extra_e').val();
+    tel_contacto_extra=$('#Alergias_tel_contacto_extra_e').val();
+    par_contacto_extra=$('#Alergias_par_contacto_extra_e').val();
 
 
     cadenaAlergias=
@@ -90,9 +108,13 @@ function actualizaDatosAlergias(){
     "&descripcion="+ descripcion+
     "&tipo_sangre="+ tipo_sangre+
     "&nombre_contacto="+ nombre_contacto+
-    "&tel_contacto="+ tel_contacto;
+    "&tel_contacto="+ tel_contacto +
+    "&par_contacto="+ par_contacto +
+    "&nombre_contacto_ex="+ nombre_contacto_extra+
+    "&tel_contacto_ex="+ tel_contacto_extra +
+    "&par_contacto_ex="+ par_contacto_extra;
     
-    //alert(cadenaVac);
+    //alert(cadenaAlergias);
 
            $.ajax({
             type:"post",
@@ -205,8 +227,12 @@ function validarNuevaAlergia(){
     tipo_sangre = $('#Alergias_tipo_sangre').val();
     nombre_contacto = $('#Alergias_nombre_contacto').val();
     tel_contacto = $('#Alergias_tel_contacto').val();
-    agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto, tel_contacto)
-         
+    par_contacto = $('#Alergias_par_contacto').val();
+    nombre_contacto_extra = $('#Alergias_nombre_contacto_extra').val();
+    tel_contacto_extra = $('#Alergias_tel_contacto_extra').val();
+    par_contacto_extra = $('#Alergias_par_contacto_extra').val();
+    agregardatosAlergias(id_empleado, descripcion, tipo_sangre, nombre_contacto, tel_contacto, par_contacto, nombre_contacto_extra, tel_contacto_extra, par_contacto_extra)
+    
 } 
 
 
