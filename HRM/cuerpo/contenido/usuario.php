@@ -203,7 +203,7 @@ return out;
 	</header>
 <div class="container-fluid">
 <div class="tab-content" id="pills-tabContent" >
-  <div class="tab-pane fade in active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="tab-pane fade in active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <div class="container-fluid">
       <div class="jumbotron jumbotron-fluid" id="home-f">
 
@@ -396,7 +396,7 @@ return out;
     </div>
   </div>
 
-  <div class="tab-pane fade" id="pills-puesto" role="tabpanel" aria-labelledby="pills-puesto-tab">
+  <div class="tab-pane fade " id="pills-puesto" role="tabpanel" aria-labelledby="pills-puesto-tab">
     
   <div class="container-fluid">
       <div class="puesto">
@@ -407,7 +407,7 @@ return out;
            try {
             $database = new Connection();
             $dbe = $database->open();
-            $sql_puesto = "SELECT hrm_area.nombre as nombre_area, hrm_puesto.nombre as nombre_puesto, hrm_puesto.descripcion as descrip, hrm_antiguedad.fecha_inicio as fecha, hrm_puesto.sueldo as sueldo FROM hrm_area, hrm_puesto, hrm_antiguedad WHERE hrm_antiguedad.id_empleado = ".$_SESSION['idempleado']." AND hrm_antiguedad.id_puesto = hrm_puesto.id_puesto AND hrm_area.id_area = hrm_puesto.id_area";
+            $sql_puesto = "SELECT hrm_area.nombre as nombre_area, hrm_puesto.nombre as nombre_puesto, hrm_puesto.descripcion as descrip, hrm_antiguedad.fecha_inicio as fecha FROM hrm_area, hrm_puesto, hrm_antiguedad WHERE hrm_antiguedad.id_empleado = ".$_SESSION['idempleado']." AND hrm_antiguedad.id_puesto = hrm_puesto.id_puesto AND hrm_area.id_area = hrm_puesto.id_area";
            
             $stmtn = $dbe->prepare($sql_puesto);            
            

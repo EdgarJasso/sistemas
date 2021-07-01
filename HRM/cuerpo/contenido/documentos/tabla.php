@@ -24,7 +24,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT hrm_documentos.id_documento as id_documento, hrm_documentos.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as ape, hrm_documentos.titulo as titulo, hrm_documentos.descripcion as descripcion, hrm_documentos.tipo as tipo, hrm_documentos.tamano as tamano, hrm_documentos.ruta as ruta FROM hrm_documentos, hrm_empleado WHERE hrm_documentos.id_empleado = hrm_empleado.id_empleado";
+          $query="SELECT hrm_documentos.id_documento as id_documento, hrm_documentos.id_empleado as id_empleado, hrm_empleado.nombre as nombre, hrm_empleado.ape_p as ape, hrm_documentos.titulo as titulo, hrm_documentos.descripcion as descripcion, hrm_documentos.tipo as tipo, hrm_documentos.tamano as tamano, hrm_documentos.ruta as ruta FROM hrm_documentos, hrm_empleado WHERE hrm_documentos.id_empleado = hrm_empleado.id_empleado AND hrm_documentos.titulo NOT LIKE '%Imagen de Perfil%'";
            foreach ($db->query($query) as $row) {
 
             $datos_delete = $row['id_documento']."||".

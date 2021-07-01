@@ -10,14 +10,12 @@
             $ida=$_POST['ida'];
             $nombre=$_POST['nombre'];
             $desc=$_POST['desc'];
-			$sueldo=$_POST['sueldo'];
 			$comentarios=$_POST['comentarios'];
 
 			$sql = "UPDATE hrm_puesto SET 
             id_area ='$ida',  
             nombre = '$nombre',
             descripcion = '$desc',
-            sueldo = '$sueldo',
 			comentarios = '$comentarios'
             
             WHERE id_puesto = '$id'";

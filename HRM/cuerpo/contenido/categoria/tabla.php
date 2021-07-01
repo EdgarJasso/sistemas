@@ -14,7 +14,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	 <tr> 
 		 <th>Area</th>
 		 <th>Nombre</th>
-         <th>Sueldo</th>
          <th><center>Accion</center></th>
 	 </tr>
 	</thead>
@@ -24,21 +23,19 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       try {
         $database = new Connection();
          $db = $database->open();
-          $query="SELECT hrm_puesto.id_puesto as id_puesto, hrm_puesto.id_area as id_area, hrm_area.nombre as nombre_area, hrm_puesto.nombre as nombre_puesto, hrm_puesto.descripcion as descripcion, hrm_puesto.sueldo as sueldo, hrm_puesto.comentarios as comentarios FROM hrm_puesto, hrm_area WHERE hrm_puesto.id_area = hrm_area.id_area";
+          $query="SELECT hrm_puesto.id_puesto as id_puesto, hrm_puesto.id_area as id_area, hrm_area.nombre as nombre_area, hrm_puesto.nombre as nombre_puesto, hrm_puesto.descripcion as descripcion, hrm_puesto.comentarios as comentarios FROM hrm_puesto, hrm_area WHERE hrm_puesto.id_area = hrm_area.id_area";
            foreach ($db->query($query) as $row) {
              $datosCV = $row['id_puesto']."||".
                       $row['id_area'] ."||".
                       $row['nombre_area']."||".
                       $row['nombre_puesto']."||".
                       $row['descripcion']."||".
-                      $row['sueldo']."||".
                       $row['comentarios'];
 
              $datosCE = $row['id_puesto']."||".
                       $row['id_area'] ."||".
                       $row['nombre_puesto']."||".
                       $row['descripcion']."||".
-                      $row['sueldo']."||".
                       $row['comentarios'];
              ?> 
              <tr>
@@ -78,7 +75,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	<tr>
          <th>Area</th>
 		 <th>Nombre</th>
-         <th>Sueldo</th>
          <th><center>Accion</center></th>
 	</tr>
 	</tfoot>

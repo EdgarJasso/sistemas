@@ -6,15 +6,13 @@ d = datos.split('||');
 	$('#view_cat_area').html(area);
 	$('#view_cat_nombre').html(d[3]);
     $('#view_cat_desc').html(d[4]);
-	$('#view_cat_sueldo').html(d[5]);
-	$('#view_cat_comentarios').html(d[6]);
+	$('#view_cat_comentarios').html(d[5]);
 }
 
-function agregardatosCat(idac, nombrec, descc, sueldoc, comentariosc){
+function agregardatosCat(idac, nombrec, descc, comentariosc){
 	cadenacat="id=" + idac +
 		   "&nombre=" + nombrec +
            "&descc=" + descc +
-		   "&sueldo=" + sueldoc+
 		   "&comentaarios=" + comentariosc
         ;
 	$.ajax({
@@ -64,8 +62,7 @@ function agregarformCat(datos){
 	$('#Cat_idarea').val(d[1]);
 	$('#Cat_nombre_act').val(d[2]);
     $('#Cat_descripcion_act').val(d[3]);
-	$('#Cat_sueldo_act').val(d[4]);
-	$('#Cat_comentarios_act').val(d[5]);
+	$('#Cat_comentarios_act').val(d[4]);
 }
 
 function actualizaDatosCat(){
@@ -73,7 +70,6 @@ function actualizaDatosCat(){
 	ida=$('#Cat_idarea').val();
 	nombre=$('#Cat_nombre_act').val();
     desc=$('#Cat_descripcion_act').val();
-	sueldo=$('#Cat_sueldo_act').val();
 	comentarios= $('#Cat_comentarios_act').val();
     
 	cadenaACT=
@@ -81,7 +77,6 @@ function actualizaDatosCat(){
 	"&ida=" +ida+
 	"&nombre="+nombre+
     "&desc="+desc+
-	"&sueldo="+sueldo+
 	"&comentarios=" + comentarios;
     
 		   $.ajax({
@@ -180,28 +175,24 @@ $(document).ready(function(){
 
 		$("#Cat_nombre").keyup(validarNombreCat);
 		$("#Cat_descripcion").keyup(validarDescCat);
-		$("#Cat_sueldo").keyup(validarSueldoCat);
 
 	$("#actualizar_categoria").click(validarNuevoCategoria_E);
 
 	$("#Cat_nombre_act").keyup(validarNombreCat_E);
 	$("#Cat_descripcion_act").keyup(validarDescCat_E);
-	$("#Cat_sueldo_act").keyup(validarSueldoCat_E);
 		
 });
 
 function validarNuevoCategoria(){
 	var nombre = validarNombreCat();
 	var desc = validarDescCat();
-	var sueldo = validarSueldoCat();
 
-	if (nombre=="true" && desc=="true" && sueldo=="true") {
+	if (nombre=="true" && desc=="true") {
 	 alertify.success("Enviando datos...");
 		idac = $('#Cat_idarea').val();
 		nombrec = $('#Cat_nombre').val();
 		descc = $('#Cat_descripcion').val();
-		sueldoc = $('#Cat_sueldo').val();
-	 agregardatosCat(idac, nombrec, descc, sueldoc);
+	 agregardatosCat(idac, nombrec, descc);
 
 	} else{
 		alertify.error('Favor de revisar datos');
@@ -271,53 +262,14 @@ function validarDescCat(){
 	console.log("final :"+estado);
 	return estado;
 }
-function validarSueldoCat(){
-	var valor = document.getElementById("Cat_sueldo").value;
-	let numeros = /[0-9]{4,10}/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
 
-	if( valor == null || valor.length == 0 || espacios.test(valor) || valor.length > 10){
-		$('#icono_cat_sueldo').remove();
-		$('#Cat_sueldo').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo').parent().append('<span id="icono_cat_sueldo" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo').text("Ingrese un caracter").show();
-		estado  = "false";
-		console.log(estado);
-	}else if( isNaN(valor) ){
-		$('#icono_cat_sueldo').remove();
-		$('#Cat_sueldo').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo').parent().append('<span id="icono_cat_sueldo" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo').text("Caracter no valido").show();
-		estado  = "false";
-		console.log(estado);
-	}else if( numeros.test(valor)==false){
-		$('#icono_cat_sueldo').remove();
-		$('#Cat_sueldo').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo').parent().append('<span id="icono_cat_sueldo" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo').text("longitud permitida 4-10").show();
-		estado  = "false";
-	}else{
-		$('#icono_cat_sueldo').remove();
-		$('#Cat_sueldo').parent().attr("class", "form-group has-success has-feedback");
-		$('#Cat_sueldo').parent().children("span").text("").hide();
-		$('#Cat_sueldo').parent().append('<span id="icono_cat_sueldo" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
 
 
 
 function validarNuevoCategoria_E(){
 	var nombre_e = validarNombreCat_E();
 	var desc_e = validarDescCat_E();
-	var sueldo_e = validarSueldoCat_E();
-
-	if (nombre_e="true" && desc_e=="true" && sueldo_e=="true") {
+	if (nombre_e="true" && desc_e=="true") {
 	 alertify.success("Enviando datos...");
 		actualizaDatosCat();
 	} else{
@@ -382,44 +334,6 @@ function validarDescCat_E(){
 		$('#Cat_descripcion_act').parent().attr("class", "form-group has-success has-feedback");
 		$('#Cat_descripcion_act').parent().children("span").text("").hide();
 		$('#Cat_descripcion_act').parent().append('<span id="icono_cat_desc_act" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
-		estado  = "true";
-		console.log(estado);
-	}
-	console.log("final :"+estado);
-	return estado;
-}
-function validarSueldoCat_E(){
-	var valor = document.getElementById("Cat_sueldo_act").value;
-	let numeros = /[0-9]{4,10}/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚ]$/;
-	let espacios = /^\s$/;
-	let estado  = "false";
-
-	if( valor == null || valor.length == 0 || espacios.test(valor) || valor.length > 10){
-		$('#icono_cat_sueldo_act').remove();
-		$('#Cat_sueldo_act').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo_act').parent().append('<span id="icono_cat_sueldo_act" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo_act').text("Ingrese un caracter").show();
-		estado  = "false";
-		console.log(estado);
-	}else if( isNaN(valor) ){
-		$('#icono_cat_sueldo_act').remove();
-		$('#Cat_sueldo_act').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo_act').parent().append('<span id="icono_cat_sueldo_act" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo_act').text("Caracter no valido").show();
-		estado  = "false";
-		console.log(estado);
-	}else if( numeros.test(valor)==false){
-		$('#icono_cat_sueldo_act').remove();
-		$('#Cat_sueldo_act').parent().attr("class", "form-group has-error has-feedback");
-		$('#Cat_sueldo_act').parent().append('<span id="icono_cat_sueldo_act" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_cat_sueldo_act').text("longitud permitida 4-10").show();
-		estado  = "false";
-	}else{
-		$('#icono_cat_sueldo_act').remove();
-		$('#Cat_sueldo_act').parent().attr("class", "form-group has-success has-feedback");
-		$('#Cat_sueldo_act').parent().children("span").text("").hide();
-		$('#Cat_sueldo_act').parent().append('<span id="icono_cat_sueldo_act" class="icon-checkmark form-control-feedback mt-2" style="top:32px;"></span>');
 		estado  = "true";
 		console.log(estado);
 	}

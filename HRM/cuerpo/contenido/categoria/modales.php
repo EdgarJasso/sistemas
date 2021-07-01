@@ -33,10 +33,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                      <td width="70%" id="view_cat_desc"></td>  
                 </tr>
                 <tr>  
-                     <td width="30%"><label>Sueldo:</label></td>  
-                     <td width="70%" id="view_cat_sueldo"></td>  
-                </tr>
-                <tr>  
                      <td width="30%"><label>Comentarios:</label></td>  
                      <td width="70%" id="view_cat_comentarios"></td>  
                 </tr>
@@ -88,12 +84,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
        	<label for="">Descripcion:</label>
        	<input type="text" class="form-control" id="Cat_descripcion" placeholder="Ingrese Descripcion">
          <span class="help-block" id="text_help_cat_desc"></span>
-      </div>
-       
-       <div class="form-group">
-       	<label for="">Sueldo:</label>
-       	<input type="text" class="form-control" id="Cat_sueldo" placeholder="Ingrese Sueldo">
-         <span class="help-block" id="text_help_cat_sueldo"></span>
       </div>
 
       <div class="form-group">

@@ -204,6 +204,57 @@ echo $msj;
                 </li>
             </ul>
         </li>
+        <li>
+          <a href="#">Organizacion<span class="icon-office"></span></a>
+             <ul>
+                 <li>   
+                    <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
+                  role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
+                    <span class="icon-users"></span>
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_adquiciciones" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Adquisiciones
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_compensaciones" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Compsensaciones
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_computo" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Computo
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_gastos" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Gastos
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_nuevos_ingresos" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Nuevos ingresos
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_telecomunicaciones" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Telecomunicaciones
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_vacaciones" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Vacaciones
+                 </a>
+                </li>
+                <li>   
+                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-pol_vehiculos" 
+                  role="tab" aria-controls="pills-politicas" aria-selected="false">Vehiculos
+                 </a>
+                </li>
+            </ul>
+        </li>
 
         <li>
           <a href="#">Extra<span class="icon-link"></span></a>
@@ -218,18 +269,7 @@ echo $msj;
                  </a>
                 </li>';
                 }?>
-                <li>   
-                    <a class="nav-link" id="pills-organigrama-tab" data-toggle="pill" href="#pills-organigrama" 
-                  role="tab" aria-controls="pills-organigrama" aria-selected="false">Organigrama
-                    <span class="icon-users"></span>
-                 </a>
-                </li>
-                <li>   
-                    <a class="nav-link" id="pills-politicas-tab" data-toggle="pill" href="#pills-politicas" 
-                  role="tab" aria-controls="pills-politicas" aria-selected="false">Politicas
-                    <span class="icon-file-zip"></span>
-                 </a>
-                </li>
+                
                 <li>   
                   <a class="nav-link" id="pills-objetivos-tab" data-toggle="pill" href="#pills-objetivos" 
                   role="tab" aria-controls="pills-objetivos" aria-selected="false">Objetivos
@@ -372,13 +412,6 @@ echo $msj;
   </div>
 <!-- fin -->
 <!-- inicio -->
-<div class="tab-pane fade" id="pills-politicas" role="tabpanel" aria-labelledby="pills-politicas-tab">
-   <div class="container-fluid">
-      <div id="contenedor_politicas"></div>
-   </div>
-  </div>
-<!-- fin -->
-<!-- inicio -->
 <div class="tab-pane fade" id="pills-objetivos" role="tabpanel" aria-labelledby="pills-objetivos-tab">
    <div class="container-fluid">
       <div id="contenedor_objetivos"></div>
@@ -427,6 +460,64 @@ echo $msj;
    </div>
   </div>
 <!-- fin -->
+<!--politicas-->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_adquiciciones" role="tabpanel" aria-labelledby="pills-adquiciones-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_adquiciciones"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_compensaciones" role="tabpanel" aria-labelledby="pills-compensaciones-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_compensaciones"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_computo" role="tabpanel" aria-labelledby="pills-computo-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_computo"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_gastos" role="tabpanel" aria-labelledby="pills-gastos-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_gastos"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_nuevos_ingresos" role="tabpanel" aria-labelledby="pills-ingresos-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_ingresos"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_telecomunicaciones" role="tabpanel" aria-labelledby="pills-telecomunicaciones-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_telecomunicaciones"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_vacaciones" role="tabpanel" aria-labelledby="pills-vacaciones-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_vacaciones"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!-- inicio -->
+<div class="tab-pane fade" id="pills-pol_vehiculos" role="tabpanel" aria-labelledby="pills-vehiculos-tab">
+   <div class="container-fluid">
+      <div id="contenedor_pol_vehiculos"></div>
+   </div>
+  </div>
+<!-- fin -->
+<!--politicas-->
   <div class="tab-pane fade" id="pills-calendario" role="tabpanel" aria-labelledby="pills-calendario-tab">
    <div id='calendar-container'>   
     <div id='calendar'></div>
@@ -500,8 +591,17 @@ $(".fc-left").append("<?php echo $selectArea?>");
      $('#contenedor_documentosnuevos').load('documentos/tabla.php'); 
      $('#contenedor_imagen').load('imagen/tabla.php'); 
      $('#contenedor_organigrama').load('PDF/organigrama.php'); 
-     $('#contenedor_politicas').load('PDF/politicas.php'); 
      $('#contenedor_nomina').load('nomina/tabla.php');
+
+     
+     $('#contenedor_pol_adquiciciones').load('PDF/pol_adquisiciones.php'); 
+     $('#contenedor_pol_compensaciones').load('PDF/pol_compensaciones.php'); 
+     $('#contenedor_pol_computo').load('PDF/pol_computo.php'); 
+     $('#contenedor_pol_gastos').load('PDF/pol_gastos.php'); 
+     $('#contenedor_pol_ingresos').load('PDF/pol_nuevos_ingresos.php'); 
+     $('#contenedor_pol_telecomunicaciones').load('PDF/pol_telecomunicaciones.php'); 
+     $('#contenedor_pol_vacaciones').load('PDF/pol_vacaciones.php'); 
+     $('#contenedor_pol_vehiculos').load('PDF/pol_vehiculos.php'); 
      
 	});
 </script>
