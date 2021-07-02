@@ -264,7 +264,7 @@ function validarNombre(){
 		$('#icono_texto_nom').remove();
 		$('#Empleado_nombre').parent().attr("class", "form-group has-error has-feedback");
 		$('#Empleado_nombre').parent().append('<span id="icono_texto_nom" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_nom').text("Longitud no valida 5-20").show();
+		$('#text_help_nom').text("Longitud no valida 3-20").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
@@ -281,7 +281,7 @@ function validarNombre(){
 function validarApellidoP(){
 	var valor = document.getElementById("Empleado_ap").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -303,7 +303,7 @@ function validarApellidoP(){
 		$('#icono_texto_ap').remove();
 		$('#Empleado_ap').parent().attr("class", "form-group has-error has-feedback");
 		$('#Empleado_ap').parent().append('<span id="icono_texto_ap" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_ap').text("Longitud no valida 5-20").show();
+		$('#text_help_ap').text("Longitud no valida 2-20").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
@@ -320,7 +320,7 @@ function validarApellidoP(){
 function validarApellidoM(){
 	var valor = document.getElementById("Empleado_am").value;
 	let numeros = /[0-9]/;
-	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
+	let letras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ']{2,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}\s{0,1}[a-zA-ZáéíóúÁÉÍÓÚñÑ']{0,20}$/;
 	let espacios = /^\s$/;
 	let estado  = "false";
 
@@ -342,7 +342,7 @@ function validarApellidoM(){
 		$('#icono_texto_am').remove();
 		$('#Empleado_am').parent().attr("class", "form-group has-error has-feedback");
 		$('#Empleado_am').parent().append('<span id="icono_texto_am" class="icon-cross form-control-feedback mt-2" style="top:32px;"></span>');
-		$('#text_help_am').text("Longitud no valida 5-20").show();
+		$('#text_help_am').text("Longitud no valida 2-20").show();
 		estado  = "false";
 		console.log(estado);
 	}else{
